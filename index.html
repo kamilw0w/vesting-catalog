@@ -52,7 +52,7 @@ body::before {
   background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 .22 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
   opacity:.5; pointer-events:none; z-index:9999;
 }
-.stage { perspective: 2400px; perspective-origin: 50% 40%; }
+.stage { perspective: 2400px; perspective-origin: 50% 40%; position: relative; }
 .catalog {
   position:relative; width:1040px; height:700px;
   transform-style:preserve-3d; transform:rotateX(2deg);
@@ -791,23 +791,23 @@ body::before {
   margin-bottom: 8px; padding-bottom: 6px;
   border-bottom: 1px solid var(--rule);
 }
-.roster-head .lbl { font-family: var(--f-mono); font-size: 9.5px; color: var(--accent); letter-spacing: 0.22em; text-transform: uppercase; }
-.roster-head .count { font-family: var(--f-mono); font-size: 9px; color: var(--muted); letter-spacing: 0.16em; }
-.roster { display: grid; grid-template-columns: 1fr 1fr; gap: 0 18px; list-style: none; margin-bottom: 14px; }
+.roster-head .lbl { font-family: var(--f-mono); font-size: 9px; color: var(--accent); letter-spacing: 0.20em; text-transform: uppercase; }
+.roster-head .count { font-family: var(--f-mono); font-size: 8.5px; color: var(--muted); letter-spacing: 0.14em; }
+.roster { display: grid; grid-template-columns: 1fr 1fr; gap: 0 14px; list-style: none; margin-bottom: 11px; }
 .roster-item {
   display: grid; grid-template-columns: 16px 1fr auto;
-  gap: 6px; align-items: baseline; padding: 3.5px 0;
+  gap: 5px; align-items: baseline; padding: 2.6px 0;
   border-bottom: 1px dotted oklch(0.78 0.025 80 / 0.5);
   font-size: 11px;
 }
 .roster-item:last-child { border-bottom: none; }
-.roster-num { font-family: var(--f-mono); font-size: 8.5px; color: var(--accent); letter-spacing: 0.08em; }
+.roster-num { font-family: var(--f-mono); font-size: 8px; color: var(--accent); letter-spacing: 0.08em; }
 .roster-mid { display: flex; align-items: baseline; gap: 5px; overflow: hidden; white-space: nowrap; min-width: 0; }
-.roster-name { font-family: var(--f-display); font-size: 12.5px; color: var(--ink); letter-spacing: -0.005em; overflow: hidden; text-overflow: ellipsis; }
+.roster-name { font-family: var(--f-display); font-size: 11.5px; color: var(--ink); letter-spacing: -0.005em; overflow: hidden; text-overflow: ellipsis; }
 .roster-dash { color: var(--faint); font-size: 10px; }
-.roster-company { font-family: var(--f-italic); font-style: italic; font-size: 11.5px; color: var(--muted); overflow: hidden; text-overflow: ellipsis; }
+.roster-company { font-family: var(--f-italic); font-style: italic; font-size: 10.5px; color: var(--muted); overflow: hidden; text-overflow: ellipsis; }
 .roster-tag {
-  font-family: var(--f-mono); font-size: 7.5px;
+  font-family: var(--f-mono); font-size: 7px;
   letter-spacing: 0.1em; text-transform: uppercase;
   color: var(--accent-deep); padding: 1px 5px;
   background: var(--accent-tint);
@@ -815,10 +815,10 @@ body::before {
   border-radius: 100px; white-space: nowrap;
 }
 .roster-vc { grid-template-columns: 1fr; gap: 2px; }
-.roster-vc .roster-item { grid-template-columns: 18px 1fr auto; padding: 4px 0; }
+.roster-vc .roster-item { grid-template-columns: 18px 1fr auto; padding: 3px 0; }
 .roster-foot {
-  margin-top: 10px; font-family: var(--f-italic); font-style: italic;
-  font-size: 11.5px; color: var(--muted); text-align: right;
+  margin-top: 8px; font-family: var(--f-italic); font-style: italic;
+  font-size: 10.5px; color: var(--muted); text-align: right;
 }
 .roster-foot em { color: var(--accent); }
 .back-cover-face {
@@ -942,10 +942,17 @@ body::before {
   gap: 8px;
   max-width: 760px;
 }
+.chapter-jump[data-section="cover"] { --chapter-color: #d9a400; }
+.chapter-jump[data-section="proof"] { --chapter-color: #3aa8ff; }
+.chapter-jump[data-section="numbers"] { --chapter-color: #ff4f5e; }
+.chapter-jump[data-section="cases"] { --chapter-color: #3fd47a; }
+.chapter-jump[data-section="events"] { --chapter-color: #9b6dff; }
+.chapter-jump[data-section="live"] { --chapter-color: #ff69b4; }
+.chapter-jump[data-section="pitch"] { --chapter-color: #ffd84d; }
 .chapter-btn {
   background: transparent;
-  border: 1px solid oklch(0.42 0.04 80 / 0.45);
-  color: oklch(0.70 0.04 80);
+  border: 1px solid color-mix(in oklab, var(--chapter-color) 56%, transparent);
+  color: color-mix(in oklab, var(--chapter-color) 78%, white 22%);
   padding: 7px 10px;
   border-radius: 2px;
   font-family: var(--f-mono);
@@ -957,9 +964,50 @@ body::before {
 }
 .chapter-btn:hover,
 .chapter-btn.active {
-  color: var(--accent-hi);
-  border-color: var(--accent);
-  background: oklch(0.64 0.135 78 / 0.10);
+  color: color-mix(in oklab, var(--chapter-color) 86%, white 14%);
+  border-color: var(--chapter-color);
+  background: color-mix(in oklab, var(--chapter-color) 16%, transparent);
+  box-shadow: 0 0 10px color-mix(in oklab, var(--chapter-color) 28%, transparent);
+}
+.chapter-bookmarks {
+  position: absolute;
+  top: 34px;
+  right: -34px;
+  z-index: 60;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  align-items: flex-start;
+}
+.bookmark-tab {
+  width: 34px;
+  min-height: 78px;
+  border: 0;
+  border-radius: 0 7px 7px 0;
+  background:
+    linear-gradient(90deg, color-mix(in oklab, var(--chapter-color) 72%, black 28%), var(--chapter-color));
+  color: color-mix(in oklab, var(--chapter-color) 18%, black 82%);
+  font-family: var(--f-mono);
+  font-size: 8px;
+  font-weight: 600;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  cursor: pointer;
+  box-shadow: 5px 5px 14px rgba(0,0,0,0.24), inset 1px 0 0 rgba(255,255,255,0.25);
+  transition: transform 0.22s ease, filter 0.22s ease;
+}
+.bookmark-tab:hover,
+.bookmark-tab.active {
+  transform: translateX(5px);
+  filter: brightness(1.08) saturate(1.08);
+}
+@media (max-width: 760px) {
+  .chapter-bookmarks { display: none; }
+}
+.bookmark-tab.active {
+  box-shadow: 7px 6px 16px rgba(0,0,0,0.30), 0 0 0 1px rgba(255,255,255,0.20) inset;
 }
 .instruction { margin-top: 8px; font-family: var(--f-italic); font-style: italic; color: oklch(0.58 0.04 80); font-size: 12.5px; letter-spacing: 0.04em; min-height: 28px; display: flex; align-items: center; justify-content: center; gap: 8px; }
 .instruction-copy { transition: opacity 0.35s ease, transform 0.35s ease; }
@@ -1907,8 +1955,8 @@ img.event-mark {
             <div class="proof-card"><div class="proof-n">3.6<span class="u">M</span></div><div class="proof-l">Single launch breakout</div></div>
             <div class="proof-card"><div class="proof-n">3<span class="u">x</span></div><div class="proof-l">YC acceptances</div></div>
             <div class="proof-card"><div class="proof-n">$300<span class="u">K</span></div><div class="proof-l">ARR pipeline</div></div>
-            <div class="proof-card"><div class="proof-n">$3.7<span class="u">M</span></div><div class="proof-l">Raise amplified</div></div>
-            <div class="proof-card"><div class="proof-n">3</div><div class="proof-l">Event partners</div></div>
+            <div class="proof-card"><div class="proof-n">3<span class="u">+1</span></div><div class="proof-l">Case studies · 4th soon</div></div>
+            <div class="proof-card"><div class="proof-n">4</div><div class="proof-l">Event partners</div></div>
           </div>
           <div class="logo-wall-startups">
           <div class="logo-card">
@@ -2369,7 +2417,7 @@ img.event-mark {
         <div class="guest-eye">— The weekly online show —</div>
         <h2 class="guest-title">Guests <em>on-air.</em></h2>
         <p class="guest-sub">YC founders, Founders Inc residents, Thiel Fellows, VC partners — all in the same chair. No fluff, no PR-speak. Q1 2026 lineup.</p>
-        <div class="roster-head"><span class="lbl">Founders on-air</span><span class="count">Q1 · 28 guests</span></div>
+        <div class="roster-head"><span class="lbl">Founders on-air</span><span class="count">Q1 · 31 guests</span></div>
         <ol class="roster">
           <li class="roster-item"><span class="roster-num">01</span><div class="roster-mid"><span class="roster-name">Roy Lee</span><span class="roster-dash">—</span><span class="roster-company">Cluely</span></div><span class="roster-tag">a16z</span></li>
           <li class="roster-item"><span class="roster-num">02</span><div class="roster-mid"><span class="roster-name">Andrew D&rsquo;Souza</span><span class="roster-dash">—</span><span class="roster-company">Boardy</span></div><span class="roster-tag">Creandum</span></li>
@@ -2399,13 +2447,17 @@ img.event-mark {
           <li class="roster-item"><span class="roster-num">26</span><div class="roster-mid"><span class="roster-name">Mitch Radhuber</span><span class="roster-dash">—</span><span class="roster-company">CoreLayer</span></div><span class="roster-tag">YC</span></li>
           <li class="roster-item"><span class="roster-num">27</span><div class="roster-mid"><span class="roster-name">Caleb, Gatik &amp; Gavin</span><span class="roster-dash">—</span><span class="roster-company">Lance</span></div><span class="roster-tag">YC</span></li>
           <li class="roster-item"><span class="roster-num">28</span><div class="roster-mid"><span class="roster-name">Jia Seed</span><span class="roster-dash">—</span><span class="roster-company">Jam</span></div><span class="roster-tag">Resid.</span></li>
+          <li class="roster-item"><span class="roster-num">29</span><div class="roster-mid"><span class="roster-name">Szymon Rybczak</span><span class="roster-dash">—</span><span class="roster-company">Tester Army</span></div><span class="roster-tag">YC</span></li>
+          <li class="roster-item"><span class="roster-num">30</span><div class="roster-mid"><span class="roster-name">Rounak Adhikary</span><span class="roster-dash">—</span><span class="roster-company">ProjectX</span></div><span class="roster-tag">YC</span></li>
+          <li class="roster-item"><span class="roster-num">31</span><div class="roster-mid"><span class="roster-name">Michael Hodara</span><span class="roster-dash">—</span><span class="roster-company">Kuli</span></div><span class="roster-tag">YC</span></li>
         </ol>
-        <div class="roster-head"><span class="lbl">VCs on-air</span><span class="count">Q1 · 4 investors</span></div>
+        <div class="roster-head"><span class="lbl">VCs on-air</span><span class="count">Q1 · 5 investors</span></div>
         <ol class="roster roster-vc">
           <li class="roster-item"><span class="roster-num">01</span><div class="roster-mid"><span class="roster-name">Chris Adamo</span><span class="roster-dash">—</span><span class="roster-company">Flamingo Cap</span></div><span class="roster-tag">Founding Partner</span></li>
           <li class="roster-item"><span class="roster-num">02</span><div class="roster-mid"><span class="roster-name">Henri PJ</span><span class="roster-dash">—</span><span class="roster-company">Harlem Capital</span></div><span class="roster-tag">Partner</span></li>
           <li class="roster-item"><span class="roster-num">03</span><div class="roster-mid"><span class="roster-name">Kass &amp; Mike Lazerow</span><span class="roster-dash">—</span><span class="roster-company">Velvet Sea Ventures</span></div><span class="roster-tag">Co-founders</span></li>
           <li class="roster-item"><span class="roster-num">04</span><div class="roster-mid"><span class="roster-name">Geoffrey Woo</span><span class="roster-dash">—</span><span class="roster-company">Anti Fund</span></div><span class="roster-tag">Managing Partner</span></li>
+          <li class="roster-item"><span class="roster-num">05</span><div class="roster-mid"><span class="roster-name">Ankur Nagpal</span><span class="roster-dash">—</span><span class="roster-company">USVC</span></div><span class="roster-tag">GP</span></li>
         </ol>
         <div class="roster-foot"><em>More guests booked for Q2 2026.</em></div>
       </div></div>
@@ -2582,6 +2634,15 @@ img.event-mark {
         </div>
     </div></div>
   </div>
+  <div class="chapter-bookmarks" aria-label="Book section bookmarks">
+    <button class="bookmark-tab chapter-jump" data-section="cover" data-page="0">Cover</button>
+    <button class="bookmark-tab chapter-jump" data-section="proof" data-page="3">Proof</button>
+    <button class="bookmark-tab chapter-jump" data-section="numbers" data-page="4">Numbers</button>
+    <button class="bookmark-tab chapter-jump" data-section="cases" data-page="6">Cases</button>
+    <button class="bookmark-tab chapter-jump" data-section="events" data-page="18">Events</button>
+    <button class="bookmark-tab chapter-jump" data-section="live" data-page="24">Live</button>
+    <button class="bookmark-tab chapter-jump" data-section="pitch" data-page="25">Pitch</button>
+  </div>
 </div>
 <div class="controls">
   <button class="ctrl-btn" id="prevBtn" disabled>&larr; Prev</button>
@@ -2589,13 +2650,13 @@ img.event-mark {
   <button class="ctrl-btn" id="nextBtn">Next &rarr;</button>
 </div>
 <div class="chapter-nav" aria-label="Jump to section">
-  <button class="chapter-btn" data-page="0">Cover</button>
-  <button class="chapter-btn" data-page="3">Proof</button>
-  <button class="chapter-btn" data-page="4">Numbers</button>
-  <button class="chapter-btn" data-page="6">Cases</button>
-  <button class="chapter-btn" data-page="18">Events</button>
-  <button class="chapter-btn" data-page="24">Live</button>
-  <button class="chapter-btn" data-page="26">Pitch</button>
+  <button class="chapter-btn chapter-jump" data-section="cover" data-page="0">Cover</button>
+  <button class="chapter-btn chapter-jump" data-section="proof" data-page="3">Proof</button>
+  <button class="chapter-btn chapter-jump" data-section="numbers" data-page="4">Numbers</button>
+  <button class="chapter-btn chapter-jump" data-section="cases" data-page="6">Cases</button>
+  <button class="chapter-btn chapter-jump" data-section="events" data-page="18">Events</button>
+  <button class="chapter-btn chapter-jump" data-section="live" data-page="24">Live</button>
+  <button class="chapter-btn chapter-jump" data-section="pitch" data-page="25">Pitch</button>
 </div>
 <div class="instruction"><span class="instruction-copy">Click the right half to advance &middot; <kbd>&larr;</kbd> <kbd>&rarr;</kbd> also work</span><button id="soundToggle" class="snd-btn">&#9834; sound on</button></div>
 <script src="https://cdn.jsdelivr.net/npm/page-flip@2.0.7/dist/js/page-flip.browser.js"></script>
@@ -2671,16 +2732,16 @@ window.addEventListener('load', function() {
   const indicator = document.getElementById('indicator');
   const prevBtn = document.getElementById('prevBtn');
   const nextBtn = document.getElementById('nextBtn');
-  const chapterBtns = Array.from(document.querySelectorAll('.chapter-btn'));
-  const chapterRanges = [
-    { start: 0, end: 2 },
-    { start: 3, end: 4 },
-    { start: 4, end: 6 },
-    { start: 6, end: 18 },
-    { start: 18, end: 24 },
-    { start: 24, end: 26 },
-    { start: 26, end: 28 }
-  ];
+  const chapterBtns = Array.from(document.querySelectorAll('.chapter-jump'));
+  const chapterRanges = {
+    cover: { start: 0, end: 2 },
+    proof: { start: 3, end: 4 },
+    numbers: { start: 4, end: 6 },
+    cases: { start: 6, end: 18 },
+    events: { start: 18, end: 24 },
+    live: { start: 24, end: 25 },
+    pitch: { start: 25, end: 28 }
+  };
 
   function updateUI() {
     const idx = pageFlip.getCurrentPageIndex();
@@ -2692,8 +2753,8 @@ window.addEventListener('load', function() {
     if (nextBtn) nextBtn.disabled = idx >= total - 1;
     document.body.classList.toggle('has-flipped', idx > 0);
     bookEl.classList.toggle('on-back-cover', idx >= total - 1);
-    chapterBtns.forEach((btn, i) => {
-      const range = chapterRanges[i];
+    chapterBtns.forEach(btn => {
+      const range = chapterRanges[btn.dataset.section];
       btn.classList.toggle('active', !!range && idx >= range.start && idx < range.end);
     });
   }
