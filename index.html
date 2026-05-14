@@ -942,13 +942,13 @@ body::before {
   gap: 8px;
   max-width: 760px;
 }
-.chapter-jump[data-section="cover"] { --chapter-color: #d9a400; }
-.chapter-jump[data-section="proof"] { --chapter-color: #3aa8ff; }
-.chapter-jump[data-section="numbers"] { --chapter-color: #ff4f5e; }
-.chapter-jump[data-section="cases"] { --chapter-color: #3fd47a; }
-.chapter-jump[data-section="events"] { --chapter-color: #9b6dff; }
-.chapter-jump[data-section="live"] { --chapter-color: #ff69b4; }
-.chapter-jump[data-section="pitch"] { --chapter-color: #ffd84d; }
+.chapter-jump[data-section="cover"] { --chapter-color: #d8d7ca; --chapter-ink: #26251f; }
+.chapter-jump[data-section="proof"] { --chapter-color: #4fa8d8; --chapter-ink: #071521; }
+.chapter-jump[data-section="numbers"] { --chapter-color: #d94d60; --chapter-ink: #23070b; }
+.chapter-jump[data-section="cases"] { --chapter-color: #30b979; --chapter-ink: #03170d; }
+.chapter-jump[data-section="events"] { --chapter-color: #8b64d8; --chapter-ink: #11091f; }
+.chapter-jump[data-section="live"] { --chapter-color: #d65fa4; --chapter-ink: #200716; }
+.chapter-jump[data-section="pitch"] { --chapter-color: #e6c93f; --chapter-ink: #231d03; }
 .chapter-btn {
   background: transparent;
   border: 1px solid color-mix(in oklab, var(--chapter-color) 56%, transparent);
@@ -971,43 +971,81 @@ body::before {
 }
 .chapter-bookmarks {
   position: absolute;
-  top: 34px;
-  right: -34px;
+  top: 54px;
+  right: -25px;
   z-index: 60;
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 4px;
   align-items: flex-start;
+  opacity: 0;
+  transform: translateX(-8px);
+  pointer-events: none;
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+body.has-flipped .chapter-bookmarks {
+  opacity: 1;
+  transform: translateX(0);
+  pointer-events: auto;
 }
 .bookmark-tab {
-  width: 34px;
-  min-height: 78px;
+  position: relative;
+  width: 29px;
+  min-height: 68px;
   border: 0;
-  border-radius: 0 7px 7px 0;
+  border-radius: 0 5px 5px 0;
   background:
-    linear-gradient(90deg, color-mix(in oklab, var(--chapter-color) 72%, black 28%), var(--chapter-color));
-  color: color-mix(in oklab, var(--chapter-color) 18%, black 82%);
+    linear-gradient(90deg,
+      color-mix(in oklab, var(--chapter-color) 56%, black 44%) 0%,
+      color-mix(in oklab, var(--chapter-color) 88%, white 12%) 42%,
+      var(--chapter-color) 100%);
+  color: var(--chapter-ink);
   font-family: var(--f-mono);
-  font-size: 8px;
+  font-size: 7px;
   font-weight: 600;
-  letter-spacing: 0.13em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   writing-mode: vertical-rl;
   text-orientation: mixed;
   cursor: pointer;
-  box-shadow: 5px 5px 14px rgba(0,0,0,0.24), inset 1px 0 0 rgba(255,255,255,0.25);
-  transition: transform 0.22s ease, filter 0.22s ease;
+  box-shadow:
+    4px 5px 11px rgba(0,0,0,0.22),
+    inset 1px 0 0 rgba(255,255,255,0.26),
+    inset -1px 0 0 rgba(0,0,0,0.10);
+  transition: transform 0.22s ease, filter 0.22s ease, box-shadow 0.22s ease;
+}
+.bookmark-tab::before {
+  content: '';
+  position: absolute;
+  inset: 7px auto 7px 5px;
+  width: 1px;
+  background: rgba(255,255,255,0.30);
+  opacity: 0.7;
+}
+.bookmark-tab::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 7px;
+  height: 100%;
+  border-radius: 0 5px 5px 0;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.18));
+  pointer-events: none;
 }
 .bookmark-tab:hover,
 .bookmark-tab.active {
-  transform: translateX(5px);
-  filter: brightness(1.08) saturate(1.08);
+  transform: translateX(4px);
+  filter: brightness(1.04) saturate(1.05);
 }
 @media (max-width: 760px) {
   .chapter-bookmarks { display: none; }
 }
 .bookmark-tab.active {
-  box-shadow: 7px 6px 16px rgba(0,0,0,0.30), 0 0 0 1px rgba(255,255,255,0.20) inset;
+  box-shadow:
+    6px 6px 15px rgba(0,0,0,0.30),
+    0 0 0 1px rgba(255,255,255,0.20) inset,
+    0 0 16px color-mix(in oklab, var(--chapter-color) 28%, transparent);
 }
 .instruction { margin-top: 8px; font-family: var(--f-italic); font-style: italic; color: oklch(0.58 0.04 80); font-size: 12.5px; letter-spacing: 0.04em; min-height: 28px; display: flex; align-items: center; justify-content: center; gap: 8px; }
 .instruction-copy { transition: opacity 0.35s ease, transform 0.35s ease; }
