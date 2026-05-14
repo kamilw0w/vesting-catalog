@@ -995,6 +995,12 @@ body.on-back-cover .chapter-bookmarks {
   pointer-events: none;
   transition: opacity 0.07s ease, transform 0.07s ease;
 }
+body.bookmark-jumping .chapter-bookmarks {
+  opacity: 0;
+  transform: translateX(-8px);
+  pointer-events: none;
+  transition: none;
+}
 .bookmark-tab {
   position: relative;
   width: 29px;
@@ -1913,12 +1919,14 @@ img.event-mark {
   overflow: visible;
 }
 .px-proof-k {
-  margin-bottom: 6px;
+  margin-bottom: 8px;
   font-family: var(--f-mono);
-  font-size: 7.5px;
-  letter-spacing: 0.18em;
+  font-size: 10.5px;
+  line-height: 1.15;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--accent-deep);
+  text-align: center;
 }
 .px-proof-card img {
   width: 100%;
@@ -2305,7 +2313,7 @@ img.event-mark {
           </div>
           <div class="px-proof">
             <div class="px-proof-card">
-              <div class="px-proof-k">Distribution shock</div>
+              <div class="px-proof-k">Distribution unlock</div>
               <img src="assets/asset-025.jpg" alt="Rounak tweet — servers crashed">
               <div class="case-post-tag">Servers down · 1 AM</div>
             </div>
@@ -2893,6 +2901,7 @@ window.addEventListener('load', function() {
   const prevBtn = document.getElementById('prevBtn');
   const nextBtn = document.getElementById('nextBtn');
   const chapterBtns = Array.from(document.querySelectorAll('.chapter-jump'));
+  let bookmarkJumpTimer = null;
   const chapterRanges = {
     cover: { start: 0, end: 2 },
     proof: { start: 3, end: 4 },
@@ -2928,6 +2937,13 @@ window.addEventListener('load', function() {
     btn.addEventListener('click', (e) => {
       e.preventDefault();
       e.stopPropagation();
+      if (btn.classList.contains('bookmark-tab')) {
+        document.body.classList.add('bookmark-jumping');
+        window.clearTimeout(bookmarkJumpTimer);
+        bookmarkJumpTimer = window.setTimeout(() => {
+          document.body.classList.remove('bookmark-jumping');
+        }, 950);
+      }
       const page = Number(btn.dataset.page || 0);
       if (typeof pageFlip.turnToPage === 'function') {
         pageFlip.turnToPage(page);
