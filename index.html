@@ -990,12 +990,14 @@ body.has-flipped .chapter-bookmarks {
   transition: opacity 0.30s ease, transform 0.30s ease;
 }
 body.on-back-cover .chapter-bookmarks {
+  display: none;
   opacity: 0;
   transform: translateX(-8px);
   pointer-events: none;
   transition: opacity 0.07s ease, transform 0.07s ease;
 }
 body.bookmark-jumping .chapter-bookmarks {
+  display: none;
   opacity: 0;
   transform: translateX(-8px);
   pointer-events: none;
@@ -1855,7 +1857,7 @@ img.event-mark {
 }
 .px-clip {
   height: 100%;
-  overflow: hidden;
+  overflow: visible;
 }
 .px-clip::after,
 .px-proof-card::after {
@@ -1941,7 +1943,7 @@ img.event-mark {
   max-height: 58px;
 }
 .case-post-triangle.px-story .case-post-tag {
-  bottom: -10px;
+  bottom: -9px;
   left: 8px;
   right: auto;
   font-size: 7.3px;
@@ -2953,6 +2955,7 @@ window.addEventListener('load', function() {
   bookmarkBtns.forEach(btn => {
     btn.addEventListener('pointerdown', hideBookmarksDuringJump);
   });
+  bookEl.addEventListener('pointerdown', hideBookmarksIfClosing);
   chapterBtns.forEach(btn => {
     btn.addEventListener('click', (e) => {
       e.preventDefault();
@@ -3003,7 +3006,10 @@ window.addEventListener('load', function() {
   // Play sound on each flip (StPageFlip changeState emits 'flipping')
   let lastState = null;
   pageFlip.on('changeState', (e) => {
-    if (e.data === 'flipping' && lastState !== 'flipping') playFlipSound();
+    if (e.data === 'flipping' && lastState !== 'flipping') {
+      hideBookmarksIfClosing();
+      playFlipSound();
+    }
     lastState = e.data;
   });
 
