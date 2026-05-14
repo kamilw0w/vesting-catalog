@@ -988,6 +988,11 @@ body.has-flipped .chapter-bookmarks {
   transform: translateX(0);
   pointer-events: auto;
 }
+body.on-back-cover .chapter-bookmarks {
+  opacity: 0;
+  transform: translateX(-8px);
+  pointer-events: none;
+}
 .bookmark-tab {
   position: relative;
   width: 29px;
@@ -999,14 +1004,16 @@ body.has-flipped .chapter-bookmarks {
       color-mix(in oklab, var(--chapter-color) 56%, black 44%) 0%,
       color-mix(in oklab, var(--chapter-color) 88%, white 12%) 42%,
       var(--chapter-color) 100%);
-  color: var(--chapter-ink);
+  color: #11100d;
   font-family: var(--f-mono);
-  font-size: 7px;
-  font-weight: 600;
-  letter-spacing: 0.12em;
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: 0.10em;
+  line-height: 1;
   text-transform: uppercase;
   writing-mode: vertical-rl;
   text-orientation: mixed;
+  text-shadow: 0 1px 0 rgba(255,255,255,0.28);
   cursor: pointer;
   pointer-events: auto;
   box-shadow:
@@ -1033,6 +1040,12 @@ body.has-flipped .chapter-bookmarks {
   border-radius: 0 5px 5px 0;
   background: linear-gradient(90deg, transparent, rgba(255,255,255,0.18));
   pointer-events: none;
+}
+.bookmark-tab[data-section="events"],
+.bookmark-tab[data-section="live"],
+.bookmark-tab[data-section="numbers"] {
+  color: #fff7ee;
+  text-shadow: 0 1px 1px rgba(0,0,0,0.48);
 }
 .bookmark-tab:hover,
 .bookmark-tab.active {
@@ -2791,6 +2804,7 @@ window.addEventListener('load', function() {
     if (prevBtn) prevBtn.disabled = idx <= 0;
     if (nextBtn) nextBtn.disabled = idx >= total - 1;
     document.body.classList.toggle('has-flipped', idx > 0);
+    document.body.classList.toggle('on-back-cover', idx >= total - 1);
     bookEl.classList.toggle('on-back-cover', idx >= total - 1);
     chapterBtns.forEach(btn => {
       const range = chapterRanges[btn.dataset.section];
