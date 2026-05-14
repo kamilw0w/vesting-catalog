@@ -2932,8 +2932,6 @@ window.addEventListener('load', function() {
   pageFlip.on('flip', updateUI);
   pageFlip.on('init', updateUI);
 
-  if (prevBtn) prevBtn.addEventListener('click', () => pageFlip.flipPrev());
-  if (nextBtn) nextBtn.addEventListener('click', () => pageFlip.flipNext());
   function hideBookmarksDuringJump() {
     document.body.classList.add('bookmark-jumping');
     window.clearTimeout(bookmarkJumpTimer);
@@ -2941,6 +2939,17 @@ window.addEventListener('load', function() {
       document.body.classList.remove('bookmark-jumping');
     }, 1800);
   }
+  function hideBookmarksIfClosing() {
+    const idx = pageFlip.getCurrentPageIndex();
+    const total = pageFlip.getPageCount();
+    if (idx >= total - 3) hideBookmarksDuringJump();
+  }
+  function flipNext() {
+    hideBookmarksIfClosing();
+    pageFlip.flipNext();
+  }
+  if (prevBtn) prevBtn.addEventListener('click', () => pageFlip.flipPrev());
+  if (nextBtn) nextBtn.addEventListener('click', flipNext);
   bookmarkBtns.forEach(btn => {
     btn.addEventListener('pointerdown', hideBookmarksDuringJump);
   });
@@ -2958,7 +2967,7 @@ window.addEventListener('load', function() {
     });
   });
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); pageFlip.flipNext(); }
+    if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); flipNext(); }
     if (e.key === 'ArrowLeft')  { e.preventDefault(); pageFlip.flipPrev(); }
   });
 
