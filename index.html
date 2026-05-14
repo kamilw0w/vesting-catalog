@@ -39,7 +39,7 @@ body {
     linear-gradient(180deg, oklch(0.13 0.030 250), oklch(0.09 0.025 250));
   background-attachment:fixed;
   display:flex; flex-direction:column; align-items:center; justify-content:center;
-  padding: 60px 20px 80px;
+  padding: 28px 20px 40px;
   font-family: var(--f-body);
   color: var(--ink);
   overflow-x: hidden;
@@ -922,7 +922,7 @@ body::before {
 .bc-grid > div { display: flex; flex-direction: column; gap: 3px; }
 .bc-grid .lbl { font-family: var(--f-mono); font-size: 8.5px; color: var(--accent); letter-spacing: 0.22em; text-transform: uppercase; }
 .bc-grid .val { font-family: var(--f-display); font-style: italic; font-size: 16px; color: var(--ink); letter-spacing: -0.01em; }
-.controls { margin-top: 40px; display: flex; align-items: center; gap: 18px; font-family: var(--f-mono); font-size: 11px; color: oklch(0.82 0.03 80); letter-spacing: 0.16em; }
+.controls { margin-top: 24px; display: flex; align-items: center; gap: 18px; font-family: var(--f-mono); font-size: 11px; color: oklch(0.82 0.03 80); letter-spacing: 0.16em; }
 .ctrl-btn {
   background: transparent; border: 1px solid oklch(0.50 0.04 80 / 0.5);
   color: oklch(0.85 0.04 80); padding: 10px 16px;
@@ -935,7 +935,7 @@ body::before {
 .page-indicator { min-width: 170px; text-align: center; color: oklch(0.72 0.04 80); }
 .page-indicator .pg { font-family: var(--f-brand); color: var(--accent-hi); font-size: 18px; margin-right: 8px; letter-spacing: -0.01em; }
 .chapter-nav {
-  margin-top: 16px;
+  margin-top: 10px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -961,7 +961,7 @@ body::before {
   border-color: var(--accent);
   background: oklch(0.64 0.135 78 / 0.10);
 }
-.instruction { margin-top: 12px; font-family: var(--f-italic); font-style: italic; color: oklch(0.58 0.04 80); font-size: 12.5px; letter-spacing: 0.04em; min-height: 28px; display: flex; align-items: center; justify-content: center; gap: 8px; }
+.instruction { margin-top: 8px; font-family: var(--f-italic); font-style: italic; color: oklch(0.58 0.04 80); font-size: 12.5px; letter-spacing: 0.04em; min-height: 28px; display: flex; align-items: center; justify-content: center; gap: 8px; }
 .instruction-copy { transition: opacity 0.35s ease, transform 0.35s ease; }
 body.has-flipped .instruction-copy { opacity: 0; transform: translateY(-3px); pointer-events: none; }
 .snd-btn {
