@@ -3087,7 +3087,7 @@ window.addEventListener('load', function() {
   function hideBookmarksIfClosing() {
     const idx = pageFlip.getCurrentPageIndex();
     const total = pageFlip.getPageCount();
-    if (idx >= total - 3) hideBookmarksDuringJump();
+    if (idx >= total - 3) hideBookmarksDuringJump(1300);
   }
   function flipNext() {
     hideBookmarksIfClosing();
