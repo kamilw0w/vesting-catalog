@@ -2901,6 +2901,7 @@ window.addEventListener('load', function() {
   const prevBtn = document.getElementById('prevBtn');
   const nextBtn = document.getElementById('nextBtn');
   const chapterBtns = Array.from(document.querySelectorAll('.chapter-jump'));
+  const bookmarkBtns = Array.from(document.querySelectorAll('.bookmark-tab'));
   let bookmarkJumpTimer = null;
   const chapterRanges = {
     cover: { start: 0, end: 2 },
@@ -2933,16 +2934,22 @@ window.addEventListener('load', function() {
 
   if (prevBtn) prevBtn.addEventListener('click', () => pageFlip.flipPrev());
   if (nextBtn) nextBtn.addEventListener('click', () => pageFlip.flipNext());
+  function hideBookmarksDuringJump() {
+    document.body.classList.add('bookmark-jumping');
+    window.clearTimeout(bookmarkJumpTimer);
+    bookmarkJumpTimer = window.setTimeout(() => {
+      document.body.classList.remove('bookmark-jumping');
+    }, 1800);
+  }
+  bookmarkBtns.forEach(btn => {
+    btn.addEventListener('pointerdown', hideBookmarksDuringJump);
+  });
   chapterBtns.forEach(btn => {
     btn.addEventListener('click', (e) => {
       e.preventDefault();
       e.stopPropagation();
       if (btn.classList.contains('bookmark-tab')) {
-        document.body.classList.add('bookmark-jumping');
-        window.clearTimeout(bookmarkJumpTimer);
-        bookmarkJumpTimer = window.setTimeout(() => {
-          document.body.classList.remove('bookmark-jumping');
-        }, 950);
+        hideBookmarksDuringJump();
       }
       const page = Number(btn.dataset.page || 0);
       if (typeof pageFlip.turnToPage === 'function') {
