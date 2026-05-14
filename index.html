@@ -1,0 +1,2611 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vesting — Q1 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Italiana&family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..900,0..100,0..1;1,9..144,300..900,0..100,0..1&family=Instrument+Serif:ital@0;1&family=Geist:wght@300;400;500;600;700;800&family=Geist+Mono:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400;1,6..72,500&family=Caveat:wght@400;500;600&family=Inter:wght@600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --paper: oklch(0.93 0.022 80);
+  --paper-2: oklch(0.90 0.026 80);
+  --paper-hi: oklch(0.96 0.018 82);
+  --ink: oklch(0.22 0.055 250);
+  --ink-2: oklch(0.32 0.050 248);
+  --muted: oklch(0.48 0.040 245);
+  --dim: oklch(0.62 0.030 240);
+  --faint: oklch(0.75 0.020 235);
+  --accent: oklch(0.64 0.135 78);
+  --accent-hi: oklch(0.72 0.145 80);
+  --accent-dim: oklch(0.54 0.115 75);
+  --accent-deep: oklch(0.44 0.090 72);
+  --accent-tint: oklch(0.64 0.135 78 / 0.10);
+  --rule: oklch(0.78 0.025 80);
+  --rule-hi: oklch(0.70 0.030 78);
+  --f-brand: 'Italiana', 'PP Editorial New', 'Fraunces', Georgia, serif;
+  --f-display: 'Instrument Serif', 'Newsreader', Georgia, serif;
+  --f-body: 'Geist', system-ui, sans-serif;
+  --f-mono: 'Geist Mono', ui-monospace, monospace;
+  --f-italic: 'Newsreader', 'Instrument Serif', Georgia, serif;
+}
+*,*::before,*::after { margin:0; padding:0; box-sizing:border-box; }
+body {
+  min-height:100vh;
+  background:
+    radial-gradient(ellipse 1200px 700px at 50% 0%, oklch(0.20 0.045 248) 0%, transparent 60%),
+    radial-gradient(ellipse 900px 500px at 50% 100%, oklch(0.16 0.04 252) 0%, transparent 60%),
+    linear-gradient(180deg, oklch(0.13 0.030 250), oklch(0.09 0.025 250));
+  background-attachment:fixed;
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  padding: 60px 20px 80px;
+  font-family: var(--f-body);
+  color: var(--ink);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  font-feature-settings: "kern" 1, "liga" 1, "calt" 1, "ss01" 1;
+  font-variant-numeric: tabular-nums;
+}
+body::before {
+  content:''; position:fixed; inset:0;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 .22 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  opacity:.5; pointer-events:none; z-index:9999;
+}
+.stage { perspective: 2400px; perspective-origin: 50% 40%; }
+.catalog {
+  position:relative; width:1040px; height:700px;
+  transform-style:preserve-3d; transform:rotateX(2deg);
+  filter: drop-shadow(0 30px 60px rgba(0,0,0,0.55)) drop-shadow(0 4px 10px oklch(0.64 0.135 78 / 0.08));
+  transition: filter 0.5s ease-out;
+}
+/* On cover: hide the left half visually (no endpaper, no spine, no peeking pages).
+   The cover page itself stays on its half (right side of the catalog area).
+   This way the catalog frame doesn't resize, but the cover appears as a single page. */
+.catalog.is-flipping {
+  filter: drop-shadow(0 30px 60px rgba(0,0,0,0.6)) drop-shadow(0 22px 42px rgba(0,0,0,0.35)) drop-shadow(0 4px 10px oklch(0.64 0.135 78 / 0.1));
+}
+.catalog::before {
+  content:''; position:absolute; inset:-1px -3px -5px -1px;
+  background: linear-gradient(90deg, oklch(0.78 0.04 78), oklch(0.88 0.025 80) 50%, oklch(0.78 0.04 78));
+  border-radius:2px; z-index:-1; transform: translateZ(-2px);
+}
+/* Center spine — the gutter shadow between left and right pages */
+.catalog::after {
+  content:''; position:absolute;
+  top:0; bottom:0; left:50%; width:2px;
+  transform: translateX(-1px);
+  background: linear-gradient(180deg, rgba(40,30,15,0.18) 0%, rgba(40,30,15,0.32) 50%, rgba(40,30,15,0.18) 100%);
+  z-index: 50; pointer-events:none;
+  box-shadow: 0 0 12px rgba(40,30,15,0.15);
+}
+/* The "empty left half" before any page has flipped — endpaper texture */
+.catalog .endpaper {
+  position:absolute; top:0; bottom:0; left:0; width:50%;
+  background:
+    radial-gradient(ellipse 400px 300px at 20% 30%, oklch(0.64 0.135 78 / 0.04), transparent 60%),
+    var(--paper);
+  box-shadow:
+    inset 0 0 80px oklch(0.50 0.04 70 / 0.06),
+    inset -16px 0 22px rgba(45, 35, 20, 0.07);
+  z-index: 0; overflow:hidden;
+}
+.catalog .endpaper::after {
+  content:''; position:absolute; inset:0;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .07 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  mix-blend-mode: multiply; pointer-events:none;
+}
+.page {
+  position:absolute; width:50%; height:100%;
+  left: 50%;
+  transform-origin:left center; transform-style:preserve-3d;
+  cursor:pointer; will-change: transform;
+}
+.page.flipped { transform: rotateY(-180deg); }
+.page.flipping-fwd { animation: pgFlipFwd 1.05s cubic-bezier(0.55, 0.05, 0.32, 1) forwards; }
+.page.flipping-back { animation: pgFlipBack 1.05s cubic-bezier(0.55, 0.05, 0.32, 1) forwards; }
+@keyframes pgFlipFwd {
+  0%   { transform: rotateY(0deg)    translateZ(0); }
+  35%  { transform: rotateY(-55deg)  translateZ(34px); }
+  50%  { transform: rotateY(-90deg)  translateZ(46px); }
+  65%  { transform: rotateY(-125deg) translateZ(34px); }
+  100% { transform: rotateY(-180deg) translateZ(0); }
+}
+@keyframes pgFlipBack {
+  0%   { transform: rotateY(-180deg) translateZ(0); }
+  35%  { transform: rotateY(-125deg) translateZ(34px); }
+  50%  { transform: rotateY(-90deg)  translateZ(46px); }
+  65%  { transform: rotateY(-55deg)  translateZ(34px); }
+  100% { transform: rotateY(0deg)    translateZ(0); }
+}
+.face {
+  position: absolute; inset: 0;
+  background: var(--paper);
+  box-shadow: inset 0 0 80px oklch(0.50 0.04 70 / 0.06), inset 16px 0 22px rgba(45,35,20,0.07), inset -1px 0 2px oklch(1 0 0 / 0.4);
+  padding: 44px 44px 36px;
+  overflow:hidden; color: var(--ink-2);
+  display:flex; flex-direction:column;
+}
+.face::after {
+  content:''; position:absolute; inset:0;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .07 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  mix-blend-mode: multiply; pointer-events:none; z-index:1;
+}
+.face::before {
+  content:''; position:absolute; left:0; top:0; bottom:0; width:32px;
+  background: linear-gradient(90deg, rgba(40,30,15,0.12), transparent);
+  pointer-events:none; z-index:2;
+}
+.face.back {
+  background: linear-gradient(135deg, var(--paper-2), var(--paper));
+  box-shadow: inset 0 0 80px oklch(0.50 0.04 70 / 0.07), inset -16px 0 22px rgba(40,30,15,0.07);
+}
+.face.back::before { left:auto; right:0; background: linear-gradient(-90deg, rgba(40,30,15,0.12), transparent); }
+.face > * { position:relative; z-index:3; }
+.marker {
+  position:absolute; top:30px; right:44px;
+  font-family: var(--f-mono); font-size:10px;
+  color: var(--muted); letter-spacing:0.16em; z-index:4;
+}
+.marker .sec { color: var(--accent); margin-right:8px; }
+
+/* ═════════════ COVER (bold yellow statement) ═════════════ */
+.cover-face {
+  padding: 64px 44px 48px !important;
+  background:
+    radial-gradient(ellipse 700px 500px at 50% 35%, oklch(0.89 0.185 92), oklch(0.84 0.175 90) 70%, oklch(0.79 0.16 88)) !important;
+  justify-content: flex-start;
+  align-items: center;
+  text-align: center;
+  color: oklch(0.18 0.04 60);
+}
+/* Override paper inset shadows on the cover — yellow doesn't need warm paper edges */
+.cover-face::before {
+  background: linear-gradient(90deg, rgba(20, 14, 0, 0.18), transparent) !important;
+}
+/* Yellow paper grain — slightly more visible noise for tactile feel */
+.cover-face::after {
+  opacity: 1.2 !important;
+}
+
+/* Big title — Inter heavy, like the reference */
+.cover-title {
+  font-family: 'Inter', 'Geist', system-ui, sans-serif;
+  font-weight: 800;
+  font-size: 64px;
+  line-height: 0.92;
+  letter-spacing: -0.035em;
+  color: oklch(0.18 0.04 60);
+  margin-top: 0;
+  text-wrap: balance;
+  z-index: 3;
+}
+
+/* Handwritten sub-line under title */
+.cover-script {
+  font-family: 'Caveat', cursive;
+  font-weight: 500;
+  font-size: 38px;
+  line-height: 1;
+  color: oklch(0.22 0.04 60);
+  margin-top: 14px;
+  opacity: 0.88;
+  z-index: 3;
+  letter-spacing: 0;
+}
+
+/* Big logo block at center-bottom of cover */
+.cover-logo {
+  margin-top: 38px;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3;
+  width: 100%;
+}
+.cover-logo svg {
+  width: 220px;
+  height: 220px;
+  display: block;
+  filter: drop-shadow(0 8px 20px oklch(0.30 0.08 70 / 0.18));
+}
+
+/* Bottom band: Miami + small year mark in white pills */
+.cover-band {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding-top: 22px;
+  border-top: 1.2px solid oklch(0.18 0.04 60 / 0.85);
+  font-family: var(--f-mono);
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  color: oklch(0.18 0.04 60);
+  font-weight: 500;
+  z-index: 3;
+  text-transform: uppercase;
+}
+.cover-band .place {
+  font-family: 'Caveat', cursive;
+  font-weight: 600;
+  font-size: 22px;
+  letter-spacing: 0;
+  text-transform: none;
+  color: oklch(0.22 0.04 60);
+}
+.cover-band .pill {
+  background: oklch(0.99 0.01 92);
+  padding: 5px 11px;
+  border-radius: 100px;
+  font-size: 9px;
+  color: oklch(0.18 0.04 60);
+  letter-spacing: 0.2em;
+}
+
+/* Hide the horizon-line illustration on the cover — it doesn't belong on yellow */
+.cover-face .cover-deco { display: none; }
+
+/* Back-cover decoration (horizon-line motif at the top, mirrored) */
+.back-cover-deco {
+  position: absolute;
+  left: 0; right: 0; top: 0;
+  width: 100%;
+  height: 280px;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+  /* Fade the bottom edge of the scene into the paper for a smooth blend */
+  mask-image: linear-gradient(180deg, black 0%, black 75%, transparent 100%);
+  -webkit-mask-image: linear-gradient(180deg, black 0%, black 75%, transparent 100%);
+}
+.back-cover-deco svg { width: 100%; height: 100%; display: block; }
+.menu-eye {
+  font-family: var(--f-mono); font-size: 10px; color: var(--accent);
+  letter-spacing: 0.22em; text-transform: uppercase;
+  margin-top: 8px; margin-bottom: 14px;
+}
+.menu-headline {
+  font-family: 'Fraunces', var(--f-display);
+  font-variation-settings: "opsz" 144, "SOFT" 50;
+  font-weight: 400; font-size: 40px; line-height: 1.02;
+  letter-spacing: -0.03em; color: var(--ink);
+  text-wrap: balance; margin-bottom: 14px;
+}
+.menu-headline em {
+  font-variation-settings: "opsz" 144, "SOFT" 100, "WONK" 1;
+  font-style: italic; color: var(--accent);
+}
+.menu-intro {
+  font-family: var(--f-body); font-size: 13.5px; line-height: 1.55;
+  color: var(--ink-2); margin-bottom: 22px; max-width: 380px;
+}
+.menu-rule { height: 1px; background: var(--rule); margin-bottom: 12px; }
+.menu-list { display: flex; flex-direction: column; }
+.menu-presentation {
+  font-family: 'Fraunces', var(--f-display);
+  font-variation-settings: "opsz" 144, "SOFT" 50;
+  font-weight: 400;
+  font-size: 32px;
+  line-height: 1.35;
+  letter-spacing: -0.018em;
+  color: var(--ink);
+  padding: 18px 0 0;
+  margin: 0;
+  border-bottom: none;
+  text-wrap: balance;
+}
+/* Vesting wax seal — sits in the free space below the paragraph, right-aligned */
+.menu-stamp {
+  width: 135px;
+  height: 135px;
+  align-self: flex-end;
+  margin-top: 36px;
+  margin-right: 6px;
+  transform: rotate(-9deg);
+  pointer-events: none;
+  filter: drop-shadow(2px 5px 7px rgba(0, 0, 0, 0.28));
+  flex-shrink: 0;
+}
+.menu-stamp svg, .menu-stamp img {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.menu-item {
+  display: grid; grid-template-columns: 32px 150px 1fr;
+  align-items: baseline; padding: 13px 0;
+  border-bottom: 1px dotted var(--rule);
+}
+.menu-item:last-child { border-bottom: none; }
+.menu-item .n { font-family: var(--f-mono); font-size: 10px; color: var(--accent); letter-spacing: 0.12em; }
+.menu-item .name {
+  font-family: var(--f-display); font-size: 20px;
+  color: var(--ink); letter-spacing: -0.015em;
+}
+.menu-item .name em { font-style: italic; color: var(--accent); }
+.menu-item .desc {
+  font-family: var(--f-italic); font-style: italic;
+  font-size: 13.5px; color: var(--muted); line-height: 1.4;
+}
+.nm-title {
+  font-family: 'Fraunces', var(--f-display);
+  font-variation-settings: "opsz" 144, "SOFT" 50;
+  font-weight: 400; font-size: 42px; line-height: 1.0;
+  color: var(--ink); letter-spacing: -0.03em;
+  margin-bottom: 12px; margin-top: 12px; text-wrap: balance;
+}
+.nm-title em {
+  font-variation-settings: "opsz" 144, "SOFT" 100, "WONK" 1;
+  font-style: italic; color: var(--accent);
+}
+.nm-intro {
+  font-family: var(--f-body); font-size: 13.5px; line-height: 1.55;
+  color: var(--ink-2); margin-bottom: 24px; max-width: 420px;
+}
+.nm-grid {
+  display: grid; grid-template-columns: 1.6fr 1fr 1fr; gap: 0;
+  border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule);
+  padding: 18px 0;
+}
+.nm-grid-item { padding: 0 14px; border-right: 1px dashed var(--rule-hi); }
+.nm-grid-item:first-child { padding-left: 0; }
+.nm-grid-item:last-child { border-right: none; padding-right: 0; }
+.nm-n {
+  font-family: var(--f-display); font-weight: 400;
+  font-size: 44px; line-height: 0.9; color: var(--ink);
+  letter-spacing: -0.03em; display: flex; align-items: baseline; gap: 4px;
+  margin-bottom: 8px;
+}
+.nm-grid-item:first-child .nm-n { font-size: 64px; color: var(--accent); font-style: italic; }
+.nm-n .unit { font-size: 0.38em; color: var(--muted); font-style: normal; }
+.nm-n sup { font-size: 0.30em; color: var(--accent); font-style: normal; margin-left: 1px; vertical-align: top; }
+.nm-l {
+  font-family: var(--f-mono); font-size: 9px; color: var(--muted);
+  letter-spacing: 0.18em; text-transform: uppercase; line-height: 1.4;
+}
+.nm-meta {
+  margin-top: 8px; display: flex; flex-wrap: wrap; gap: 4px 6px;
+  font-family: var(--f-mono); font-size: 9px; color: var(--dim); letter-spacing: 0.02em;
+}
+.nm-meta .bold { color: var(--ink); font-weight: 500; }
+.nm-meta .plus { color: var(--faint); }
+.nm-meta .yc-pill {
+  display: inline-flex; padding: 2px 7px;
+  background: var(--accent-tint);
+  border: 1px solid oklch(0.64 0.135 78 / 0.3);
+  border-radius: 100px; color: var(--accent-deep);
+  font-size: 8.5px; letter-spacing: 0.04em;
+}
+.nm-meta .dot-sep { width:2px; height:2px; border-radius:50%; background: var(--faint); display:inline-block; align-self: center; }
+.nm-breakdown { margin-top: 18px; display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; }
+.nm-br .v {
+  font-family: var(--f-display); font-size: 20px; font-style: italic;
+  color: var(--ink); line-height: 1; letter-spacing: -0.02em;
+  display: block; margin-bottom: 5px;
+}
+.nm-br .v em { color: var(--accent); }
+.nm-br .l {
+  font-family: var(--f-mono); font-size: 8.5px; color: var(--muted);
+  letter-spacing: 0.16em; text-transform: uppercase;
+}
+.footnote {
+  margin-top: auto; padding-top: 16px;
+  font-family: var(--f-mono); font-size: 9px;
+  color: var(--dim); letter-spacing: 0.04em; line-height: 1.6;
+}
+.footnote sup { color: var(--accent); margin-right: 2px; }
+
+.chart-title {
+  font-family: 'Fraunces', var(--f-display);
+  font-variation-settings: "opsz" 144, "SOFT" 50;
+  font-weight: 400; font-size: 36px; line-height: 1.05;
+  letter-spacing: -0.025em; color: var(--ink);
+  margin-top: 12px; margin-bottom: 10px; text-wrap: balance;
+}
+.chart-title em { font-variation-settings: "opsz" 144, "SOFT" 100, "WONK" 1; font-style: italic; color: var(--accent); }
+.chart-sub { font-family: var(--f-italic); font-style: italic; font-size: 14px; color: var(--muted); margin-bottom: 22px; }
+.chart-frame {
+  background: var(--paper-hi); border: 1px solid var(--rule);
+  border-radius: 2px; padding: 18px 18px 14px;
+  position: relative; overflow: hidden;
+}
+.chart-frame::before {
+  content: ''; position: absolute; inset: 0;
+  background-image: linear-gradient(to right, oklch(0.55 0.04 240 / 0.07) 1px, transparent 1px), linear-gradient(to bottom, oklch(0.55 0.04 240 / 0.07) 1px, transparent 1px);
+  background-size: 20% 25%; opacity: 0.6; pointer-events: none;
+}
+.chart-frame svg { width: 100%; height: 210px; display: block; position: relative; }
+.chart-axis {
+  display: grid; grid-template-columns: repeat(5, 1fr);
+  margin-top: 12px; padding-top: 10px;
+  border-top: 1px dashed var(--rule-hi);
+  font-family: var(--f-mono); font-size: 9px;
+  color: var(--muted); letter-spacing: 0.06em;
+}
+.chart-axis > div { display: flex; flex-direction: column; gap: 3px; }
+.chart-axis .date { color: var(--accent); font-weight: 500; letter-spacing: 0.1em; }
+.chart-axis .who { color: var(--ink); font-family: var(--f-display); font-style: italic; font-size: 13px; letter-spacing: -0.01em; }
+.chart-axis .v { color: var(--muted); }
+/* ── Image back-face (the LEFT page in each spread) — Polaroid frame ── */
+.face.img-back {
+  padding: 0 !important;
+  background:
+    radial-gradient(ellipse 500px 400px at 30% 30%, oklch(0.94 0.020 80), oklch(0.89 0.028 78) 75%),
+    var(--paper-2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.face.img-back::before {
+  /* Soft warm vignette on the paper background, not a hard inner shadow */
+  content:''; position:absolute; inset:0;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.65' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .08 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  mix-blend-mode: multiply; pointer-events:none;
+  width: 32px; left: auto; right: 0; top: 0; bottom: 0;
+  background-position: right center;
+}
+.face.img-back::after {
+  /* Disable the default paper noise on img-back — vignette handles it */
+  display: none;
+}
+
+.polaroid {
+  position: relative;
+  width: 76%;
+  max-width: 320px;
+  padding: 14px 14px 58px;
+  background: oklch(0.99 0.012 90);
+  box-shadow:
+    0 1px 0 oklch(1 0 0 / 0.6) inset,
+    0 -1px 0 oklch(0.85 0.025 80) inset,
+    0 14px 28px rgba(40, 28, 12, 0.22),
+    0 4px 10px rgba(40, 28, 12, 0.14),
+    0 1px 2px rgba(40, 28, 12, 0.08);
+  transform: rotate(-2.4deg);
+  z-index: 3;
+  transition: transform 0.4s ease-out;
+}
+.polaroid .photo {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  background:
+    linear-gradient(160deg, oklch(0.72 0.04 240) 0%, oklch(0.58 0.05 250) 50%, oklch(0.42 0.06 255) 100%);
+  position: relative;
+  overflow: hidden;
+  box-shadow:
+    inset 0 0 0 1px oklch(0.85 0.02 80 / 0.4),
+    inset 0 2px 8px oklch(0.20 0.04 240 / 0.25);
+}
+.polaroid .photo::before {
+  /* Vignette inside the photo for depth */
+  content:''; position:absolute; inset:0;
+  background: radial-gradient(ellipse at center, transparent 40%, oklch(0.20 0.04 240 / 0.35) 100%);
+  pointer-events:none;
+}
+.polaroid .photo::after {
+  /* Centered placeholder mark — small FIG label */
+  content: attr(data-fig);
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--f-mono);
+  font-size: 11px;
+  letter-spacing: 0.3em;
+  color: oklch(0.92 0.02 80 / 0.55);
+  text-transform: uppercase;
+}
+.polaroid .caption {
+  position: absolute;
+  bottom: 14px; left: 16px; right: 16px;
+  text-align: center;
+  font-family: 'Caveat', cursive;
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 1.0;
+  color: oklch(0.30 0.05 60);
+}
+.polaroid .caption .role {
+  display: block;
+  font-family: var(--f-mono);
+  font-size: 7.5px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: oklch(0.52 0.04 60);
+  margin-top: 6px;
+  font-weight: 500;
+}
+
+/* Stagger the rotation per polaroid so they don't all tilt the same way */
+.polaroid.tilt-r { transform: rotate(2.1deg); }
+.polaroid.tilt-l { transform: rotate(-2.8deg); }
+.polaroid.tilt-r2 { transform: rotate(1.4deg); }
+.polaroid.tilt-l2 { transform: rotate(-1.8deg); }
+.polaroid.tilt-r3 { transform: rotate(3deg); }
+.polaroid.tilt-l3 { transform: rotate(-2.2deg); }
+
+/* Wide variant — landscape Polaroid for 16:9 content (broadcast frames, group shots) */
+.polaroid.wide {
+  width: 86%;
+  max-width: 380px;
+  padding: 12px 12px 50px;
+}
+.polaroid.wide .photo {
+  aspect-ratio: 16 / 9;
+}
+.polaroid.wide .photo.photo-real {
+  /* Override `cover` for wide — use `contain` so the whole image stays visible */
+  background-size: contain !important;
+  background-position: center !important;
+  background-color: oklch(0.16 0.02 250);
+}
+.polaroid.wide .caption {
+  font-size: 19px;
+  bottom: 14px;
+}
+.polaroid.wide .caption .role {
+  font-size: 7px;
+  margin-top: 5px;
+}
+
+/* Receipts wall — 3x2 grid of mini-Polaroids holding quotes/numbers instead of photos */
+.receipts-wall {
+  width: 100%;
+  height: 100%;
+  padding: 36px 28px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 16px 14px;
+  align-items: center;
+  justify-items: center;
+  position: relative;
+  z-index: 3;
+}
+.receipts-wall .polaroid {
+  width: 100%;
+  max-width: none;
+  padding: 10px 10px 38px;
+  margin: 0;
+}
+.receipts-wall .polaroid .photo {
+  /* The "photo" area in receipt mode holds the quote/number */
+  aspect-ratio: 1 / 1;
+  background: linear-gradient(160deg, oklch(0.94 0.02 80), oklch(0.88 0.025 78));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 12px;
+  text-align: center;
+  position: relative;
+}
+.receipts-wall .polaroid .photo::before,
+.receipts-wall .polaroid .photo::after {
+  display: none; /* no FIG label or vignette in receipt mode */
+}
+.receipts-wall .receipt-stat {
+  font-family: var(--f-display);
+  font-style: italic;
+  font-size: 30px;
+  line-height: 0.95;
+  color: var(--accent);
+  letter-spacing: -0.025em;
+  margin-bottom: 4px;
+}
+.receipts-wall .receipt-stat .u {
+  font-size: 0.45em;
+  color: var(--ink-2);
+  font-style: normal;
+  letter-spacing: 0;
+}
+.receipts-wall .receipt-quote {
+  font-family: var(--f-display);
+  font-style: italic;
+  font-size: 11px;
+  line-height: 1.25;
+  color: var(--ink);
+  text-wrap: balance;
+  padding: 0 2px;
+}
+.receipts-wall .receipt-quote::before {
+  content: '\201C';
+  color: var(--accent);
+  margin-right: 1px;
+}
+.receipts-wall .receipt-quote::after {
+  content: '\201D';
+  color: var(--accent);
+  margin-left: 1px;
+}
+.receipts-wall .receipt-label {
+  font-family: var(--f-mono);
+  font-size: 7.5px;
+  letter-spacing: 0.18em;
+  color: var(--muted);
+  text-transform: uppercase;
+  margin-top: 6px;
+}
+.receipts-wall .polaroid .caption {
+  bottom: 8px;
+  font-size: 15px;
+  padding: 0 8px;
+}
+.receipts-wall .polaroid .caption .role {
+  display: none; /* no role line in mini-Polaroid */
+}
+/* Mini-Polaroids get their own staggered tilts so the wall looks scattered */
+.receipts-wall .polaroid:nth-child(1) { transform: rotate(-3.5deg); }
+.receipts-wall .polaroid:nth-child(2) { transform: rotate(2deg); }
+.receipts-wall .polaroid:nth-child(3) { transform: rotate(-1.5deg); }
+.receipts-wall .polaroid:nth-child(4) { transform: rotate(1.8deg); }
+.receipts-wall .polaroid:nth-child(5) { transform: rotate(-2.2deg); }
+.receipts-wall .polaroid:nth-child(6) { transform: rotate(2.8deg); }
+.receipts-wall .polaroid .tape {
+  width: 38px;
+  height: 14px;
+  top: -7px;
+  left: 24%;
+}
+
+/* Vary the photo tint per polaroid */
+.polaroid.tint-warm .photo { background: linear-gradient(160deg, oklch(0.78 0.06 70), oklch(0.55 0.10 50) 50%, oklch(0.38 0.10 40) 100%); }
+.polaroid.tint-cool .photo { background: linear-gradient(160deg, oklch(0.74 0.04 220), oklch(0.50 0.08 240) 50%, oklch(0.32 0.08 250) 100%); }
+.polaroid.tint-sage .photo { background: linear-gradient(160deg, oklch(0.78 0.06 160), oklch(0.52 0.08 150) 50%, oklch(0.34 0.08 145) 100%); }
+.polaroid.tint-blush .photo { background: linear-gradient(160deg, oklch(0.82 0.06 30), oklch(0.60 0.10 20) 50%, oklch(0.42 0.10 15) 100%); }
+.polaroid.tint-violet .photo { background: linear-gradient(160deg, oklch(0.74 0.06 300), oklch(0.50 0.10 290) 50%, oklch(0.32 0.10 285) 100%); }
+.polaroid.tint-ochre .photo { background: linear-gradient(160deg, oklch(0.84 0.10 90), oklch(0.62 0.13 80) 50%, oklch(0.42 0.12 75) 100%); }
+
+/* Tape strip (optional decorative — top-left of polaroid) */
+.polaroid .tape {
+  position: absolute;
+  top: -10px; left: 18%;
+  width: 64px; height: 20px;
+  background:
+    repeating-linear-gradient(135deg, oklch(0.92 0.02 80 / 0.45) 0 2px, oklch(0.88 0.025 80 / 0.45) 2px 4px);
+  border: 1px solid oklch(0.78 0.03 80 / 0.3);
+  transform: rotate(-3deg);
+  box-shadow: 0 2px 4px rgba(40, 28, 12, 0.1);
+  z-index: 4;
+}
+.case-top { margin-top: 12px; margin-bottom: 20px; }
+.case-type {
+  font-family: var(--f-mono); font-size: 10px; color: var(--accent);
+  letter-spacing: 0.22em; text-transform: uppercase;
+  font-weight: 500; margin-bottom: 6px;
+}
+.case-name { font-family: var(--f-display); font-size: 20px; color: var(--ink); letter-spacing: -0.01em; }
+.case-name .role { font-style: italic; color: var(--muted); font-size: 16px; font-weight: 400; }
+.case-title {
+  font-family: 'Fraunces', Georgia, serif;
+  font-variation-settings: "opsz" 144, "SOFT" 50, "WONK" 0;
+  font-weight: 400; font-size: 42px; line-height: 1.02;
+  letter-spacing: -0.025em; color: var(--ink);
+  text-wrap: balance; margin-bottom: 18px;
+}
+.case-title em { font-variation-settings: "opsz" 144, "SOFT" 100, "WONK" 1; font-style: italic; color: var(--accent); }
+.story { font-family: var(--f-body); font-size: 14px; line-height: 1.6; color: var(--ink-2); margin-bottom: 20px; }
+.story strong { color: var(--ink); font-weight: 600; }
+.story em { font-family: var(--f-italic); font-style: italic; color: var(--accent); font-weight: 500; }
+.pullquote {
+  border-left: 2px solid var(--accent);
+  padding: 4px 0 4px 18px; margin: 18px 0 22px;
+  background: linear-gradient(90deg, oklch(0.64 0.135 78 / 0.05), transparent);
+}
+.pullquote .q {
+  font-family: var(--f-display); font-style: italic;
+  font-size: 18px; line-height: 1.4; color: var(--ink);
+  letter-spacing: -0.01em; margin-bottom: 10px;
+}
+.pullquote .q::before { content:'\201C'; color: var(--accent); font-size: 30px; line-height: 0; vertical-align: -10px; margin-right: 2px; }
+.pullquote .q::after { content:'\201D'; color: var(--accent); font-size: 30px; line-height: 0; vertical-align: -10px; margin-left: 2px; }
+.pullquote .att { font-family: var(--f-mono); font-size: 9.5px; color: var(--muted); letter-spacing: 0.14em; text-transform: uppercase; }
+.pullquote .att strong { color: var(--ink); font-weight: 500; }
+.metrics { margin-top: auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border-top: 1px solid var(--rule); padding-top: 16px; }
+.metrics.cols-3 { grid-template-columns: repeat(3, 1fr); }
+.metrics.cols-5 { grid-template-columns: repeat(5, 1fr); }
+.m { padding: 0 12px; border-right: 1px dashed var(--rule-hi); }
+.m:first-child { padding-left: 0; }
+.m:last-child { border-right: none; padding-right: 0; }
+.mv {
+  font-family: var(--f-display); font-weight: 400;
+  font-size: 40px; line-height: 1; letter-spacing: -0.025em;
+  color: var(--ink); display: flex; align-items: baseline; gap: 2px;
+  margin-bottom: 8px;
+}
+.m.hero .mv { color: var(--accent); font-style: italic; font-size: 50px; }
+.mv .u { font-size: 0.4em; color: var(--muted); font-style: normal; letter-spacing: 0; }
+.ml { font-family: var(--f-mono); font-size: 9px; color: var(--muted); letter-spacing: 0.16em; text-transform: uppercase; line-height: 1.4; }
+.timeline {
+  margin-top: auto; border-top: 1px solid var(--rule);
+  padding-top: 18px; display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px; position: relative;
+}
+.timeline::before {
+  content: ''; position: absolute; top: 30px;
+  left: 6%; right: 6%; height: 1px;
+  background: repeating-linear-gradient(90deg, var(--rule-hi) 0, var(--rule-hi) 3px, transparent 3px, transparent 7px);
+}
+.tl-step { position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 6px; }
+.tl-step::before {
+  content: ''; width: 8px; height: 8px;
+  border-radius: 100px; background: var(--paper);
+  border: 1.5px solid var(--rule-hi); margin-bottom: 4px;
+}
+.tl-step.final::before { background: var(--accent); border-color: var(--accent-dim); box-shadow: 0 0 6px oklch(0.64 0.135 78 / 0.4); }
+.tl-date { font-family: var(--f-mono); font-size: 10px; color: var(--accent); letter-spacing: 0.16em; font-weight: 500; }
+.tl-label { font-family: var(--f-italic); font-style: italic; font-size: 13px; color: var(--ink); }
+
+.guest-eye {
+  font-family: var(--f-mono); font-size: 10px;
+  color: var(--accent); letter-spacing: 0.22em;
+  text-transform: uppercase; margin-top: 8px; margin-bottom: 10px;
+}
+.guest-title {
+  font-family: 'Fraunces', var(--f-display);
+  font-variation-settings: "opsz" 144, "SOFT" 50;
+  font-weight: 400; font-size: 34px; line-height: 1.02;
+  letter-spacing: -0.025em; color: var(--ink); margin-bottom: 8px;
+}
+.guest-title em { font-variation-settings: "opsz" 144, "SOFT" 100, "WONK" 1; font-style: italic; color: var(--accent); }
+.guest-sub {
+  font-family: var(--f-body); font-size: 13px; line-height: 1.5;
+  color: var(--ink-2); max-width: 380px; margin-bottom: 16px;
+}
+.roster-head {
+  display: flex; justify-content: space-between; align-items: baseline;
+  margin-bottom: 8px; padding-bottom: 6px;
+  border-bottom: 1px solid var(--rule);
+}
+.roster-head .lbl { font-family: var(--f-mono); font-size: 9.5px; color: var(--accent); letter-spacing: 0.22em; text-transform: uppercase; }
+.roster-head .count { font-family: var(--f-mono); font-size: 9px; color: var(--muted); letter-spacing: 0.16em; }
+.roster { display: grid; grid-template-columns: 1fr 1fr; gap: 0 18px; list-style: none; margin-bottom: 14px; }
+.roster-item {
+  display: grid; grid-template-columns: 16px 1fr auto;
+  gap: 6px; align-items: baseline; padding: 3.5px 0;
+  border-bottom: 1px dotted oklch(0.78 0.025 80 / 0.5);
+  font-size: 11px;
+}
+.roster-item:last-child { border-bottom: none; }
+.roster-num { font-family: var(--f-mono); font-size: 8.5px; color: var(--accent); letter-spacing: 0.08em; }
+.roster-mid { display: flex; align-items: baseline; gap: 5px; overflow: hidden; white-space: nowrap; min-width: 0; }
+.roster-name { font-family: var(--f-display); font-size: 12.5px; color: var(--ink); letter-spacing: -0.005em; overflow: hidden; text-overflow: ellipsis; }
+.roster-dash { color: var(--faint); font-size: 10px; }
+.roster-company { font-family: var(--f-italic); font-style: italic; font-size: 11.5px; color: var(--muted); overflow: hidden; text-overflow: ellipsis; }
+.roster-tag {
+  font-family: var(--f-mono); font-size: 7.5px;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--accent-deep); padding: 1px 5px;
+  background: var(--accent-tint);
+  border: 1px solid oklch(0.64 0.135 78 / 0.25);
+  border-radius: 100px; white-space: nowrap;
+}
+.roster-vc { grid-template-columns: 1fr; gap: 2px; }
+.roster-vc .roster-item { grid-template-columns: 18px 1fr auto; padding: 4px 0; }
+.roster-foot {
+  margin-top: 10px; font-family: var(--f-italic); font-style: italic;
+  font-size: 11.5px; color: var(--muted); text-align: right;
+}
+.roster-foot em { color: var(--accent); }
+.back-cover-face {
+  background:
+    radial-gradient(ellipse 500px 350px at 100% 100%, oklch(0.64 0.135 78 / 0.08), transparent 60%),
+    radial-gradient(ellipse 400px 300px at 0% 0%, oklch(0.64 0.135 78 / 0.04), transparent 60%),
+    var(--paper) !important;
+  justify-content: space-between; padding: 48px 44px !important;
+}
+.bc-mid { display: flex; flex-direction: column; gap: 16px; z-index: 3; margin-top: 20px; }
+/* Closing content face — same look as old back cover (paper, no scene) */
+.closing-face {
+  background:
+    radial-gradient(ellipse 500px 350px at 100% 100%, oklch(0.64 0.135 78 / 0.08), transparent 60%),
+    radial-gradient(ellipse 400px 300px at 0% 0%, oklch(0.64 0.135 78 / 0.04), transparent 60%),
+    var(--paper) !important;
+  justify-content: space-between; padding: 48px 44px !important;
+}
+/* Physical back-cover face — Miami scene fills, centered quote sits on top */
+.back-cover-face {
+  padding: 0 !important;
+  justify-content: center; align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+.back-cover-face .back-cover-deco {
+  height: 100% !important;
+  mask-image: none !important;
+  -webkit-mask-image: none !important;
+  z-index: 1 !important;
+}
+.back-cover-quote {
+  position: relative;
+  z-index: 3;
+  text-align: center;
+  padding: 0 36px;
+  /* sit roughly center, slightly above center to feel anchored over sand */
+  margin-top: -10%;
+}
+.bc-final {
+  font-family: var(--f-brand);
+  font-weight: 400;
+  font-size: 56px;
+  line-height: 0.94;
+  color: oklch(0.18 0.04 240);
+  letter-spacing: -0.015em;
+  text-wrap: balance;
+  text-shadow: 0 2px 14px oklch(1 0 0 / 0.5);
+  margin: 0;
+}
+.bc-final .accent {
+  color: var(--accent-deep);
+  font-style: italic;
+}
+.bc-final-mark {
+  margin-top: 22px;
+  font-family: var(--f-italic);
+  font-style: italic;
+  font-size: 16px;
+  color: oklch(0.32 0.04 240);
+  letter-spacing: 0.04em;
+  text-shadow: 0 1px 8px oklch(1 0 0 / 0.6);
+}
+.bc-headline {
+  font-family: var(--f-brand); font-weight: 400;
+  font-size: 64px; line-height: 0.92; color: var(--ink);
+  letter-spacing: -0.025em; text-wrap: balance;
+}
+.bc-headline .accent { color: var(--accent); }
+.bc-sub { font-family: var(--f-body); font-size: 14px; line-height: 1.55; color: var(--ink-2); max-width: 400px; margin-top: 4px; }
+.bc-sub em { font-family: var(--f-italic); font-style: italic; color: var(--accent); }
+.bc-cta {
+  margin-top: 14px; display: inline-flex; align-items: center; gap: 10px;
+  padding: 12px 24px;
+  background: linear-gradient(180deg, var(--accent-hi), var(--accent));
+  color: oklch(0.18 0.05 250); border-radius: 100px;
+  font-family: var(--f-body); font-weight: 600; font-size: 13px;
+  border: 1px solid var(--accent-dim);
+  box-shadow: inset 0 1px 0 oklch(1 0 0 / 0.35), inset 0 -1px 0 oklch(0.44 0.090 72 / 0.3), 0 4px 14px oklch(0.44 0.090 72 / 0.25);
+  width: fit-content; text-decoration: none; letter-spacing: -0.005em;
+}
+.bc-cta-sub { font-family: var(--f-mono); font-size: 10px; color: var(--muted); letter-spacing: 0.12em; margin-top: 4px; }
+.bc-cta-sub em { color: var(--accent); font-style: italic; font-family: var(--f-italic); }
+.bc-sig { margin-top: 10px; display: flex; align-items: center; gap: 12px; }
+.bc-sig svg { display: block; }
+.bc-sig .meta { font-family: var(--f-italic); font-style: italic; font-size: 12px; color: var(--muted); }
+.sig-path { stroke-dasharray: 320; stroke-dashoffset: 320; animation: sigDraw 2.4s ease-out 0.5s forwards; }
+.sig-flourish { stroke-dasharray: 130; stroke-dashoffset: 130; animation: sigDraw 1.4s ease-out 2.2s forwards; }
+@keyframes sigDraw { to { stroke-dashoffset: 0; } }
+.bc-trust {
+  margin-top: 8px; padding: 12px 0;
+  border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule);
+  display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+  font-family: var(--f-display); font-style: italic; font-size: 15px; color: var(--ink);
+}
+.bc-trust .lbl { font-family: var(--f-mono); font-size: 8.5px; color: var(--accent); letter-spacing: 0.22em; text-transform: uppercase; font-style: normal; margin-right: 4px; }
+.bc-trust .yc-mark { font-family: var(--f-display); font-style: italic; color: var(--accent); font-weight: 600; margin-right: 2px; }
+.bc-trust .sep { width: 4px; height: 4px; background: var(--accent-dim); border-radius: 50%; display: inline-block; }
+.bc-trust .note { font-family: var(--f-mono); font-size: 9px; color: var(--muted); letter-spacing: 0.1em; font-style: normal; text-transform: uppercase; margin-left: 4px; }
+.bc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 14px; }
+.bc-grid > div { display: flex; flex-direction: column; gap: 3px; }
+.bc-grid .lbl { font-family: var(--f-mono); font-size: 8.5px; color: var(--accent); letter-spacing: 0.22em; text-transform: uppercase; }
+.bc-grid .val { font-family: var(--f-display); font-style: italic; font-size: 16px; color: var(--ink); letter-spacing: -0.01em; }
+.controls { margin-top: 40px; display: flex; align-items: center; gap: 18px; font-family: var(--f-mono); font-size: 11px; color: oklch(0.82 0.03 80); letter-spacing: 0.16em; }
+.ctrl-btn {
+  background: transparent; border: 1px solid oklch(0.50 0.04 80 / 0.5);
+  color: oklch(0.85 0.04 80); padding: 10px 16px;
+  font-family: var(--f-mono); letter-spacing: 0.16em; font-size: 10.5px;
+  cursor: pointer; transition: all 0.25s; text-transform: uppercase;
+  border-radius: 2px;
+}
+.ctrl-btn:hover:not(:disabled) { background: oklch(0.64 0.135 78 / 0.12); border-color: var(--accent); color: var(--accent-hi); }
+.ctrl-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+.page-indicator { min-width: 170px; text-align: center; color: oklch(0.72 0.04 80); }
+.page-indicator .pg { font-family: var(--f-brand); color: var(--accent-hi); font-size: 18px; margin-right: 8px; letter-spacing: -0.01em; }
+.instruction { margin-top: 18px; font-family: var(--f-italic); font-style: italic; color: oklch(0.58 0.04 80); font-size: 12.5px; letter-spacing: 0.04em; }
+.snd-btn {
+  background: transparent;
+  border: 1px solid oklch(0.40 0.04 80 / 0.4);
+  color: oklch(0.62 0.04 80);
+  font-family: var(--f-mono);
+  font-size: 9.5px;
+  letter-spacing: 0.16em;
+  cursor: pointer;
+  padding: 3px 8px;
+  margin-left: 8px;
+  text-transform: uppercase;
+  border-radius: 2px;
+  transition: all 0.2s;
+  font-style: normal;
+  vertical-align: middle;
+}
+.snd-btn:hover { color: var(--accent-hi); border-color: var(--accent-dim); }
+.snd-btn.muted { opacity: 0.5; }
+.instruction kbd { font-family: var(--f-mono); font-style: normal; font-size: 10px; background: oklch(0.22 0.04 250); color: oklch(0.85 0.04 80); padding: 1px 5px; border-radius: 3px; border: 1px solid oklch(0.32 0.05 248); margin: 0 2px; }
+
+/* Real photo variant — overrides the gradient placeholder */
+.polaroid .photo.photo-real {
+  background-image: var(--photo-img);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.polaroid .photo.photo-real::before,
+.polaroid .photo.photo-real::after { display: none; }
+
+/* Specific photos */
+.photo-news-reader {
+  --photo-img: url('assets/asset-001.jpg');
+  background-image: var(--photo-img) !important;
+  background-size: cover !important;
+  background-position: center 32% !important;
+  background-repeat: no-repeat !important;
+}
+.photo-news-reader::before,
+.photo-news-reader::after { display: none !important; }
+
+.photo-rounak {
+  background-image: url('assets/asset-002.jpg') !important;
+  background-size: cover !important;
+  background-position: center 25% !important;
+  background-repeat: no-repeat !important;
+}
+.photo-rounak::before,
+.photo-rounak::after { display: none !important; }
+
+.photo-luci {
+  background-image: url('assets/asset-003.jpg') !important;
+  background-size: cover !important;
+  background-position: center 22% !important;
+  background-repeat: no-repeat !important;
+}
+.photo-luci::before,
+.photo-luci::after { display: none !important; }
+
+.photo-tarun {
+  background-image: url('assets/asset-004.jpg') !important;
+  background-size: cover !important;
+  background-position: center 38% !important;
+  background-repeat: no-repeat !important;
+}
+.photo-tarun::before,
+.photo-tarun::after { display: none !important; }
+
+.photo-zolvo {
+  background-image: url('assets/asset-005.jpg') !important;
+  background-size: cover !important;
+  background-position: center 28% !important;
+  background-repeat: no-repeat !important;
+}
+.photo-zolvo::before,
+.photo-zolvo::after { display: none !important; }
+
+.photo-lance {
+  background-image: url('assets/asset-006.jpg') !important;
+  background-size: cover !important;
+  background-position: center 38% !important;
+  background-repeat: no-repeat !important;
+}
+.photo-lance::before,
+.photo-lance::after { display: none !important; }
+
+.photo-yc {
+  background-image: url('assets/asset-007.jpg') !important;
+  background-size: cover !important;
+  background-position: center 22% !important;
+  background-repeat: no-repeat !important;
+}
+.photo-yc::before,
+.photo-yc::after { display: none !important; }
+
+.photo-finc {
+  background-image: url('assets/asset-008.jpg') !important;
+  background-size: cover !important;
+  background-position: center 32% !important;
+  background-repeat: no-repeat !important;
+}
+.photo-finc::before,
+.photo-finc::after { display: none !important; }
+
+.photo-resid {
+  background-image: url('assets/asset-009.jpg') !important;
+  background-size: cover !important;
+  background-position: center 35% !important;
+  background-repeat: no-repeat !important;
+}
+.photo-resid::before,
+.photo-resid::after { display: none !important; }
+
+.photo-brycent {
+  background-image: url('assets/asset-010.jpg') !important;
+  background-size: cover !important;
+  background-position: center 30% !important;
+  background-repeat: no-repeat !important;
+}
+.photo-brycent::before,
+.photo-brycent::after { display: none !important; }
+
+.photo-enjamb {
+  background-image: url('assets/asset-011.jpg') !important;
+  background-size: cover !important;
+  background-position: center 38% !important;
+  background-repeat: no-repeat !important;
+}
+.photo-enjamb::before,
+.photo-enjamb::after { display: none !important; }
+
+.photo-vestlive {
+  background-image: url('assets/asset-012.jpg') !important;
+  background-size: contain !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  background-color: oklch(0.16 0.02 250) !important;
+}
+.photo-vestlive::before,
+.photo-vestlive::after { display: none !important; }
+
+
+
+
+
+
+
+
+
+
+
+
+/* The cover-back Polaroid sits with a slight extra emphasis */
+.cover-back .polaroid {
+  width: 78%;
+  max-width: 340px;
+}
+
+/* When on the cover (no flips yet), the catalog should appear as just the cover —
+   hide the endpaper on the left, hide the spine, and hide the book backing's left half. */
+.catalog.on-cover .endpaper { display: none; }
+.catalog.on-cover::after { display: none; }
+.catalog.on-cover::before { clip-path: inset(0 0 0 50%); }
+.catalog.on-cover:not(.is-flipping) .page:not([data-page="0"]) { visibility: hidden; }
+
+@media (max-width: 1100px) {
+  .catalog { width: 720px; height: 484px; }
+  .bc-headline { font-size: 52px; }
+  .cover-title { font-size: 46px; }
+  .cover-script { font-size: 28px; }
+  .cover-logo svg { width: 150px; height: 150px; }
+  .cover-band { padding-top: 16px; }
+  .cover-band .pill { font-size: 8px; padding: 4px 9px; }
+  .cover-band .place { font-size: 18px; }
+  .polaroid { max-width: 240px; padding: 11px 11px 46px; }
+  .polaroid .caption { font-size: 18px; bottom: 11px; }
+  .polaroid .caption .role { font-size: 6.5px; margin-top: 4px; }
+}
+@media (max-width: 760px) {
+  /* Single-page mode on phones — hide the left page, show only right */
+  .catalog { width: 360px; height: 500px; }
+  .page { width: 100%; left: 0; }
+  .catalog::after, .endpaper { display: none; }
+  .face { padding: 28px 26px 22px; }
+  .marker { top: 18px; right: 26px; }
+  .cover-face, .back-cover-face { padding: 32px 26px !important; }
+  .cover-title { font-size: 36px; margin-top: 32px; }
+  .cover-script { font-size: 24px; }
+  .cover-logo { margin-top: 22px; }
+  .cover-logo svg { width: 120px; height: 120px; }
+  .menu-headline { font-size: 28px; }
+  .menu-item { grid-template-columns: 26px 110px 1fr; padding: 9px 0; }
+  .menu-item .name { font-size: 15px; }
+  .menu-item .desc { font-size: 11px; }
+  .nm-title { font-size: 26px; }
+  .nm-n { font-size: 30px; }
+  .nm-grid-item:first-child .nm-n { font-size: 44px; }
+  .nm-breakdown { grid-template-columns: repeat(3, 1fr); }
+  .case-title { font-size: 26px; }
+  .mv { font-size: 28px; }
+  .m.hero .mv { font-size: 34px; }
+  .bc-headline { font-size: 42px; }
+  .guest-title { font-size: 24px; }
+  .roster { grid-template-columns: 1fr; }
+  .roster-name { font-size: 11.5px; }
+  .polaroid { max-width: 210px; padding: 10px 10px 42px; }
+  .polaroid .caption { font-size: 17px; }
+}
+
+
+/* ════════ StPageFlip integration ════════ */
+.book {
+  margin: 0 auto;
+  width: 1040px;
+  height: 700px;
+  position: relative;
+  overflow: hidden;
+}
+.book > .stpf-page {
+  position: absolute;
+  top: 0; left: 0;
+  width: 520px;
+  height: 700px;
+  display: none;
+}
+.book > .stpf-page:first-child {
+  display: block;
+  left: 50%;
+}
+/* StPageFlip clones our pages into its own wrapper. Its .stf__page has white bg by default — neutralize. */
+.stf__parent {
+  margin: 0 auto;
+}
+.stf__page {
+  background: transparent !important;
+  overflow: hidden;
+}
+/* Make the inner wrapper fill the StPageFlip-rendered page area */
+.page-inner {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+/* Important: when our pages get cloned by StPageFlip, they end up inside .stf__page.
+   The original .stpf-page also exists in our DOM but gets hidden via JS after init. */
+
+
+
+/* YC Demo Day clothesline — clips dangling on two strings */
+.clothesline-wall {
+  margin: 6px 0 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  width: 100%;
+}
+.clothesline {
+  position: relative;
+  height: 78px;
+}
+.clothesline .line {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 14px;
+  display: block;
+  pointer-events: none;
+  z-index: 1;
+  filter: drop-shadow(0 1px 0.5px rgba(40,20,5,0.12));
+}
+.clothesline .clips-row {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 0 2px;
+  z-index: 2;
+}
+.clip {
+  position: relative;
+  width: 38px;
+  transform: rotate(var(--rot, 0deg));
+  transform-origin: 50% 2px;
+  margin-top: var(--drop, 0px);
+  filter: drop-shadow(1px 2px 2.5px rgba(30,15,5,0.22));
+}
+.clip .peg {
+  position: absolute;
+  top: -3px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 5px;
+  height: 8px;
+  background: linear-gradient(180deg, oklch(0.78 0.05 65), oklch(0.52 0.07 60));
+  border-radius: 1px 1px 0.5px 0.5px;
+  box-shadow: 0 1px 1.2px rgba(0,0,0,0.30), inset 0 0.5px 0 oklch(0.92 0.04 70 / 0.5);
+  z-index: 3;
+}
+.clip .peg::after {
+  content: '';
+  position: absolute;
+  top: 1.5px; left: 50%;
+  width: 1px; height: 3px;
+  background: rgba(0,0,0,0.35);
+  transform: translateX(-50%);
+}
+.clip img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 2px;
+  margin-top: 5px;
+  background: #1a1a1a;
+  box-shadow: 0 0 0 0.5px rgba(0,0,0,0.25), 0 1px 2px rgba(0,0,0,0.18);
+}
+/* Slight haze on the strings as they're at page edges */
+.clothesline::before, .clothesline::after {
+  content: '';
+  position: absolute;
+  top: 0; width: 6px; height: 14px;
+  background: var(--paper);
+  z-index: 4;
+  pointer-events: none;
+}
+.clothesline::before { left: -1px; }
+.clothesline::after { right: -1px; }
+
+
+/* Logo wall — 3×2 grid of brand logos with stats below */
+.logo-wall {
+  width: 100%;
+  height: 100%;
+  padding: 48px 36px 36px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  z-index: 3;
+}
+.logo-wall-startups {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 12px 22px;
+  flex: 1 1 0;
+  align-items: stretch;
+  justify-items: stretch;
+}
+.logo-wall-divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 14px 0 10px;
+  flex: 0 0 auto;
+}
+.logo-wall-divider::before,
+.logo-wall-divider::after {
+  content: '';
+  flex: 1 1 0;
+  height: 1px;
+  background: oklch(0.78 0.025 76 / 0.55);
+}
+.logo-wall-divider-label {
+  font-family: var(--f-mono);
+  font-size: 8.5px;
+  letter-spacing: 0.22em;
+  color: var(--muted);
+  text-transform: uppercase;
+}
+.logo-wall-events {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  flex: 0 0 auto;
+}
+.event-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 10px 6px;
+  background: oklch(0.96 0.012 80);
+  border: 1px solid oklch(0.78 0.025 76 / 0.5);
+  border-radius: 6px;
+  box-shadow: 0 1px 2px oklch(0.30 0.04 70 / 0.06), inset 0 1px 0 oklch(1 0 0 / 0.5);
+}
+.event-mark {
+  width: 38px;
+  height: 38px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--f-display);
+  font-weight: 700;
+  font-size: 18px;
+  letter-spacing: -0.02em;
+  box-shadow: 0 1px 3px oklch(0.30 0.04 70 / 0.12);
+}
+img.event-mark {
+  object-fit: cover;
+  display: block;
+}
+.event-mark.yc { background: oklch(0.72 0.18 50); color: white; }
+.event-mark.speedrun { background: oklch(0.26 0.04 250); color: oklch(0.96 0.06 80); }
+.event-mark.foundersinc { background: oklch(0.18 0.015 70); color: oklch(0.96 0.012 80); }
+.event-mark.residency { background: oklch(0.55 0.15 25); color: white; }
+.event-name {
+  font-family: var(--f-display);
+  font-size: 9.5px;
+  letter-spacing: 0.04em;
+  text-align: center;
+  color: var(--ink);
+  line-height: 1.2;
+}
+.logo-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  padding: 18px 14px;
+  background: oklch(0.96 0.012 80);
+  border: 1px solid oklch(0.78 0.025 76 / 0.5);
+  border-radius: 6px;
+  box-shadow: 0 1px 2px oklch(0.30 0.04 70 / 0.06), inset 0 1px 0 oklch(1 0 0 / 0.5);
+  transition: transform 0.3s ease-out;
+}
+.logo-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px oklch(0.30 0.04 70 / 0.1), inset 0 1px 0 oklch(1 0 0 / 0.5);
+}
+.logo-mark {
+  width: 88px; height: 88px;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 2px 6px oklch(0.30 0.04 70 / 0.15);
+}
+.logo-mark img {
+  width: 100%; height: 100%;
+  display: block;
+  object-fit: cover;
+}
+.logo-meta {
+  text-align: center;
+  display: flex; flex-direction: column;
+  gap: 3px;
+}
+.logo-name {
+  font-family: var(--f-display);
+  font-style: italic;
+  font-size: 19px;
+  color: var(--ink);
+  line-height: 1;
+  letter-spacing: -0.01em;
+}
+.logo-stat {
+  font-family: var(--f-mono);
+  font-size: 8.5px;
+  letter-spacing: 0.16em;
+  color: var(--accent-deep);
+  text-transform: uppercase;
+}
+
+
+/* Case-study post artifact (sits below story, above metrics) */
+.case-post {
+  margin: auto 0;
+  padding: 4px 0;
+  position: relative;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.case-post-frame {
+  width: 100%;
+  max-width: 100%;
+  height: 310px;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  overflow: hidden;
+  box-shadow: none;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.case-post-frame img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: 100%;
+  display: block;
+  object-fit: contain;
+}
+.case-post-caption {
+  margin-top: 10px;
+  font-family: var(--f-mono);
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  color: var(--muted);
+  text-transform: uppercase;
+  text-align: center;
+}
+/* Pair variant — two frames side by side with an arrow between */
+.case-post-pair {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-direction: row;
+}
+.case-post-pair .case-post-frame {
+  flex: 1;
+  height: auto;
+  max-height: 280px;
+  overflow: visible;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.case-post-pair .case-post-frame img {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 280px;
+  display: block;
+  object-fit: contain;
+}
+.case-post-pair .case-post-tag {
+  font-size: 8px;
+  padding: 3px 6px;
+  bottom: -13px;
+  left: 6px;
+  right: auto;
+  letter-spacing: 0.14em;
+}
+.case-post-arrow {
+  font-family: var(--f-mono);
+  font-size: 24px;
+  color: var(--accent);
+  flex: 0 0 auto;
+  padding: 0 2px;
+  line-height: 1;
+}
+.case-post-tag {
+  position: absolute;
+  bottom: 7px; left: 8px;
+  font-family: var(--f-mono);
+  font-size: 8px;
+  letter-spacing: 0.18em;
+  color: oklch(0.18 0.04 60);
+  background: oklch(0.96 0.012 80 / 0.9);
+  padding: 3px 7px;
+  border-radius: 2px;
+  text-transform: uppercase;
+  backdrop-filter: blur(3px);
+  z-index: 2;
+  box-shadow: 0 1px 3px oklch(0.30 0.04 70 / 0.15);
+}
+/* Ensure the case page uses flex to push the post block toward the center
+   of the available vertical space between story and metrics */
+.page-inner.face:has(.case-post) {
+  display: flex;
+  flex-direction: column;
+}
+.page-inner.face:has(.case-post) .case-post {
+  flex: 1;
+  justify-content: center;
+}
+
+
+/* L-shape with strict alignment: clip on LEFT fills full height; tweet pinned to TOP of RIGHT column, email pinned to BOTTOM */
+/* L-shape with strict alignment: clip LEFT full height, tweet pinned TOP of right, email pinned BOTTOM */
+.case-post-triangle {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: stretch;
+  height: 200px;
+  background: transparent;
+  border: none;
+  padding: 4px 0;
+  box-shadow: none;
+}
+.case-post-triangle .triangle-top {
+  display: flex;
+  flex: 0 0 24%;
+  align-items: stretch;
+}
+.case-post-triangle .triangle-top .case-post-frame {
+  width: 100%;
+  height: 100%;
+  flex: 1 1 auto;
+  overflow: visible;
+  padding: 0;
+  display: block;
+  position: relative;
+}
+.case-post-triangle .triangle-top .case-post-frame img {
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: cover;
+  object-position: 25% center;
+  display: block;
+}
+.triangle-arrow-down {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex: 0 0 auto;
+  padding-top: 28px;
+}
+.triangle-arrow-down svg {
+  display: block;
+  width: 16px;
+  height: 20px;
+  transform: rotate(-90deg);
+}
+.triangle-arrow-mid {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 0 0 auto;
+  padding: 2px 0;
+}
+.triangle-arrow-mid svg {
+  display: block;
+  width: 26px;
+  height: 32px;
+}
+.case-post-triangle .triangle-bottom {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex: 1 1 0;
+  min-width: 0;
+  height: 100%;
+}
+.case-post-triangle .triangle-bottom .case-post-frame {
+  width: 100%;
+  padding: 0;
+  overflow: visible;
+  flex: 0 0 auto;
+  display: block;
+  height: auto;
+  background: transparent;
+}
+.case-post-triangle .triangle-bottom .case-post-frame:first-child img {
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  display: block;
+}
+.case-post-triangle .triangle-bottom .case-post-frame:last-child {
+  height: auto;
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  flex: 0 0 auto;
+  align-self: stretch;
+  display: block;
+}
+.case-post-triangle .triangle-bottom .case-post-frame:last-child img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 588 / 139;
+  max-width: 100%;
+  max-height: none;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+.case-post-triangle .case-post-tag {
+  font-size: 8px;
+  padding: 3px 6px;
+  bottom: -13px;
+  left: 6px;
+  right: auto;
+  letter-spacing: 0.14em;
+}
+/* On ProjectX page, push the metrics divider line down so it clears the hanging tags */
+.page-inner:has(.case-post-triangle) .metrics {
+  margin-top: 32px;
+}
+/* Vesting red ink stamp — overlays the clip photo, slightly tilted, vintage feel */
+.vesting-stamp {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 92px;
+  height: 92px;
+  color: oklch(0.52 0.21 25);
+  opacity: 0.78;
+  transform: rotate(-14deg);
+  pointer-events: none;
+  mix-blend-mode: multiply;
+  z-index: 3;
+  filter: contrast(1.05) saturate(1.1);
+}
+.vesting-stamp svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+
+/* Pullquote screenshot variant — the quote IS the message screenshot, not styled text */
+.pullquote.pullquote-screenshot {
+  background: transparent;
+  border-left: none;
+  padding: 0;
+  margin: 12px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+}
+.pullquote-screenshot .screenshot-frame {
+  background: oklch(0.99 0.005 80);
+  border: 1px solid oklch(0.78 0.025 76 / 0.5);
+  border-radius: 4px;
+  padding: 10px 12px;
+  box-shadow: 0 2px 6px oklch(0.30 0.04 70 / 0.08), inset 0 1px 0 oklch(1 0 0 / 0.6);
+  width: 100%;
+}
+.pullquote-screenshot .screenshot-frame img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+.pullquote-screenshot .att {
+  font-family: var(--f-mono);
+  font-size: 9.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding-left: 12px;
+}
+.pullquote-screenshot .att strong {
+  color: var(--ink);
+  font-weight: 500;
+}
+
+
+/* Vertical brass-arrow chain between stacked case-posts (Zaranna) */
+.case-post-vchain {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 4px 0 6px;
+  z-index: 4;
+  position: relative;
+}
+.case-post-vchain svg { display: block; }
+
+/* On Zaranna page, shrink Reel clip and pull receipt up tight to the chevron */
+.page-inner:has(.case-post-vchain) .case-post:not(.case-post-receipt) {
+  margin-top: 4px;
+  margin-bottom: 0;
+}
+.page-inner:has(.case-post-vchain) .case-post:not(.case-post-receipt) .case-post-frame {
+  height: 170px;
+  max-width: 48%;
+  margin: 0 auto;
+}
+.page-inner:has(.case-post-vchain) .case-post-receipt {
+  margin: 0 auto;
+}
+.page-inner:has(.case-post-vchain) .case-post-receipt .case-post-frame img {
+  max-height: 110px;
+}
+
+/* Receipt-style frame for the Tarun text screenshot — washi tape, soft paper card */
+.case-post-receipt .case-post-frame {
+  background: oklch(0.97 0.008 80);
+  border: 1px solid oklch(0.80 0.025 76 / 0.45);
+  border-radius: 3px;
+  padding: 8px 6px 6px;
+  height: auto;
+  min-height: 60px;
+  box-shadow:
+    0 2px 6px oklch(0.30 0.04 70 / 0.10),
+    inset 0 1px 0 oklch(1 0 0 / 0.6);
+  overflow: visible;
+  width: fit-content;
+  max-width: 70%;
+  margin: 0 auto;
+  position: relative;
+}
+.case-post-receipt .case-post-frame::before {
+  /* washi tape strip at top-center */
+  content: '';
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-2.5deg);
+  width: 58px;
+  height: 16px;
+  background: oklch(0.84 0.115 78 / 0.55);
+  border-left: 1px dashed oklch(0.62 0.10 75 / 0.4);
+  border-right: 1px dashed oklch(0.62 0.10 75 / 0.4);
+  box-shadow: 0 1px 3px oklch(0.30 0.04 70 / 0.12);
+  z-index: 5;
+}
+.case-post-receipt .case-post-frame img {
+  max-height: 150px;
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+</style>
+</head>
+<body>
+<div class="stage">
+  <div class="book" id="book">
+    <div class="stpf-page stpf-hard" data-density="hard"><div class="page-inner cover-face face">
+        <h1 class="cover-title">VESTING</h1>
+        <div class="cover-script">New Startup Media</div>
+
+        <div class="cover-logo">
+          <svg viewBox="380 250 480 380" xmlns="http://www.w3.org/2000/svg" aria-label="Vesting logo">
+            <!-- Right arm of the V (long sweeping path through the descender) -->
+            <path fill="#1a1410" d="M800.762390,369.901947 C755.752258,449.352203 710.827148,528.429993 666.272034,607.715576 C661.932800,615.437134 657.671021,619.232361 648.091370,618.706909 C629.816162,617.704468 611.443787,618.423035 593.112488,618.548218 C590.214050,618.567993 588.135437,618.033508 586.552246,615.264954 C576.631348,597.915771 566.556763,580.654419 556.556519,563.350525 C556.087036,562.538086 555.840820,561.596741 555.325134,560.298950 C578.091492,560.298950 600.377197,560.214417 622.660828,560.387878 C626.101440,560.414612 628.041382,559.454773 629.749146,556.425354 C672.532471,480.531830 715.410034,404.691498 758.265747,328.838837 C759.229492,327.133087 760.134277,325.394073 761.595886,322.692078 C737.406311,322.692078 714.096375,322.692078 689.729858,322.692078 C691.831238,318.669983 693.321228,315.634888 694.971802,312.689758 C703.426819,297.603241 711.868469,282.508301 720.495789,267.520508 C721.296082,266.130310 723.360046,264.614716 724.849548,264.601990 C747.178955,264.410980 769.510620,264.421234 791.840637,264.567017 C793.105347,264.575287 794.851990,265.876495 795.544922,267.061096 C805.710205,284.439728 815.805359,301.860931 825.673401,319.409149 C826.576172,321.014496 826.584961,323.982574 825.698730,325.599976 C817.614929,340.353180 809.240295,354.947021 800.762390,369.901947 z"/>
+            <!-- Left arm of the V (mirror, going down to the meeting point) -->
+            <path fill="#1a1410" d="M495.083954,325.025421 C495.083954,325.025421 494.842285,324.827972 494.780579,324.402344 C494.491241,323.662994 494.263580,323.349274 494.035950,323.035583 C494.035950,323.035583 493.967957,323.024384 493.817719,322.636902 C491.807281,321.832977 489.948853,321.063965 488.086639,321.054779 C469.776245,320.964233 451.465149,321.014709 433.154388,320.977386 C431.297852,320.973602 429.441956,320.656860 427.249939,320.454285 C427.777191,318.934540 427.949127,318.112518 428.326508,317.399231 C436.413940,302.112640 444.696808,286.925720 452.521118,271.506042 C454.754852,267.103882 457.487000,265.837860 462.244110,265.887421 C483.547913,266.109344 504.855927,265.926361 526.360291,265.937897 C526.558167,265.986267 526.961792,266.040771 526.961792,266.040771 C555.249023,315.863129 583.535400,365.685974 611.824341,415.507355 C615.934998,422.746796 620.155701,429.926880 624.086243,437.262634 C624.806213,438.606323 625.042358,440.931641 624.364746,442.193115 C614.592712,460.385986 604.628845,478.475861 594.692810,496.580475 C594.388123,497.135651 593.886780,497.582886 592.924133,498.752167 C560.493835,441.451874 528.292664,384.556305 495.998840,327.038635 C495.632080,325.952789 495.358032,325.489105 495.083954,325.025421 z"/>
+          </svg>
+        </div>
+      </div></div>
+    <div class="stpf-page" data-density="soft"><div class="page-inner back img-back cover-back face">
+        <div class="polaroid tilt-l">
+          <div class="tape"></div>
+          <div class="photo photo-real photo-news-reader"></div>
+          <div class="caption">
+            New startup media
+          </div>
+        </div>
+      </div></div>
+    <div class="stpf-page" data-density="soft"><div class="page-inner face">
+        <div class="marker"><span class="sec">Menu</span>02</div>
+        <div class="menu-eye">— What we do —</div>
+        <h2 class="menu-headline">We don't announce startups.<br>We make them <em>unavoidable.</em></h2>
+        <p class="menu-intro" style="display:none">A working list of the formats we ship from. Pick one, pick three, or hand us the brief and we'll pick the right cut.</p>
+        <div class="menu-rule"></div>
+        <div class="menu-list">
+          <p class="menu-presentation">Vesting is startup media for founders worth watching. We take a small slate of pre-seed and seed-stage operators each quarter &mdash; picked for the work, not the pedigree &mdash; and treat each one's trajectory like a product. The output is whatever moves the room: rounds closed, pipelines filled, inbound that makes hiring easy, and the kind of social proof money can't buy.</p>
+          <div class="menu-stamp" aria-hidden="true">
+            <img src="assets/asset-001.png" alt="Vesting wax seal" style="width:100%;height:100%;display:block;object-fit:contain;">
+          </div>
+        </div>
+      </div></div>
+    <div class="stpf-page" data-density="soft"><div class="page-inner back img-back face">
+        <div class="logo-wall">
+          <div class="logo-wall-startups">
+          <div class="logo-card">
+            <div class="logo-mark"><img src="assets/asset-013.jpg" alt="ProjectX logo"></div>
+            <div class="logo-meta">
+              <div class="logo-name">ProjectX</div>
+              <div class="logo-stat">3.6M views · into YC</div>
+            </div>
+          </div>
+          <div class="logo-card">
+            <div class="logo-mark"><img src="assets/asset-014.jpg" alt="Zaranna AI logo"></div>
+            <div class="logo-meta">
+              <div class="logo-name">Zaranna AI</div>
+              <div class="logo-stat">$300K ARR · single post</div>
+            </div>
+          </div>
+          <div class="logo-card">
+            <div class="logo-mark"><img src="assets/asset-015.jpg" alt="Lance logo"></div>
+            <div class="logo-meta">
+              <div class="logo-name">Lance</div>
+              <div class="logo-stat">$3.7M raise · 186K views</div>
+            </div>
+          </div>
+          <div class="logo-card">
+            <div class="logo-mark"><img src="assets/asset-016.jpg" alt="Zolvo logo"></div>
+            <div class="logo-meta">
+              <div class="logo-name">Zolvo</div>
+              <div class="logo-stat">YC P26 · in 27 days</div>
+            </div>
+          </div>
+          <div class="logo-card">
+            <div class="logo-mark"><img src="assets/asset-017.jpg" alt="Enjamb Labs logo"></div>
+            <div class="logo-meta">
+              <div class="logo-name">Enjamb Labs</div>
+              <div class="logo-stat">161K views · into YC</div>
+            </div>
+          </div>
+          <div class="logo-card">
+            <div class="logo-mark"><img src="assets/asset-018.jpg" alt="Veritas logo"></div>
+            <div class="logo-meta">
+              <div class="logo-name">Veritas</div>
+              <div class="logo-stat">234K views · in 24h</div>
+            </div>
+          </div>
+          </div>
+          <div class="logo-wall-divider"><span class="logo-wall-divider-label">Events &amp; Partners</span></div>
+          <div class="logo-wall-events">
+            <div class="event-card">
+              <img class="event-mark yc" src="assets/asset-019.jpg" alt="Y Combinator logo">
+              <div class="event-name">Y Combinator</div>
+            </div>
+            <div class="event-card">
+              <img class="event-mark speedrun" src="assets/asset-020.jpg" alt="Speedrun logo">
+              <div class="event-name">Speedrun</div>
+            </div>
+            <div class="event-card">
+              <img class="event-mark residency" src="assets/asset-002.png" alt="The Residency logo">
+              <div class="event-name">The Residency</div>
+            </div>
+            <div class="event-card">
+              <img class="event-mark foundersinc" src="assets/asset-021.jpg" alt="Founders, Inc. logo">
+              <div class="event-name">Founders, Inc.</div>
+            </div>
+          </div>
+        </div>
+      </div></div>
+    <div class="stpf-page" data-density="soft"><div class="page-inner face">
+        <div class="marker"><span class="sec">Numbers</span>03</div>
+        <h2 class="nm-title">Six startups. One quarter. <em>3.1M views.</em></h2>
+        <p class="nm-intro">Twelve founders across six teams came to Vesting before the headline. They left with the traction that changes a trajectory — viral reach, angel checks on the spot, Y&nbsp;Combinator acceptances, real pipeline.</p>
+        <div class="nm-grid">
+          <div class="nm-grid-item">
+            <div class="nm-n">3.1<span class="unit">M+</span><sup>1</sup></div>
+            <div class="nm-l">Cumulative views</div>
+            <div class="nm-meta">
+              <span>Zolvo&nbsp;80K</span><span class="plus">+</span>
+              <span>Enjamb&nbsp;161K</span><span class="plus">+</span>
+              <span>Veritas&nbsp;234K</span><span class="plus">+</span>
+              <span>Lance&nbsp;186K</span><span class="plus">+</span>
+              <span class="bold">ProjectX&nbsp;3.6M</span>
+            </div>
+          </div>
+          <div class="nm-grid-item">
+            <div class="nm-n">$300<span class="unit">K</span></div>
+            <div class="nm-l">ARR · pipeline</div>
+            <div class="nm-meta"><span>Zaranna AI</span><span class="dot-sep"></span><span>single post</span></div>
+          </div>
+          <div class="nm-grid-item">
+            <div class="nm-n">3<span class="unit">×</span><sup>2</sup></div>
+            <div class="nm-l">YC acceptances</div>
+            <div class="nm-meta">
+              <span class="yc-pill">ProjectX</span>
+              <span class="yc-pill">Zolvo P26</span>
+              <span class="yc-pill">Enjamb</span>
+            </div>
+          </div>
+        </div>
+        <div class="nm-breakdown">
+          <div class="nm-br"><span class="v">2.39<em>M</em></span><span class="l">ProjectX</span></div>
+          <div class="nm-br"><span class="v">234K</span><span class="l">Veritas</span></div>
+          <div class="nm-br"><span class="v">186K</span><span class="l">Lance · $3.7M raise</span></div>
+          <div class="nm-br"><span class="v">161K</span><span class="l">Enjamb</span></div>
+          <div class="nm-br"><span class="v">80K</span><span class="l">Zolvo · angel check</span></div>
+        </div>
+        <div class="footnote">
+          <sup>1</sup>Organic, verified from platform analytics; excludes paid distribution.<br>
+          <sup>2</sup>Accepted into Y Combinator (Spring &amp; P26 cohorts), confirmed by founders.
+        </div>
+      </div></div>
+    <div class="stpf-page" data-density="soft"><div class="page-inner back img-back face">
+        <div class="polaroid tilt-l">
+          <div class="tape"></div>
+          <div class="photo photo-real photo-tarun"></div>
+          <div class="caption">
+            Tarun, Alex & Rithvik
+            <span class="role">Zaranna AI · YC</span>
+          </div>
+        </div>
+      </div></div>
+    <div class="stpf-page" data-density="soft"><div class="page-inner face">
+        <div class="marker"><span class="sec">Case 01 / 06</span>04</div>
+        <div class="case-top">
+          <div class="case-type">AI · Single-Post Inbound · YC</div>
+          <div class="case-name">Zaranna AI <span class="role">— founder, Tarun Vedula</span></div>
+        </div>
+        <h2 class="case-title">One post. <em>Thirty calls.</em> <em>$300K</em> in pipeline.</h2>
+        <p class="story">Tarun was building Zaranna AI in stealth-quiet — a YC company with a clear thesis and no megaphone. Vesting ran one post on Instagram. Within days the inbox didn&rsquo;t ease up. <strong>30+ inbound calls</strong> came in, each one expanding a different use case the team hadn&rsquo;t even pitched yet. The pipeline closed at roughly <strong>$300K of ARR working</strong> &mdash; <em>from a single post.</em></p>
+        <div class="case-post">
+          <div class="case-post-frame">
+            <img src="assets/asset-022.jpg" alt="Zaranna AI Reel — Vesting Live with Tarun">
+          </div>
+          <div class="case-post-caption">Vesting Live · Reel · 30+ inbound calls</div>
+        </div>
+        <div class="case-post-vchain" aria-hidden="true">
+          <svg viewBox="0 0 24 32" width="22" height="28">
+            <path d="M 12 2 L 12 24" stroke="oklch(0.64 0.135 78)" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+            <path d="M 5 22 L 12 30 L 19 22" stroke="oklch(0.64 0.135 78)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          </svg>
+        </div>
+        <div class="case-post case-post-text case-post-receipt">
+          <div class="case-post-frame">
+            <img src="assets/asset-023.jpg" alt="Tarun: 30+ inbound calls, $300K ARR pipeline from a single post">
+          </div>
+          <div class="case-post-caption">Tarun Vedula &middot; Founder, Zaranna AI &middot; YC</div>
+        </div>
+        <div class="metrics cols-3">
+          <div class="m hero"><div class="mv">30<span class="u">+</span></div><div class="ml">Inbound calls</div></div>
+          <div class="m"><div class="mv">$300<span class="u">K</span></div><div class="ml">ARR &middot; pipeline</div></div>
+          <div class="m"><div class="mv">01</div><div class="ml">Posts shipped</div></div>
+        </div>
+      </div></div>
+    <div class="stpf-page" data-density="soft"><div class="page-inner back img-back face">
+        <div class="polaroid tilt-r">
+          <div class="tape"></div>
+          <div class="photo photo-real photo-rounak"></div>
+          <div class="caption">
+            Rounak Adhikary
+            <span class="role">ProjectX · YC</span>
+          </div>
+        </div>
+      </div></div>
+    <div class="stpf-page" data-density="soft"><div class="page-inner face">
+        <div class="marker"><span class="sec">Case 02 / 06</span>05</div>
+        <div class="case-top">
+          <div class="case-type">Viral Launch &middot; YC Accept</div>
+          <div class="case-name">ProjectX <span class="role">&mdash; founder, Rounak</span></div>
+        </div>
+        <h2 class="case-title">A pitch that reached <em>3.6 million</em> &mdash; and crashed the servers at 1&thinsp;AM.</h2>
+        <p class="story">Rounak didn&rsquo;t file a press release. He pitched ProjectX on Vesting&rsquo;s Instagram &mdash; <strong>content engineered to move, not to inform.</strong> The post hit <strong>3,612,440 views</strong>, 240K likes, 60K shares, and accumulated roughly three years of combined watch time. Signups overwhelmed the stack. Weeks later, <em>accepted into Y Combinator</em> &mdash; social proof money can&rsquo;t buy.</p>
+        <div class="case-post case-post-triangle">
+          <div class="triangle-top">
+          <div class="case-post-frame">
+            <img src="assets/asset-024.jpg" alt="ProjectX Reel — 3.6M views">
+            <div class="case-post-tag">Clip · 3.6M</div>
+          </div>
+          </div>
+          <div class="triangle-arrow-down" aria-hidden="true">
+            <svg viewBox="0 0 24 32" width="22" height="28">
+              <path d="M 12 2 L 12 24" stroke="oklch(0.64 0.135 78)" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+              <path d="M 5 22 L 12 30 L 19 22" stroke="oklch(0.64 0.135 78)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            </svg>
+          </div>
+          <div class="triangle-bottom">
+          <div class="case-post-frame">
+            <img src="assets/asset-025.jpg" alt="Rounak tweet — servers crashed">
+            <div class="case-post-tag">Servers down</div>
+          </div>
+          <div class="triangle-arrow-mid" aria-hidden="true">
+            <svg viewBox="0 0 24 32" width="26" height="32">
+              <path d="M 12 2 L 12 24" stroke="oklch(0.64 0.135 78)" stroke-width="2.2" stroke-linecap="round" fill="none"/>
+              <path d="M 5 22 L 12 30 L 19 22" stroke="oklch(0.64 0.135 78)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            </svg>
+          </div>
+          <div class="case-post-frame">
+            <img src="assets/asset-026.jpg" alt="Welcome to YC: ProjectX email">
+            <div class="case-post-tag">YC accept</div>
+          </div>
+          </div>
+        </div>
+        <div class="metrics cols-5">
+          <div class="m hero"><div class="mv">3.6<span class="u">M</span></div><div class="ml">Views</div></div>
+          <div class="m"><div class="mv">240<span class="u">K</span></div><div class="ml">Likes</div></div>
+          <div class="m"><div class="mv">60<span class="u">K</span></div><div class="ml">Shares</div></div>
+          <div class="m"><div class="mv">35<span class="u">K</span></div><div class="ml">Saves</div></div>
+          <div class="m"><div class="mv">3y<span class="u">77d</span></div><div class="ml">Watch time</div></div>
+        </div>
+      </div></div>
+    <div class="stpf-page" data-density="soft"><div class="page-inner back img-back face">
+        <div class="polaroid tilt-l2">
+          <div class="tape"></div>
+          <div class="photo photo-real photo-lance"></div>
+          <div class="caption">
+            Lance team
+            <span class="role">Caleb, Gatik & Gavin · YC</span>
+          </div>
+        </div>
+      </div></div>
+    <div class="stpf-page" data-density="soft"><div class="page-inner face">
+        <div class="marker"><span class="sec">Case 03 / 06</span>06</div>
+        <div class="case-top">
+          <div class="case-type">Funding &middot; AI for hotel ops</div>
+          <div class="case-name">Lance <span class="role">&mdash; YC-backed</span></div>
+        </div>
+        <h2 class="case-title">A <em>$3.7M raise</em> became an inbound engine overnight.</h2>
+        <p class="story">Lance builds AI agents for hotel ops. The raise needed to <strong>generate inbound</strong>, not just inform. Vesting built the announcement for the algorithm &mdash; bold visuals, one hook, engineered for distribution. In the first day: <strong>186,585 views</strong>, 2,363 profile visits. A post that behaved like a <em>channel.</em></p>
+        <div class="case-post">
+          <div class="case-post-frame">
+            <img src="assets/asset-027.jpg" alt="Lance YC announcement post">
+          </div>
+          <div class="case-post-caption">Vesting carousel · Instagram &amp; X · 186K views</div>
+        </div>
+        <div class="metrics">
+          <div class="m hero"><div class="mv">186<span class="u">K</span></div><div class="ml">Views / 24h</div></div>
+          <div class="m"><div class="mv">4.5<span class="u">K</span></div><div class="ml">Likes</div></div>
+          <div class="m"><div class="mv">2.8<span class="u">K</span></div><div class="ml">Shares</div></div>
+          <div class="m"><div class="mv">9.4<span class="u">K</span></div><div class="ml">Interactions</div></div>
+        </div>
+      </div></div>
+    <div class="stpf-page" data-density="soft"><div class="page-inner back img-back face">
+        <div class="polaroid tilt-r2">
+          <div class="tape"></div>
+          <div class="photo photo-real photo-luci"></div>
+          <div class="caption">
+            Luci Holland
+            <span class="role">Veritas · backed by A. Ohanian</span>
+          </div>
+        </div>
+      </div></div>
+    <div class="stpf-page" data-density="soft"><div class="page-inner face">
+        <div class="marker"><span class="sec">Case 04 / 06</span>07</div>
+        <div class="case-top">
+          <div class="case-type">Stealth &middot; backed by Alexis Ohanian</div>
+          <div class="case-name">Veritas <span class="role">&mdash; founder, Luci Holland</span></div>
+        </div>
+        <h2 class="case-title">From stealth to <em>234K views</em> &mdash; microchips in Birkins.</h2>
+        <p class="story">Veritas was secretly embedding <strong>microchips inside Birkin bags</strong> for authentication. Zero public presence before Vesting. We broke the story, the hook did the rest: <strong>234,165 views</strong> in 24 hours, 1.5K likes, 755 shares. For a startup nobody knew existed &mdash; <em>a full-blown debut.</em></p>
+        <div class="case-post">
+          <div class="case-post-frame">
+            <img src="assets/asset-028.jpg" alt="Veritas Birkin microchips post">
+          </div>
+          <div class="case-post-caption">Vesting carousel · Instagram &amp; X · 234K views in 24h</div>
+        </div>
+        <div class="metrics">
+          <div class="m hero"><div class="mv">234<span class="u">K</span></div><div class="ml">Views / 24h</div></div>
+          <div class="m"><div class="mv">1.5<span class="u">K</span></div><div class="ml">Likes</div></div>
+          <div class="m"><div class="mv">755</div><div class="ml">Shares</div></div>
+          <div class="m"><div class="mv">572</div><div class="ml">Saves</div></div>
+        </div>
+      </div></div>
+    <div class="stpf-page" data-density="soft"><div class="page-inner back img-back face">
+        <div class="polaroid tilt-l3">
+          <div class="tape"></div>
+          <div class="photo photo-real photo-zolvo"></div>
+          <div class="caption">
+            Isa & Tony
+            <span class="role">Zolvo · YC P26</span>
+          </div>
+        </div>
+      </div></div>
+    <div class="stpf-page" data-density="soft"><div class="page-inner face">
+        <div class="marker"><span class="sec">Case 05 / 06</span>08</div>
+        <div class="case-top">
+          <div class="case-type">Live Pitch &middot; YC P26</div>
+          <div class="case-name">Zolvo <span class="role">&mdash; Isa, YC P26</span></div>
+        </div>
+        <h2 class="case-title">She pitched live. <em>Three weeks later</em> &mdash; YC.</h2>
+        <p class="story">Isa was building AI agents for commercial lenders. She pitched at <strong>Vesting Live, Founders Inc Demo Day.</strong> Moved to SF, <strong>slept on couches</strong>, kept building. Brycent wrote an <strong>angel check on the spot</strong>. Twenty-seven days later, the message: <em>&ldquo;WE GOT ACCEPTED TO YC P26.&rdquo;</em></p>
+        <div class="case-post case-post-pair">
+          <div class="case-post-frame">
+            <img src="assets/asset-029.jpg" alt="Zolvo pitching live">
+            <div class="case-post-tag">Pitched live</div>
+          </div>
+          <div class="case-post-arrow">&rarr;</div>
+          <div class="case-post-frame">
+            <img src="assets/asset-030.jpg" alt="Zolvo getting into YC">
+            <div class="case-post-tag">YC P26</div>
+          </div>
+        </div>
+        <div class="timeline">
+          <div class="tl-step"><span class="tl-date">FEB &middot; 13</span><span class="tl-label">Pitched live</span></div>
+          <div class="tl-step"><span class="tl-date">FEB &middot; 13</span><span class="tl-label">Angel check</span></div>
+          <div class="tl-step final"><span class="tl-date">MAR &middot; 12</span><span class="tl-label">YC P26</span></div>
+        </div>
+      </div></div>
+    <div class="stpf-page" data-density="soft"><div class="page-inner back img-back face">
+        <div class="polaroid tilt-r2">
+          <div class="tape"></div>
+          <div class="photo photo-real photo-enjamb"></div>
+          <div class="caption">
+            Rayan & Maadhav
+            <span class="role">Enjamb Labs · YC</span>
+          </div>
+        </div>
+      </div></div>
+    <div class="stpf-page" data-density="soft"><div class="page-inner face">
+        <div class="marker"><span class="sec">Case 06 / 06</span>09</div>
+        <div class="case-top">
+          <div class="case-type">Stealth debut &middot; YC accept</div>
+          <div class="case-name">Enjamb Labs <span class="role">&mdash; founder, Rayan</span></div>
+        </div>
+        <h2 class="case-title">Stealth start to <em>161K views</em> &mdash; and into <em>YC.</em></h2>
+        <p class="story">Rayan was building Enjamb Labs in stealth before Vesting filmed the launch. Vesting shipped the post and the story compounded: <strong>161,000+ views</strong>, deep engagement from the technical community, and inbound from the kind of people Enjamb actually wanted to talk to. Weeks later: <em>accepted into Y Combinator.</em></p>
+        <div class="case-post case-post-pair">
+          <div class="case-post-frame">
+            <img src="assets/asset-031.jpg" alt="Enjamb Vesting Live clip">
+            <div class="case-post-tag">Clip · 161K</div>
+          </div>
+          <div class="case-post-arrow">&rarr;</div>
+          <div class="case-post-frame">
+            <img src="assets/asset-032.jpg" alt="Rayan: helped us get into YC">
+            <div class="case-post-tag">YC accept</div>
+          </div>
+        </div>
+        <div class="metrics">
+          <div class="m hero"><div class="mv">161<span class="u">K</span></div><div class="ml">Views</div></div>
+          <div class="m"><div class="mv">YC</div><div class="ml">Accepted</div></div>
+          <div class="m"><div class="mv">01</div><div class="ml">Launch post</div></div>
+          <div class="m"><div class="mv">2026</div><div class="ml">Q1</div></div>
+        </div>
+      </div></div>
+    <div class="stpf-page" data-density="soft"><div class="page-inner back img-back face">
+        <div class="polaroid tilt-r3">
+          <div class="tape"></div>
+          <div class="photo photo-real photo-yc"></div>
+          <div class="caption">
+            On the floor
+            <span class="role">YC Demo Day · 2026</span>
+          </div>
+        </div>
+      </div></div>
+    <div class="stpf-page" data-density="soft"><div class="page-inner face">
+        <div class="marker"><span class="sec">Event 01 / 03</span>10</div>
+        <div class="case-top">
+          <div class="case-type">YC Demo Day &middot; &times;2 &middot; with Garry Tan</div>
+          <div class="case-name">Y Combinator <span class="role">&mdash; Winter &amp; Spring 2026</span></div>
+        </div>
+        <h2 class="case-title">The startup world&rsquo;s biggest stage &mdash; <em>amplified.</em></h2>
+        <p class="story"><strong>19 clips</strong> across two YC Demo Days featuring founders, startups, and <strong>YC President Garry Tan</strong>. Content engineered for distribution: the moments that don&rsquo;t make it into the livestream, the quotes founders don&rsquo;t yet know are theirs, the reactions that travel. The clips racked up <strong>1.13M views</strong> &mdash; <em>a new lane for YC visibility.</em></p>
+        <div class="clothesline-wall" aria-hidden="true">
+          <div class="clothesline">
+            <svg class="line" viewBox="0 0 432 14" preserveAspectRatio="none" aria-hidden="true"><path d="M 2 3 Q 216 11 430 3" fill="none" stroke="oklch(0.32 0.045 60 / 0.55)" stroke-width="0.9" stroke-linecap="round"/></svg>
+            <div class="clips-row">
+      <div class="clip" style="--rot:-3.2deg;--drop:0px;"><span class="peg"></span><img src="assets/asset-033.jpg" alt=""></div>
+      <div class="clip" style="--rot:2.1deg;--drop:3px;"><span class="peg"></span><img src="assets/asset-034.jpg" alt=""></div>
+      <div class="clip" style="--rot:-1.6deg;--drop:1px;"><span class="peg"></span><img src="assets/asset-035.jpg" alt=""></div>
+      <div class="clip" style="--rot:3.4deg;--drop:4px;"><span class="peg"></span><img src="assets/asset-036.jpg" alt=""></div>
+      <div class="clip" style="--rot:-2.4deg;--drop:2px;"><span class="peg"></span><img src="assets/asset-037.jpg" alt=""></div>
+      <div class="clip" style="--rot:1.8deg;--drop:0px;"><span class="peg"></span><img src="assets/asset-038.jpg" alt=""></div>
+      <div class="clip" style="--rot:-3.5deg;--drop:3px;"><span class="peg"></span><img src="assets/asset-039.jpg" alt=""></div>
+      <div class="clip" style="--rot:2.6deg;--drop:1px;"><span class="peg"></span><img src="assets/asset-040.jpg" alt=""></div>
+      <div class="clip" style="--rot:-1.2deg;--drop:2px;"><span class="peg"></span><img src="assets/asset-041.jpg" alt=""></div>
+            </div>
+          </div>
+          <div class="clothesline">
+            <svg class="line" viewBox="0 0 432 14" preserveAspectRatio="none" aria-hidden="true"><path d="M 2 3 Q 216 11 430 3" fill="none" stroke="oklch(0.32 0.045 60 / 0.55)" stroke-width="0.9" stroke-linecap="round"/></svg>
+            <div class="clips-row">
+      <div class="clip" style="--rot:2.8deg;--drop:1px;"><span class="peg"></span><img src="assets/asset-042.jpg" alt=""></div>
+      <div class="clip" style="--rot:-2.0deg;--drop:4px;"><span class="peg"></span><img src="assets/asset-043.jpg" alt=""></div>
+      <div class="clip" style="--rot:3.6deg;--drop:0px;"><span class="peg"></span><img src="assets/asset-044.jpg" alt=""></div>
+      <div class="clip" style="--rot:-3.0deg;--drop:3px;"><span class="peg"></span><img src="assets/asset-045.jpg" alt=""></div>
+      <div class="clip" style="--rot:1.4deg;--drop:2px;"><span class="peg"></span><img src="assets/asset-046.jpg" alt=""></div>
+      <div class="clip" style="--rot:-2.8deg;--drop:4px;"><span class="peg"></span><img src="assets/asset-047.jpg" alt=""></div>
+      <div class="clip" style="--rot:2.2deg;--drop:1px;"><span class="peg"></span><img src="assets/asset-048.jpg" alt=""></div>
+      <div class="clip" style="--rot:-1.8deg;--drop:3px;"><span class="peg"></span><img src="assets/asset-049.jpg" alt=""></div>
+      <div class="clip" style="--rot:3.0deg;--drop:0px;"><span class="peg"></span><img src="assets/asset-050.jpg" alt=""></div>
+            </div>
+          </div>
+        </div>
+        <div class="metrics">
+          <div class="m hero"><div class="mv">1.13<span class="u">M</span></div><div class="ml">Total views</div></div>
+          <div class="m"><div class="mv">19</div><div class="ml">Clips</div></div>
+          <div class="m"><div class="mv">~74<span class="u">K</span></div><div class="ml">Interactions</div></div>
+          <div class="m"><div class="mv">2<span class="u">&times;</span></div><div class="ml">Demo Days</div></div>
+        </div>
+      </div></div>
+    <div class="stpf-page" data-density="soft"><div class="page-inner back img-back face">
+        <div class="polaroid tilt-l">
+          <div class="tape"></div>
+          <div class="photo photo-real photo-finc"></div>
+          <div class="caption">
+            Founders Inc
+            <span class="role">SF flagship floor</span>
+          </div>
+        </div>
+      </div></div>
+    <div class="stpf-page" data-density="soft"><div class="page-inner face">
+        <div class="marker"><span class="sec">Event 02 / 03</span>11</div>
+        <div class="case-top">
+          <div class="case-type">Founders Inc &middot; &times;2 &middot; SF flagship</div>
+          <div class="case-name">Founders Inc Demo Day <span class="role">&mdash; where the format started</span></div>
+        </div>
+        <h2 class="case-title">SF&rsquo;s most electric startup event &mdash; <em>on camera.</em></h2>
+        <p class="story"><strong>29 clips</strong> across two Founders Inc events: pitches, demos, <strong>Vesting Live sessions</strong>, and the moments in between. The Founders Inc partnership is where our format started &mdash; a vertical integration of coverage, curation, and deal flow that produced <strong>7.26M views</strong>, <em>the bulk of our quarterly reach.</em></p>
+        <div class="metrics">
+          <div class="m hero"><div class="mv">7.26<span class="u">M</span></div><div class="ml">Total views</div></div>
+          <div class="m"><div class="mv">29</div><div class="ml">Clips</div></div>
+          <div class="m"><div class="mv">~479<span class="u">K</span></div><div class="ml">Interactions</div></div>
+          <div class="m"><div class="mv">2<span class="u">&times;</span></div><div class="ml">Events</div></div>
+        </div>
+      </div></div>
+    <div class="stpf-page" data-density="soft"><div class="page-inner back img-back face">
+        <div class="polaroid tilt-r">
+          <div class="tape"></div>
+          <div class="photo photo-real photo-resid"></div>
+          <div class="caption">
+            The Residency
+            <span class="role">Emerging cohort · demo day</span>
+          </div>
+        </div>
+      </div></div>
+    <div class="stpf-page" data-density="soft"><div class="page-inner face">
+        <div class="marker"><span class="sec">Event 03 / 03</span>12</div>
+        <div class="case-top">
+          <div class="case-type">The Residency Demo Day &middot; emerging cohort</div>
+          <div class="case-name">The Residency <span class="role">&mdash; smaller room, outsized reach</span></div>
+        </div>
+        <h2 class="case-title">Emerging founders, <em>outsized reach.</em></h2>
+        <p class="story"><strong>6 clips</strong> from The Residency&rsquo;s demo day &mdash; an intimate event with a fraction of the footprint, but <strong>310K views</strong>. <em>Proof that reach is a function of storytelling, not stage size.</em> The Residency cohort got SF-investor attention without the SF-investor crowd in the room.</p>
+        <div class="metrics">
+          <div class="m hero"><div class="mv">310<span class="u">K</span></div><div class="ml">Total views</div></div>
+          <div class="m"><div class="mv">6</div><div class="ml">Clips</div></div>
+          <div class="m"><div class="mv">~20<span class="u">K</span></div><div class="ml">Interactions</div></div>
+          <div class="m"><div class="mv">1<span class="u">&times;</span></div><div class="ml">Demo Day</div></div>
+        </div>
+      </div></div>
+    <div class="stpf-page" data-density="soft"><div class="page-inner back img-back face">
+        <div class="polaroid wide tilt-l2">
+          <div class="tape"></div>
+          <div class="photo photo-real photo-vestlive"></div>
+          <div class="caption">
+            Vesting Live
+            <span class="role">From Miami · with Brycent</span>
+          </div>
+        </div>
+      </div></div>
+    <div class="stpf-page" data-density="soft"><div class="page-inner face">
+        <div class="marker"><span class="sec">Vesting Live</span>13</div>
+        <div class="guest-eye">— The weekly online show —</div>
+        <h2 class="guest-title">Guests <em>on-air.</em></h2>
+        <p class="guest-sub">YC founders, Founders Inc residents, Thiel Fellows, VC partners — all in the same chair. No fluff, no PR-speak. Q1 2026 lineup.</p>
+        <div class="roster-head"><span class="lbl">Founders on-air</span><span class="count">Q1 · 28 guests</span></div>
+        <ol class="roster">
+          <li class="roster-item"><span class="roster-num">01</span><div class="roster-mid"><span class="roster-name">Roy Lee</span><span class="roster-dash">—</span><span class="roster-company">Cluely</span></div><span class="roster-tag">a16z</span></li>
+          <li class="roster-item"><span class="roster-num">02</span><div class="roster-mid"><span class="roster-name">Andrew D&rsquo;Souza</span><span class="roster-dash">—</span><span class="roster-company">Boardy</span></div><span class="roster-tag">Creandum</span></li>
+          <li class="roster-item"><span class="roster-num">03</span><div class="roster-mid"><span class="roster-name">Philip Johnston</span><span class="roster-dash">—</span><span class="roster-company">StarCloud</span></div><span class="roster-tag">YC</span></li>
+          <li class="roster-item"><span class="roster-num">04</span><div class="roster-mid"><span class="roster-name">Kian Sadeghi</span><span class="roster-dash">—</span><span class="roster-company">Nucleus</span></div><span class="roster-tag">Thiel</span></li>
+          <li class="roster-item"><span class="roster-num">05</span><div class="roster-mid"><span class="roster-name">Maxwell Maduka</span><span class="roster-dash">—</span><span class="roster-company">Terra Industries</span></div><span class="roster-tag">8VC</span></li>
+          <li class="roster-item"><span class="roster-num">06</span><div class="roster-mid"><span class="roster-name">Skyler Chan</span><span class="roster-dash">—</span><span class="roster-company">GRU Space</span></div><span class="roster-tag">YC</span></li>
+          <li class="roster-item"><span class="roster-num">07</span><div class="roster-mid"><span class="roster-name">Georgia Witchel</span><span class="roster-dash">—</span><span class="roster-company">Mantis</span></div><span class="roster-tag">YC</span></li>
+          <li class="roster-item"><span class="roster-num">08</span><div class="roster-mid"><span class="roster-name">Anicet Nougaret</span><span class="roster-dash">—</span><span class="roster-company">Ariana</span></div><span class="roster-tag">F.Inc</span></li>
+          <li class="roster-item"><span class="roster-num">09</span><div class="roster-mid"><span class="roster-name">Richard Ou</span><span class="roster-dash">—</span><span class="roster-company">Doe</span></div><span class="roster-tag">YC</span></li>
+          <li class="roster-item"><span class="roster-num">10</span><div class="roster-mid"><span class="roster-name">Cathleen Kuo</span><span class="roster-dash">—</span><span class="roster-company">Opalite Health</span></div><span class="roster-tag">YC</span></li>
+          <li class="roster-item"><span class="roster-num">11</span><div class="roster-mid"><span class="roster-name">Atharva &amp; Dhenenjay</span><span class="roster-dash">—</span><span class="roster-company">Axion Orbital</span></div><span class="roster-tag">YC</span></li>
+          <li class="roster-item"><span class="roster-num">12</span><div class="roster-mid"><span class="roster-name">Ethan Gibbs</span><span class="roster-dash">—</span><span class="roster-company">Embedder</span></div><span class="roster-tag">YC</span></li>
+          <li class="roster-item"><span class="roster-num">13</span><div class="roster-mid"><span class="roster-name">Dimittri Choudbury</span><span class="roster-dash">—</span><span class="roster-company">Sonarly</span></div><span class="roster-tag">YC</span></li>
+          <li class="roster-item"><span class="roster-num">14</span><div class="roster-mid"><span class="roster-name">Sanchit &amp; Shubham</span><span class="roster-dash">—</span><span class="roster-company">RunAnywhere</span></div><span class="roster-tag">YC</span></li>
+          <li class="roster-item"><span class="roster-num">15</span><div class="roster-mid"><span class="roster-name">Kamran Majid</span><span class="roster-dash">—</span><span class="roster-company">Constellation</span></div><span class="roster-tag">YC</span></li>
+          <li class="roster-item"><span class="roster-num">16</span><div class="roster-mid"><span class="roster-name">Saksham &amp; Ishan</span><span class="roster-dash">—</span><span class="roster-company">Cardboard</span></div><span class="roster-tag">YC</span></li>
+          <li class="roster-item"><span class="roster-num">17</span><div class="roster-mid"><span class="roster-name">Matthew Chen</span><span class="roster-dash">—</span><span class="roster-company">Laurence</span></div><span class="roster-tag">YC</span></li>
+          <li class="roster-item"><span class="roster-num">18</span><div class="roster-mid"><span class="roster-name">Narayana Aaditya</span><span class="roster-dash">—</span><span class="roster-company">Skillsync</span></div><span class="roster-tag">YC</span></li>
+          <li class="roster-item"><span class="roster-num">19</span><div class="roster-mid"><span class="roster-name">Ai Daniil Bekirov</span><span class="roster-dash">—</span><span class="roster-company">Sparkles</span></div><span class="roster-tag">YC</span></li>
+          <li class="roster-item"><span class="roster-num">20</span><div class="roster-mid"><span class="roster-name">Alex &amp; Matt Le Maitre</span><span class="roster-dash">—</span><span class="roster-company">Seeing Systems</span></div><span class="roster-tag">YC</span></li>
+          <li class="roster-item"><span class="roster-num">21</span><div class="roster-mid"><span class="roster-name">Sam Rogers</span><span class="roster-dash">—</span><span class="roster-company">GrazeMate</span></div><span class="roster-tag">YC</span></li>
+          <li class="roster-item"><span class="roster-num">22</span><div class="roster-mid"><span class="roster-name">Rahul Gudise</span><span class="roster-dash">—</span><span class="roster-company">Gale</span></div><span class="roster-tag">YC</span></li>
+          <li class="roster-item"><span class="roster-num">23</span><div class="roster-mid"><span class="roster-name">Bryan Hong</span><span class="roster-dash">—</span><span class="roster-company">Shofo</span></div><span class="roster-tag">YC</span></li>
+          <li class="roster-item"><span class="roster-num">24</span><div class="roster-mid"><span class="roster-name">Matthew Asir</span><span class="roster-dash">—</span><span class="roster-company">LegalOS</span></div><span class="roster-tag">YC</span></li>
+          <li class="roster-item"><span class="roster-num">25</span><div class="roster-mid"><span class="roster-name">Jibran Hutchins</span><span class="roster-dash">—</span><span class="roster-company">Haladir</span></div><span class="roster-tag">YC</span></li>
+          <li class="roster-item"><span class="roster-num">26</span><div class="roster-mid"><span class="roster-name">Mitch Radhuber</span><span class="roster-dash">—</span><span class="roster-company">CoreLayer</span></div><span class="roster-tag">YC</span></li>
+          <li class="roster-item"><span class="roster-num">27</span><div class="roster-mid"><span class="roster-name">Caleb, Gatik &amp; Gavin</span><span class="roster-dash">—</span><span class="roster-company">Lance</span></div><span class="roster-tag">YC</span></li>
+          <li class="roster-item"><span class="roster-num">28</span><div class="roster-mid"><span class="roster-name">Jia Seed</span><span class="roster-dash">—</span><span class="roster-company">Jam</span></div><span class="roster-tag">Resid.</span></li>
+        </ol>
+        <div class="roster-head"><span class="lbl">VCs on-air</span><span class="count">Q1 · 4 investors</span></div>
+        <ol class="roster roster-vc">
+          <li class="roster-item"><span class="roster-num">01</span><div class="roster-mid"><span class="roster-name">Chris Adamo</span><span class="roster-dash">—</span><span class="roster-company">Flamingo Cap</span></div><span class="roster-tag">Founding Partner</span></li>
+          <li class="roster-item"><span class="roster-num">02</span><div class="roster-mid"><span class="roster-name">Henri PJ</span><span class="roster-dash">—</span><span class="roster-company">Harlem Capital</span></div><span class="roster-tag">Partner</span></li>
+          <li class="roster-item"><span class="roster-num">03</span><div class="roster-mid"><span class="roster-name">Kass &amp; Mike Lazerow</span><span class="roster-dash">—</span><span class="roster-company">Velvet Sea Ventures</span></div><span class="roster-tag">Co-founders</span></li>
+          <li class="roster-item"><span class="roster-num">04</span><div class="roster-mid"><span class="roster-name">Geoffrey Woo</span><span class="roster-dash">—</span><span class="roster-company">Anti Fund</span></div><span class="roster-tag">Managing Partner</span></li>
+        </ol>
+        <div class="roster-foot"><em>More guests booked for Q2 2026.</em></div>
+      </div></div>
+    <div class="stpf-page" data-density="soft"><div class="page-inner back img-back face">
+        <div class="polaroid tilt-r">
+          <div class="tape"></div>
+          <div class="photo photo-real photo-brycent"></div>
+          <div class="caption">
+            Brycent
+            <span class="role">Twitch · @brycent</span>
+          </div>
+        </div>
+      </div></div>
+    <!-- CLOSING CONTENT PAGE -->
+    <div class="stpf-page" data-density="soft"><div class="page-inner closing-face face">
+        <div class="marker">14</div>
+        <div class="bc-mid">
+          <h2 class="bc-headline">ready to be<br><span class="accent">unavoidable?</span></h2>
+          <p class="bc-sub">Posts, carousels, reels, IRL HQ video, long-form, the weekly show, full event coverage — whatever moves your trajectory. We take a handful of clients per quarter. <em>Pitch us.</em></p>
+          <a class="bc-cta" href="#">Pitch us <span class="arrow">→</span></a>
+          <div class="bc-cta-sub">Limited slots · <em>Q2 2026</em> · by application</div>
+          <div class="bc-sig">
+            <svg width="170" height="42" viewBox="0 0 190 54" fill="none" aria-label="Signed, Vesting">
+              <path d="M 8 32 C 14 18, 20 14, 22 26 C 24 34, 20 40, 18 36 C 16 32, 24 26, 32 22 C 38 20, 42 26, 40 30 C 38 34, 32 32, 34 26 C 36 22, 44 22, 48 28 C 50 32, 48 34, 52 32 C 56 30, 58 22, 64 24 C 68 26, 66 34, 60 34 C 58 32, 62 26, 68 24 C 74 24, 76 34, 82 30 C 86 28, 82 22, 86 20 C 90 20, 92 24, 96 30 C 98 34, 100 30, 102 24 C 104 20, 100 14, 104 14 C 108 16, 108 28, 114 30 C 120 32, 124 24, 128 20" stroke="oklch(0.22 0.055 250)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="none" class="sig-path"/>
+              <path d="M 12 42 C 44 44, 74 42, 118 44" stroke="oklch(0.64 0.135 78)" stroke-width="0.9" stroke-linecap="round" fill="none" class="sig-flourish"/>
+            </svg>
+            <span class="meta">— Vesting, Miami</span>
+          </div>
+        </div>
+        <div>
+          <div class="bc-trust">
+            <span class="lbl">Events covered</span>
+            <span><span class="yc-mark">Y</span>Combinator</span>
+            <span class="sep"></span>
+            <span>Founders Inc</span>
+            <span class="sep"></span>
+            <span>The Residency</span>
+            <span class="sep"></span>
+            <span>a16z Speedrun</span>
+          </div>
+          <div class="bc-grid">
+            <div><span class="lbl">Correspondence</span><span class="val">collab@vesting.tv</span></div>
+            <div><span class="lbl">Live show</span><span class="val">twitch.tv/brycent</span></div>
+          </div>
+        </div>
+    </div></div>
+    <!-- PHYSICAL BACK COVER (hard, what shows when book closes) -->
+    <div class="stpf-page stpf-hard" data-density="hard"><div class="page-inner back-cover-face face">
+        <div class="back-cover-deco" aria-hidden="true">
+          <svg viewBox="0 0 520 700" preserveAspectRatio="xMidYMid slice">
+            <defs>
+              <linearGradient id="skygrad" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="oklch(0.78 0.12 230)"/>
+                <stop offset="55%" stop-color="oklch(0.88 0.10 200)"/>
+                <stop offset="100%" stop-color="oklch(0.94 0.08 80)"/>
+              </linearGradient>
+              <radialGradient id="sungrad" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="oklch(0.96 0.18 88)" stop-opacity="1"/>
+                <stop offset="50%" stop-color="oklch(0.84 0.18 78)" stop-opacity="0.6"/>
+                <stop offset="100%" stop-color="oklch(0.84 0.18 78)" stop-opacity="0"/>
+              </radialGradient>
+              <linearGradient id="seagrad" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="oklch(0.74 0.10 220)"/>
+                <stop offset="100%" stop-color="oklch(0.50 0.13 240)"/>
+              </linearGradient>
+              <linearGradient id="sandgrad" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="oklch(0.93 0.07 80)"/>
+                <stop offset="100%" stop-color="oklch(0.80 0.09 72)"/>
+              </linearGradient>
+            </defs>
+
+            <!-- Sky (full height of top portion) -->
+            <rect width="520" height="440" fill="url(#skygrad)"/>
+
+            <!-- Sun glow halo -->
+            <circle cx="370" cy="220" r="120" fill="url(#sungrad)"/>
+            <!-- Sun core -->
+            <circle cx="370" cy="220" r="48" fill="oklch(0.96 0.20 88)"/>
+            <circle cx="370" cy="220" r="36" fill="oklch(0.99 0.16 92)" opacity="0.9"/>
+
+            <!-- Clouds -->
+            <g fill="oklch(1 0 0)" opacity="0.85">
+              <ellipse cx="90"  cy="120" rx="52" ry="13"/>
+              <ellipse cx="115" cy="110" rx="32" ry="10"/>
+              <ellipse cx="65"  cy="115" rx="28" ry="9"/>
+            </g>
+            <g fill="oklch(1 0 0)" opacity="0.78">
+              <ellipse cx="240" cy="80"  rx="58" ry="11"/>
+              <ellipse cx="266" cy="70"  rx="34" ry="9"/>
+            </g>
+            <g fill="oklch(1 0 0)" opacity="0.72">
+              <ellipse cx="460" cy="140" rx="44" ry="9"/>
+              <ellipse cx="438" cy="132" rx="24" ry="7"/>
+            </g>
+            <g fill="oklch(1 0 0)" opacity="0.6">
+              <ellipse cx="180" cy="180" rx="28" ry="6"/>
+            </g>
+
+            <!-- Seabirds, scattered -->
+            <g fill="none" stroke="oklch(0.30 0.04 240)" stroke-width="1.2" stroke-linecap="round" opacity="0.7">
+              <path d="M 130 170 q 4 -4 8 0 q 4 -4 8 0"/>
+              <path d="M 270 200 q 3.5 -3.5 7 0 q 3.5 -3.5 7 0"/>
+              <path d="M 320 150 q 3 -3 6 0 q 3 -3 6 0"/>
+              <path d="M 460 220 q 3 -3 6 0 q 3 -3 6 0"/>
+            </g>
+
+            <!-- Ocean -->
+            <rect x="0" y="440" width="520" height="100" fill="url(#seagrad)"/>
+            <!-- Wave lines -->
+            <g stroke="oklch(0.92 0.06 220)" stroke-width="1.1" fill="none" opacity="0.55">
+              <path d="M 0 460 Q 60 458 130 460 T 260 460 T 390 460 T 520 460"/>
+              <path d="M 0 478 Q 80 476 160 478 T 320 478 T 480 478 T 520 478"/>
+              <path d="M 0 500 Q 100 498 200 500 T 400 500 T 520 500"/>
+              <path d="M 0 522 Q 70 520 140 522 T 280 522 T 420 522 T 520 522"/>
+            </g>
+
+            <!-- Sun reflection on water — vertical shimmer column -->
+            <g opacity="0.6">
+              <ellipse cx="370" cy="450" rx="44" ry="3" fill="oklch(0.96 0.18 88)"/>
+              <ellipse cx="370" cy="468" rx="36" ry="2.5" fill="oklch(0.94 0.16 85)"/>
+              <ellipse cx="370" cy="488" rx="28" ry="2" fill="oklch(0.92 0.14 82)"/>
+              <ellipse cx="370" cy="508" rx="20" ry="1.5" fill="oklch(0.90 0.12 80)"/>
+            </g>
+
+            <!-- Wet-sand reflection line -->
+            <path d="M 0 540 L 520 540" stroke="oklch(0.84 0.08 220)" stroke-width="1.5" opacity="0.7"/>
+
+            <!-- Sand foreground -->
+            <rect x="0" y="540" width="520" height="160" fill="url(#sandgrad)"/>
+
+            <!-- Sand grain -->
+            <g fill="oklch(0.58 0.10 60)" opacity="0.35">
+              <circle cx="40"  cy="566" r="1.0"/>
+              <circle cx="78"  cy="580" r="0.8"/>
+              <circle cx="120" cy="555" r="1.1"/>
+              <circle cx="166" cy="588" r="0.9"/>
+              <circle cx="210" cy="568" r="1.0"/>
+              <circle cx="252" cy="592" r="0.8"/>
+              <circle cx="295" cy="574" r="1.1"/>
+              <circle cx="340" cy="556" r="0.9"/>
+              <circle cx="382" cy="586" r="1.0"/>
+              <circle cx="426" cy="568" r="0.8"/>
+              <circle cx="468" cy="594" r="1.1"/>
+              <circle cx="22"  cy="612" r="0.8"/>
+              <circle cx="92"  cy="626" r="1.0"/>
+              <circle cx="180" cy="618" r="0.9"/>
+              <circle cx="266" cy="630" r="0.8"/>
+              <circle cx="358" cy="616" r="1.1"/>
+              <circle cx="442" cy="632" r="0.9"/>
+              <circle cx="498" cy="618" r="1.0"/>
+              <circle cx="60"  cy="650" r="0.8"/>
+              <circle cx="140" cy="662" r="1.0"/>
+              <circle cx="230" cy="654" r="0.9"/>
+              <circle cx="318" cy="664" r="0.8"/>
+              <circle cx="402" cy="652" r="1.1"/>
+              <circle cx="480" cy="662" r="0.9"/>
+            </g>
+
+            <!-- Palm fronds drooping from upper corners -->
+            <g fill="none" stroke="oklch(0.28 0.07 145)" stroke-width="1.6" stroke-linecap="round">
+              <path d="M -6 30 Q 36 50 78 88" opacity="0.9"/>
+              <path d="M -2 36 Q 18 42 40 36 M 20 44 Q 38 52 52 50 M 32 56 Q 50 68 64 70 M 46 72 Q 60 82 78 88" opacity="0.78"/>
+              <path d="M 0 28 Q 24 34 44 28" opacity="0.7"/>
+            </g>
+            <g fill="none" stroke="oklch(0.28 0.07 145)" stroke-width="1.4" stroke-linecap="round">
+              <path d="M 526 24 Q 494 50 460 90" opacity="0.78"/>
+              <path d="M 524 30 Q 504 38 484 30 M 506 40 Q 488 50 472 48 M 494 56 Q 476 68 462 70 M 478 74 Q 466 84 460 90" opacity="0.7"/>
+            </g>
+          </svg>
+        </div>
+        <div class="back-cover-quote">
+          <h2 class="bc-final">Build like the world is<br><span class="accent">watching.</span></h2>
+          <div class="bc-final-mark">— Vesting</div>
+        </div>
+    </div></div>
+  </div>
+</div>
+<div class="controls">
+  <button class="ctrl-btn" id="prevBtn" disabled>&larr; Prev</button>
+  <span class="page-indicator" id="indicator"><span class="pg">01</span>Cover</span>
+  <button class="ctrl-btn" id="nextBtn">Next &rarr;</button>
+</div>
+<div class="instruction">Click the right half to advance &middot; <kbd>&larr;</kbd> <kbd>&rarr;</kbd> also work<button id="soundToggle" class="snd-btn">&#9834; sound on</button></div>
+<script src="https://cdn.jsdelivr.net/npm/page-flip@2.0.7/dist/js/page-flip.browser.js"></script>
+<script>
+window.addEventListener('load', function() {
+  if (typeof St === 'undefined' || !St.PageFlip) {
+    console.error('StPageFlip failed to load from CDN');
+    const bookEl = document.getElementById('book');
+    if (bookEl) {
+      bookEl.style.maxWidth = '520px';
+      bookEl.style.margin = '0 auto';
+      bookEl.innerHTML = '<div style="padding:40px;text-align:center;font-family:sans-serif;color:#666;">Catalog viewer failed to load. Please check your connection and refresh.</div>';
+    }
+    return;
+  }
+
+  const bookEl = document.getElementById('book');
+  if (!bookEl) return;
+
+  const W = 520;
+  const H = 700;
+
+  const pageEls = Array.from(bookEl.querySelectorAll('.stpf-page'));
+
+  const pageFlip = new St.PageFlip(bookEl, {
+    width: W,
+    height: H,
+    size: 'stretch',
+    minWidth: 600,
+    maxWidth: 1100,
+    minHeight: 420,
+    maxHeight: 1350,
+    drawShadow: true,
+    flippingTime: 900,
+    usePortrait: false,
+    startZIndex: 0,
+    autoSize: true,
+    maxShadowOpacity: 0.5,
+    showCover: true,
+    mobileScrollSupport: false,
+    swipeDistance: 30,
+    showPageCorners: true,
+    disableFlipByClick: false,
+  });
+
+  pageFlip.loadFromHTML(pageEls);
+
+  // After init, hide the original raw pages — the library renders its own clones.
+  // We override the temporary visibility CSS that prevented the vertical-stack flash.
+  pageEls.forEach(el => { el.style.display = 'none'; });
+  bookEl.style.overflow = 'visible';
+  bookEl.style.width = 'auto';
+  bookEl.style.height = 'auto';
+
+  // ── Indicator + button hookup ──
+  const labels = [
+    'Cover', 'New Startup Media',
+    'Menu', 'Receipts',
+    'Numbers', 'Tarun & team',
+    'Zaranna AI', 'Rounak',
+    'ProjectX', 'Lance team',
+    'Lance', 'Luci',
+    'Veritas', 'Isa & Tony',
+    'Zolvo', 'Rayan & Maadhav',
+    'Enjamb Labs', 'YC floor',
+    'YC Demo Day', 'Founders Inc',
+    'Founders Inc', 'The Residency',
+    'The Residency', 'Vesting Live',
+    'Vesting Live', 'Brycent',
+    'Closing',
+    'Back cover'
+  ];
+  const indicator = document.getElementById('indicator');
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+
+  function updateUI() {
+    const idx = pageFlip.getCurrentPageIndex();
+    const total = pageFlip.getPageCount();
+    const name = labels[idx] || ('Page ' + (idx + 1));
+    const pg = String(idx + 1).padStart(2, '0');
+    if (indicator) indicator.innerHTML = '<span class="pg">' + pg + '</span>' + name;
+    if (prevBtn) prevBtn.disabled = idx <= 0;
+    if (nextBtn) nextBtn.disabled = idx >= total - 1;
+  }
+  pageFlip.on('flip', updateUI);
+  pageFlip.on('init', updateUI);
+
+  if (prevBtn) prevBtn.addEventListener('click', () => pageFlip.flipPrev());
+  if (nextBtn) nextBtn.addEventListener('click', () => pageFlip.flipNext());
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); pageFlip.flipNext(); }
+    if (e.key === 'ArrowLeft')  { e.preventDefault(); pageFlip.flipPrev(); }
+  });
+
+  // ── Procedural page-flip sound (Web Audio) ──
+  let audioCtx = null;
+  let soundEnabled = true;
+  function ensureAudio() {
+    if (!audioCtx) {
+      try { audioCtx = new (window.AudioContext || window.webkitAudioContext)(); }
+      catch (e) { audioCtx = null; }
+    }
+    if (audioCtx && audioCtx.state === 'suspended') audioCtx.resume();
+    return audioCtx;
+  }
+  function playFlipSound() {
+    if (!soundEnabled) return;
+    const ctx = ensureAudio();
+    if (!ctx) return;
+    const now = ctx.currentTime;
+    const duration = 0.55;
+    const len = Math.floor(ctx.sampleRate * duration);
+    const buf = ctx.createBuffer(1, len, ctx.sampleRate);
+    const d = buf.getChannelData(0);
+    let last = 0;
+    for (let i = 0; i < len; i++) {
+      const white = Math.random() * 2 - 1;
+      last = (last + 0.02 * white) / 1.02;
+      d[i] = last * 3.5;
+    }
+    const noise = ctx.createBufferSource();
+    noise.buffer = buf;
+    const hp = ctx.createBiquadFilter();
+    hp.type = 'highpass';
+    hp.frequency.value = 240;
+    const bp = ctx.createBiquadFilter();
+    bp.type = 'bandpass';
+    const startFreq = 900 + (Math.random() - 0.5) * 250;
+    bp.frequency.setValueAtTime(startFreq, now);
+    bp.frequency.exponentialRampToValueAtTime(380, now + duration);
+    bp.Q.value = 0.5;
+    const lp = ctx.createBiquadFilter();
+    lp.type = 'lowpass';
+    lp.frequency.value = 2400;
+    const env = ctx.createGain();
+    const peak = 0.038 + (Math.random() - 0.5) * 0.008;
+    env.gain.setValueAtTime(0, now);
+    env.gain.linearRampToValueAtTime(peak, now + 0.07);
+    env.gain.exponentialRampToValueAtTime(0.001, now + duration);
+    noise.connect(hp); hp.connect(bp); bp.connect(lp); lp.connect(env); env.connect(ctx.destination);
+    noise.start(now);
+    noise.stop(now + duration);
+  }
+  // Play sound on each flip (StPageFlip changeState emits 'flipping')
+  let lastState = null;
+  pageFlip.on('changeState', (e) => {
+    if (e.data === 'flipping' && lastState !== 'flipping') playFlipSound();
+    lastState = e.data;
+  });
+
+  const soundBtn = document.getElementById('soundToggle');
+  if (soundBtn) {
+    soundBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      soundEnabled = !soundEnabled;
+      soundBtn.innerHTML = soundEnabled ? '♪ sound on' : '♪ sound off';
+      soundBtn.classList.toggle('muted', !soundEnabled);
+      if (soundEnabled) ensureAudio();
+    });
+  }
+});
+</script>
+</body>
+</html>
