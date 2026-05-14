@@ -1164,6 +1164,13 @@ body.has-flipped .instruction-copy { opacity: 0; transform: translateY(-3px); po
   .polaroid .caption { font-size: 18px; bottom: 11px; }
   .polaroid .caption .role { font-size: 6.5px; margin-top: 4px; }
 }
+@media (max-height: 920px) and (min-width: 761px) {
+  .stage {
+    transform: scale(0.92);
+    transform-origin: top center;
+    margin-bottom: -56px;
+  }
+}
 @media (max-width: 760px) {
   /* Single-page mode on phones — hide the left page, show only right */
   .catalog { width: 360px; height: 500px; }
