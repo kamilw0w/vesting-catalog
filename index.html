@@ -2804,7 +2804,7 @@ window.addEventListener('load', function() {
   if (prevBtn) prevBtn.addEventListener('click', () => pageFlip.flipPrev());
   if (nextBtn) nextBtn.addEventListener('click', () => pageFlip.flipNext());
   if (bookmarkRail) {
-    ['pointerdown', 'mousedown', 'touchstart', 'click'].forEach(type => {
+    ['pointerdown', 'mousedown', 'touchstart'].forEach(type => {
       bookmarkRail.addEventListener(type, (e) => e.stopPropagation(), { capture: true });
     });
   }
