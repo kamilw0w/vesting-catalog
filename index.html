@@ -2982,12 +2982,12 @@ window.addEventListener('load', function() {
   pageFlip.on('flip', updateUI);
   pageFlip.on('init', updateUI);
 
-  function hideBookmarksDuringJump() {
+  function hideBookmarksDuringJump(duration = 450) {
     document.body.classList.add('bookmark-jumping');
     window.clearTimeout(bookmarkJumpTimer);
     bookmarkJumpTimer = window.setTimeout(() => {
       document.body.classList.remove('bookmark-jumping');
-    }, 1800);
+    }, duration);
   }
   function hideBookmarksIfClosing() {
     const idx = pageFlip.getCurrentPageIndex();
@@ -3000,9 +3000,6 @@ window.addEventListener('load', function() {
   }
   if (prevBtn) prevBtn.addEventListener('click', () => pageFlip.flipPrev());
   if (nextBtn) nextBtn.addEventListener('click', flipNext);
-  bookmarkBtns.forEach(btn => {
-    btn.addEventListener('pointerdown', hideBookmarksDuringJump);
-  });
   ['pointerdown', 'mousedown', 'touchstart'].forEach(type => {
     document.addEventListener(type, (e) => {
       if (e.target.closest && e.target.closest('.clothesline-wall .clip')) {
@@ -3020,9 +3017,6 @@ window.addEventListener('load', function() {
     btn.addEventListener('click', (e) => {
       e.preventDefault();
       e.stopPropagation();
-      if (btn.classList.contains('bookmark-tab')) {
-        hideBookmarksDuringJump();
-      }
       const page = Number(btn.dataset.page || 0);
       if (typeof pageFlip.turnToPage === 'function') {
         pageFlip.turnToPage(page);
