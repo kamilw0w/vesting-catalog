@@ -2771,7 +2771,6 @@ window.addEventListener('load', function() {
   const indicator = document.getElementById('indicator');
   const prevBtn = document.getElementById('prevBtn');
   const nextBtn = document.getElementById('nextBtn');
-  const bookmarkRail = document.querySelector('.chapter-bookmarks');
   const chapterBtns = Array.from(document.querySelectorAll('.chapter-jump'));
   const chapterRanges = {
     cover: { start: 0, end: 2 },
@@ -2803,15 +2802,7 @@ window.addEventListener('load', function() {
 
   if (prevBtn) prevBtn.addEventListener('click', () => pageFlip.flipPrev());
   if (nextBtn) nextBtn.addEventListener('click', () => pageFlip.flipNext());
-  if (bookmarkRail) {
-    ['pointerdown', 'mousedown', 'touchstart'].forEach(type => {
-      bookmarkRail.addEventListener(type, (e) => e.stopPropagation(), { capture: true });
-    });
-  }
   chapterBtns.forEach(btn => {
-    ['pointerdown', 'mousedown', 'touchstart'].forEach(type => {
-      btn.addEventListener(type, (e) => e.stopPropagation(), { capture: true });
-    });
     btn.addEventListener('click', (e) => {
       e.preventDefault();
       e.stopPropagation();
