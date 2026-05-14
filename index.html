@@ -1390,6 +1390,10 @@ body.has-flipped .instruction-copy { opacity: 0; transform: translateY(-3px); po
 .clip {
   position: relative;
   width: 38px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  font: inherit;
   transform: rotate(var(--rot, 0deg));
   transform-origin: 50% 2px;
   margin-top: var(--drop, 0px);
@@ -1400,6 +1404,39 @@ body.has-flipped .instruction-copy { opacity: 0; transform: translateY(-3px); po
   cursor: pointer;
   animation: clipDangle var(--dur, 4.8s) ease-in-out var(--delay, 0s) infinite;
   will-change: transform;
+}
+.clip-pending {
+  cursor: default;
+}
+.clip-wall-founders {
+  margin-top: 4px;
+  gap: 9px;
+}
+.clip-wall-founders .clothesline {
+  height: 54px;
+}
+.clip-wall-founders .clip {
+  width: 30px;
+}
+.clip-wall-founders .clip .peg {
+  width: 4px;
+  height: 7px;
+}
+.clip-wall-founders .clips-row {
+  padding: 0 1px;
+}
+.clip-wall-residency {
+  margin: 10px 0 16px;
+  gap: 18px;
+}
+.clip-wall-residency .clothesline {
+  height: 120px;
+}
+.clip-wall-residency .clip {
+  width: 62px;
+}
+.clip-wall-residency .clips-row {
+  padding: 0 18px;
 }
 .clip::before {
   content: '';
@@ -2583,11 +2620,56 @@ img.event-mark {
         <div class="marker"><span class="sec">Event 02 / 03</span>11</div>
         <div class="case-top">
           <div class="case-type">Founders Inc &middot; &times;2 &middot; SF flagship</div>
-          <div class="case-name">Founders Inc Demo Day <span class="role">&mdash; where the format started</span></div>
+        <div class="case-name">Founders Inc Demo Day <span class="role">&mdash; where the format started</span></div>
+      </div>
+      <h2 class="case-title">SF&rsquo;s most electric startup event &mdash; <em>on camera.</em></h2>
+      <p class="story"><strong>29 clips</strong> across two Founders Inc events: pitches, demos, <strong>Vesting Live sessions</strong>, and the moments in between. The Founders Inc partnership is where our format started &mdash; a vertical integration of coverage, curation, and deal flow that produced <strong>7.26M views</strong>, <em>the bulk of our quarterly reach.</em></p>
+      <div class="clothesline-wall clip-wall-founders">
+        <div class="clothesline">
+          <svg class="line" viewBox="0 0 432 14" preserveAspectRatio="none" aria-hidden="true"><path d="M 2 3 Q 216 11 430 3" fill="none" stroke="oklch(0.32 0.045 60 / 0.55)" stroke-width="0.9" stroke-linecap="round"/></svg>
+          <div class="clips-row">
+            <button class="clip clip-pending" type="button" aria-label="Founders Inc clip 2 link coming soon" style="--rot:-2.8deg;--drop:0px;--delay:-0s;--dur:4.7s;--sway:1.2deg;--bob:2px;"><span class="peg"></span><img src="assets/f2.png" alt=""></button>
+            <button class="clip clip-pending" type="button" aria-label="Founders Inc clip 3 link coming soon" style="--rot:1.9deg;--drop:1px;--delay:-0.42s;--dur:4.86s;--sway:-1.1deg;--bob:3px;"><span class="peg"></span><img src="assets/f3.png" alt=""></button>
+            <button class="clip clip-pending" type="button" aria-label="Founders Inc clip 4 link coming soon" style="--rot:-1.4deg;--drop:2px;--delay:-0.84s;--dur:5.02s;--sway:1.4deg;--bob:2px;"><span class="peg"></span><img src="assets/f4.png" alt=""></button>
+            <button class="clip clip-pending" type="button" aria-label="Founders Inc clip 5 link coming soon" style="--rot:2.7deg;--drop:3px;--delay:-1.26s;--dur:5.18s;--sway:-1.3deg;--bob:3px;"><span class="peg"></span><img src="assets/f5.png" alt=""></button>
+            <button class="clip clip-pending" type="button" aria-label="Founders Inc clip 6 link coming soon" style="--rot:-2.1deg;--drop:0px;--delay:-1.68s;--dur:5.34s;--sway:1.0deg;--bob:2px;"><span class="peg"></span><img src="assets/f6.png" alt=""></button>
+            <button class="clip clip-pending" type="button" aria-label="Founders Inc clip 7 link coming soon" style="--rot:1.5deg;--drop:1px;--delay:-2.1s;--dur:4.7s;--sway:1.2deg;--bob:3px;"><span class="peg"></span><img src="assets/f7.png" alt=""></button>
+            <button class="clip clip-pending" type="button" aria-label="Founders Inc clip 8 link coming soon" style="--rot:-3.0deg;--drop:2px;--delay:-2.52s;--dur:4.86s;--sway:-1.1deg;--bob:2px;"><span class="peg"></span><img src="assets/f8.png" alt=""></button>
+            <button class="clip clip-pending" type="button" aria-label="Founders Inc clip 9 link coming soon" style="--rot:2.2deg;--drop:3px;--delay:-0s;--dur:5.02s;--sway:1.4deg;--bob:3px;"><span class="peg"></span><img src="assets/f9.png" alt=""></button>
+            <button class="clip clip-pending" type="button" aria-label="Founders Inc clip 10 link coming soon" style="--rot:-1.7deg;--drop:0px;--delay:-0.42s;--dur:5.18s;--sway:-1.3deg;--bob:2px;"><span class="peg"></span><img src="assets/f10.png" alt=""></button>
+            <button class="clip clip-pending" type="button" aria-label="Founders Inc clip 11 link coming soon" style="--rot:2.8deg;--drop:1px;--delay:-0.84s;--dur:5.34s;--sway:1.0deg;--bob:3px;"><span class="peg"></span><img src="assets/f11.png" alt=""></button>
+          </div>
         </div>
-        <h2 class="case-title">SF&rsquo;s most electric startup event &mdash; <em>on camera.</em></h2>
-        <p class="story"><strong>29 clips</strong> across two Founders Inc events: pitches, demos, <strong>Vesting Live sessions</strong>, and the moments in between. The Founders Inc partnership is where our format started &mdash; a vertical integration of coverage, curation, and deal flow that produced <strong>7.26M views</strong>, <em>the bulk of our quarterly reach.</em></p>
-        <div class="metrics">
+        <div class="clothesline">
+          <svg class="line" viewBox="0 0 432 14" preserveAspectRatio="none" aria-hidden="true"><path d="M 2 3 Q 216 11 430 3" fill="none" stroke="oklch(0.32 0.045 60 / 0.55)" stroke-width="0.9" stroke-linecap="round"/></svg>
+          <div class="clips-row">
+            <button class="clip clip-pending" type="button" aria-label="Founders Inc clip 12 link coming soon" style="--rot:-2.8deg;--drop:2px;--delay:-1.26s;--dur:4.7s;--sway:1.2deg;--bob:2px;"><span class="peg"></span><img src="assets/f12.png" alt=""></button>
+            <button class="clip clip-pending" type="button" aria-label="Founders Inc clip 13 link coming soon" style="--rot:1.9deg;--drop:3px;--delay:-1.68s;--dur:4.86s;--sway:-1.1deg;--bob:3px;"><span class="peg"></span><img src="assets/f13.png" alt=""></button>
+            <button class="clip clip-pending" type="button" aria-label="Founders Inc clip 14 link coming soon" style="--rot:-1.4deg;--drop:0px;--delay:-2.1s;--dur:5.02s;--sway:1.4deg;--bob:2px;"><span class="peg"></span><img src="assets/f14.png" alt=""></button>
+            <button class="clip clip-pending" type="button" aria-label="Founders Inc clip 15 link coming soon" style="--rot:2.7deg;--drop:1px;--delay:-2.52s;--dur:5.18s;--sway:-1.3deg;--bob:3px;"><span class="peg"></span><img src="assets/f15.png" alt=""></button>
+            <button class="clip clip-pending" type="button" aria-label="Founders Inc clip 16 link coming soon" style="--rot:-2.1deg;--drop:2px;--delay:-0s;--dur:5.34s;--sway:1.0deg;--bob:2px;"><span class="peg"></span><img src="assets/f16.png" alt=""></button>
+            <button class="clip clip-pending" type="button" aria-label="Founders Inc clip 17 link coming soon" style="--rot:1.5deg;--drop:3px;--delay:-0.42s;--dur:4.7s;--sway:1.2deg;--bob:3px;"><span class="peg"></span><img src="assets/f17.png" alt=""></button>
+            <button class="clip clip-pending" type="button" aria-label="Founders Inc clip 18 link coming soon" style="--rot:-3.0deg;--drop:0px;--delay:-0.84s;--dur:4.86s;--sway:-1.1deg;--bob:2px;"><span class="peg"></span><img src="assets/f18.png" alt=""></button>
+            <button class="clip clip-pending" type="button" aria-label="Founders Inc clip 19 link coming soon" style="--rot:2.2deg;--drop:1px;--delay:-1.26s;--dur:5.02s;--sway:1.4deg;--bob:3px;"><span class="peg"></span><img src="assets/f19.png" alt=""></button>
+            <button class="clip clip-pending" type="button" aria-label="Founders Inc clip 20 link coming soon" style="--rot:-1.7deg;--drop:2px;--delay:-1.68s;--dur:5.18s;--sway:-1.3deg;--bob:2px;"><span class="peg"></span><img src="assets/f20.png" alt=""></button>
+            <button class="clip clip-pending" type="button" aria-label="Founders Inc clip 21 link coming soon" style="--rot:2.8deg;--drop:3px;--delay:-2.1s;--dur:5.34s;--sway:1.0deg;--bob:3px;"><span class="peg"></span><img src="assets/f21.png" alt=""></button>
+          </div>
+        </div>
+        <div class="clothesline">
+          <svg class="line" viewBox="0 0 432 14" preserveAspectRatio="none" aria-hidden="true"><path d="M 2 3 Q 216 11 430 3" fill="none" stroke="oklch(0.32 0.045 60 / 0.55)" stroke-width="0.9" stroke-linecap="round"/></svg>
+          <div class="clips-row">
+            <button class="clip clip-pending" type="button" aria-label="Founders Inc clip 22 link coming soon" style="--rot:-2.8deg;--drop:0px;--delay:-2.52s;--dur:4.7s;--sway:1.2deg;--bob:2px;"><span class="peg"></span><img src="assets/f22.png" alt=""></button>
+            <button class="clip clip-pending" type="button" aria-label="Founders Inc clip 23 link coming soon" style="--rot:1.9deg;--drop:1px;--delay:-0s;--dur:4.86s;--sway:-1.1deg;--bob:3px;"><span class="peg"></span><img src="assets/f23.png" alt=""></button>
+            <button class="clip clip-pending" type="button" aria-label="Founders Inc clip 24 link coming soon" style="--rot:-1.4deg;--drop:2px;--delay:-0.42s;--dur:5.02s;--sway:1.4deg;--bob:2px;"><span class="peg"></span><img src="assets/f24.png" alt=""></button>
+            <button class="clip clip-pending" type="button" aria-label="Founders Inc clip 25 link coming soon" style="--rot:2.7deg;--drop:3px;--delay:-0.84s;--dur:5.18s;--sway:-1.3deg;--bob:3px;"><span class="peg"></span><img src="assets/f25.png" alt=""></button>
+            <button class="clip clip-pending" type="button" aria-label="Founders Inc clip 26 link coming soon" style="--rot:-2.1deg;--drop:0px;--delay:-1.26s;--dur:5.34s;--sway:1.0deg;--bob:2px;"><span class="peg"></span><img src="assets/f26.png" alt=""></button>
+            <button class="clip clip-pending" type="button" aria-label="Founders Inc clip 27 link coming soon" style="--rot:1.5deg;--drop:1px;--delay:-1.68s;--dur:4.7s;--sway:1.2deg;--bob:3px;"><span class="peg"></span><img src="assets/f27.png" alt=""></button>
+            <button class="clip clip-pending" type="button" aria-label="Founders Inc clip 28 link coming soon" style="--rot:-3.0deg;--drop:2px;--delay:-2.1s;--dur:4.86s;--sway:-1.1deg;--bob:2px;"><span class="peg"></span><img src="assets/f28.png" alt=""></button>
+            <button class="clip clip-pending" type="button" aria-label="Founders Inc clip 29 link coming soon" style="--rot:2.2deg;--drop:3px;--delay:-2.52s;--dur:5.02s;--sway:1.4deg;--bob:3px;"><span class="peg"></span><img src="assets/f29.png" alt=""></button>
+          </div>
+        </div>
+      </div>
+      <div class="metrics">
           <div class="m hero"><div class="mv">7.26<span class="u">M</span></div><div class="ml">Total views</div></div>
           <div class="m"><div class="mv">29</div><div class="ml">Clips</div></div>
           <div class="m"><div class="mv">~479<span class="u">K</span></div><div class="ml">Interactions</div></div>
@@ -2608,11 +2690,24 @@ img.event-mark {
         <div class="marker"><span class="sec">Event 03 / 03</span>12</div>
         <div class="case-top">
           <div class="case-type">The Residency Demo Day &middot; emerging cohort</div>
-          <div class="case-name">The Residency <span class="role">&mdash; smaller room, outsized reach</span></div>
+      <div class="case-name">The Residency <span class="role">&mdash; smaller room, outsized reach</span></div>
+    </div>
+    <h2 class="case-title">Emerging founders, <em>outsized reach.</em></h2>
+    <p class="story"><strong>6 clips</strong> from The Residency&rsquo;s demo day &mdash; an intimate event with a fraction of the footprint, but <strong>310K views</strong>. <em>Proof that reach is a function of storytelling, not stage size.</em> The Residency cohort got SF-investor attention without the SF-investor crowd in the room.</p>
+    <div class="clothesline-wall clip-wall-residency">
+      <div class="clothesline">
+        <svg class="line" viewBox="0 0 432 14" preserveAspectRatio="none" aria-hidden="true"><path d="M 2 3 Q 216 11 430 3" fill="none" stroke="oklch(0.32 0.045 60 / 0.55)" stroke-width="0.9" stroke-linecap="round"/></svg>
+        <div class="clips-row">
+          <button class="clip clip-pending" type="button" aria-label="The Residency clip 1 link coming soon" style="--rot:-3.0deg;--drop:0px;--delay:-0s;--dur:4.8s;--sway:1.3deg;--bob:3px;"><span class="peg"></span><img src="assets/tr1.png" alt=""></button>
+          <button class="clip clip-pending" type="button" aria-label="The Residency clip 2 link coming soon" style="--rot:2.1deg;--drop:4px;--delay:-0.55s;--dur:5.02s;--sway:-1.2deg;--bob:4px;"><span class="peg"></span><img src="assets/tr2.png" alt=""></button>
+          <button class="clip clip-pending" type="button" aria-label="The Residency clip 3 link coming soon" style="--rot:-1.5deg;--drop:1px;--delay:-1.1s;--dur:5.24s;--sway:1.4deg;--bob:3px;"><span class="peg"></span><img src="assets/tr3.png" alt=""></button>
+          <button class="clip clip-pending" type="button" aria-label="The Residency clip 4 link coming soon" style="--rot:2.8deg;--drop:3px;--delay:-1.65s;--dur:4.8s;--sway:-1.1deg;--bob:4px;"><span class="peg"></span><img src="assets/tr4.png" alt=""></button>
+          <button class="clip clip-pending" type="button" aria-label="The Residency clip 5 link coming soon" style="--rot:-2.2deg;--drop:2px;--delay:-2.2s;--dur:5.02s;--sway:1.2deg;--bob:3px;"><span class="peg"></span><img src="assets/tr5.png" alt=""></button>
+          <button class="clip clip-pending" type="button" aria-label="The Residency clip 6 link coming soon" style="--rot:1.8deg;--drop:0px;--delay:-2.75s;--dur:5.24s;--sway:-1.3deg;--bob:4px;"><span class="peg"></span><img src="assets/tr6.png" alt=""></button>
         </div>
-        <h2 class="case-title">Emerging founders, <em>outsized reach.</em></h2>
-        <p class="story"><strong>6 clips</strong> from The Residency&rsquo;s demo day &mdash; an intimate event with a fraction of the footprint, but <strong>310K views</strong>. <em>Proof that reach is a function of storytelling, not stage size.</em> The Residency cohort got SF-investor attention without the SF-investor crowd in the room.</p>
-        <div class="metrics">
+      </div>
+    </div>
+    <div class="metrics">
           <div class="m hero"><div class="mv">310<span class="u">K</span></div><div class="ml">Total views</div></div>
           <div class="m"><div class="mv">6</div><div class="ml">Clips</div></div>
           <div class="m"><div class="mv">~20<span class="u">K</span></div><div class="ml">Interactions</div></div>
