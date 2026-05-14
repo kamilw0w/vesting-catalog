@@ -2951,6 +2951,7 @@ window.addEventListener('load', function() {
   const nextBtn = document.getElementById('nextBtn');
   const chapterBtns = Array.from(document.querySelectorAll('.chapter-jump'));
   const bookmarkBtns = Array.from(document.querySelectorAll('.bookmark-tab'));
+  const clipLinks = Array.from(document.querySelectorAll('.clothesline-wall .clip'));
   let bookmarkJumpTimer = null;
   const chapterRanges = {
     cover: { start: 0, end: 2 },
@@ -3001,6 +3002,18 @@ window.addEventListener('load', function() {
   if (nextBtn) nextBtn.addEventListener('click', flipNext);
   bookmarkBtns.forEach(btn => {
     btn.addEventListener('pointerdown', hideBookmarksDuringJump);
+  });
+  ['pointerdown', 'mousedown', 'touchstart'].forEach(type => {
+    document.addEventListener(type, (e) => {
+      if (e.target.closest && e.target.closest('.clothesline-wall .clip')) {
+        e.stopPropagation();
+      }
+    }, true);
+  });
+  clipLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.stopPropagation();
+    }, true);
   });
   bookEl.addEventListener('pointerdown', hideBookmarksIfClosing);
   chapterBtns.forEach(btn => {
