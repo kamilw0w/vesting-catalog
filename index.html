@@ -981,17 +981,19 @@ body::before {
   opacity: 0;
   transform: translateX(-8px);
   pointer-events: none;
-  transition: opacity 0.35s ease, transform 0.35s ease;
+  transition: opacity 0.14s ease, transform 0.14s ease;
 }
 body.has-flipped .chapter-bookmarks {
   opacity: 1;
   transform: translateX(0);
   pointer-events: auto;
+  transition: opacity 0.30s ease, transform 0.30s ease;
 }
 body.on-back-cover .chapter-bookmarks {
   opacity: 0;
   transform: translateX(-8px);
   pointer-events: none;
+  transition: opacity 0.07s ease, transform 0.07s ease;
 }
 .bookmark-tab {
   position: relative;
@@ -1827,6 +1829,120 @@ img.event-mark {
 .page-inner:has(.case-post-triangle) .metrics {
   margin-top: 32px;
 }
+.case-post-triangle.px-story {
+  display: grid;
+  grid-template-columns: 0.74fr 28px 1.36fr;
+  align-items: center;
+  gap: 12px;
+  height: 236px;
+  margin: auto 0 4px;
+  padding: 0;
+}
+.px-clip,
+.px-proof-card {
+  position: relative;
+  background: oklch(0.985 0.010 84);
+  border: 1px solid oklch(0.78 0.025 76 / 0.48);
+  box-shadow:
+    0 8px 18px oklch(0.30 0.04 70 / 0.12),
+    inset 0 1px 0 oklch(1 0 0 / 0.58);
+}
+.px-clip {
+  height: 100%;
+  overflow: hidden;
+}
+.px-clip::after,
+.px-proof-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  box-shadow: inset 0 0 0 1px oklch(1 0 0 / 0.26);
+}
+.px-clip img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 34% center;
+  display: block;
+}
+.px-chain {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+}
+.px-chain::before,
+.px-chain::after {
+  content: '';
+  width: 1px;
+  flex: 1 1 0;
+  background: linear-gradient(180deg, transparent, var(--accent), transparent);
+  opacity: 0.75;
+}
+.px-chain-step {
+  width: 23px;
+  height: 23px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--paper-hi);
+  border: 1px solid var(--accent);
+  color: var(--accent-deep);
+  font-family: var(--f-mono);
+  font-size: 9px;
+  font-weight: 600;
+  box-shadow: 0 2px 7px oklch(0.30 0.04 70 / 0.12);
+}
+.px-proof {
+  height: 100%;
+  min-width: 0;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  gap: 12px;
+}
+.px-proof-card {
+  min-width: 0;
+  padding: 10px 12px 17px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: visible;
+}
+.px-proof-k {
+  margin-bottom: 6px;
+  font-family: var(--f-mono);
+  font-size: 7.5px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent-deep);
+}
+.px-proof-card img {
+  width: 100%;
+  max-height: 70px;
+  object-fit: contain;
+  display: block;
+}
+.px-proof-card:first-child img {
+  max-height: 78px;
+}
+.px-proof-card:last-child img {
+  max-height: 58px;
+}
+.case-post-triangle.px-story .case-post-tag {
+  bottom: -10px;
+  left: 8px;
+  right: auto;
+  font-size: 7.3px;
+  letter-spacing: 0.14em;
+  z-index: 4;
+}
+.page-inner:has(.px-story) .metrics {
+  margin-top: 18px;
+}
 /* Vesting red ink stamp — overlays the clip photo, slightly tilted, vintage feel */
 .vesting-stamp {
   position: absolute;
@@ -2178,34 +2294,26 @@ img.event-mark {
         </div>
         <h2 class="case-title">A pitch that reached <em>3.6 million</em> &mdash; and crashed the servers at 1&thinsp;AM.</h2>
         <p class="story">Rounak didn&rsquo;t file a press release. He pitched ProjectX on Vesting&rsquo;s Instagram &mdash; <strong>content engineered to move, not to inform.</strong> The post hit <strong>3,612,440 views</strong>, 240K likes, 60K shares, and accumulated roughly three years of combined watch time. Signups overwhelmed the stack. Weeks later, <em>accepted into Y Combinator</em> &mdash; social proof money can&rsquo;t buy.</p>
-        <div class="case-post case-post-triangle">
-          <div class="triangle-top">
-          <div class="case-post-frame">
+        <div class="case-post case-post-triangle px-story">
+          <div class="px-clip">
             <img src="assets/asset-024.jpg" alt="ProjectX Reel — 3.6M views">
-            <div class="case-post-tag">Clip · 3.6M</div>
+            <div class="case-post-tag">Launch clip · 3.6M</div>
           </div>
+          <div class="px-chain" aria-hidden="true">
+            <span class="px-chain-step">01</span>
+            <span class="px-chain-step">02</span>
           </div>
-          <div class="triangle-arrow-down" aria-hidden="true">
-            <svg viewBox="0 0 24 32" width="22" height="28">
-              <path d="M 12 2 L 12 24" stroke="oklch(0.64 0.135 78)" stroke-width="1.8" stroke-linecap="round" fill="none"/>
-              <path d="M 5 22 L 12 30 L 19 22" stroke="oklch(0.64 0.135 78)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-            </svg>
-          </div>
-          <div class="triangle-bottom">
-          <div class="case-post-frame">
-            <img src="assets/asset-025.jpg" alt="Rounak tweet — servers crashed">
-            <div class="case-post-tag">Servers down</div>
-          </div>
-          <div class="triangle-arrow-mid" aria-hidden="true">
-            <svg viewBox="0 0 24 32" width="26" height="32">
-              <path d="M 12 2 L 12 24" stroke="oklch(0.64 0.135 78)" stroke-width="2.2" stroke-linecap="round" fill="none"/>
-              <path d="M 5 22 L 12 30 L 19 22" stroke="oklch(0.64 0.135 78)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-            </svg>
-          </div>
-          <div class="case-post-frame">
-            <img src="assets/asset-026.jpg" alt="Welcome to YC: ProjectX email">
-            <div class="case-post-tag">YC accept</div>
-          </div>
+          <div class="px-proof">
+            <div class="px-proof-card">
+              <div class="px-proof-k">Distribution shock</div>
+              <img src="assets/asset-025.jpg" alt="Rounak tweet — servers crashed">
+              <div class="case-post-tag">Servers down · 1 AM</div>
+            </div>
+            <div class="px-proof-card">
+              <div class="px-proof-k">Credibility unlock</div>
+              <img src="assets/asset-026.jpg" alt="Welcome to YC: ProjectX email">
+              <div class="case-post-tag">YC accept</div>
+            </div>
           </div>
         </div>
         <div class="metrics cols-5">
