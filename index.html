@@ -2736,7 +2736,7 @@ window.addEventListener('load', function() {
     showCover: true,
     mobileScrollSupport: false,
     swipeDistance: 30,
-    showPageCorners: true,
+    showPageCorners: false,
     disableFlipByClick: false,
   });
 
@@ -2802,7 +2802,12 @@ window.addEventListener('load', function() {
   if (prevBtn) prevBtn.addEventListener('click', () => pageFlip.flipPrev());
   if (nextBtn) nextBtn.addEventListener('click', () => pageFlip.flipNext());
   chapterBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
+    ['pointerdown', 'mousedown', 'touchstart'].forEach(type => {
+      btn.addEventListener(type, (e) => e.stopPropagation(), { passive: true });
+    });
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
       const page = Number(btn.dataset.page || 0);
       if (typeof pageFlip.turnToPage === 'function') {
         pageFlip.turnToPage(page);
