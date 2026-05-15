@@ -1888,37 +1888,65 @@ img.event-mark {
   text-wrap: balance;
 }
 .vlog-proof {
-  margin: auto 0 14px;
+  margin: auto 0 12px;
   display: grid;
-  grid-template-columns: 0.8fr 1.2fr;
-  gap: 14px;
+  grid-template-columns: 1.08fr 1.42fr;
+  gap: 18px;
   align-items: center;
 }
 .vlog-proof .vlog-card {
   margin: 0;
-  grid-template-columns: 58px 1fr;
-  gap: 12px;
-  padding: 12px;
+  grid-template-columns: 44px 1fr;
+  gap: 10px;
+  padding: 11px 12px;
 }
 .vlog-proof .vlog-mark {
-  width: 58px;
-  height: 58px;
-  border-radius: 13px;
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+}
+.vlog-proof .vlog-kicker {
+  font-size: 7px;
+  letter-spacing: 0.18em;
+  margin-bottom: 5px;
+}
+.vlog-proof .vlog-line {
+  font-size: 21px;
+  line-height: 1.02;
 }
 .vlog-message {
-  padding: 9px 10px;
-  background: oklch(0.99 0.006 84);
-  border: 1px solid oklch(0.76 0.026 78 / 0.58);
-  border-radius: 4px;
-  box-shadow:
-    0 5px 12px oklch(0.22 0.04 70 / 0.12),
-    inset 0 1px 0 oklch(1 0 0 / 0.75);
+  padding: 0;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .vlog-message img {
-  width: 100%;
+  width: min(100%, 310px);
   height: auto;
   display: block;
-  border-radius: 3px;
+  border-radius: 8px;
+  filter: drop-shadow(0 9px 14px oklch(0.22 0.04 70 / 0.16));
+}
+.vlog-indicators {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin: -4px 0 12px;
+}
+.vlog-indicators span {
+  padding: 3px 7px;
+  border: 1px solid oklch(0.64 0.135 78 / 0.26);
+  background: oklch(0.64 0.135 78 / 0.075);
+  border-radius: 100px;
+  font-family: var(--f-mono);
+  font-size: 7px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent-deep);
 }
 
 
@@ -2820,6 +2848,7 @@ img.event-mark {
         </div>
         <h2 class="case-title">A startup HQ walkthrough that turned Corgi into a <em>100K-view</em> story.</h2>
         <p class="story">Corgi is a YC company building faster startup insurance by underwriting and issuing policies directly. Vesting treated the office like the product: the cafe, the operating tempo, the founder energy, and the reason the company felt bigger than a policy quote. The result was a long-form <strong>Venture Vlog</strong> that made the culture and category legible in one watch.</p>
+        <div class="vlog-indicators"><span>HQ walkthrough</span><span>Founder story</span><span>Long form</span></div>
         <div class="vlog-card">
           <div class="vlog-mark"><img src="assets/corgi.png" alt="Corgi logo"></div>
           <div class="vlog-card-copy">
@@ -2853,6 +2882,7 @@ img.event-mark {
         </div>
         <h2 class="case-title">A climate-tech walkthrough that brought <em>investors</em> into the inbox.</h2>
         <p class="story">Kind Designs builds 3D-printed Living Seawalls that protect coastlines while creating marine habitat. Vesting turned the product into a field story: the machine, the seawall, the mission, and the founder behind it. The Venture Vlog reached <strong>75K views</strong>, and the founder said investors started reaching out after the post.</p>
+        <div class="vlog-indicators"><span>Product walkthrough</span><span>Founder story</span><span>Investor inbound</span></div>
         <div class="vlog-proof">
           <div class="vlog-card">
             <div class="vlog-mark"><img src="assets/kinddesigns.jpeg" alt="Kind Designs logo"></div>
@@ -2870,7 +2900,7 @@ img.event-mark {
           <div class="m"><div class="mv">300</div><div class="ml">Likes</div></div>
           <div class="m"><div class="mv">40</div><div class="ml">Comments</div></div>
           <div class="m"><div class="mv">40</div><div class="ml">RTs</div></div>
-          <div class="m"><div class="mv">01</div><div class="ml">Investor proof</div></div>
+          <div class="m"><div class="mv">YES</div><div class="ml">Investor inbound</div></div>
         </div>
       </div></div>
     <div class="stpf-page" data-density="soft"><div class="page-inner back img-back face">
