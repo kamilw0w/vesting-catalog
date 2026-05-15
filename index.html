@@ -2290,10 +2290,10 @@ img.event-mark {
 }
 .case-post-triangle.px-story {
   display: grid;
-  grid-template-columns: 0.74fr 28px 1.36fr;
+  grid-template-columns: 0.78fr 30px 1.28fr;
   align-items: center;
-  gap: 12px;
-  height: 258px;
+  gap: 10px;
+  height: 266px;
   margin: auto 0 4px;
   padding: 0;
 }
@@ -2302,12 +2302,14 @@ img.event-mark {
   position: relative;
   background: oklch(0.985 0.010 84);
   border: 1px solid oklch(0.78 0.025 76 / 0.48);
+  border-radius: 4px;
   box-shadow:
-    0 8px 18px oklch(0.30 0.04 70 / 0.12),
+    0 8px 16px oklch(0.30 0.04 70 / 0.13),
     inset 0 1px 0 oklch(1 0 0 / 0.58);
 }
 .px-clip {
   height: 100%;
+  padding: 8px 8px 21px;
   overflow: visible;
 }
 .px-clip::after,
@@ -2324,6 +2326,7 @@ img.event-mark {
   object-fit: cover;
   object-position: 34% center;
   display: block;
+  border-radius: 2px;
 }
 .px-chain {
   height: 100%;
@@ -2342,6 +2345,25 @@ img.event-mark {
   opacity: 0.75;
 }
 .px-chain-step {
+  position: relative;
+  width: 23px;
+  height: 23px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--paper-hi);
+  border: 1px solid var(--accent);
+  color: var(--accent-deep);
+  font-family: var(--f-mono);
+  font-size: 9px;
+  font-weight: 600;
+  box-shadow: 0 2px 7px oklch(0.30 0.04 70 / 0.12);
+}
+.px-chain-step:last-child::after {
+  content: '03';
+  position: absolute;
+  transform: translateY(44px);
   width: 23px;
   height: 23px;
   border-radius: 50%;
@@ -2361,11 +2383,11 @@ img.event-mark {
   min-width: 0;
   display: grid;
   grid-template-rows: 1fr 1fr;
-  gap: 12px;
+  gap: 10px;
 }
 .px-proof-card {
   min-width: 0;
-  padding: 7px 8px 12px;
+  padding: 8px 9px 20px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -2384,23 +2406,28 @@ img.event-mark {
 }
 .px-proof-card img {
   width: 100%;
-  max-height: 112px;
+  max-height: none;
   object-fit: contain;
   display: block;
+  border-radius: 3px;
 }
 .px-proof-card:first-child img {
-  max-height: 114px;
+  max-height: none;
 }
 .px-proof-card:last-child img {
-  max-height: 110px;
+  max-height: none;
 }
 .case-post-triangle.px-story .case-post-tag {
-  bottom: -9px;
+  bottom: 5px;
   left: 8px;
   right: auto;
-  font-size: 7.3px;
-  letter-spacing: 0.14em;
+  font-size: 7px;
+  letter-spacing: 0.10em;
   z-index: 4;
+  background: transparent;
+  padding: 0;
+  box-shadow: none;
+  color: oklch(0.30 0.04 60);
 }
 .page-inner:has(.px-story) .metrics {
   margin-top: 18px;
