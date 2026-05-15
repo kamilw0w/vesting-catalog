@@ -38,7 +38,7 @@ body {
     linear-gradient(180deg, rgba(10, 8, 6, 0.08), rgba(0, 0, 0, 0.22)),
     url('assets/desk.png');
   background-size: cover, cover, cover;
-  background-position: center, center, center;
+  background-position: center, center, 42% center;
   background-repeat: no-repeat;
   background-attachment: fixed;
   display:flex; flex-direction:column; align-items:center; justify-content:center;
@@ -59,6 +59,35 @@ body::before {
   opacity:.42; pointer-events:none; z-index:9999;
 }
 .stage { perspective: 2400px; perspective-origin: 50% 40%; position: relative; width: fit-content; max-width: 100%; }
+.stage::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 86%;
+  height: 70%;
+  transform: translate(-50%, -44%);
+  background:
+    radial-gradient(ellipse at center, rgba(0,0,0,0.34) 0%, rgba(0,0,0,0.24) 38%, rgba(0,0,0,0.10) 62%, transparent 78%);
+  filter: blur(26px);
+  opacity: 0.82;
+  pointer-events: none;
+  z-index: -1;
+}
+.stage::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 72%;
+  height: 54%;
+  transform: translate(-48%, -42%);
+  background: rgba(0,0,0,0.18);
+  filter: blur(42px);
+  opacity: 0.55;
+  pointer-events: none;
+  z-index: -1;
+}
 .catalog {
   position:relative; width:1040px; height:700px;
   transform-style:preserve-3d; transform:rotateX(2deg);
