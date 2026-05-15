@@ -89,7 +89,9 @@ body::before {
   z-index: 0;
 }
 body.on-back-cover .stage::before,
-body.on-back-cover .stage::after {
+body.on-back-cover .stage::after,
+body.closing-back-cover .stage::before,
+body.closing-back-cover .stage::after {
   opacity: 0;
   transition: none;
 }
@@ -1539,14 +1541,17 @@ body.bookmark-jumping .chapter-bookmarks {
 .book.on-back-cover.stf__parent {
   position: relative;
 }
-.book.on-back-cover {
+.book.on-back-cover,
+.book.closing-back-cover {
   filter: none;
 }
-.book.on-back-cover.stf__parent::before {
+.book.on-back-cover.stf__parent::before,
+.book.closing-back-cover.stf__parent::before {
   opacity: 0;
   transition: none;
 }
-.book.on-back-cover.stf__parent::after {
+.book.on-back-cover.stf__parent::after,
+.book.closing-back-cover.stf__parent::after {
   width: 0;
   right: 0;
   opacity: 0;
@@ -2081,6 +2086,17 @@ img.event-mark {
     0 9px 18px oklch(0.24 0.04 70 / 0.10),
     inset 0 1px 0 oklch(1 0 0 / 0.65);
 }
+.vlog-card.has-play {
+  grid-template-columns: 84px 1fr auto;
+  gap: 14px;
+}
+.vlog-mark-stack {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 9px;
+  transform: translateY(-4px);
+}
 .vlog-mark {
   width: 84px;
   height: 84px;
@@ -2097,6 +2113,80 @@ img.event-mark {
 }
 .vlog-card-copy {
   min-width: 0;
+}
+.vlog-play {
+  position: relative;
+  width: 54px;
+  height: 54px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 35% 28%, oklch(1 0 0 / 0.78), transparent 34%),
+    linear-gradient(145deg, oklch(0.98 0.012 84), oklch(0.88 0.035 78));
+  border: 1px solid oklch(0.64 0.135 78 / 0.58);
+  color: var(--accent-deep);
+  text-decoration: none;
+  box-shadow:
+    0 8px 16px oklch(0.24 0.04 70 / 0.18),
+    inset 0 1px 0 oklch(1 0 0 / 0.72),
+    inset 0 -1px 0 oklch(0.48 0.08 72 / 0.14);
+  transition: transform 0.22s ease, filter 0.22s ease, box-shadow 0.22s ease;
+}
+.vlog-play::before {
+  content: '';
+  position: absolute;
+  inset: -9px;
+  border-radius: inherit;
+  background: radial-gradient(ellipse at center, oklch(0.64 0.135 78 / 0.24), transparent 68%);
+  opacity: 0.32;
+  transform: scale(0.95);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  z-index: -1;
+}
+.vlog-play::after {
+  content: 'X';
+  position: absolute;
+  right: -2px;
+  bottom: -2px;
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: oklch(0.98 0.012 84 / 0.96);
+  border: 1px solid oklch(0.64 0.135 78 / 0.48);
+  color: var(--accent-deep);
+  font-family: var(--f-mono);
+  font-size: 6px;
+  font-weight: 700;
+  box-shadow: 0 2px 4px oklch(0.24 0.04 70 / 0.16);
+}
+.vlog-play span {
+  width: 0;
+  height: 0;
+  margin-left: 4px;
+  border-top: 11px solid transparent;
+  border-bottom: 11px solid transparent;
+  border-left: 17px solid currentColor;
+  filter: drop-shadow(0 1px 0 oklch(1 0 0 / 0.3));
+}
+.vlog-play:hover,
+.vlog-play:focus-visible {
+  outline: none;
+  transform: translateY(-2px) scale(1.04);
+  filter: brightness(1.03) saturate(1.08);
+  box-shadow:
+    0 12px 20px oklch(0.24 0.04 70 / 0.22),
+    inset 0 1px 0 oklch(1 0 0 / 0.78),
+    0 0 16px oklch(0.64 0.135 78 / 0.22);
+}
+.vlog-play:hover::before,
+.vlog-play:focus-visible::before {
+  opacity: 0.72;
+  transform: scale(1.10);
 }
 .vlog-kicker {
   font-family: var(--f-mono);
@@ -2124,15 +2214,31 @@ img.event-mark {
 }
 .vlog-proof .vlog-card {
   margin: 0;
-  grid-template-columns: 44px 1fr;
+  grid-template-columns: 54px 1fr;
   gap: 10px;
   padding: 11px 12px;
   min-height: 142px;
+}
+.vlog-proof .vlog-card.has-play {
+  grid-template-columns: 54px 1fr;
 }
 .vlog-proof .vlog-mark {
   width: 44px;
   height: 44px;
   border-radius: 10px;
+}
+.vlog-proof .vlog-mark-stack {
+  gap: 8px;
+  transform: translateY(-8px);
+}
+.vlog-proof .vlog-play {
+  width: 44px;
+  height: 44px;
+}
+.vlog-proof .vlog-play span {
+  border-top-width: 9px;
+  border-bottom-width: 9px;
+  border-left-width: 14px;
 }
 .vlog-proof .vlog-kicker {
   font-size: 7px;
@@ -3162,12 +3268,13 @@ img.event-mark {
         <h2 class="case-title">A startup HQ walkthrough that turned Corgi into a <em>100K-view</em> story.</h2>
         <p class="story">Corgi is a YC company building faster startup insurance by underwriting and issuing policies directly. Vesting treated the office like the product: the cafe, the operating tempo, the founder energy, and the reason the company felt bigger than a policy quote. The result was a long-form <strong>Venture Vlog</strong> that made the culture and category legible in one watch.</p>
         <div class="vlog-indicators"><span>HQ walkthrough</span><span>Founder story</span><span>Long form</span></div>
-        <div class="vlog-card">
+        <div class="vlog-card has-play">
           <div class="vlog-mark"><img src="assets/ChatGPT Image May 15, 2026, 08_13_15 PM (3).png" alt="Corgi logo"></div>
           <div class="vlog-card-copy">
             <div class="vlog-kicker">Venture Vlog &middot; HQ walkthrough</div>
             <div class="vlog-line">Inside the 24-hour cafe behind a YC insurance company.</div>
           </div>
+          <a class="vlog-play" href="https://x.com/brycent/status/2046291861619560877/video/1" target="_blank" rel="noopener" aria-label="Watch the Corgi Venture Vlog on X"><span aria-hidden="true"></span></a>
         </div>
         <div class="metrics cols-5">
           <div class="m hero"><div class="mv">100<span class="u">K</span></div><div class="ml">Views</div></div>
@@ -3197,8 +3304,11 @@ img.event-mark {
         <p class="story">Kind Designs builds 3D-printed Living Seawalls that protect coastlines while creating marine habitat. Vesting turned the product into a field story: the machine, the seawall, the mission, and the founder behind it. The Venture Vlog reached <strong>75K views</strong>, and the founder said investors started reaching out after the post.</p>
         <div class="vlog-indicators"><span>Product walkthrough</span><span>Founder story</span><span>Investor inbound</span></div>
         <div class="vlog-proof">
-          <div class="vlog-card">
-            <div class="vlog-mark"><img src="assets/kinddesigns.jpeg" alt="Kind Designs logo"></div>
+          <div class="vlog-card has-play">
+            <div class="vlog-mark-stack">
+              <div class="vlog-mark"><img src="assets/kinddesigns.jpeg" alt="Kind Designs logo"></div>
+              <a class="vlog-play" href="https://x.com/brycent/status/2054621737707565316/video/1" target="_blank" rel="noopener" aria-label="Watch the Kind Designs Venture Vlog on X"><span aria-hidden="true"></span></a>
+            </div>
             <div class="vlog-card-copy">
               <div class="vlog-kicker">Venture Vlog &middot; proof</div>
               <div class="vlog-line">Product story turned attention into investor demand.</div>
@@ -3730,7 +3840,7 @@ window.addEventListener('load', function() {
   const nextBtn = document.getElementById('nextBtn');
   const chapterBtns = Array.from(document.querySelectorAll('.chapter-jump'));
   const bookmarkBtns = Array.from(document.querySelectorAll('.bookmark-tab'));
-  const clipLinks = Array.from(document.querySelectorAll('.clothesline-wall .clip'));
+  const clipLinks = Array.from(document.querySelectorAll('.clothesline-wall .clip, .vlog-play'));
   let bookmarkJumpTimer = null;
   const chapterRanges = {
     cover: { start: 0, end: 2 },
@@ -3752,7 +3862,9 @@ window.addEventListener('load', function() {
     if (nextBtn) nextBtn.disabled = idx >= total - 1;
     document.body.classList.toggle('has-flipped', idx > 0);
     document.body.classList.toggle('on-back-cover', idx >= total - 1);
+    document.body.classList.toggle('closing-back-cover', idx >= total - 1);
     bookEl.classList.toggle('on-back-cover', idx >= total - 1);
+    bookEl.classList.toggle('closing-back-cover', idx >= total - 1);
     const remainingRatio = total > 1 ? Math.max(0, (total - 1 - idx) / (total - 1)) : 0;
     const edgeWidth = idx >= total - 1 ? 0 : 4 + (18 * remainingRatio);
     bookEl.style.setProperty('--page-edge-width', edgeWidth.toFixed(2) + 'px');
@@ -3776,16 +3888,24 @@ window.addEventListener('load', function() {
     const idx = pageFlip.getCurrentPageIndex();
     const total = pageFlip.getPageCount();
     if (idx >= total - 3) hideBookmarksDuringJump(1300);
+    if (idx >= total - 3) {
+      document.body.classList.add('closing-back-cover');
+      bookEl.classList.add('closing-back-cover');
+    }
+  }
+  function clearClosingBackCover() {
+    document.body.classList.remove('closing-back-cover');
+    bookEl.classList.remove('closing-back-cover');
   }
   function flipNext() {
     hideBookmarksIfClosing();
     pageFlip.flipNext();
   }
-  if (prevBtn) prevBtn.addEventListener('click', () => pageFlip.flipPrev());
+  if (prevBtn) prevBtn.addEventListener('click', () => { clearClosingBackCover(); pageFlip.flipPrev(); });
   if (nextBtn) nextBtn.addEventListener('click', flipNext);
   ['pointerdown', 'mousedown', 'touchstart'].forEach(type => {
     document.addEventListener(type, (e) => {
-      if (e.target.closest && e.target.closest('.clothesline-wall .clip')) {
+      if (e.target.closest && e.target.closest('.clothesline-wall .clip, .vlog-play')) {
         e.stopPropagation();
       }
     }, true);
@@ -3812,7 +3932,7 @@ window.addEventListener('load', function() {
   });
   document.addEventListener('keydown', (e) => {
     if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); flipNext(); }
-    if (e.key === 'ArrowLeft')  { e.preventDefault(); pageFlip.flipPrev(); }
+    if (e.key === 'ArrowLeft')  { e.preventDefault(); clearClosingBackCover(); pageFlip.flipPrev(); }
   });
 
   // -- Custom page-flip sound --
