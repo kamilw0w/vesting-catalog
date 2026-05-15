@@ -1629,7 +1629,7 @@ body.has-flipped .instruction-copy { opacity: 0; transform: translateY(-3px); po
 .ledger-number {
   font-family: var(--f-display);
   font-style: italic;
-  font-size: 52px;
+  font-size: 50px;
   line-height: 0.86;
   letter-spacing: -0.04em;
   color: var(--ink);
@@ -1703,9 +1703,9 @@ body.has-flipped .instruction-copy { opacity: 0; transform: translateY(-3px); po
 }
 .logo-wall-startups {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(2, 62px);
-  gap: 8px;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, 56px);
+  gap: 7px;
   flex: 0 0 auto;
   align-items: stretch;
   justify-items: stretch;
@@ -1783,8 +1783,8 @@ img.event-mark {
   flex-direction: row;
   align-items: center;
   justify-content: flex-start;
-  gap: 8px;
-  padding: 8px;
+  gap: 6px;
+  padding: 7px;
   background: oklch(0.96 0.012 80);
   border: 1px solid oklch(0.78 0.025 76 / 0.5);
   border-radius: 6px;
@@ -1796,8 +1796,8 @@ img.event-mark {
   box-shadow: 0 6px 14px oklch(0.30 0.04 70 / 0.1), inset 0 1px 0 oklch(1 0 0 / 0.5);
 }
 .logo-mark {
-  width: 40px; height: 40px;
-  border-radius: 10px;
+  width: 34px; height: 34px;
+  border-radius: 9px;
   overflow: hidden;
   box-shadow: 0 2px 6px oklch(0.30 0.04 70 / 0.15);
   flex: 0 0 auto;
@@ -1816,7 +1816,7 @@ img.event-mark {
 .logo-name {
   font-family: var(--f-display);
   font-style: italic;
-  font-size: 14px;
+  font-size: 12px;
   color: var(--ink);
   line-height: 1;
   letter-spacing: -0.01em;
@@ -1826,11 +1826,99 @@ img.event-mark {
 }
 .logo-stat {
   font-family: var(--f-mono);
-  font-size: 6.3px;
-  letter-spacing: 0.12em;
+  font-size: 5.8px;
+  letter-spacing: 0.09em;
   color: var(--accent-deep);
   text-transform: uppercase;
   line-height: 1.25;
+}
+
+/* Venture Vlog case studies */
+.vlog-case .case-top {
+  margin-bottom: 14px;
+}
+.vlog-card {
+  margin: auto 0 16px;
+  padding: 15px 16px;
+  display: grid;
+  grid-template-columns: 84px 1fr;
+  gap: 16px;
+  align-items: center;
+  background:
+    linear-gradient(135deg, oklch(0.985 0.010 84), oklch(0.925 0.021 80)),
+    var(--paper-hi);
+  border: 1px solid oklch(0.74 0.030 78 / 0.64);
+  border-radius: 4px;
+  box-shadow:
+    0 9px 18px oklch(0.24 0.04 70 / 0.10),
+    inset 0 1px 0 oklch(1 0 0 / 0.65);
+}
+.vlog-mark {
+  width: 84px;
+  height: 84px;
+  border-radius: 18px;
+  overflow: hidden;
+  background: oklch(0.99 0.008 84);
+  box-shadow: 0 4px 12px oklch(0.24 0.04 70 / 0.18);
+}
+.vlog-mark img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.vlog-card-copy {
+  min-width: 0;
+}
+.vlog-kicker {
+  font-family: var(--f-mono);
+  font-size: 8px;
+  letter-spacing: 0.20em;
+  text-transform: uppercase;
+  color: var(--accent-deep);
+  margin-bottom: 6px;
+}
+.vlog-line {
+  font-family: var(--f-display);
+  font-style: italic;
+  font-size: 25px;
+  line-height: 0.98;
+  letter-spacing: -0.025em;
+  color: var(--ink);
+  text-wrap: balance;
+}
+.vlog-proof {
+  margin: auto 0 14px;
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: 14px;
+  align-items: center;
+}
+.vlog-proof .vlog-card {
+  margin: 0;
+  grid-template-columns: 58px 1fr;
+  gap: 12px;
+  padding: 12px;
+}
+.vlog-proof .vlog-mark {
+  width: 58px;
+  height: 58px;
+  border-radius: 13px;
+}
+.vlog-message {
+  padding: 9px 10px;
+  background: oklch(0.99 0.006 84);
+  border: 1px solid oklch(0.76 0.026 78 / 0.58);
+  border-radius: 4px;
+  box-shadow:
+    0 5px 12px oklch(0.22 0.04 70 / 0.12),
+    inset 0 1px 0 oklch(1 0 0 / 0.75);
+}
+.vlog-message img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 3px;
 }
 
 
@@ -2352,18 +2440,19 @@ img.event-mark {
           <div class="reach-ledger" aria-label="Q1 reach ledger">
             <div class="ledger-kicker">Q1 Reach Ledger</div>
             <div class="ledger-top">
-              <div class="ledger-number">13.40<span class="unit">M+</span></div>
+              <div class="ledger-number">13.58<span class="unit">M+</span></div>
               <div class="ledger-label">total organic views across startups and events</div>
             </div>
             <div class="ledger-breakdown">
-              <div><span>4.27M+</span><em>Startup outcomes</em></div>
+              <div><span>4.27M+</span><em>Startup launch views</em></div>
+              <div><span>175K</span><em>Venture vlog views</em></div>
               <div><span>9.13M</span><em>Event reach</em></div>
-              <div><span>60</span><em>Event clips shipped</em></div>
             </div>
             <div class="ledger-strip">
               <span>3x YC</span>
               <span>$300K ARR</span>
-              <span>3 live case studies</span>
+              <span>5 live case studies</span>
+              <span>60 event clips</span>
               <span>4 event partners</span>
               <span>36 on-air guests</span>
             </div>
@@ -2409,6 +2498,20 @@ img.event-mark {
             <div class="logo-meta">
               <div class="logo-name">Veritas</div>
               <div class="logo-stat">234K views · in 24h</div>
+            </div>
+          </div>
+          <div class="logo-card">
+            <div class="logo-mark"><img src="assets/corgi.png" alt="Corgi logo"></div>
+            <div class="logo-meta">
+              <div class="logo-name">Corgi</div>
+              <div class="logo-stat">100K venture vlog</div>
+            </div>
+          </div>
+          <div class="logo-card">
+            <div class="logo-mark"><img src="assets/kinddesigns.jpeg" alt="Kind Designs logo"></div>
+            <div class="logo-meta">
+              <div class="logo-name">Kind Designs</div>
+              <div class="logo-stat">75K views · investor inbound</div>
             </div>
           </div>
           </div>
@@ -2700,6 +2803,77 @@ img.event-mark {
         </div>
       </div></div>
     <div class="stpf-page" data-density="soft"><div class="page-inner back img-back face">
+        <div class="polaroid tilt-l">
+          <div class="tape"></div>
+          <div class="photo photo-real"><img src="assets/CorgiCafePolaroid.png" alt="Corgi Cafe"></div>
+          <div class="caption">
+            Corgi Cafe
+            <span class="role">Venture Vlog &middot; YC S2024</span>
+          </div>
+        </div>
+      </div></div>
+    <div class="stpf-page" data-density="soft"><div class="page-inner face vlog-case">
+        <div class="marker"><span class="sec">Venture Vlog 01 / 02</span>10</div>
+        <div class="case-top">
+          <div class="case-type">Long-form HQ walkthrough &middot; YC &middot; AI insurance</div>
+          <div class="case-name">Corgi <span class="role">&middot; full-stack insurance carrier for startups</span></div>
+        </div>
+        <h2 class="case-title">A startup HQ walkthrough that turned Corgi into a <em>100K-view</em> story.</h2>
+        <p class="story">Corgi is a YC company building faster startup insurance by underwriting and issuing policies directly. Vesting treated the office like the product: the cafe, the operating tempo, the founder energy, and the reason the company felt bigger than a policy quote. The result was a long-form <strong>Venture Vlog</strong> that made the culture and category legible in one watch.</p>
+        <div class="vlog-card">
+          <div class="vlog-mark"><img src="assets/corgi.png" alt="Corgi logo"></div>
+          <div class="vlog-card-copy">
+            <div class="vlog-kicker">Venture Vlog &middot; HQ walkthrough</div>
+            <div class="vlog-line">Inside the 24-hour cafe behind a YC insurance company.</div>
+          </div>
+        </div>
+        <div class="metrics cols-5">
+          <div class="m hero"><div class="mv">100<span class="u">K</span></div><div class="ml">Views</div></div>
+          <div class="m"><div class="mv">350</div><div class="ml">Likes</div></div>
+          <div class="m"><div class="mv">30</div><div class="ml">Comments</div></div>
+          <div class="m"><div class="mv">20</div><div class="ml">RTs</div></div>
+          <div class="m"><div class="mv">80</div><div class="ml">Bookmarks</div></div>
+        </div>
+      </div></div>
+    <div class="stpf-page" data-density="soft"><div class="page-inner back img-back face">
+        <div class="polaroid tilt-r">
+          <div class="tape"></div>
+          <div class="photo photo-real"><img src="assets/KindDesignsPolaroid.png" alt="Kind Designs"></div>
+          <div class="caption">
+            Kind Designs
+            <span class="role">Living Seawalls &middot; Miami</span>
+          </div>
+        </div>
+      </div></div>
+    <div class="stpf-page" data-density="soft"><div class="page-inner face vlog-case">
+        <div class="marker"><span class="sec">Venture Vlog 02 / 02</span>11</div>
+        <div class="case-top">
+          <div class="case-type">Climate tech &middot; founder story &middot; investor inbound</div>
+          <div class="case-name">Kind Designs <span class="role">&middot; founder, Anya Freeman</span></div>
+        </div>
+        <h2 class="case-title">A climate-tech walkthrough that brought <em>investors</em> into the inbox.</h2>
+        <p class="story">Kind Designs builds 3D-printed Living Seawalls that protect coastlines while creating marine habitat. Vesting turned the product into a field story: the machine, the seawall, the mission, and the founder behind it. The Venture Vlog reached <strong>75K views</strong>, and the founder said investors started reaching out after the post.</p>
+        <div class="vlog-proof">
+          <div class="vlog-card">
+            <div class="vlog-mark"><img src="assets/kinddesigns.jpeg" alt="Kind Designs logo"></div>
+            <div class="vlog-card-copy">
+              <div class="vlog-kicker">Venture Vlog &middot; proof</div>
+              <div class="vlog-line">A product story that converted attention into investor demand.</div>
+            </div>
+          </div>
+          <div class="vlog-message">
+            <img src="assets/msgfromkd.png" alt="Kind Designs message about investors reaching out">
+          </div>
+        </div>
+        <div class="metrics cols-5">
+          <div class="m hero"><div class="mv">75<span class="u">K</span></div><div class="ml">Views</div></div>
+          <div class="m"><div class="mv">300</div><div class="ml">Likes</div></div>
+          <div class="m"><div class="mv">40</div><div class="ml">Comments</div></div>
+          <div class="m"><div class="mv">40</div><div class="ml">RTs</div></div>
+          <div class="m"><div class="mv">01</div><div class="ml">Investor proof</div></div>
+        </div>
+      </div></div>
+    <div class="stpf-page" data-density="soft"><div class="page-inner back img-back face">
         <div class="polaroid tilt-r3">
           <div class="tape"></div>
           <div class="photo photo-real photo-yc"><img src="assets/upscaled/asset-007.jpg" alt="YC Demo Day floor"></div>
@@ -2710,7 +2884,7 @@ img.event-mark {
         </div>
       </div></div>
     <div class="stpf-page" data-density="soft"><div class="page-inner face">
-        <div class="marker"><span class="sec">Event 01 / 03</span>10</div>
+        <div class="marker"><span class="sec">Event 01 / 03</span>12</div>
         <div class="case-top">
           <div class="case-type">YC Demo Day &middot; &times;2 &middot; with Garry Tan</div>
           <div class="case-name">Y Combinator <span class="role">&middot; Winter &amp; Spring 2026</span></div>
@@ -2777,7 +2951,7 @@ img.event-mark {
         </div>
       </div></div>
     <div class="stpf-page" data-density="soft"><div class="page-inner face">
-        <div class="marker"><span class="sec">Event 02 / 03</span>11</div>
+        <div class="marker"><span class="sec">Event 02 / 03</span>13</div>
         <div class="case-top">
           <div class="case-type">Founders Inc &middot; &times;2 &middot; SF flagship</div>
         <div class="case-name">Founders Inc Demo Day <span class="role">&middot; where the format started</span></div>
@@ -2848,7 +3022,7 @@ img.event-mark {
         </div>
       </div></div>
     <div class="stpf-page" data-density="soft"><div class="page-inner face">
-        <div class="marker"><span class="sec">Event 03 / 03</span>12</div>
+        <div class="marker"><span class="sec">Event 03 / 03</span>14</div>
         <div class="case-top">
           <div class="case-type">The Residency Demo Day &middot; emerging cohort</div>
       <div class="case-name">The Residency <span class="role">&middot; smaller room, outsized reach</span></div>
@@ -2887,7 +3061,7 @@ img.event-mark {
         </div>
       </div></div>
     <div class="stpf-page" data-density="soft"><div class="page-inner face">
-        <div class="marker"><span class="sec">Vesting Live</span>13</div>
+        <div class="marker"><span class="sec">Vesting Live</span>15</div>
         <div class="guest-eye">The weekly online show</div>
         <h2 class="guest-title">Guests <em>on-air.</em></h2>
         <p class="guest-sub">YC founders, Founders Inc residents, Thiel Fellows, VC partners &middot; all in the same chair. No fluff, no PR-speak. Q1 2026 lineup.</p>
@@ -2947,7 +3121,7 @@ img.event-mark {
       </div></div>
     <!-- CLOSING CONTENT PAGE -->
     <div class="stpf-page" data-density="soft"><div class="page-inner closing-face face">
-        <div class="marker">14</div>
+        <div class="marker">16</div>
         <div class="bc-mid">
           <h2 class="bc-headline">ready to be<br><span class="accent">unavoidable?</span></h2>
           <p class="bc-sub">Posts, carousels, reels, IRL HQ video, long-form, the weekly show, full event coverage &middot; whatever moves your trajectory. We take a handful of clients per quarter. <em>Pitch us.</em></p>
@@ -3113,9 +3287,9 @@ img.event-mark {
     <button class="bookmark-tab chapter-jump" data-section="proof" data-page="4">Proof</button>
     <button class="bookmark-tab chapter-jump" data-section="numbers" data-page="4">Numbers</button>
     <button class="bookmark-tab chapter-jump" data-section="cases" data-page="6">Cases</button>
-    <button class="bookmark-tab chapter-jump" data-section="events" data-page="18">Events</button>
-    <button class="bookmark-tab chapter-jump" data-section="live" data-page="24">Live</button>
-    <button class="bookmark-tab chapter-jump" data-section="pitch" data-page="25">Pitch</button>
+    <button class="bookmark-tab chapter-jump" data-section="events" data-page="22">Events</button>
+    <button class="bookmark-tab chapter-jump" data-section="live" data-page="28">Live</button>
+    <button class="bookmark-tab chapter-jump" data-section="pitch" data-page="29">Pitch</button>
   </div>
 </div>
 <div class="controls">
@@ -3128,9 +3302,9 @@ img.event-mark {
   <button class="chapter-btn chapter-jump" data-section="proof" data-page="4">Proof</button>
   <button class="chapter-btn chapter-jump" data-section="numbers" data-page="4">Numbers</button>
   <button class="chapter-btn chapter-jump" data-section="cases" data-page="6">Cases</button>
-  <button class="chapter-btn chapter-jump" data-section="events" data-page="18">Events</button>
-  <button class="chapter-btn chapter-jump" data-section="live" data-page="24">Live</button>
-  <button class="chapter-btn chapter-jump" data-section="pitch" data-page="25">Pitch</button>
+  <button class="chapter-btn chapter-jump" data-section="events" data-page="22">Events</button>
+  <button class="chapter-btn chapter-jump" data-section="live" data-page="28">Live</button>
+  <button class="chapter-btn chapter-jump" data-section="pitch" data-page="29">Pitch</button>
 </div>
 <div class="instruction"><span class="instruction-copy">Click the right half to advance &middot; <kbd>&larr;</kbd> <kbd>&rarr;</kbd> also work</span><button id="soundToggle" class="snd-btn">&#9834; sound on</button></div>
 <script src="https://cdn.jsdelivr.net/npm/page-flip@2.0.7/dist/js/page-flip.browser.js"></script>
@@ -3195,7 +3369,9 @@ window.addEventListener('load', function() {
     'Lance', 'Luci',
     'Veritas', 'Isa & Tony',
     'Zolvo', 'Rayan & Maadhav',
-    'Enjamb Labs', 'YC floor',
+    'Enjamb Labs', 'Corgi Cafe',
+    'Corgi', 'Kind Designs',
+    'Kind Designs', 'YC floor',
     'YC Demo Day', 'Founders Inc',
     'Founders Inc', 'The Residency',
     'The Residency', 'Vesting Live',
@@ -3214,10 +3390,10 @@ window.addEventListener('load', function() {
     cover: { start: 0, end: 2 },
     proof: { start: 3, end: 4 },
     numbers: { start: 4, end: 6 },
-    cases: { start: 6, end: 18 },
-    events: { start: 18, end: 24 },
-    live: { start: 24, end: 25 },
-    pitch: { start: 25, end: 28 }
+    cases: { start: 6, end: 22 },
+    events: { start: 22, end: 28 },
+    live: { start: 28, end: 29 },
+    pitch: { start: 29, end: 32 }
   };
 
   function updateUI() {
