@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Vesting — Q1 2026</title>
+<title>Vesting | Q1 2026</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..900,0..100,0..1;1,9..144,300..900,0..100,0..1&family=Instrument+Serif:ital@0;1&family=Geist:wght@300;400;500;600;700;800&family=Geist+Mono:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400;1,6..72,500&family=Caveat:wght@400;500;600&family=Inter:wght@600;700;800;900&display=swap" rel="stylesheet">
@@ -70,7 +70,7 @@ body::before {
   background: linear-gradient(90deg, oklch(0.78 0.04 78), oklch(0.88 0.025 80) 50%, oklch(0.78 0.04 78));
   border-radius:2px; z-index:-1; transform: translateZ(-2px);
 }
-/* Center spine — the gutter shadow between left and right pages */
+/* Center spine &middot; the gutter shadow between left and right pages */
 .catalog::after {
   content:''; position:absolute;
   top:0; bottom:0; left:50%; width:2px;
@@ -79,7 +79,7 @@ body::before {
   z-index: 50; pointer-events:none;
   box-shadow: 0 0 12px rgba(40,30,15,0.15);
 }
-/* The "empty left half" before any page has flipped — endpaper texture */
+/* The "empty left half" before any page has flipped &middot; endpaper texture */
 .catalog .endpaper {
   position:absolute; top:0; bottom:0; left:0; width:50%;
   background:
@@ -159,16 +159,16 @@ body::before {
   text-align: center;
   color: oklch(0.18 0.04 60);
 }
-/* Override paper inset shadows on the cover — yellow doesn't need warm paper edges */
+/* Override paper inset shadows on the cover &middot; yellow doesn't need warm paper edges */
 .cover-face::before {
   background: linear-gradient(90deg, rgba(20, 14, 0, 0.18), transparent) !important;
 }
-/* Yellow paper grain — slightly more visible noise for tactile feel */
+/* Yellow paper grain &middot; slightly more visible noise for tactile feel */
 .cover-face::after {
   opacity: 1.2 !important;
 }
 
-/* Big title — Inter heavy, like the reference */
+/* Big title &middot; Inter heavy, like the reference */
 .cover-title {
   font-family: 'Inter', 'Geist', system-ui, sans-serif;
   font-weight: 800;
@@ -244,7 +244,7 @@ body::before {
   letter-spacing: 0.2em;
 }
 
-/* Hide the horizon-line illustration on the cover — it doesn't belong on yellow */
+/* Hide the horizon-line illustration on the cover &middot; it doesn't belong on yellow */
 .cover-face .cover-deco { display: none; }
 
 /* Back-cover decoration (horizon-line motif at the top, mirrored) */
@@ -325,7 +325,7 @@ body::before {
   color: var(--ink);
   letter-spacing: -0.01em;
 }
-/* Vesting wax seal — sits in the free space below the paragraph, right-aligned */
+/* Vesting wax seal &middot; sits in the free space below the paragraph, right-aligned */
 .menu-stamp {
   width: 92px;
   height: 92px;
@@ -457,7 +457,7 @@ body::before {
 .chart-axis .date { color: var(--accent); font-weight: 500; letter-spacing: 0.1em; }
 .chart-axis .who { color: var(--ink); font-family: var(--f-display); font-style: italic; font-size: 13px; letter-spacing: -0.01em; }
 .chart-axis .v { color: var(--muted); }
-/* ¦¦ Image back-face (the LEFT page in each spread) — Polaroid frame ¦¦ */
+/* Â¦Â¦ Image back-face (the LEFT page in each spread) &middot; Polaroid frame Â¦Â¦ */
 .face.img-back {
   padding: 0 !important;
   background:
@@ -477,7 +477,7 @@ body::before {
   background-position: right center;
 }
 .face.img-back::after {
-  /* Disable the default paper noise on img-back — vignette handles it */
+  /* Disable the default paper noise on img-back &middot; vignette handles it */
   display: none;
 }
 
@@ -515,7 +515,7 @@ body::before {
   pointer-events:none;
 }
 .polaroid .photo::after {
-  /* Centered placeholder mark — small FIG label */
+  /* Centered placeholder mark &middot; small FIG label */
   content: attr(data-fig);
   position: absolute;
   inset: 0;
@@ -557,7 +557,7 @@ body::before {
 .polaroid.tilt-r3 { transform: rotate(3deg); }
 .polaroid.tilt-l3 { transform: rotate(-2.2deg); }
 
-/* Wide variant — landscape Polaroid for 16:9 content (broadcast frames, group shots) */
+/* Wide variant &middot; landscape Polaroid for 16:9 content (broadcast frames, group shots) */
 .polaroid.wide {
   width: 86%;
   max-width: 380px;
@@ -567,7 +567,7 @@ body::before {
   aspect-ratio: 16 / 9;
 }
 .polaroid.wide .photo.photo-real {
-  /* Override `cover` for wide — use `contain` so the whole image stays visible */
+  /* Override `cover` for wide &middot; use `contain` so the whole image stays visible */
   background-size: contain !important;
   background-position: center !important;
   background-color: oklch(0.16 0.02 250);
@@ -581,7 +581,7 @@ body::before {
   margin-top: 5px;
 }
 
-/* Receipts wall — 3x2 grid of mini-Polaroids holding quotes/numbers instead of photos */
+/* Receipts wall &middot; 3x2 grid of mini-Polaroids holding quotes/numbers instead of photos */
 .receipts-wall {
   width: 100%;
   height: 100%;
@@ -689,7 +689,7 @@ body::before {
 .polaroid.tint-violet .photo { background: linear-gradient(160deg, oklch(0.74 0.06 300), oklch(0.50 0.10 290) 50%, oklch(0.32 0.10 285) 100%); }
 .polaroid.tint-ochre .photo { background: linear-gradient(160deg, oklch(0.84 0.10 90), oklch(0.62 0.13 80) 50%, oklch(0.42 0.12 75) 100%); }
 
-/* Tape strip (optional decorative — top-left of polaroid) */
+/* Tape strip (optional decorative &middot; top-left of polaroid) */
 .polaroid .tape {
   position: absolute;
   top: -10px; left: 18%;
@@ -829,7 +829,7 @@ body::before {
   justify-content: space-between; padding: 48px 44px !important;
 }
 .bc-mid { display: flex; flex-direction: column; gap: 16px; z-index: 3; margin-top: 20px; }
-/* Closing content face — same look as old back cover (paper, no scene) */
+/* Closing content face &middot; same look as old back cover (paper, no scene) */
 .closing-face {
   background:
     radial-gradient(ellipse 500px 350px at 100% 100%, oklch(0.64 0.135 78 / 0.08), transparent 60%),
@@ -837,7 +837,7 @@ body::before {
     var(--paper) !important;
   justify-content: space-between; padding: 48px 44px !important;
 }
-/* Physical back-cover face — Miami scene fills, centered quote sits on top */
+/* Physical back-cover face &middot; Miami scene fills, centered quote sits on top */
 .back-cover-face {
   padding: 0 !important;
   justify-content: center; align-items: center;
@@ -1094,7 +1094,7 @@ body.has-flipped .instruction-copy { opacity: 0; transform: translateY(-3px); po
 .snd-btn.muted { opacity: 0.5; }
 .instruction kbd { font-family: var(--f-mono); font-style: normal; font-size: 10px; background: oklch(0.22 0.04 250); color: oklch(0.85 0.04 80); padding: 1px 5px; border-radius: 3px; border: 1px solid oklch(0.32 0.05 248); margin: 0 2px; }
 
-/* Real photo variant — overrides the gradient placeholder */
+/* Real photo variant &middot; overrides the gradient placeholder */
 .polaroid .photo.photo-real {
   background-image: var(--photo-img);
   background-size: cover;
@@ -1254,7 +1254,7 @@ body.has-flipped .instruction-copy { opacity: 0; transform: translateY(-3px); po
   max-width: 340px;
 }
 
-/* When on the cover (no flips yet), the catalog should appear as just the cover —
+/* When on the cover (no flips yet), the catalog should appear as just the cover Â·
    hide the endpaper on the left, hide the spine, and hide the book backing's left half. */
 .catalog.on-cover .endpaper { display: none; }
 .catalog.on-cover::after { display: none; }
@@ -1282,7 +1282,7 @@ body.has-flipped .instruction-copy { opacity: 0; transform: translateY(-3px); po
   }
 }
 @media (max-width: 760px) {
-  /* Single-page mode on phones — hide the left page, show only right */
+  /* Single-page mode on phones &middot; hide the left page, show only right */
   .catalog { width: 360px; height: 500px; }
   .page { width: 100%; left: 0; }
   .catalog::after, .endpaper { display: none; }
@@ -1332,7 +1332,7 @@ body.has-flipped .instruction-copy { opacity: 0; transform: translateY(-3px); po
   display: block;
   left: 50%;
 }
-/* StPageFlip clones our pages into its own wrapper. Its .stf__page has white bg by default — neutralize. */
+/* StPageFlip clones our pages into its own wrapper. Its .stf__page has white bg by default &middot; neutralize. */
 .stf__parent {
   margin: 0 auto;
 }
@@ -1356,7 +1356,7 @@ body.has-flipped .instruction-copy { opacity: 0; transform: translateY(-3px); po
 
 
 
-/* YC Demo Day clothesline — clips dangling on two strings */
+/* YC Demo Day clothesline &middot; clips dangling on two strings */
 .clothesline-wall {
   margin: 6px 0 14px;
   display: flex;
@@ -1540,7 +1540,7 @@ body.has-flipped .instruction-copy { opacity: 0; transform: translateY(-3px); po
 .clothesline::after { right: -1px; }
 
 
-/* Logo wall — 3×2 grid of brand logos with stats below */
+/* Logo wall &middot; 3Ã—2 grid of brand logos with stats below */
 .logo-wall {
   width: 100%;
   height: 100%;
@@ -1758,7 +1758,7 @@ img.event-mark {
   text-transform: uppercase;
   text-align: center;
 }
-/* Pair variant — two frames side by side with an arrow between */
+/* Pair variant &middot; two frames side by side with an arrow between */
 .case-post-pair {
   display: flex;
   align-items: center;
@@ -2056,7 +2056,7 @@ img.event-mark {
 .page-inner:has(.px-story) .metrics {
   margin-top: 18px;
 }
-/* Vesting red ink stamp — overlays the clip photo, slightly tilted, vintage feel */
+/* Vesting red ink stamp &middot; overlays the clip photo, slightly tilted, vintage feel */
 .vesting-stamp {
   position: absolute;
   top: 12px;
@@ -2078,7 +2078,7 @@ img.event-mark {
 }
 
 
-/* Pullquote screenshot variant — the quote IS the message screenshot, not styled text */
+/* Pullquote screenshot variant &middot; the quote IS the message screenshot, not styled text */
 .pullquote.pullquote-screenshot {
   background: transparent;
   border-left: none;
@@ -2144,7 +2144,7 @@ img.event-mark {
   max-height: 110px;
 }
 
-/* Receipt-style frame for the Tarun text screenshot — washi tape, soft paper card */
+/* Receipt-style frame for the Tarun text screenshot &middot; washi tape, soft paper card */
 .case-post-receipt .case-post-frame {
   background: oklch(0.97 0.008 80);
   border: 1px solid oklch(0.80 0.025 76 / 0.45);
@@ -2214,12 +2214,12 @@ img.event-mark {
       </div></div>
     <div class="stpf-page" data-density="soft"><div class="page-inner face">
         <div class="marker"><span class="sec">Menu</span>02</div>
-        <div class="menu-eye">— What we do —</div>
+        <div class="menu-eye">What we do</div>
         <h2 class="menu-headline">We don't announce startups.<br>We make them <em>unavoidable.</em></h2>
         <p class="menu-intro" style="display:none">A working list of the formats we ship from. Pick one, pick three, or hand us the brief and we'll pick the right cut.</p>
         <div class="menu-rule"></div>
         <div class="menu-list">
-          <p class="menu-presentation">Vesting is startup media for founders worth watching. We take a small slate of pre-seed and seed-stage operators each quarter &mdash; picked for the work, not the pedigree &mdash; and treat each one's trajectory like a product. The output is whatever moves the room: rounds closed, pipelines filled, inbound that makes hiring easy, and the kind of social proof money can't buy.</p>
+          <p class="menu-presentation">Vesting is startup media for founders worth watching. We take a small slate of pre-seed and seed-stage operators each quarter &middot; picked for the work, not the pedigree &middot; and treat each one's trajectory like a product. The output is whatever moves the room: rounds closed, pipelines filled, inbound that makes hiring easy, and the kind of social proof money can't buy.</p>
           <div class="menu-pillars" aria-label="Vesting services">
             <div class="menu-pillar"><span class="k">Launches</span><span class="v">Founder stories built to travel.</span></div>
             <div class="menu-pillar"><span class="k">Investor heat</span><span class="v">Proof that opens rooms.</span></div>
@@ -2236,7 +2236,7 @@ img.event-mark {
             <div class="proof-card"><div class="proof-n">3.6<span class="u">M</span></div><div class="proof-l">Single launch breakout</div></div>
             <div class="proof-card"><div class="proof-n">3<span class="u">x</span></div><div class="proof-l">YC acceptances</div></div>
             <div class="proof-card"><div class="proof-n">$300<span class="u">K</span></div><div class="proof-l">ARR pipeline</div></div>
-            <div class="proof-card"><div class="proof-n">3<span class="u">+1</span></div><div class="proof-l">Case studies · 4th soon</div></div>
+            <div class="proof-card"><div class="proof-n">3<span class="u">+1</span></div><div class="proof-l">Case studies Â· 4th soon</div></div>
             <div class="proof-card"><div class="proof-n">4</div><div class="proof-l">Event partners</div></div>
           </div>
           <div class="logo-wall-startups">
@@ -2244,42 +2244,42 @@ img.event-mark {
             <div class="logo-mark"><img src="assets/asset-013.jpg" alt="ProjectX logo"></div>
             <div class="logo-meta">
               <div class="logo-name">ProjectX</div>
-              <div class="logo-stat">3.6M views · into YC</div>
+              <div class="logo-stat">3.6M views Â· into YC</div>
             </div>
           </div>
           <div class="logo-card">
             <div class="logo-mark"><img src="assets/asset-014.jpg" alt="Zaranna AI logo"></div>
             <div class="logo-meta">
               <div class="logo-name">Zaranna AI</div>
-              <div class="logo-stat">$300K ARR · single post</div>
+              <div class="logo-stat">$300K ARR Â· single post</div>
             </div>
           </div>
           <div class="logo-card">
             <div class="logo-mark"><img src="assets/asset-015.jpg" alt="Lance logo"></div>
             <div class="logo-meta">
               <div class="logo-name">Lance</div>
-              <div class="logo-stat">$3.7M raise · 186K views</div>
+              <div class="logo-stat">$3.7M raise Â· 186K views</div>
             </div>
           </div>
           <div class="logo-card">
             <div class="logo-mark"><img src="assets/asset-016.jpg" alt="Zolvo logo"></div>
             <div class="logo-meta">
               <div class="logo-name">Zolvo</div>
-              <div class="logo-stat">YC P26 · in 27 days</div>
+              <div class="logo-stat">YC P26 Â· in 27 days</div>
             </div>
           </div>
           <div class="logo-card">
             <div class="logo-mark"><img src="assets/asset-017.jpg" alt="Enjamb Labs logo"></div>
             <div class="logo-meta">
               <div class="logo-name">Enjamb Labs</div>
-              <div class="logo-stat">161K views · into YC</div>
+              <div class="logo-stat">161K views Â· into YC</div>
             </div>
           </div>
           <div class="logo-card">
             <div class="logo-mark"><img src="assets/asset-018.jpg" alt="Veritas logo"></div>
             <div class="logo-meta">
               <div class="logo-name">Veritas</div>
-              <div class="logo-stat">234K views · in 24h</div>
+              <div class="logo-stat">234K views Â· in 24h</div>
             </div>
           </div>
           </div>
@@ -2306,12 +2306,12 @@ img.event-mark {
       </div></div>
     <div class="stpf-page" data-density="soft"><div class="page-inner face">
         <div class="marker"><span class="sec">Numbers</span>03</div>
-        <h2 class="nm-title">Six startups. One quarter. <em>3.6M views.</em></h2>
-        <p class="nm-intro">Twelve founders across six teams came to Vesting before the headline. They left with the traction that changes a trajectory — viral reach, angel checks on the spot, Y&nbsp;Combinator acceptances, real pipeline.</p>
+        <h2 class="nm-title">Six startups. One quarter. <em>4.27M+ views.</em></h2>
+        <p class="nm-intro">Twelve founders across six teams came to Vesting before the headline. They left with the traction that changes a trajectory &middot; viral reach, angel checks on the spot, Y&nbsp;Combinator acceptances, real pipeline.</p>
         <div class="nm-grid">
           <div class="nm-grid-item">
-            <div class="nm-n">3.6<span class="unit">M+</span><sup>1</sup></div>
-            <div class="nm-l">Breakout launch views</div>
+            <div class="nm-n">4.27<span class="unit">M+</span><sup>1</sup></div>
+            <div class="nm-l">Cumulative startup views</div>
             <div class="nm-meta">
               <span>Zolvo&nbsp;80K</span><span class="plus">+</span>
               <span>Enjamb&nbsp;161K</span><span class="plus">+</span>
@@ -2322,11 +2322,11 @@ img.event-mark {
           </div>
           <div class="nm-grid-item">
             <div class="nm-n">$300<span class="unit">K</span></div>
-            <div class="nm-l">ARR · pipeline</div>
+            <div class="nm-l">ARR Â· pipeline</div>
             <div class="nm-meta"><span>Zaranna AI</span><span class="dot-sep"></span><span>single post</span></div>
           </div>
           <div class="nm-grid-item">
-            <div class="nm-n">3<span class="unit">×</span><sup>2</sup></div>
+            <div class="nm-n">3<span class="unit">Ã—</span><sup>2</sup></div>
             <div class="nm-l">YC acceptances</div>
             <div class="nm-meta">
               <span class="yc-pill">ProjectX</span>
@@ -2338,9 +2338,9 @@ img.event-mark {
         <div class="nm-breakdown">
           <div class="nm-br"><span class="v">3.6<em>M</em></span><span class="l">ProjectX</span></div>
           <div class="nm-br"><span class="v">234K</span><span class="l">Veritas</span></div>
-          <div class="nm-br"><span class="v">186K</span><span class="l">Lance · $3.7M raise</span></div>
+          <div class="nm-br"><span class="v">186K</span><span class="l">Lance Â· $3.7M raise</span></div>
           <div class="nm-br"><span class="v">161K</span><span class="l">Enjamb</span></div>
-          <div class="nm-br"><span class="v">80K</span><span class="l">Zolvo · angel check</span></div>
+          <div class="nm-br"><span class="v">80K</span><span class="l">Zolvo Â· angel check</span></div>
         </div>
         <div class="footnote">
           <sup>1</sup>ProjectX launch breakout, organic and verified from platform analytics; excludes paid distribution.<br>
@@ -2353,23 +2353,23 @@ img.event-mark {
           <div class="photo photo-real photo-tarun"><img src="assets/upscaled/asset-004.jpg" alt="Tarun, Alex and Rithvik"></div>
           <div class="caption">
             Tarun, Alex & Rithvik
-            <span class="role">Zaranna AI · YC</span>
+            <span class="role">Zaranna AI Â· YC</span>
           </div>
         </div>
       </div></div>
     <div class="stpf-page" data-density="soft"><div class="page-inner face">
         <div class="marker"><span class="sec">Case 01 / 06</span>04</div>
         <div class="case-top">
-          <div class="case-type">AI · Single-Post Inbound · YC</div>
-          <div class="case-name">Zaranna AI <span class="role">— founder, Tarun Vedula</span></div>
+          <div class="case-type">AI Â· Single-Post Inbound Â· YC</div>
+          <div class="case-name">Zaranna AI <span class="role">Â· founder, Tarun Vedula</span></div>
         </div>
         <h2 class="case-title">One post. <em>Thirty calls.</em> <em>$300K</em> in pipeline.</h2>
-        <p class="story">Tarun was building Zaranna AI in stealth-quiet — a YC company with a clear thesis and no megaphone. Vesting ran one post on Instagram. Within days the inbox didn&rsquo;t ease up. <strong>30+ inbound calls</strong> came in, each one expanding a different use case the team hadn&rsquo;t even pitched yet. The pipeline closed at roughly <strong>$300K of ARR working</strong> &mdash; <em>from a single post.</em></p>
+        <p class="story">Tarun was building Zaranna AI in stealth-quiet &middot; a YC company with a clear thesis and no megaphone. Vesting ran one post on Instagram. Within days the inbox didn&rsquo;t ease up. <strong>30+ inbound calls</strong> came in, each one expanding a different use case the team hadn&rsquo;t even pitched yet. The pipeline closed at roughly <strong>$300K of ARR working</strong> &middot; <em>from a single post.</em></p>
         <div class="case-post">
           <div class="case-post-frame">
-            <img src="assets/asset-022.jpg" alt="Zaranna AI Reel — Vesting Live with Tarun">
+            <img src="assets/asset-022.jpg" alt="Zaranna AI Reel &middot; Vesting Live with Tarun">
           </div>
-          <div class="case-post-caption">Vesting Live · Reel · 30+ inbound calls</div>
+          <div class="case-post-caption">Vesting Live Â· Reel Â· 30+ inbound calls</div>
         </div>
         <div class="case-post-vchain" aria-hidden="true">
           <svg viewBox="0 0 24 32" width="22" height="28">
@@ -2395,7 +2395,7 @@ img.event-mark {
           <div class="photo photo-real photo-rounak"><img src="assets/upscaled/asset-002.jpg" alt="Rounak Adhikary"></div>
           <div class="caption">
             Rounak Adhikary
-            <span class="role">ProjectX · YC</span>
+            <span class="role">ProjectX Â· YC</span>
           </div>
         </div>
       </div></div>
@@ -2403,14 +2403,14 @@ img.event-mark {
         <div class="marker"><span class="sec">Case 02 / 06</span>05</div>
         <div class="case-top">
           <div class="case-type">Viral Launch &middot; YC Accept</div>
-          <div class="case-name">ProjectX <span class="role">&mdash; founder, Rounak</span></div>
+          <div class="case-name">ProjectX <span class="role">&middot; founder, Rounak</span></div>
         </div>
-        <h2 class="case-title">A pitch that reached <em>3.6 million</em> &mdash; and crashed the servers at 1&thinsp;AM.</h2>
-        <p class="story">Rounak didn&rsquo;t file a press release. He pitched ProjectX on Vesting&rsquo;s Instagram &mdash; <strong>content engineered to move, not to inform.</strong> The post hit <strong>3,612,440 views</strong>, 240K likes, 60K shares, and accumulated roughly three years of combined watch time. Signups overwhelmed the stack. Weeks later, <em>accepted into Y Combinator</em> &mdash; social proof money can&rsquo;t buy.</p>
+        <h2 class="case-title">A pitch that reached <em>3.6 million</em> &middot; and crashed the servers at 1&thinsp;AM.</h2>
+        <p class="story">Rounak didn&rsquo;t file a press release. He pitched ProjectX on Vesting&rsquo;s Instagram &middot; <strong>content engineered to move, not to inform.</strong> The post hit <strong>3,612,440 views</strong>, 240K likes, 60K shares, and accumulated roughly three years of combined watch time. Signups overwhelmed the stack. Weeks later, <em>accepted into Y Combinator</em> &middot; social proof money can&rsquo;t buy.</p>
         <div class="case-post case-post-triangle px-story">
           <div class="px-clip">
-            <img src="assets/asset-024.jpg" alt="ProjectX Reel — 3.6M views">
-            <div class="case-post-tag">Launch clip · 3.6M</div>
+            <img src="assets/asset-024.jpg" alt="ProjectX Reel &middot; 3.6M views">
+            <div class="case-post-tag">Launch clip Â· 3.6M</div>
           </div>
           <div class="px-chain" aria-hidden="true">
             <span class="px-chain-step">01</span>
@@ -2419,8 +2419,8 @@ img.event-mark {
           <div class="px-proof">
             <div class="px-proof-card">
               <div class="px-proof-k">Distribution unlock</div>
-              <img src="assets/asset-025.jpg" alt="Rounak tweet — servers crashed">
-              <div class="case-post-tag">Servers down · 1 AM</div>
+              <img src="assets/asset-025.jpg" alt="Rounak tweet &middot; servers crashed">
+              <div class="case-post-tag">Servers down Â· 1 AM</div>
             </div>
             <div class="px-proof-card">
               <div class="px-proof-k">Credibility unlock</div>
@@ -2443,7 +2443,7 @@ img.event-mark {
           <div class="photo photo-real photo-lance"><img src="assets/upscaled/asset-006.jpg" alt="Lance team"></div>
           <div class="caption">
             Lance team
-            <span class="role">Caleb, Gatik & Gavin · YC</span>
+            <span class="role">Caleb, Gatik & Gavin Â· YC</span>
           </div>
         </div>
       </div></div>
@@ -2451,15 +2451,15 @@ img.event-mark {
         <div class="marker"><span class="sec">Case 03 / 06</span>06</div>
         <div class="case-top">
           <div class="case-type">Funding &middot; AI for hotel ops</div>
-          <div class="case-name">Lance <span class="role">&mdash; YC-backed</span></div>
+          <div class="case-name">Lance <span class="role">&middot; YC-backed</span></div>
         </div>
         <h2 class="case-title">A <em>$3.7M raise</em> became an inbound engine overnight.</h2>
-        <p class="story">Lance builds AI agents for hotel ops. The raise needed to <strong>generate inbound</strong>, not just inform. Vesting built the announcement for the algorithm &mdash; bold visuals, one hook, engineered for distribution. In the first day: <strong>186,585 views</strong>, 2,363 profile visits. A post that behaved like a <em>channel.</em></p>
+        <p class="story">Lance builds AI agents for hotel ops. The raise needed to <strong>generate inbound</strong>, not just inform. Vesting built the announcement for the algorithm &middot; bold visuals, one hook, engineered for distribution. In the first day: <strong>186,585 views</strong>, 2,363 profile visits. A post that behaved like a <em>channel.</em></p>
         <div class="case-post">
           <div class="case-post-frame">
             <img src="assets/asset-027.jpg" alt="Lance YC announcement post">
           </div>
-          <div class="case-post-caption">Vesting carousel · Instagram &amp; X · 186K views</div>
+          <div class="case-post-caption">Vesting carousel Â· Instagram &amp; X Â· 186K views</div>
         </div>
         <div class="metrics">
           <div class="m hero"><div class="mv">186<span class="u">K</span></div><div class="ml">Views / 24h</div></div>
@@ -2474,7 +2474,7 @@ img.event-mark {
           <div class="photo photo-real photo-luci"><img src="assets/upscaled/asset-003.jpg" alt="Luci Holland"></div>
           <div class="caption">
             Luci Holland
-            <span class="role">Veritas · backed by A. Ohanian</span>
+            <span class="role">Veritas Â· backed by A. Ohanian</span>
           </div>
         </div>
       </div></div>
@@ -2482,15 +2482,15 @@ img.event-mark {
         <div class="marker"><span class="sec">Case 04 / 06</span>07</div>
         <div class="case-top">
           <div class="case-type">Stealth &middot; backed by Alexis Ohanian</div>
-          <div class="case-name">Veritas <span class="role">&mdash; founder, Luci Holland</span></div>
+          <div class="case-name">Veritas <span class="role">&middot; founder, Luci Holland</span></div>
         </div>
-        <h2 class="case-title">From stealth to <em>234K views</em> &mdash; microchips in Birkins.</h2>
-        <p class="story">Veritas was secretly embedding <strong>microchips inside Birkin bags</strong> for authentication. Zero public presence before Vesting. We broke the story, the hook did the rest: <strong>234,165 views</strong> in 24 hours, 1.5K likes, 755 shares. For a startup nobody knew existed &mdash; <em>a full-blown debut.</em></p>
+        <h2 class="case-title">From stealth to <em>234K views</em> &middot; microchips in Birkins.</h2>
+        <p class="story">Veritas was secretly embedding <strong>microchips inside Birkin bags</strong> for authentication. Zero public presence before Vesting. We broke the story, the hook did the rest: <strong>234,165 views</strong> in 24 hours, 1.5K likes, 755 shares. For a startup nobody knew existed &middot; <em>a full-blown debut.</em></p>
         <div class="case-post">
           <div class="case-post-frame">
             <img src="assets/asset-028.jpg" alt="Veritas Birkin microchips post">
           </div>
-          <div class="case-post-caption">Vesting carousel · Instagram &amp; X · 234K views in 24h</div>
+          <div class="case-post-caption">Vesting carousel Â· Instagram &amp; X Â· 234K views in 24h</div>
         </div>
         <div class="metrics">
           <div class="m hero"><div class="mv">234<span class="u">K</span></div><div class="ml">Views / 24h</div></div>
@@ -2505,7 +2505,7 @@ img.event-mark {
           <div class="photo photo-real photo-zolvo"><img src="assets/upscaled/asset-005.jpg" alt="Isa and Tony"></div>
           <div class="caption">
             Isa & Tony
-            <span class="role">Zolvo · YC P26</span>
+            <span class="role">Zolvo Â· YC P26</span>
           </div>
         </div>
       </div></div>
@@ -2513,9 +2513,9 @@ img.event-mark {
         <div class="marker"><span class="sec">Case 05 / 06</span>08</div>
         <div class="case-top">
           <div class="case-type">Live Pitch &middot; YC P26</div>
-          <div class="case-name">Zolvo <span class="role">&mdash; Isa, YC P26</span></div>
+          <div class="case-name">Zolvo <span class="role">&middot; Isa, YC P26</span></div>
         </div>
-        <h2 class="case-title">She pitched live. <em>Three weeks later</em> &mdash; YC.</h2>
+        <h2 class="case-title">She pitched live. <em>Three weeks later</em> &middot; YC.</h2>
         <p class="story">Isa was building AI agents for commercial lenders. She pitched at <strong>Vesting Live, Founders Inc Demo Day.</strong> Moved to SF, <strong>slept on couches</strong>, kept building. Brycent wrote an <strong>angel check on the spot</strong>. Twenty-seven days later, the message: <em>&ldquo;WE GOT ACCEPTED TO YC P26.&rdquo;</em></p>
         <div class="case-post case-post-pair">
           <div class="case-post-frame">
@@ -2540,7 +2540,7 @@ img.event-mark {
           <div class="photo photo-real photo-enjamb"><img src="assets/upscaled/asset-011.jpg" alt="Rayan and Maadhav"></div>
           <div class="caption">
             Rayan & Maadhav
-            <span class="role">Enjamb Labs · YC</span>
+            <span class="role">Enjamb Labs Â· YC</span>
           </div>
         </div>
       </div></div>
@@ -2548,14 +2548,14 @@ img.event-mark {
         <div class="marker"><span class="sec">Case 06 / 06</span>09</div>
         <div class="case-top">
           <div class="case-type">Stealth debut &middot; YC accept</div>
-          <div class="case-name">Enjamb Labs <span class="role">&mdash; founder, Rayan</span></div>
+          <div class="case-name">Enjamb Labs <span class="role">&middot; founder, Rayan</span></div>
         </div>
-        <h2 class="case-title">Stealth start to <em>161K views</em> &mdash; and into <em>YC.</em></h2>
+        <h2 class="case-title">Stealth start to <em>161K views</em> &middot; and into <em>YC.</em></h2>
         <p class="story">Rayan was building Enjamb Labs in stealth before Vesting filmed the launch. Vesting shipped the post and the story compounded: <strong>161,000+ views</strong>, deep engagement from the technical community, and inbound from the kind of people Enjamb actually wanted to talk to. Weeks later: <em>accepted into Y Combinator.</em></p>
         <div class="case-post case-post-pair">
           <div class="case-post-frame">
             <img src="assets/asset-031.jpg" alt="Enjamb Vesting Live clip">
-            <div class="case-post-tag">Clip · 161K</div>
+            <div class="case-post-tag">Clip Â· 161K</div>
           </div>
           <div class="case-post-arrow">&rarr;</div>
           <div class="case-post-frame">
@@ -2576,7 +2576,7 @@ img.event-mark {
           <div class="photo photo-real photo-yc"><img src="assets/upscaled/asset-007.jpg" alt="YC Demo Day floor"></div>
           <div class="caption">
             On the floor
-            <span class="role">YC Demo Day · 2026</span>
+            <span class="role">YC Demo Day Â· 2026</span>
           </div>
         </div>
       </div></div>
@@ -2584,10 +2584,10 @@ img.event-mark {
         <div class="marker"><span class="sec">Event 01 / 03</span>10</div>
         <div class="case-top">
           <div class="case-type">YC Demo Day &middot; &times;2 &middot; with Garry Tan</div>
-          <div class="case-name">Y Combinator <span class="role">&mdash; Winter &amp; Spring 2026</span></div>
+          <div class="case-name">Y Combinator <span class="role">&middot; Winter &amp; Spring 2026</span></div>
         </div>
-        <h2 class="case-title">The startup world&rsquo;s biggest stage &mdash; <em>amplified.</em></h2>
-        <p class="story"><strong>25 clips</strong> across two YC Demo Days featuring founders, startups, and <strong>YC President Garry Tan</strong>. Content engineered for distribution: the moments that don&rsquo;t make it into the livestream, the quotes founders don&rsquo;t yet know are theirs, the reactions that travel. The clips racked up <strong>1.56M views</strong> &mdash; <em>a new lane for YC visibility.</em></p>
+        <h2 class="case-title">The startup world&rsquo;s biggest stage &middot; <em>amplified.</em></h2>
+        <p class="story"><strong>25 clips</strong> across two YC Demo Days featuring founders, startups, and <strong>YC President Garry Tan</strong>. Content engineered for distribution: the moments that don&rsquo;t make it into the livestream, the quotes founders don&rsquo;t yet know are theirs, the reactions that travel. The clips racked up <strong>1.56M views</strong> &middot; <em>a new lane for YC visibility.</em></p>
         <div class="clothesline-wall clip-wall-yc">
           <div class="clothesline">
             <svg class="line" viewBox="0 0 432 14" preserveAspectRatio="none" aria-hidden="true"><path d="M 2 3 Q 216 11 430 3" fill="none" stroke="oklch(0.32 0.045 60 / 0.55)" stroke-width="0.9" stroke-linecap="round"/></svg>
@@ -2650,10 +2650,10 @@ img.event-mark {
         <div class="marker"><span class="sec">Event 02 / 03</span>11</div>
         <div class="case-top">
           <div class="case-type">Founders Inc &middot; &times;2 &middot; SF flagship</div>
-        <div class="case-name">Founders Inc Demo Day <span class="role">&mdash; where the format started</span></div>
+        <div class="case-name">Founders Inc Demo Day <span class="role">&middot; where the format started</span></div>
       </div>
-      <h2 class="case-title">SF&rsquo;s most electric startup event &mdash; <em>on camera.</em></h2>
-      <p class="story"><strong>29 clips</strong> across two Founders Inc events: pitches, demos, <strong>Vesting Live sessions</strong>, and the moments in between. The Founders Inc partnership is where our format started &mdash; a vertical integration of coverage, curation, and deal flow that produced <strong>7.26M views</strong>, <em>the bulk of our quarterly reach.</em></p>
+      <h2 class="case-title">SF&rsquo;s most electric startup event &middot; <em>on camera.</em></h2>
+      <p class="story"><strong>29 clips</strong> across two Founders Inc events: pitches, demos, <strong>Vesting Live sessions</strong>, and the moments in between. The Founders Inc partnership is where our format started &middot; a vertical integration of coverage, curation, and deal flow that produced <strong>7.26M views</strong>, <em>the bulk of our quarterly reach.</em></p>
       <div class="clothesline-wall clip-wall-founders">
         <div class="clothesline">
           <svg class="line" viewBox="0 0 432 14" preserveAspectRatio="none" aria-hidden="true"><path d="M 2 3 Q 216 11 430 3" fill="none" stroke="oklch(0.32 0.045 60 / 0.55)" stroke-width="0.9" stroke-linecap="round"/></svg>
@@ -2712,7 +2712,7 @@ img.event-mark {
           <div class="photo photo-real photo-resid"><img src="assets/upscaled/asset-009.jpg" alt="The Residency"></div>
           <div class="caption">
             The Residency
-            <span class="role">Emerging cohort · demo day</span>
+            <span class="role">Emerging cohort Â· demo day</span>
           </div>
         </div>
       </div></div>
@@ -2720,10 +2720,10 @@ img.event-mark {
         <div class="marker"><span class="sec">Event 03 / 03</span>12</div>
         <div class="case-top">
           <div class="case-type">The Residency Demo Day &middot; emerging cohort</div>
-      <div class="case-name">The Residency <span class="role">&mdash; smaller room, outsized reach</span></div>
+      <div class="case-name">The Residency <span class="role">&middot; smaller room, outsized reach</span></div>
     </div>
     <h2 class="case-title">Emerging founders, <em>outsized reach.</em></h2>
-    <p class="story"><strong>6 clips</strong> from The Residency&rsquo;s demo day &mdash; an intimate event with a fraction of the footprint, but <strong>310K views</strong>. <em>Proof that reach is a function of storytelling, not stage size.</em> The Residency cohort got SF-investor attention without the SF-investor crowd in the room.</p>
+    <p class="story"><strong>6 clips</strong> from The Residency&rsquo;s demo day &middot; an intimate event with a fraction of the footprint, but <strong>310K views</strong>. <em>Proof that reach is a function of storytelling, not stage size.</em> The Residency cohort got SF-investor attention without the SF-investor crowd in the room.</p>
     <div class="clothesline-wall clip-wall-residency">
       <div class="clothesline">
         <svg class="line" viewBox="0 0 432 14" preserveAspectRatio="none" aria-hidden="true"><path d="M 2 3 Q 216 11 430 3" fill="none" stroke="oklch(0.32 0.045 60 / 0.55)" stroke-width="0.9" stroke-linecap="round"/></svg>
@@ -2750,56 +2750,56 @@ img.event-mark {
           <div class="photo photo-real photo-vestlive"><img src="assets/upscaled/asset-012.jpg" alt="Vesting Live"></div>
           <div class="caption">
             Vesting Live
-            <span class="role">From Miami · with Brycent</span>
+            <span class="role">From Miami Â· with Brycent</span>
           </div>
         </div>
       </div></div>
     <div class="stpf-page" data-density="soft"><div class="page-inner face">
         <div class="marker"><span class="sec">Vesting Live</span>13</div>
-        <div class="guest-eye">— The weekly online show —</div>
+        <div class="guest-eye">The weekly online show</div>
         <h2 class="guest-title">Guests <em>on-air.</em></h2>
-        <p class="guest-sub">YC founders, Founders Inc residents, Thiel Fellows, VC partners — all in the same chair. No fluff, no PR-speak. Q1 2026 lineup.</p>
-        <div class="roster-head"><span class="lbl">Founders on-air</span><span class="count">Q1 · 31 guests</span></div>
+        <p class="guest-sub">YC founders, Founders Inc residents, Thiel Fellows, VC partners &middot; all in the same chair. No fluff, no PR-speak. Q1 2026 lineup.</p>
+        <div class="roster-head"><span class="lbl">Founders on-air</span><span class="count">Q1 Â· 31 guests</span></div>
         <ol class="roster">
-          <li class="roster-item"><span class="roster-num">01</span><div class="roster-mid"><span class="roster-name">Roy Lee</span><span class="roster-dash">—</span><span class="roster-company">Cluely</span></div><span class="roster-tag">a16z</span></li>
-          <li class="roster-item"><span class="roster-num">02</span><div class="roster-mid"><span class="roster-name">Andrew D&rsquo;Souza</span><span class="roster-dash">—</span><span class="roster-company">Boardy</span></div><span class="roster-tag">Creandum</span></li>
-          <li class="roster-item"><span class="roster-num">03</span><div class="roster-mid"><span class="roster-name">Philip Johnston</span><span class="roster-dash">—</span><span class="roster-company">StarCloud</span></div><span class="roster-tag">YC</span></li>
-          <li class="roster-item"><span class="roster-num">04</span><div class="roster-mid"><span class="roster-name">Kian Sadeghi</span><span class="roster-dash">—</span><span class="roster-company">Nucleus</span></div><span class="roster-tag">Thiel</span></li>
-          <li class="roster-item"><span class="roster-num">05</span><div class="roster-mid"><span class="roster-name">Maxwell Maduka</span><span class="roster-dash">—</span><span class="roster-company">Terra Industries</span></div><span class="roster-tag">8VC</span></li>
-          <li class="roster-item"><span class="roster-num">06</span><div class="roster-mid"><span class="roster-name">Skyler Chan</span><span class="roster-dash">—</span><span class="roster-company">GRU Space</span></div><span class="roster-tag">YC</span></li>
-          <li class="roster-item"><span class="roster-num">07</span><div class="roster-mid"><span class="roster-name">Georgia Witchel</span><span class="roster-dash">—</span><span class="roster-company">Mantis</span></div><span class="roster-tag">YC</span></li>
-          <li class="roster-item"><span class="roster-num">08</span><div class="roster-mid"><span class="roster-name">Anicet Nougaret</span><span class="roster-dash">—</span><span class="roster-company">Ariana</span></div><span class="roster-tag">F.Inc</span></li>
-          <li class="roster-item"><span class="roster-num">09</span><div class="roster-mid"><span class="roster-name">Richard Ou</span><span class="roster-dash">—</span><span class="roster-company">Doe</span></div><span class="roster-tag">YC</span></li>
-          <li class="roster-item"><span class="roster-num">10</span><div class="roster-mid"><span class="roster-name">Cathleen Kuo</span><span class="roster-dash">—</span><span class="roster-company">Opalite Health</span></div><span class="roster-tag">YC</span></li>
-          <li class="roster-item"><span class="roster-num">11</span><div class="roster-mid"><span class="roster-name">Atharva &amp; Dhenenjay</span><span class="roster-dash">—</span><span class="roster-company">Axion Orbital</span></div><span class="roster-tag">YC</span></li>
-          <li class="roster-item"><span class="roster-num">12</span><div class="roster-mid"><span class="roster-name">Ethan Gibbs</span><span class="roster-dash">—</span><span class="roster-company">Embedder</span></div><span class="roster-tag">YC</span></li>
-          <li class="roster-item"><span class="roster-num">13</span><div class="roster-mid"><span class="roster-name">Dimittri Choudbury</span><span class="roster-dash">—</span><span class="roster-company">Sonarly</span></div><span class="roster-tag">YC</span></li>
-          <li class="roster-item"><span class="roster-num">14</span><div class="roster-mid"><span class="roster-name">Sanchit &amp; Shubham</span><span class="roster-dash">—</span><span class="roster-company">RunAnywhere</span></div><span class="roster-tag">YC</span></li>
-          <li class="roster-item"><span class="roster-num">15</span><div class="roster-mid"><span class="roster-name">Kamran Majid</span><span class="roster-dash">—</span><span class="roster-company">Constellation</span></div><span class="roster-tag">YC</span></li>
-          <li class="roster-item"><span class="roster-num">16</span><div class="roster-mid"><span class="roster-name">Saksham &amp; Ishan</span><span class="roster-dash">—</span><span class="roster-company">Cardboard</span></div><span class="roster-tag">YC</span></li>
-          <li class="roster-item"><span class="roster-num">17</span><div class="roster-mid"><span class="roster-name">Matthew Chen</span><span class="roster-dash">—</span><span class="roster-company">Laurence</span></div><span class="roster-tag">YC</span></li>
-          <li class="roster-item"><span class="roster-num">18</span><div class="roster-mid"><span class="roster-name">Narayana Aaditya</span><span class="roster-dash">—</span><span class="roster-company">Skillsync</span></div><span class="roster-tag">YC</span></li>
-          <li class="roster-item"><span class="roster-num">19</span><div class="roster-mid"><span class="roster-name">Ai Daniil Bekirov</span><span class="roster-dash">—</span><span class="roster-company">Sparkles</span></div><span class="roster-tag">YC</span></li>
-          <li class="roster-item"><span class="roster-num">20</span><div class="roster-mid"><span class="roster-name">Alex &amp; Matt Le Maitre</span><span class="roster-dash">—</span><span class="roster-company">Seeing Systems</span></div><span class="roster-tag">YC</span></li>
-          <li class="roster-item"><span class="roster-num">21</span><div class="roster-mid"><span class="roster-name">Sam Rogers</span><span class="roster-dash">—</span><span class="roster-company">GrazeMate</span></div><span class="roster-tag">YC</span></li>
-          <li class="roster-item"><span class="roster-num">22</span><div class="roster-mid"><span class="roster-name">Rahul Gudise</span><span class="roster-dash">—</span><span class="roster-company">Gale</span></div><span class="roster-tag">YC</span></li>
-          <li class="roster-item"><span class="roster-num">23</span><div class="roster-mid"><span class="roster-name">Bryan Hong</span><span class="roster-dash">—</span><span class="roster-company">Shofo</span></div><span class="roster-tag">YC</span></li>
-          <li class="roster-item"><span class="roster-num">24</span><div class="roster-mid"><span class="roster-name">Matthew Asir</span><span class="roster-dash">—</span><span class="roster-company">LegalOS</span></div><span class="roster-tag">YC</span></li>
-          <li class="roster-item"><span class="roster-num">25</span><div class="roster-mid"><span class="roster-name">Jibran Hutchins</span><span class="roster-dash">—</span><span class="roster-company">Haladir</span></div><span class="roster-tag">YC</span></li>
-          <li class="roster-item"><span class="roster-num">26</span><div class="roster-mid"><span class="roster-name">Mitch Radhuber</span><span class="roster-dash">—</span><span class="roster-company">CoreLayer</span></div><span class="roster-tag">YC</span></li>
-          <li class="roster-item"><span class="roster-num">27</span><div class="roster-mid"><span class="roster-name">Caleb, Gatik &amp; Gavin</span><span class="roster-dash">—</span><span class="roster-company">Lance</span></div><span class="roster-tag">YC</span></li>
-          <li class="roster-item"><span class="roster-num">28</span><div class="roster-mid"><span class="roster-name">Jia Seed</span><span class="roster-dash">—</span><span class="roster-company">Jam</span></div><span class="roster-tag">Resid.</span></li>
-          <li class="roster-item"><span class="roster-num">29</span><div class="roster-mid"><span class="roster-name">Szymon Rybczak</span><span class="roster-dash">—</span><span class="roster-company">Tester Army</span></div><span class="roster-tag">YC</span></li>
-          <li class="roster-item"><span class="roster-num">30</span><div class="roster-mid"><span class="roster-name">Rounak Adhikary</span><span class="roster-dash">—</span><span class="roster-company">ProjectX</span></div><span class="roster-tag">YC</span></li>
-          <li class="roster-item"><span class="roster-num">31</span><div class="roster-mid"><span class="roster-name">Michael Hodara</span><span class="roster-dash">—</span><span class="roster-company">Kuli</span></div><span class="roster-tag">YC</span></li>
+          <li class="roster-item"><span class="roster-num">01</span><div class="roster-mid"><span class="roster-name">Roy Lee</span><span class="roster-dash">Â·</span><span class="roster-company">Cluely</span></div><span class="roster-tag">a16z</span></li>
+          <li class="roster-item"><span class="roster-num">02</span><div class="roster-mid"><span class="roster-name">Andrew D&rsquo;Souza</span><span class="roster-dash">Â·</span><span class="roster-company">Boardy</span></div><span class="roster-tag">Creandum</span></li>
+          <li class="roster-item"><span class="roster-num">03</span><div class="roster-mid"><span class="roster-name">Philip Johnston</span><span class="roster-dash">Â·</span><span class="roster-company">StarCloud</span></div><span class="roster-tag">YC</span></li>
+          <li class="roster-item"><span class="roster-num">04</span><div class="roster-mid"><span class="roster-name">Kian Sadeghi</span><span class="roster-dash">Â·</span><span class="roster-company">Nucleus</span></div><span class="roster-tag">Thiel</span></li>
+          <li class="roster-item"><span class="roster-num">05</span><div class="roster-mid"><span class="roster-name">Maxwell Maduka</span><span class="roster-dash">Â·</span><span class="roster-company">Terra Industries</span></div><span class="roster-tag">8VC</span></li>
+          <li class="roster-item"><span class="roster-num">06</span><div class="roster-mid"><span class="roster-name">Skyler Chan</span><span class="roster-dash">Â·</span><span class="roster-company">GRU Space</span></div><span class="roster-tag">YC</span></li>
+          <li class="roster-item"><span class="roster-num">07</span><div class="roster-mid"><span class="roster-name">Georgia Witchel</span><span class="roster-dash">Â·</span><span class="roster-company">Mantis</span></div><span class="roster-tag">YC</span></li>
+          <li class="roster-item"><span class="roster-num">08</span><div class="roster-mid"><span class="roster-name">Anicet Nougaret</span><span class="roster-dash">Â·</span><span class="roster-company">Ariana</span></div><span class="roster-tag">F.Inc</span></li>
+          <li class="roster-item"><span class="roster-num">09</span><div class="roster-mid"><span class="roster-name">Richard Ou</span><span class="roster-dash">Â·</span><span class="roster-company">Doe</span></div><span class="roster-tag">YC</span></li>
+          <li class="roster-item"><span class="roster-num">10</span><div class="roster-mid"><span class="roster-name">Cathleen Kuo</span><span class="roster-dash">Â·</span><span class="roster-company">Opalite Health</span></div><span class="roster-tag">YC</span></li>
+          <li class="roster-item"><span class="roster-num">11</span><div class="roster-mid"><span class="roster-name">Atharva &amp; Dhenenjay</span><span class="roster-dash">Â·</span><span class="roster-company">Axion Orbital</span></div><span class="roster-tag">YC</span></li>
+          <li class="roster-item"><span class="roster-num">12</span><div class="roster-mid"><span class="roster-name">Ethan Gibbs</span><span class="roster-dash">Â·</span><span class="roster-company">Embedder</span></div><span class="roster-tag">YC</span></li>
+          <li class="roster-item"><span class="roster-num">13</span><div class="roster-mid"><span class="roster-name">Dimittri Choudbury</span><span class="roster-dash">Â·</span><span class="roster-company">Sonarly</span></div><span class="roster-tag">YC</span></li>
+          <li class="roster-item"><span class="roster-num">14</span><div class="roster-mid"><span class="roster-name">Sanchit &amp; Shubham</span><span class="roster-dash">Â·</span><span class="roster-company">RunAnywhere</span></div><span class="roster-tag">YC</span></li>
+          <li class="roster-item"><span class="roster-num">15</span><div class="roster-mid"><span class="roster-name">Kamran Majid</span><span class="roster-dash">Â·</span><span class="roster-company">Constellation</span></div><span class="roster-tag">YC</span></li>
+          <li class="roster-item"><span class="roster-num">16</span><div class="roster-mid"><span class="roster-name">Saksham &amp; Ishan</span><span class="roster-dash">Â·</span><span class="roster-company">Cardboard</span></div><span class="roster-tag">YC</span></li>
+          <li class="roster-item"><span class="roster-num">17</span><div class="roster-mid"><span class="roster-name">Matthew Chen</span><span class="roster-dash">Â·</span><span class="roster-company">Laurence</span></div><span class="roster-tag">YC</span></li>
+          <li class="roster-item"><span class="roster-num">18</span><div class="roster-mid"><span class="roster-name">Narayana Aaditya</span><span class="roster-dash">Â·</span><span class="roster-company">Skillsync</span></div><span class="roster-tag">YC</span></li>
+          <li class="roster-item"><span class="roster-num">19</span><div class="roster-mid"><span class="roster-name">Ai Daniil Bekirov</span><span class="roster-dash">Â·</span><span class="roster-company">Sparkles</span></div><span class="roster-tag">YC</span></li>
+          <li class="roster-item"><span class="roster-num">20</span><div class="roster-mid"><span class="roster-name">Alex &amp; Matt Le Maitre</span><span class="roster-dash">Â·</span><span class="roster-company">Seeing Systems</span></div><span class="roster-tag">YC</span></li>
+          <li class="roster-item"><span class="roster-num">21</span><div class="roster-mid"><span class="roster-name">Sam Rogers</span><span class="roster-dash">Â·</span><span class="roster-company">GrazeMate</span></div><span class="roster-tag">YC</span></li>
+          <li class="roster-item"><span class="roster-num">22</span><div class="roster-mid"><span class="roster-name">Rahul Gudise</span><span class="roster-dash">Â·</span><span class="roster-company">Gale</span></div><span class="roster-tag">YC</span></li>
+          <li class="roster-item"><span class="roster-num">23</span><div class="roster-mid"><span class="roster-name">Bryan Hong</span><span class="roster-dash">Â·</span><span class="roster-company">Shofo</span></div><span class="roster-tag">YC</span></li>
+          <li class="roster-item"><span class="roster-num">24</span><div class="roster-mid"><span class="roster-name">Matthew Asir</span><span class="roster-dash">Â·</span><span class="roster-company">LegalOS</span></div><span class="roster-tag">YC</span></li>
+          <li class="roster-item"><span class="roster-num">25</span><div class="roster-mid"><span class="roster-name">Jibran Hutchins</span><span class="roster-dash">Â·</span><span class="roster-company">Haladir</span></div><span class="roster-tag">YC</span></li>
+          <li class="roster-item"><span class="roster-num">26</span><div class="roster-mid"><span class="roster-name">Mitch Radhuber</span><span class="roster-dash">Â·</span><span class="roster-company">CoreLayer</span></div><span class="roster-tag">YC</span></li>
+          <li class="roster-item"><span class="roster-num">27</span><div class="roster-mid"><span class="roster-name">Caleb, Gatik &amp; Gavin</span><span class="roster-dash">Â·</span><span class="roster-company">Lance</span></div><span class="roster-tag">YC</span></li>
+          <li class="roster-item"><span class="roster-num">28</span><div class="roster-mid"><span class="roster-name">Jia Seed</span><span class="roster-dash">Â·</span><span class="roster-company">Jam</span></div><span class="roster-tag">Resid.</span></li>
+          <li class="roster-item"><span class="roster-num">29</span><div class="roster-mid"><span class="roster-name">Szymon Rybczak</span><span class="roster-dash">Â·</span><span class="roster-company">Tester Army</span></div><span class="roster-tag">YC</span></li>
+          <li class="roster-item"><span class="roster-num">30</span><div class="roster-mid"><span class="roster-name">Rounak Adhikary</span><span class="roster-dash">Â·</span><span class="roster-company">ProjectX</span></div><span class="roster-tag">YC</span></li>
+          <li class="roster-item"><span class="roster-num">31</span><div class="roster-mid"><span class="roster-name">Michael Hodara</span><span class="roster-dash">Â·</span><span class="roster-company">Kuli</span></div><span class="roster-tag">YC</span></li>
         </ol>
-        <div class="roster-head"><span class="lbl">VCs on-air</span><span class="count">Q1 · 5 investors</span></div>
+        <div class="roster-head"><span class="lbl">VCs on-air</span><span class="count">Q1 Â· 5 investors</span></div>
         <ol class="roster roster-vc">
-          <li class="roster-item"><span class="roster-num">01</span><div class="roster-mid"><span class="roster-name">Chris Adamo</span><span class="roster-dash">—</span><span class="roster-company">Flamingo Cap</span></div><span class="roster-tag">Founding Partner</span></li>
-          <li class="roster-item"><span class="roster-num">02</span><div class="roster-mid"><span class="roster-name">Henri PJ</span><span class="roster-dash">—</span><span class="roster-company">Harlem Capital</span></div><span class="roster-tag">Partner</span></li>
-          <li class="roster-item"><span class="roster-num">03</span><div class="roster-mid"><span class="roster-name">Kass &amp; Mike Lazerow</span><span class="roster-dash">—</span><span class="roster-company">Velvet Sea Ventures</span></div><span class="roster-tag">Co-founders</span></li>
-          <li class="roster-item"><span class="roster-num">04</span><div class="roster-mid"><span class="roster-name">Geoffrey Woo</span><span class="roster-dash">—</span><span class="roster-company">Anti Fund</span></div><span class="roster-tag">Managing Partner</span></li>
-          <li class="roster-item"><span class="roster-num">05</span><div class="roster-mid"><span class="roster-name">Ankur Nagpal</span><span class="roster-dash">—</span><span class="roster-company">USVC</span></div><span class="roster-tag">GP</span></li>
+          <li class="roster-item"><span class="roster-num">01</span><div class="roster-mid"><span class="roster-name">Chris Adamo</span><span class="roster-dash">Â·</span><span class="roster-company">Flamingo Cap</span></div><span class="roster-tag">Founding Partner</span></li>
+          <li class="roster-item"><span class="roster-num">02</span><div class="roster-mid"><span class="roster-name">Henri PJ</span><span class="roster-dash">Â·</span><span class="roster-company">Harlem Capital</span></div><span class="roster-tag">Partner</span></li>
+          <li class="roster-item"><span class="roster-num">03</span><div class="roster-mid"><span class="roster-name">Kass &amp; Mike Lazerow</span><span class="roster-dash">Â·</span><span class="roster-company">Velvet Sea Ventures</span></div><span class="roster-tag">Co-founders</span></li>
+          <li class="roster-item"><span class="roster-num">04</span><div class="roster-mid"><span class="roster-name">Geoffrey Woo</span><span class="roster-dash">Â·</span><span class="roster-company">Anti Fund</span></div><span class="roster-tag">Managing Partner</span></li>
+          <li class="roster-item"><span class="roster-num">05</span><div class="roster-mid"><span class="roster-name">Ankur Nagpal</span><span class="roster-dash">Â·</span><span class="roster-company">USVC</span></div><span class="roster-tag">GP</span></li>
         </ol>
         <div class="roster-foot"><em>More guests booked for Q2 2026.</em></div>
       </div></div>
@@ -2809,7 +2809,7 @@ img.event-mark {
           <div class="photo photo-real photo-brycent"><img src="assets/upscaled/asset-010.jpg" alt="Brycent"></div>
           <div class="caption">
             Brycent
-            <span class="role">Twitch · @brycent</span>
+            <span class="role">Twitch Â· @brycent</span>
           </div>
         </div>
       </div></div>
@@ -2818,15 +2818,15 @@ img.event-mark {
         <div class="marker">14</div>
         <div class="bc-mid">
           <h2 class="bc-headline">ready to be<br><span class="accent">unavoidable?</span></h2>
-          <p class="bc-sub">Posts, carousels, reels, IRL HQ video, long-form, the weekly show, full event coverage — whatever moves your trajectory. We take a handful of clients per quarter. <em>Pitch us.</em></p>
-          <a class="bc-cta" href="mailto:kamil@vesting.tv?subject=Vesting%20pitch">Pitch us <span class="arrow">›</span></a>
-          <div class="bc-cta-sub">Limited slots · <em>Q2 2026</em> · by application</div>
+          <p class="bc-sub">Posts, carousels, reels, IRL HQ video, long-form, the weekly show, full event coverage &middot; whatever moves your trajectory. We take a handful of clients per quarter. <em>Pitch us.</em></p>
+          <a class="bc-cta" href="mailto:kamil@vesting.tv?subject=Vesting%20pitch">Pitch us <span class="arrow">â€º</span></a>
+          <div class="bc-cta-sub">Limited slots Â· <em>Q2 2026</em> Â· by application</div>
           <div class="bc-sig">
             <svg width="170" height="42" viewBox="0 0 190 54" fill="none" aria-label="Signed, Vesting">
               <path d="M 8 32 C 14 18, 20 14, 22 26 C 24 34, 20 40, 18 36 C 16 32, 24 26, 32 22 C 38 20, 42 26, 40 30 C 38 34, 32 32, 34 26 C 36 22, 44 22, 48 28 C 50 32, 48 34, 52 32 C 56 30, 58 22, 64 24 C 68 26, 66 34, 60 34 C 58 32, 62 26, 68 24 C 74 24, 76 34, 82 30 C 86 28, 82 22, 86 20 C 90 20, 92 24, 96 30 C 98 34, 100 30, 102 24 C 104 20, 100 14, 104 14 C 108 16, 108 28, 114 30 C 120 32, 124 24, 128 20" stroke="oklch(0.22 0.055 250)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="none" class="sig-path"/>
               <path d="M 12 42 C 44 44, 74 42, 118 44" stroke="oklch(0.64 0.135 78)" stroke-width="0.9" stroke-linecap="round" fill="none" class="sig-flourish"/>
             </svg>
-            <span class="meta">— Vesting, Miami</span>
+            <span class="meta">Vesting, Miami</span>
           </div>
         </div>
         <div>
@@ -2916,7 +2916,7 @@ img.event-mark {
               <path d="M 0 522 Q 70 520 140 522 T 280 522 T 420 522 T 520 522"/>
             </g>
 
-            <!-- Sun reflection on water — vertical shimmer column -->
+            <!-- Sun reflection on water &middot; vertical shimmer column -->
             <g opacity="0.6">
               <ellipse cx="370" cy="450" rx="44" ry="3" fill="oklch(0.96 0.18 88)"/>
               <ellipse cx="370" cy="468" rx="36" ry="2.5" fill="oklch(0.94 0.16 85)"/>
@@ -2972,7 +2972,7 @@ img.event-mark {
         </div>
         <div class="back-cover-quote">
           <h2 class="bc-final">Build like the world is<br><span class="accent">watching.</span></h2>
-          <div class="bc-final-mark">— Vesting</div>
+          <div class="bc-final-mark">Vesting</div>
         </div>
     </div></div>
   </div>
@@ -3046,14 +3046,14 @@ window.addEventListener('load', function() {
 
   pageFlip.loadFromHTML(pageEls);
 
-  // After init, hide the original raw pages — the library renders its own clones.
+  // After init, hide the original raw pages &middot; the library renders its own clones.
   // We override the temporary visibility CSS that prevented the vertical-stack flash.
   pageEls.forEach(el => { el.style.display = 'none'; });
   bookEl.style.overflow = 'visible';
   bookEl.style.width = 'auto';
   bookEl.style.height = 'auto';
 
-  // ¦¦ Indicator + button hookup ¦¦
+  // Â¦Â¦ Indicator + button hookup Â¦Â¦
   const labels = [
     'Cover', 'New Startup Media',
     'Menu', 'Proof',
