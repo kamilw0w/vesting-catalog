@@ -1408,6 +1408,17 @@ body.has-flipped .instruction-copy { opacity: 0; transform: translateY(-3px); po
 .clip-pending {
   cursor: default;
 }
+.clip-wall-note {
+  align-self: flex-end;
+  margin: -2px 4px -5px 0;
+  font-family: var(--f-mono);
+  font-size: 7px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent-deep);
+  opacity: 0.72;
+  pointer-events: none;
+}
 .clip-wall-yc {
   margin: 4px 0 12px;
   gap: 9px;
@@ -1478,6 +1489,35 @@ body.has-flipped .instruction-copy { opacity: 0; transform: translateY(-3px); po
 .clip:focus-visible::before {
   opacity: 0.65;
   transform: scale(1.12);
+}
+.clip[href]::after {
+  content: 'IG';
+  position: absolute;
+  right: -6px;
+  bottom: -6px;
+  z-index: 5;
+  width: 15px;
+  height: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: oklch(0.98 0.012 84 / 0.96);
+  border: 1px solid oklch(0.64 0.135 78 / 0.48);
+  color: var(--accent-deep);
+  font-family: var(--f-mono);
+  font-size: 5.5px;
+  letter-spacing: 0.02em;
+  box-shadow: 0 2px 4px oklch(0.24 0.04 70 / 0.16);
+  opacity: 0.55;
+  transform: translateY(1px) scale(0.92);
+  transition: opacity 0.22s ease, transform 0.22s ease;
+  pointer-events: none;
+}
+.clip[href]:hover::after,
+.clip[href]:focus-visible::after {
+  opacity: 1;
+  transform: translateY(0) scale(1);
 }
 .clip:hover img,
 .clip:focus-visible img {
@@ -1550,52 +1590,123 @@ body.has-flipped .instruction-copy { opacity: 0; transform: translateY(-3px); po
   position: relative;
   z-index: 3;
 }
-.proof-stack {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 7px;
-  margin-bottom: 12px;
-}
-.proof-card {
-  min-height: 54px;
-  padding: 7px 7px;
-  background: oklch(0.98 0.012 82);
-  border: 1px solid oklch(0.78 0.025 76 / 0.58);
+.reach-ledger {
+  position: relative;
+  padding: 13px 15px 12px;
+  margin-bottom: 11px;
+  background:
+    linear-gradient(135deg, oklch(0.985 0.010 84), oklch(0.935 0.020 80)),
+    var(--paper-hi);
+  border: 1px solid oklch(0.72 0.034 78 / 0.62);
   box-shadow:
-    0 2px 5px oklch(0.30 0.04 70 / 0.08),
-    inset 0 1px 0 oklch(1 0 0 / 0.55);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 5px;
+    0 8px 18px oklch(0.26 0.04 70 / 0.10),
+    inset 0 1px 0 oklch(1 0 0 / 0.7);
+  overflow: hidden;
 }
-.proof-card .proof-n {
+.reach-ledger::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, oklch(0.64 0.135 78), oklch(0.55 0.09 165), oklch(0.56 0.12 288));
+}
+.ledger-kicker {
+  font-family: var(--f-mono);
+  font-size: 7.5px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--accent-deep);
+  margin-bottom: 3px;
+}
+.ledger-top {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 12px;
+}
+.ledger-number {
   font-family: var(--f-display);
   font-style: italic;
-  font-size: 20px;
-  line-height: 0.95;
-  color: var(--accent);
-  letter-spacing: -0.03em;
-}
-.proof-card .proof-n .u {
-  font-size: 0.46em;
+  font-size: 52px;
+  line-height: 0.86;
+  letter-spacing: -0.04em;
   color: var(--ink);
-  font-style: normal;
 }
-.proof-card .proof-l {
+.ledger-number .unit {
+  font-size: 0.44em;
+  color: var(--accent);
+  letter-spacing: -0.02em;
+}
+.ledger-label {
+  max-width: 130px;
+  padding-bottom: 3px;
   font-family: var(--f-mono);
-  font-size: 6.5px;
+  font-size: 7.5px;
+  line-height: 1.35;
   letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--muted);
+  text-align: right;
+}
+.ledger-breakdown {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  margin-top: 10px;
+  padding-top: 9px;
+  border-top: 1px solid oklch(0.78 0.025 76 / 0.75);
+}
+.ledger-breakdown div {
+  padding: 0 10px;
+  border-right: 1px dashed oklch(0.72 0.030 78 / 0.6);
+}
+.ledger-breakdown div:first-child { padding-left: 0; }
+.ledger-breakdown div:last-child { border-right: none; padding-right: 0; }
+.ledger-breakdown span {
+  display: block;
+  font-family: var(--f-display);
+  font-style: italic;
+  font-size: 20px;
+  line-height: 1;
+  color: var(--accent);
+  letter-spacing: -0.025em;
+  margin-bottom: 4px;
+}
+.ledger-breakdown em {
+  display: block;
+  font-family: var(--f-mono);
+  font-style: normal;
+  font-size: 6.6px;
   line-height: 1.25;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.ledger-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-top: 9px;
+}
+.ledger-strip span {
+  padding: 3px 7px;
+  border: 1px solid oklch(0.64 0.135 78 / 0.28);
+  background: oklch(0.64 0.135 78 / 0.075);
+  border-radius: 100px;
+  font-family: var(--f-mono);
+  font-size: 6.8px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent-deep);
 }
 .logo-wall-startups {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(3, 1fr);
-  gap: 8px 16px;
-  flex: 1 1 0;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 62px);
+  gap: 8px;
+  flex: 0 0 auto;
   align-items: stretch;
   justify-items: stretch;
 }
@@ -1669,11 +1780,11 @@ img.event-mark {
 }
 .logo-card {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  justify-content: center;
-  gap: 6px;
-  padding: 8px 10px;
+  justify-content: flex-start;
+  gap: 8px;
+  padding: 8px;
   background: oklch(0.96 0.012 80);
   border: 1px solid oklch(0.78 0.025 76 / 0.5);
   border-radius: 6px;
@@ -1685,10 +1796,11 @@ img.event-mark {
   box-shadow: 0 6px 14px oklch(0.30 0.04 70 / 0.1), inset 0 1px 0 oklch(1 0 0 / 0.5);
 }
 .logo-mark {
-  width: 50px; height: 50px;
-  border-radius: 14px;
+  width: 40px; height: 40px;
+  border-radius: 10px;
   overflow: hidden;
   box-shadow: 0 2px 6px oklch(0.30 0.04 70 / 0.15);
+  flex: 0 0 auto;
 }
 .logo-mark img {
   width: 100%; height: 100%;
@@ -1696,24 +1808,29 @@ img.event-mark {
   object-fit: cover;
 }
 .logo-meta {
-  text-align: center;
+  text-align: left;
   display: flex; flex-direction: column;
   gap: 3px;
+  min-width: 0;
 }
 .logo-name {
   font-family: var(--f-display);
   font-style: italic;
-  font-size: 15px;
+  font-size: 14px;
   color: var(--ink);
   line-height: 1;
   letter-spacing: -0.01em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .logo-stat {
   font-family: var(--f-mono);
-  font-size: 6.8px;
-  letter-spacing: 0.16em;
+  font-size: 6.3px;
+  letter-spacing: 0.12em;
   color: var(--accent-deep);
   text-transform: uppercase;
+  line-height: 1.25;
 }
 
 
@@ -2232,12 +2349,24 @@ img.event-mark {
       </div></div>
     <div class="stpf-page" data-density="soft"><div class="page-inner back img-back face">
         <div class="logo-wall">
-          <div class="proof-stack" aria-label="Proof stack">
-            <div class="proof-card"><div class="proof-n">3.6<span class="u">M</span></div><div class="proof-l">Single launch breakout</div></div>
-            <div class="proof-card"><div class="proof-n">3<span class="u">x</span></div><div class="proof-l">YC acceptances</div></div>
-            <div class="proof-card"><div class="proof-n">$300<span class="u">K</span></div><div class="proof-l">ARR pipeline</div></div>
-            <div class="proof-card"><div class="proof-n">3</div><div class="proof-l">Case studies live</div></div>
-            <div class="proof-card"><div class="proof-n">4</div><div class="proof-l">Event partners</div></div>
+          <div class="reach-ledger" aria-label="Q1 reach ledger">
+            <div class="ledger-kicker">Q1 Reach Ledger</div>
+            <div class="ledger-top">
+              <div class="ledger-number">13.40<span class="unit">M+</span></div>
+              <div class="ledger-label">total organic views across startups and events</div>
+            </div>
+            <div class="ledger-breakdown">
+              <div><span>4.27M+</span><em>Startup outcomes</em></div>
+              <div><span>9.13M</span><em>Event reach</em></div>
+              <div><span>60</span><em>Event clips shipped</em></div>
+            </div>
+            <div class="ledger-strip">
+              <span>3x YC</span>
+              <span>$300K ARR</span>
+              <span>3 live case studies</span>
+              <span>4 event partners</span>
+              <span>36 on-air guests</span>
+            </div>
           </div>
           <div class="logo-wall-startups">
           <div class="logo-card">
@@ -2589,6 +2718,7 @@ img.event-mark {
         <h2 class="case-title">The startup world&rsquo;s biggest stage &middot; <em>amplified.</em></h2>
         <p class="story"><strong>25 clips</strong> across two YC Demo Days featuring founders, startups, and <strong>YC President Garry Tan</strong>. Content engineered for distribution: the moments that don&rsquo;t make it into the livestream, the quotes founders don&rsquo;t yet know are theirs, the reactions that travel. The clips racked up <strong>1.56M views</strong> &middot; <em>a new lane for YC visibility.</em></p>
         <div class="clothesline-wall clip-wall-yc">
+          <div class="clip-wall-note">Tap clips to open reels</div>
           <div class="clothesline">
             <svg class="line" viewBox="0 0 432 14" preserveAspectRatio="none" aria-hidden="true"><path d="M 2 3 Q 216 11 430 3" fill="none" stroke="oklch(0.32 0.045 60 / 0.55)" stroke-width="0.9" stroke-linecap="round"/></svg>
             <div class="clips-row">
@@ -2655,6 +2785,7 @@ img.event-mark {
       <h2 class="case-title">SF&rsquo;s most electric startup event &middot; <em>on camera.</em></h2>
       <p class="story"><strong>29 clips</strong> across two Founders Inc events: pitches, demos, <strong>Vesting Live sessions</strong>, and the moments in between. The Founders Inc partnership is where our format started &middot; a vertical integration of coverage, curation, and deal flow that produced <strong>7.26M views</strong>, <em>the bulk of our quarterly reach.</em></p>
       <div class="clothesline-wall clip-wall-founders">
+        <div class="clip-wall-note">Tap clips to open reels</div>
         <div class="clothesline">
           <svg class="line" viewBox="0 0 432 14" preserveAspectRatio="none" aria-hidden="true"><path d="M 2 3 Q 216 11 430 3" fill="none" stroke="oklch(0.32 0.045 60 / 0.55)" stroke-width="0.9" stroke-linecap="round"/></svg>
           <div class="clips-row">
@@ -2725,6 +2856,7 @@ img.event-mark {
     <h2 class="case-title">Emerging founders, <em>outsized reach.</em></h2>
     <p class="story"><strong>6 clips</strong> from The Residency&rsquo;s demo day &middot; an intimate event with a fraction of the footprint, but <strong>310K views</strong>. <em>Proof that reach is a function of storytelling, not stage size.</em> The Residency cohort got SF-investor attention without the SF-investor crowd in the room.</p>
     <div class="clothesline-wall clip-wall-residency">
+      <div class="clip-wall-note">Tap clips to open reels</div>
       <div class="clothesline">
         <svg class="line" viewBox="0 0 432 14" preserveAspectRatio="none" aria-hidden="true"><path d="M 2 3 Q 216 11 430 3" fill="none" stroke="oklch(0.32 0.045 60 / 0.55)" stroke-width="0.9" stroke-linecap="round"/></svg>
         <div class="clips-row">
@@ -2819,8 +2951,8 @@ img.event-mark {
         <div class="bc-mid">
           <h2 class="bc-headline">ready to be<br><span class="accent">unavoidable?</span></h2>
           <p class="bc-sub">Posts, carousels, reels, IRL HQ video, long-form, the weekly show, full event coverage &middot; whatever moves your trajectory. We take a handful of clients per quarter. <em>Pitch us.</em></p>
-          <a class="bc-cta" href="mailto:kamil@vesting.tv?subject=Vesting%20pitch">Pitch us <span class="arrow">›</span></a>
-          <div class="bc-cta-sub">Limited slots · <em>Q2 2026</em> · by application</div>
+          <a class="bc-cta" href="mailto:kamil@vesting.tv?subject=Vesting%20pitch">Pitch us <span class="arrow">&rsaquo;</span></a>
+          <div class="bc-cta-sub">kamil@vesting.tv &middot; <em>Q2 2026</em> &middot; by application</div>
           <div class="bc-sig">
             <svg width="170" height="42" viewBox="0 0 190 54" fill="none" aria-label="Signed, Vesting">
               <path d="M 8 32 C 14 18, 20 14, 22 26 C 24 34, 20 40, 18 36 C 16 32, 24 26, 32 22 C 38 20, 42 26, 40 30 C 38 34, 32 32, 34 26 C 36 22, 44 22, 48 28 C 50 32, 48 34, 52 32 C 56 30, 58 22, 64 24 C 68 26, 66 34, 60 34 C 58 32, 62 26, 68 24 C 74 24, 76 34, 82 30 C 86 28, 82 22, 86 20 C 90 20, 92 24, 96 30 C 98 34, 100 30, 102 24 C 104 20, 100 14, 104 14 C 108 16, 108 28, 114 30 C 120 32, 124 24, 128 20" stroke="oklch(0.22 0.055 250)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="none" class="sig-path"/>
@@ -2841,7 +2973,7 @@ img.event-mark {
             <span>a16z Speedrun</span>
           </div>
           <div class="bc-grid">
-            <div><span class="lbl">Correspondence</span><span class="val">collab@vesting.tv</span></div>
+            <div><span class="lbl">Correspondence</span><span class="val">kamil@vesting.tv</span></div>
             <div><span class="lbl">Live show</span><span class="val">twitch.tv/brycent</span></div>
           </div>
         </div>
