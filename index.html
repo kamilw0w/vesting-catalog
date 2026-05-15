@@ -883,6 +883,17 @@ body::before {
   position: relative;
   overflow: hidden;
 }
+.back-cover-art {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: center;
+}
+.back-cover-face .back-cover-deco,
+.back-cover-face .back-cover-quote {
+  display: none !important;
+}
 .back-cover-face .back-cover-deco {
   height: 100% !important;
   mask-image: none !important;
@@ -2265,7 +2276,7 @@ img.event-mark {
   grid-template-columns: 0.74fr 28px 1.36fr;
   align-items: center;
   gap: 12px;
-  height: 236px;
+  height: 258px;
   margin: auto 0 4px;
   padding: 0;
 }
@@ -2337,16 +2348,16 @@ img.event-mark {
 }
 .px-proof-card {
   min-width: 0;
-  padding: 10px 12px 17px;
+  padding: 8px 9px 13px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   overflow: visible;
 }
 .px-proof-k {
-  margin-bottom: 8px;
+  margin-bottom: 6px;
   font-family: var(--f-mono);
-  font-size: 10.5px;
+  font-size: 9.5px;
   line-height: 1.15;
   letter-spacing: 0.16em;
   text-transform: uppercase;
@@ -2355,15 +2366,15 @@ img.event-mark {
 }
 .px-proof-card img {
   width: 100%;
-  max-height: 70px;
+  max-height: 90px;
   object-fit: contain;
   display: block;
 }
 .px-proof-card:first-child img {
-  max-height: 78px;
+  max-height: 92px;
 }
 .px-proof-card:last-child img {
-  max-height: 58px;
+  max-height: 88px;
 }
 .case-post-triangle.px-story .case-post-tag {
   bottom: -9px;
@@ -2756,12 +2767,12 @@ img.event-mark {
           <div class="px-proof">
             <div class="px-proof-card">
               <div class="px-proof-k">Distribution unlock</div>
-              <img src="assets/asset-025.jpg" alt="Rounak tweet &middot; servers crashed">
+              <img src="assets/serversdown.png" alt="Rounak tweet &middot; servers crashed">
               <div class="case-post-tag">Servers down · 1 AM</div>
             </div>
             <div class="px-proof-card">
               <div class="px-proof-k">Credibility unlock</div>
-              <img src="assets/asset-026.jpg" alt="Welcome to YC: ProjectX email">
+              <img src="assets/ycacc.png" alt="Welcome to YC: ProjectX email">
               <div class="case-post-tag">YC accept</div>
             </div>
           </div>
@@ -3261,6 +3272,7 @@ img.event-mark {
     </div></div>
     <!-- PHYSICAL BACK COVER (hard, what shows when book closes) -->
     <div class="stpf-page stpf-hard" data-density="hard"><div class="page-inner back-cover-face face">
+        <img class="back-cover-art" src="assets/backcover.png" alt="Vesting back cover">
         <div class="back-cover-deco" aria-hidden="true">
           <svg viewBox="0 0 520 700" preserveAspectRatio="xMidYMid slice">
             <defs>
