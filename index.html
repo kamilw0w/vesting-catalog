@@ -1503,11 +1503,12 @@ body.bookmark-jumping .chapter-bookmarks {
   content: '';
   position: absolute;
   top: 0;
-  right: -15px;
+  right: calc((var(--page-edge-width, 18px) * -1) + 3px);
   bottom: 0;
-  width: 18px;
+  width: var(--page-edge-width, 18px);
   z-index: -1;
   pointer-events: none;
+  opacity: var(--page-edge-opacity, 1);
   border-radius: 0 3px 3px 0;
   background:
     repeating-linear-gradient(
@@ -1519,6 +1520,7 @@ body.bookmark-jumping .chapter-bookmarks {
     linear-gradient(180deg, rgba(255,255,255,0.42), rgba(128,105,75,0.12) 52%, rgba(55,38,18,0.18));
   box-shadow: 9px 7px 18px rgba(35, 25, 13, 0.16);
   transform: skewY(1.2deg);
+  transition: width 0.35s ease, right 0.35s ease, opacity 0.2s ease;
 }
 .stf__page {
   background: transparent !important;
@@ -1532,6 +1534,11 @@ body.bookmark-jumping .chapter-bookmarks {
 .book.on-back-cover .stf__parent {
   position: relative;
   left: 25%;
+}
+.book.on-back-cover .stf__parent::after {
+  width: 0;
+  right: 0;
+  opacity: 0;
 }
 /* Make the inner wrapper fill the StPageFlip-rendered page area */
 .page-inner {
@@ -3730,6 +3737,10 @@ window.addEventListener('load', function() {
     document.body.classList.toggle('has-flipped', idx > 0);
     document.body.classList.toggle('on-back-cover', idx >= total - 1);
     bookEl.classList.toggle('on-back-cover', idx >= total - 1);
+    const remainingRatio = total > 1 ? Math.max(0, (total - 1 - idx) / (total - 1)) : 0;
+    const edgeWidth = idx >= total - 1 ? 0 : 4 + (18 * remainingRatio);
+    bookEl.style.setProperty('--page-edge-width', edgeWidth.toFixed(2) + 'px');
+    bookEl.style.setProperty('--page-edge-opacity', idx >= total - 1 ? '0' : Math.max(0.24, remainingRatio).toFixed(2));
     [...chapterBtns, ...bookmarkBtns].forEach(btn => {
       const range = chapterRanges[btn.dataset.section];
       btn.classList.toggle('active', !!range && idx >= range.start && idx < range.end);
