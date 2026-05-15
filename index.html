@@ -88,6 +88,11 @@ body::before {
   pointer-events: none;
   z-index: 0;
 }
+body.on-back-cover .stage::before,
+body.on-back-cover .stage::after {
+  opacity: 0;
+  transition: none;
+}
 .catalog {
   position:relative; width:1040px; height:700px;
   transform-style:preserve-3d; transform:rotateX(2deg);
@@ -1531,14 +1536,25 @@ body.bookmark-jumping .chapter-bookmarks {
     5px 5px 0 rgba(205, 191, 164, 0.34),
     8px 8px 16px rgba(38, 28, 14, 0.18);
 }
-.book.on-back-cover .stf__parent {
+.book.on-back-cover.stf__parent {
   position: relative;
-  left: 25%;
 }
-.book.on-back-cover .stf__parent::after {
+.book.on-back-cover {
+  filter: none;
+}
+.book.on-back-cover.stf__parent::before {
+  opacity: 0;
+  transition: none;
+}
+.book.on-back-cover.stf__parent::after {
   width: 0;
   right: 0;
   opacity: 0;
+  transition: none;
+}
+.book.on-back-cover .stf__page:not(:has(.back-cover-face)) {
+  opacity: 0 !important;
+  visibility: hidden !important;
 }
 /* Make the inner wrapper fill the StPageFlip-rendered page area */
 .page-inner {
