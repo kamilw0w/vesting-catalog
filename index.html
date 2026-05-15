@@ -34,8 +34,8 @@
 body {
   min-height:100vh;
   background:
-    radial-gradient(ellipse 1180px 720px at 50% 44%, rgba(255,236,198,0.10) 0%, rgba(0,0,0,0.10) 66%, rgba(0,0,0,0.34) 100%),
-    linear-gradient(180deg, rgba(10, 8, 6, 0.08), rgba(0, 0, 0, 0.22)),
+    radial-gradient(ellipse 1180px 720px at 48% 42%, rgba(255,236,198,0.15) 0%, rgba(255,244,220,0.05) 42%, rgba(0,0,0,0.16) 76%, rgba(0,0,0,0.30) 100%),
+    linear-gradient(145deg, rgba(255,245,220,0.10) 0%, rgba(10, 8, 6, 0.03) 38%, rgba(0, 0, 0, 0.20) 100%),
     url('assets/whitewood.png');
   background-size: cover, cover, cover;
   background-position: center, center, center;
@@ -64,13 +64,13 @@ body::before {
   position: absolute;
   left: 50%;
   top: 50%;
-  width: 92%;
-  height: 76%;
-  transform: translate(-50%, -41%);
+  width: 94%;
+  height: 72%;
+  transform: translate(-48%, -37%);
   background:
-    radial-gradient(ellipse at center, rgba(0,0,0,0.42) 0%, rgba(0,0,0,0.30) 38%, rgba(0,0,0,0.13) 64%, transparent 80%);
-  filter: blur(30px);
-  opacity: 0.9;
+    radial-gradient(ellipse at center, rgba(0,0,0,0.32) 0%, rgba(0,0,0,0.22) 38%, rgba(0,0,0,0.10) 64%, transparent 82%);
+  filter: blur(28px);
+  opacity: 0.88;
   pointer-events: none;
   z-index: 0;
 }
@@ -79,12 +79,12 @@ body::before {
   position: absolute;
   left: 50%;
   top: 50%;
-  width: 74%;
-  height: 50%;
-  transform: translate(-48%, -36%);
-  background: rgba(0,0,0,0.26);
-  filter: blur(42px);
-  opacity: 0.68;
+  width: 82%;
+  height: 28%;
+  transform: translate(-47%, 89%);
+  background: radial-gradient(ellipse at center, rgba(0,0,0,0.38) 0%, rgba(0,0,0,0.18) 44%, transparent 76%);
+  filter: blur(16px);
+  opacity: 0.74;
   pointer-events: none;
   z-index: 0;
 }
@@ -973,23 +973,27 @@ body::before {
 .bc-grid .lbl { font-family: var(--f-mono); font-size: 8.5px; color: var(--accent); letter-spacing: 0.22em; text-transform: uppercase; }
 .bc-grid .val { font-family: var(--f-display); font-style: italic; font-size: 16px; color: var(--ink); letter-spacing: -0.01em; }
 .controls {
-  margin-top: 18px;
+  margin-top: 12px;
   display: flex;
   align-items: center;
   gap: 12px;
-  padding: 6px 10px;
+  padding: 8px 12px;
   font-family: var(--f-mono);
   font-size: 11px;
   color: oklch(0.22 0.045 80);
   letter-spacing: 0.16em;
-  background: oklch(0.99 0.012 82 / 0.58);
-  border: 1px solid oklch(0.42 0.045 80 / 0.18);
+  background:
+    linear-gradient(135deg, oklch(0.98 0.014 82 / 0.88), oklch(0.91 0.018 80 / 0.74));
+  border: 1px solid oklch(0.42 0.045 80 / 0.24);
   border-radius: 3px;
-  box-shadow: 0 8px 22px rgba(22, 16, 8, 0.14), inset 0 1px 0 oklch(1 0 0 / 0.45);
-  backdrop-filter: blur(5px);
+  box-shadow:
+    0 13px 24px rgba(22, 16, 8, 0.18),
+    0 2px 5px rgba(22, 16, 8, 0.10),
+    inset 0 1px 0 oklch(1 0 0 / 0.58);
+  backdrop-filter: blur(6px);
 }
 .ctrl-btn {
-  background: oklch(0.20 0.035 80 / 0.82); border: 1px solid oklch(0.44 0.052 82 / 0.38);
+  background: oklch(0.20 0.035 80 / 0.86); border: 1px solid oklch(0.44 0.052 82 / 0.45);
   color: oklch(0.94 0.035 82); padding: 10px 16px;
   font-family: var(--f-mono); letter-spacing: 0.16em; font-size: 10.5px;
   cursor: pointer; transition: all 0.25s; text-transform: uppercase;
@@ -1137,7 +1141,7 @@ body.bookmark-jumping .chapter-bookmarks {
     0 0 0 1px rgba(255,255,255,0.20) inset,
     0 0 16px color-mix(in oklab, var(--chapter-color) 28%, transparent);
 }
-.instruction { margin-top: 7px; font-family: var(--f-italic); font-style: italic; color: oklch(0.30 0.04 80); font-size: 12.5px; letter-spacing: 0.04em; min-height: 28px; display: flex; align-items: center; justify-content: center; gap: 8px; text-shadow: 0 1px 0 oklch(1 0 0 / 0.5); }
+.instruction { margin-top: 6px; font-family: var(--f-italic); font-style: italic; color: oklch(0.30 0.04 80); font-size: 12.5px; letter-spacing: 0.04em; min-height: 28px; display: flex; align-items: center; justify-content: center; gap: 8px; text-shadow: 0 1px 0 oklch(1 0 0 / 0.5); }
 .instruction-copy { transition: opacity 0.35s ease, transform 0.35s ease; }
 .snd-btn {
   background: oklch(0.98 0.012 82 / 0.44);
@@ -1386,6 +1390,10 @@ body.bookmark-jumping .chapter-bookmarks {
   position: relative;
   z-index: 1;
   overflow: hidden;
+  transform-style: preserve-3d;
+  filter:
+    drop-shadow(0 22px 30px rgba(24, 18, 10, 0.24))
+    drop-shadow(0 4px 8px rgba(24, 18, 10, 0.15));
 }
 .book > .stpf-page {
   position: absolute;
@@ -1401,10 +1409,28 @@ body.bookmark-jumping .chapter-bookmarks {
 /* StPageFlip clones our pages into its own wrapper. Its .stf__page has white bg by default &middot; neutralize. */
 .stf__parent {
   margin: 0 auto;
+  position: relative;
+  isolation: isolate;
+}
+.stf__parent::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.stf__parent::before {
+  z-index: 90;
+  background:
+    linear-gradient(135deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.04) 28%, rgba(0,0,0,0.035) 70%, rgba(0,0,0,0.14) 100%),
+    linear-gradient(to bottom, transparent 54%, rgba(224, 207, 176, 0.08) 100%);
+  mix-blend-mode: overlay;
 }
 .stf__page {
   background: transparent !important;
   overflow: hidden;
+  box-shadow:
+    1px 1px 0 rgba(244, 236, 216, 0.78),
+    3px 3px 0 rgba(190, 178, 154, 0.24);
 }
 .book.on-back-cover .stf__parent {
   position: relative;
