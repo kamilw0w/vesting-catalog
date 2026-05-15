@@ -781,7 +781,7 @@ body::before {
 .metrics { margin-top: auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border-top: 1px solid var(--rule); padding-top: 16px; }
 .metrics.cols-3 { grid-template-columns: repeat(3, 1fr); }
 .metrics.cols-5 { grid-template-columns: repeat(5, 1fr); }
-.m { padding: 0 12px; border-right: 1px dashed var(--rule-hi); }
+.m { padding: 0 12px; border-right: 1px dashed var(--rule-hi); display: flex; flex-direction: column; justify-content: flex-start; }
 .m:first-child { padding-left: 0; }
 .m:last-child { border-right: none; padding-right: 0; }
 .mv {
@@ -792,7 +792,7 @@ body::before {
 }
 .m.hero .mv { color: var(--accent); font-style: italic; font-size: 50px; }
 .mv .u { font-size: 0.4em; color: var(--muted); font-style: normal; letter-spacing: 0; }
-.ml { font-family: var(--f-mono); font-size: 9px; color: var(--muted); letter-spacing: 0.16em; text-transform: uppercase; line-height: 1.4; }
+.ml { font-family: var(--f-mono); font-size: 9px; color: var(--muted); letter-spacing: 0.16em; text-transform: uppercase; line-height: 1.15; min-height: 20px; display: flex; align-items: flex-start; }
 .timeline {
   margin-top: auto; border-top: 1px solid var(--rule);
   padding-top: 18px; display: grid;
@@ -1082,13 +1082,13 @@ body::before {
   gap: 8px;
   max-width: 760px;
 }
-.chapter-jump[data-section="cover"] { --chapter-color: #d8d7ca; --chapter-ink: #26251f; }
-.chapter-jump[data-section="proof"] { --chapter-color: #4fa8d8; --chapter-ink: #071521; }
-.chapter-jump[data-section="numbers"] { --chapter-color: #d94d60; --chapter-ink: #23070b; }
-.chapter-jump[data-section="cases"] { --chapter-color: #30b979; --chapter-ink: #03170d; }
-.chapter-jump[data-section="events"] { --chapter-color: #8b64d8; --chapter-ink: #11091f; }
-.chapter-jump[data-section="live"] { --chapter-color: #d65fa4; --chapter-ink: #200716; }
-.chapter-jump[data-section="pitch"] { --chapter-color: #e6c93f; --chapter-ink: #231d03; }
+.chapter-jump[data-section="cover"], .bookmark-tab[data-section="cover"] { --chapter-color: #d8d7ca; --chapter-ink: #26251f; }
+.chapter-jump[data-section="proof"], .bookmark-tab[data-section="proof"] { --chapter-color: #4fa8d8; --chapter-ink: #071521; }
+.chapter-jump[data-section="numbers"], .bookmark-tab[data-section="numbers"] { --chapter-color: #d94d60; --chapter-ink: #23070b; }
+.chapter-jump[data-section="cases"], .bookmark-tab[data-section="cases"] { --chapter-color: #30b979; --chapter-ink: #03170d; }
+.chapter-jump[data-section="events"], .bookmark-tab[data-section="events"] { --chapter-color: #8b64d8; --chapter-ink: #11091f; }
+.chapter-jump[data-section="live"], .bookmark-tab[data-section="live"] { --chapter-color: #d65fa4; --chapter-ink: #200716; }
+.chapter-jump[data-section="pitch"], .bookmark-tab[data-section="pitch"] { --chapter-color: #e6c93f; --chapter-ink: #231d03; }
 .chapter-btn {
   background: transparent;
   border: 1px solid color-mix(in oklab, var(--chapter-color) 56%, transparent);
@@ -1119,19 +1119,22 @@ body::before {
   gap: 4px;
   align-items: flex-start;
   opacity: 0;
+  visibility: hidden;
   transform: translateX(-8px);
   pointer-events: none;
-  transition: opacity 0.14s ease, transform 0.14s ease;
+  transition: opacity 0.14s ease, transform 0.14s ease, visibility 0s linear 0.14s;
 }
 body.has-flipped .chapter-bookmarks {
   opacity: 1;
+  visibility: visible;
   transform: translateX(0);
   pointer-events: auto;
-  transition: opacity 0.30s ease, transform 0.30s ease;
+  transition: opacity 0.30s ease, transform 0.30s ease, visibility 0s linear 0s;
 }
 body.on-back-cover .chapter-bookmarks {
   display: none;
   opacity: 0;
+  visibility: hidden;
   transform: translateX(-8px);
   pointer-events: none;
   transition: opacity 0.07s ease, transform 0.07s ease;
@@ -1139,6 +1142,7 @@ body.on-back-cover .chapter-bookmarks {
 body.bookmark-jumping .chapter-bookmarks {
   display: none;
   opacity: 0;
+  visibility: hidden;
   transform: translateX(-8px);
   pointer-events: none;
   transition: none;
@@ -1495,12 +1499,34 @@ body.bookmark-jumping .chapter-bookmarks {
     linear-gradient(to bottom, transparent 54%, rgba(224, 207, 176, 0.08) 100%);
   mix-blend-mode: overlay;
 }
+.stf__parent::after {
+  content: '';
+  position: absolute;
+  left: 18px;
+  right: -12px;
+  bottom: -12px;
+  height: 22px;
+  z-index: -1;
+  pointer-events: none;
+  border-radius: 0 0 3px 3px;
+  background:
+    repeating-linear-gradient(
+      to bottom,
+      rgba(252, 247, 232, 0.92) 0 1px,
+      rgba(205, 191, 164, 0.48) 1px 2px,
+      rgba(244, 236, 216, 0.78) 2px 4px
+    );
+  box-shadow: 7px 9px 18px rgba(35, 25, 13, 0.16);
+  transform: skewX(-6deg);
+}
 .stf__page {
   background: transparent !important;
   overflow: hidden;
   box-shadow:
-    1px 1px 0 rgba(244, 236, 216, 0.78),
-    3px 3px 0 rgba(190, 178, 154, 0.24);
+    1px 1px 0 rgba(252, 247, 232, 0.92),
+    3px 3px 0 rgba(232, 222, 198, 0.62),
+    5px 5px 0 rgba(205, 191, 164, 0.34),
+    8px 8px 16px rgba(38, 28, 14, 0.18);
 }
 .book.on-back-cover .stf__parent {
   position: relative;
@@ -3588,6 +3614,14 @@ img.event-mark {
         </div>
     </div></div>
   </div>
+  <div class="chapter-bookmarks" aria-label="Catalog sections">
+    <button class="bookmark-tab" data-section="proof" data-page="3" type="button">Proof</button>
+    <button class="bookmark-tab" data-section="numbers" data-page="4" type="button">Numbers</button>
+    <button class="bookmark-tab" data-section="cases" data-page="6" type="button">Cases</button>
+    <button class="bookmark-tab" data-section="events" data-page="22" type="button">Events</button>
+    <button class="bookmark-tab" data-section="live" data-page="28" type="button">Live</button>
+    <button class="bookmark-tab" data-section="pitch" data-page="29" type="button">Pitch</button>
+  </div>
 </div>
 <div class="controls">
   <button class="ctrl-btn" id="prevBtn" disabled>&larr; Prev</button>
@@ -3695,7 +3729,7 @@ window.addEventListener('load', function() {
     document.body.classList.toggle('has-flipped', idx > 0);
     document.body.classList.toggle('on-back-cover', idx >= total - 1);
     bookEl.classList.toggle('on-back-cover', idx >= total - 1);
-    chapterBtns.forEach(btn => {
+    [...chapterBtns, ...bookmarkBtns].forEach(btn => {
       const range = chapterRanges[btn.dataset.section];
       btn.classList.toggle('active', !!range && idx >= range.start && idx < range.end);
     });
@@ -3734,14 +3768,18 @@ window.addEventListener('load', function() {
     }, true);
   });
   bookEl.addEventListener('pointerdown', hideBookmarksIfClosing);
-  chapterBtns.forEach(btn => {
+  function jumpToCatalogSection(btn) {
+    hideBookmarksDuringJump(450);
+    const page = Number(btn.dataset.page || 0);
+    if (typeof pageFlip.turnToPage === 'function') {
+      pageFlip.turnToPage(page);
+    }
+  }
+  [...chapterBtns, ...bookmarkBtns].forEach(btn => {
     btn.addEventListener('click', (e) => {
       e.preventDefault();
       e.stopPropagation();
-      const page = Number(btn.dataset.page || 0);
-      if (typeof pageFlip.turnToPage === 'function') {
-        pageFlip.turnToPage(page);
-      }
+      jumpToCatalogSection(btn);
     });
   });
   document.addEventListener('keydown', (e) => {
