@@ -1956,8 +1956,8 @@ img.event-mark {
 .vlog-proof {
   margin: auto 0 12px;
   display: grid;
-  grid-template-columns: 0.82fr 1.58fr;
-  gap: 12px;
+  grid-template-columns: 0.82fr 22px 1.48fr;
+  gap: 10px;
   align-items: center;
 }
 .vlog-proof .vlog-card {
@@ -1965,6 +1965,7 @@ img.event-mark {
   grid-template-columns: 44px 1fr;
   gap: 10px;
   padding: 11px 12px;
+  min-height: 142px;
 }
 .vlog-proof .vlog-mark {
   width: 44px;
@@ -1977,8 +1978,17 @@ img.event-mark {
   margin-bottom: 5px;
 }
 .vlog-proof .vlog-line {
-  font-size: 21px;
+  font-size: 18px;
   line-height: 1.02;
+}
+.vlog-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--f-mono);
+  font-size: 18px;
+  line-height: 1;
+  color: var(--accent);
 }
 .vlog-message {
   padding: 0;
@@ -1989,11 +1999,11 @@ img.event-mark {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 132px;
+  min-height: 142px;
   overflow: visible;
 }
 .vlog-message img {
-  width: min(168%, 520px);
+  width: min(154%, 500px);
   max-width: none;
   height: auto;
   display: block;
@@ -2107,9 +2117,10 @@ img.event-mark {
 }
 .zolvo-proof .case-post-frame {
   flex: 0 0 calc((100% - 36px) / 2);
-  height: 236px;
+  aspect-ratio: 16 / 9;
+  height: auto;
   max-height: none;
-  overflow: hidden;
+  overflow: visible;
   justify-content: center;
 }
 .zolvo-proof .case-post-frame img {
@@ -2119,6 +2130,12 @@ img.event-mark {
   max-height: none;
   object-fit: cover;
   object-position: center;
+}
+.zolvo-proof .case-post-frame:first-child {
+  overflow: visible;
+}
+.zolvo-proof .case-post-frame:first-child img {
+  object-fit: contain;
 }
 .zolvo-proof .case-post-frame:last-child img {
   object-position: center 48%;
@@ -2348,14 +2365,15 @@ img.event-mark {
 }
 .px-proof-card {
   min-width: 0;
-  padding: 8px 9px 13px;
+  padding: 7px 8px 12px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   overflow: visible;
 }
 .px-proof-k {
-  margin-bottom: 6px;
+  display: none;
+  margin-bottom: 0;
   font-family: var(--f-mono);
   font-size: 9.5px;
   line-height: 1.15;
@@ -2366,15 +2384,15 @@ img.event-mark {
 }
 .px-proof-card img {
   width: 100%;
-  max-height: 90px;
+  max-height: 112px;
   object-fit: contain;
   display: block;
 }
 .px-proof-card:first-child img {
-  max-height: 92px;
+  max-height: 114px;
 }
 .px-proof-card:last-child img {
-  max-height: 88px;
+  max-height: 110px;
 }
 .case-post-triangle.px-story .case-post-tag {
   bottom: -9px;
@@ -2976,9 +2994,10 @@ img.event-mark {
             <div class="vlog-mark"><img src="assets/kinddesigns.jpeg" alt="Kind Designs logo"></div>
             <div class="vlog-card-copy">
               <div class="vlog-kicker">Venture Vlog &middot; proof</div>
-              <div class="vlog-line">A product story that converted attention into investor demand.</div>
+              <div class="vlog-line">Product story turned attention into investor demand.</div>
             </div>
           </div>
+          <div class="vlog-arrow" aria-hidden="true">&rarr;</div>
           <div class="vlog-message">
             <img src="assets/kddesignmsggood.png" alt="Kind Designs message about investors reaching out">
           </div>
