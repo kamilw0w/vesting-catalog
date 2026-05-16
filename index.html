@@ -38,11 +38,12 @@
   --accent-tint: oklch(0.64 0.135 78 / 0.10);
   --rule: oklch(0.78 0.025 80);
   --rule-hi: oklch(0.70 0.030 78);
-  --f-brand: 'Vesting Adelline', 'Italiana', 'Fraunces', Georgia, serif;
-  --f-display: 'Vesting Adelline', 'Instrument Serif', 'Newsreader', Georgia, serif;
+  --f-brand: 'Italiana', 'Vesting Adelline', 'Fraunces', Georgia, serif;
+  --f-display: 'Instrument Serif', 'Newsreader', 'Fraunces', Georgia, serif;
   --f-body: 'Vesting Avenir', 'Avenir Next', Avenir, 'Geist', system-ui, sans-serif;
   --f-mono: 'Vesting Avenir', 'Avenir Next', Avenir, 'Geist Mono', ui-monospace, monospace;
-  --f-italic: 'Vesting Adelline', 'Newsreader', 'Instrument Serif', Georgia, serif;
+  --f-italic: 'Newsreader', 'Instrument Serif', Georgia, serif;
+  --f-script: 'Vesting Adelline', 'Instrument Serif', Georgia, serif;
 }
 *,*::before,*::after { margin:0; padding:0; box-sizing:border-box; }
 body {
@@ -342,11 +343,11 @@ body.closing-back-cover .stage::after {
 .menu-rule { height: 1px; background: var(--rule); margin-bottom: 12px; }
 .menu-list { display: flex; flex-direction: column; }
 .menu-presentation {
-  font-family: var(--f-display);
-  font-weight: 400;
-  font-size: 32px;
-  line-height: 1.35;
-  letter-spacing: -0.018em;
+  font-family: var(--f-body);
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 1.52;
+  letter-spacing: -0.01em;
   color: var(--ink);
   padding: 18px 0 0;
   margin: 0;
@@ -354,8 +355,10 @@ body.closing-back-cover .stage::after {
   text-wrap: balance;
 }
 .menu-presentation .hot {
+  font-family: var(--f-display);
   color: var(--accent);
   font-style: italic;
+  font-size: 1.18em;
 }
 .menu-pillars {
   display: grid;
