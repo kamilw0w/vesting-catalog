@@ -1415,11 +1415,10 @@ body.bookmark-jumping .chapter-bookmarks {
   max-width: 340px;
 }
 
-/* Editorial left pages: bigger photo plus a compact context note */
+/* Editorial left pages: clean oversized Polaroid/photo page. */
 .profile-back {
   padding: 22px 26px 24px !important;
   justify-content: center !important;
-  gap: 16px;
 }
 .profile-back .polaroid {
   width: 100%;
@@ -1430,69 +1429,6 @@ body.bookmark-jumping .chapter-bookmarks {
 .profile-back .polaroid.wide {
   width: 112%;
   max-width: 500px;
-}
-.profile-note {
-  width: 100%;
-  max-width: none;
-  display: grid;
-  grid-template-columns: 108px 1fr;
-  gap: 16px;
-  align-items: center;
-  padding: 13px 16px;
-  border: 1px solid oklch(0.72 0.030 78 / 0.42);
-  border-radius: 3px;
-  background: oklch(0.96 0.014 82 / 0.62);
-  box-shadow: 0 8px 18px oklch(0.25 0.035 70 / 0.08), inset 0 1px 0 oklch(1 0 0 / 0.48);
-  color: var(--ink);
-  z-index: 4;
-}
-.profile-mark {
-  width: 108px;
-  height: 68px;
-  border: none;
-  border-radius: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: transparent;
-  overflow: hidden;
-  box-shadow: none;
-}
-.profile-mark img {
-  width: 100%;
-  height: 100%;
-  display: block;
-  object-fit: contain;
-  padding: 8px 10px;
-}
-.profile-mark.v-mark svg {
-  width: 86px;
-  height: 58px;
-  display: block;
-}
-.profile-copy {
-  border-left: 1px solid oklch(0.72 0.030 78 / 0.55);
-  padding-left: 16px;
-}
-.profile-kicker {
-  font-family: var(--f-mono);
-  font-size: 8.5px;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--accent-deep);
-  margin-bottom: 7px;
-}
-.profile-copy p {
-  font-family: var(--f-display);
-  font-size: 14.8px;
-  line-height: 1.25;
-  letter-spacing: -0.01em;
-  color: var(--ink);
-  text-wrap: balance;
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
 }
 
 /* When on the cover (no flips yet), the catalog should appear as just the cover ·
@@ -3292,13 +3228,6 @@ img.event-mark {
             <span class="role">Zaranna AI · YC</span>
           </div>
         </div>
-        <div class="profile-note">
-          <div class="profile-mark"><img src="assets/ChatGPT Image May 15, 2026, 08_00_06 PM (10).png" alt="Zaranna AI logo"></div>
-          <div class="profile-copy">
-            <div class="profile-kicker">AI workflow company</div>
-            <p>Zaranna AI builds applied AI workflows for business teams, turning messy operating processes into usable automation. The company came through YC with a product story built around real customer use cases.</p>
-          </div>
-        </div>
       </div></div>
     <div class="stpf-page" data-density="soft"><div class="page-inner face">
         <div class="marker"><span class="sec">Case 01 / 06</span>04</div>
@@ -3350,13 +3279,6 @@ img.event-mark {
             <span class="role">ProjectX · YC</span>
           </div>
         </div>
-        <div class="profile-note">
-          <div class="profile-mark"><img src="assets/ChatGPT Image May 15, 2026, 08_00_05 PM (6).png" alt="ProjectX logo"></div>
-          <div class="profile-copy">
-            <div class="profile-kicker">Viral launch</div>
-            <p>ProjectX is a YC-backed startup from Rounak Adhikary focused on making technical work move faster. The company's early story centered on intense user demand, server-crashing interest, and a launch that traveled far beyond its first audience.</p>
-          </div>
-        </div>
       </div></div>
     <div class="stpf-page" data-density="soft"><div class="page-inner face">
         <div class="marker"><span class="sec">Case 02 / 06</span>05</div>
@@ -3406,13 +3328,6 @@ img.event-mark {
             <span class="role">Caleb, Gatik & Gavin · YC</span>
           </div>
         </div>
-        <div class="profile-note">
-          <div class="profile-mark"><img src="assets/ChatGPT Image May 15, 2026, 08_00_05 PM (7).png" alt="Lance logo"></div>
-          <div class="profile-copy">
-            <div class="profile-kicker">AI for hotel ops</div>
-            <p>Lance builds AI agents for hotel operations, helping hospitality teams automate repeated work across guest service and back-office workflows. The company is YC-backed and operates in a vertical where speed and reliability matter every day.</p>
-          </div>
-        </div>
       </div></div>
     <div class="stpf-page" data-density="soft"><div class="page-inner face">
         <div class="marker"><span class="sec">Case 03 / 06</span>06</div>
@@ -3444,13 +3359,6 @@ img.event-mark {
             <span class="role">Veritas · backed by A. Ohanian</span>
           </div>
         </div>
-        <div class="profile-note">
-          <div class="profile-mark"><img src="assets/veritas.jpg" alt="Veritas logo"></div>
-          <div class="profile-copy">
-            <div class="profile-kicker">Stealth debut</div>
-            <p>Veritas works on luxury authentication, using embedded hardware to prove provenance inside high-value goods. The story is simple and visual: microchips inside handbags, built for a market where trust is everything.</p>
-          </div>
-        </div>
       </div></div>
     <div class="stpf-page" data-density="soft"><div class="page-inner face">
         <div class="marker"><span class="sec">Case 04 / 06</span>07</div>
@@ -3480,13 +3388,6 @@ img.event-mark {
           <div class="caption">
             Isa & Tony
             <span class="role">Zolvo · YC P26</span>
-          </div>
-        </div>
-        <div class="profile-note">
-          <div class="profile-mark"><img src="assets/ChatGPT Image May 15, 2026, 08_00_05 PM (8).png" alt="Zolvo logo"></div>
-          <div class="profile-copy">
-            <div class="profile-kicker">Live pitch to YC</div>
-            <p>Zolvo builds AI agents for commercial lending, helping lenders move through workflows that are usually slow, manual, and document-heavy. The company is part of YC P26.</p>
           </div>
         </div>
       </div></div>
@@ -3522,13 +3423,6 @@ img.event-mark {
           <div class="caption">
             Rayan & Maadhav
             <span class="role">Enjamb Labs · YC</span>
-          </div>
-        </div>
-        <div class="profile-note">
-          <div class="profile-mark"><img src="assets/ChatGPT Image May 15, 2026, 08_00_06 PM (9).png" alt="Enjamb Labs logo"></div>
-          <div class="profile-copy">
-            <div class="profile-kicker">Stealth launch</div>
-            <p>Enjamb Labs is a technical startup from Rayan and Maadhav, built around a product that needed credibility with builders first. The company later became part of Y Combinator.</p>
           </div>
         </div>
       </div></div>
@@ -3567,13 +3461,6 @@ img.event-mark {
             <span class="role">Venture Vlog &middot; YC S2024</span>
           </div>
         </div>
-        <div class="profile-note">
-          <div class="profile-mark"><img src="assets/corgi.png" alt="Corgi logo"></div>
-          <div class="profile-copy">
-            <div class="profile-kicker">Venture Vlog</div>
-            <p>Corgi is a full-stack insurance carrier for startups, built to make business coverage faster and easier to buy. The company underwrites and issues policies directly instead of routing founders through the old broker maze.</p>
-          </div>
-        </div>
       </div></div>
     <div class="stpf-page" data-density="soft"><div class="page-inner face vlog-case">
         <div class="marker"><span class="sec">Venture Vlog 01 / 02</span>10</div>
@@ -3607,13 +3494,6 @@ img.event-mark {
           <div class="caption">
             Kind Designs
             <span class="role">Living Seawalls &middot; Miami</span>
-          </div>
-        </div>
-        <div class="profile-note">
-          <div class="profile-mark"><img src="assets/kinddesigns.jpeg" alt="Kind Designs logo"></div>
-          <div class="profile-copy">
-            <div class="profile-kicker">Climate tech</div>
-            <p>Kind Designs builds 3D-printed Living Seawalls that protect coastlines while creating habitat for marine life. The Miami company sits at the intersection of climate resilience, robotics, and coastal infrastructure.</p>
           </div>
         </div>
       </div></div>
@@ -3656,13 +3536,6 @@ img.event-mark {
           <div class="caption">
             On the floor
             <span class="role">YC Demo Day · 2026</span>
-          </div>
-        </div>
-        <div class="profile-note">
-          <div class="profile-mark"><img src="assets/ChatGPT Image May 15, 2026, 08_05_52 PM (1).png" alt="Y Combinator logo"></div>
-          <div class="profile-copy">
-            <div class="profile-kicker">Demo Day floor</div>
-            <p>YC Demo Day is the startup world's most watched founder showcase, where new batches pitch to investors and operators. The room is dense with early traction, sharp ideas, and signals that can shape a company's next chapter.</p>
           </div>
         </div>
       </div></div>
@@ -3730,13 +3603,6 @@ img.event-mark {
           <div class="caption">
             Founders Inc
             <span class="role">SF flagship floor</span>
-          </div>
-        </div>
-        <div class="profile-note">
-          <div class="profile-mark"><img src="assets/ChatGPT Image May 15, 2026, 08_05_52 PM (3).png" alt="Founders Inc logo"></div>
-          <div class="profile-copy">
-            <div class="profile-kicker">Founders Inc</div>
-            <p>Founders Inc is a San Francisco startup campus and founder community built around residents, demo days, and company-building in public. Its events pull builders, investors, and early products into one room.</p>
           </div>
         </div>
       </div></div>
@@ -3810,13 +3676,6 @@ img.event-mark {
             <span class="role">Emerging cohort · demo day</span>
           </div>
         </div>
-        <div class="profile-note">
-          <div class="profile-mark"><img src="assets/ChatGPT Image May 15, 2026, 07_57_13 PM (4).png" alt="The Residency logo"></div>
-          <div class="profile-copy">
-            <div class="profile-kicker">The Residency</div>
-            <p>The Residency is an emerging founder program and demo-day environment for early teams. The room is smaller than YC, but the density of builders makes it a useful signal for what is starting to move.</p>
-          </div>
-        </div>
       </div></div>
     <div class="stpf-page" data-density="soft"><div class="page-inner face">
         <div class="marker"><span class="sec">Event 03 / 03</span>14</div>
@@ -3854,18 +3713,6 @@ img.event-mark {
           <div class="caption">
             Vesting Live
             <span class="role">From Miami · with Brycent</span>
-          </div>
-        </div>
-        <div class="profile-note">
-          <div class="profile-mark v-mark" aria-label="Vesting logo">
-            <svg viewBox="380 250 480 380" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <path fill="#1a1410" d="M800.762390,369.901947 C755.752258,449.352203 710.827148,528.429993 666.272034,607.715576 C661.932800,615.437134 657.671021,619.232361 648.091370,618.706909 C629.816162,617.704468 611.443787,618.423035 593.112488,618.548218 C590.214050,618.567993 588.135437,618.033508 586.552246,615.264954 C576.631348,597.915771 566.556763,580.654419 556.556519,563.350525 C556.087036,562.538086 555.840820,561.596741 555.325134,560.298950 C578.091492,560.298950 600.377197,560.214417 622.660828,560.387878 C626.101440,560.414612 628.041382,559.454773 629.749146,556.425354 C672.532471,480.531830 715.410034,404.691498 758.265747,328.838837 C759.229492,327.133087 760.134277,325.394073 761.595886,322.692078 C737.406311,322.692078 714.096375,322.692078 689.729858,322.692078 C691.831238,318.669983 693.321228,315.634888 694.971802,312.689758 C703.426819,297.603241 711.868469,282.508301 720.495789,267.520508 C721.296082,266.130310 723.360046,264.614716 724.849548,264.601990 C747.178955,264.410980 769.510620,264.421234 791.840637,264.567017 C793.105347,264.575287 794.851990,265.876495 795.544922,267.061096 C805.710205,284.439728 815.805359,301.860931 825.673401,319.409149 C826.576172,321.014496 826.584961,323.982574 825.698730,325.599976 C817.614929,340.353180 809.240295,354.947021 800.762390,369.901947 z"/>
-              <path fill="#1a1410" d="M495.083954,325.025421 C495.083954,325.025421 494.842285,324.827972 494.780579,324.402344 C494.491241,323.662994 494.263580,323.349274 494.035950,323.035583 C494.035950,323.035583 493.967957,323.024384 493.817719,322.636902 C491.807281,321.832977 489.948853,321.063965 488.086639,321.054779 C469.776245,320.964233 451.465149,321.014709 433.154388,320.977386 C431.297852,320.973602 429.441956,320.656860 427.249939,320.454285 C427.777191,318.934540 427.949127,318.112518 428.326508,317.399231 C436.413940,302.112640 444.696808,286.925720 452.521118,271.506042 C454.754852,267.103882 457.487000,265.837860 462.244110,265.887421 C483.547913,266.109344 504.855927,265.926361 526.360291,265.937897 C526.558167,265.986267 526.961792,266.040771 526.961792,266.040771 C555.249023,315.863129 583.535400,365.685974 611.824341,415.507355 C615.934998,422.746796 620.155701,429.926880 624.086243,437.262634 C624.806213,438.606323 625.042358,440.931641 624.364746,442.193115 C614.592712,460.385986 604.628845,478.475861 594.692810,496.580475 C594.388123,497.135651 593.886780,497.582886 592.924133,498.752167 C560.493835,441.451874 528.292664,384.556305 495.998840,327.038635 C495.632080,325.952789 495.358032,325.489105 495.083954,325.025421 z"/>
-            </svg>
-          </div>
-          <div class="profile-copy">
-            <div class="profile-kicker">Weekly live show</div>
-            <p>Vesting Live is the recurring show format: founders, investors, and operators sit down for direct conversations about company-building. It mixes live audience energy with startup storytelling.</p>
           </div>
         </div>
       </div></div>
@@ -3925,13 +3772,6 @@ img.event-mark {
           <div class="caption">
             Brycent
             <span class="role">Twitch · @brycent</span>
-          </div>
-        </div>
-        <div class="profile-note">
-          <div class="profile-mark"><img src="assets/brycent.png" alt="Brycent"></div>
-          <div class="profile-copy">
-            <div class="profile-kicker">Host and storyteller</div>
-            <p>Brycent is a creator and host known for live storytelling, interviews, and internet-native distribution. In the Vesting format, he anchors founder conversations and turns raw moments into watchable media.</p>
           </div>
         </div>
       </div></div>
