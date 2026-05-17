@@ -2315,38 +2315,34 @@ img.event-mark {
   font-size: 18px;
   line-height: 1.02;
 }
+.kd-proof-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.kd-proof-label {
+  font-family: var(--f-mono);
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent-deep);
+}
 .vlog-proof .kd-proof-card {
   position: relative;
   display: block;
+  aspect-ratio: 16 / 9;
   padding: 0;
   overflow: hidden;
   background: transparent;
   border: none;
-  box-shadow: 0 9px 18px oklch(0.24 0.04 70 / 0.12);
+  box-shadow: none;
 }
 .kd-proof-card > img {
   width: 100%;
-  height: auto;
+  height: 100%;
   display: block;
-  object-fit: contain;
-}
-.kd-proof-card::before {
-  content: 'Venture Vlog';
-  position: absolute;
-  left: 10px;
-  top: 9px;
-  z-index: 3;
-  padding: 4px 7px 3px;
-  border-radius: 2px;
-  background: oklch(0.12 0.03 250 / 0.62);
-  color: oklch(0.98 0.02 84);
-  font-family: var(--f-mono);
-  font-size: 7.5px;
-  font-weight: 700;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  text-shadow: 0 1px 2px rgba(0,0,0,0.35);
-  backdrop-filter: blur(3px);
+  object-fit: cover;
 }
 .kd-proof-card .vlog-play {
   position: absolute;
@@ -3619,9 +3615,12 @@ img.event-mark {
         <p class="story">Kind Designs builds 3D-printed Living Seawalls that protect coastlines while creating marine habitat. Vesting turned the product into a field story: the machine, the seawall, the mission, and the founder behind it. The Venture Vlog reached <strong>75K views</strong>, and the founder said investors started reaching out after the post.</p>
         <div class="vlog-indicators"><span>Product walkthrough</span><span>Founder story</span><span>Investor inbound</span></div>
         <div class="vlog-proof">
-          <div class="vlog-card has-play kd-proof-card">
-            <img src="assets/KD.png" alt="Kind Designs Venture Vlog still">
-            <a class="vlog-play" href="https://x.com/brycent/status/2054621737707565316/video/1" target="_blank" rel="noopener" aria-label="Watch the Kind Designs Venture Vlog on X"><span aria-hidden="true"></span></a>
+          <div class="kd-proof-wrap">
+            <div class="kd-proof-label">Venture Vlog</div>
+            <div class="vlog-card has-play kd-proof-card">
+              <img src="assets/KD.png" alt="Kind Designs Venture Vlog still">
+              <a class="vlog-play" href="https://x.com/brycent/status/2054621737707565316/video/1" target="_blank" rel="noopener" aria-label="Watch the Kind Designs Venture Vlog on X"><span aria-hidden="true"></span></a>
+            </div>
           </div>
           <div class="vlog-arrow" aria-hidden="true">&rarr;</div>
           <div class="vlog-message">
