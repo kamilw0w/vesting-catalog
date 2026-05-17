@@ -1406,6 +1406,68 @@ body.bookmark-jumping .chapter-bookmarks {
   max-width: 340px;
 }
 
+/* Editorial left pages: bigger photo plus a compact context note */
+.profile-back {
+  padding: 40px 34px 30px !important;
+  justify-content: space-between !important;
+  gap: 18px;
+}
+.profile-back .polaroid {
+  width: 86%;
+  max-width: 372px;
+  margin: 0 auto;
+  flex-shrink: 0;
+}
+.profile-back .polaroid.wide {
+  width: 94%;
+  max-width: 408px;
+}
+.profile-note {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  gap: 18px;
+  align-items: start;
+  padding-top: 18px;
+  border-top: 1px solid oklch(0.72 0.030 78 / 0.55);
+  color: var(--ink);
+  z-index: 4;
+}
+.profile-mark {
+  width: 52px;
+  height: 52px;
+  border: 1px solid var(--accent-dim);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--f-display);
+  font-size: 30px;
+  font-style: italic;
+  color: var(--accent-deep);
+  background: oklch(0.96 0.016 82 / 0.72);
+}
+.profile-copy {
+  border-left: 1px solid oklch(0.72 0.030 78 / 0.55);
+  padding-left: 18px;
+}
+.profile-kicker {
+  font-family: var(--f-mono);
+  font-size: 8.5px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent-deep);
+  margin-bottom: 7px;
+}
+.profile-copy p {
+  font-family: var(--f-display);
+  font-size: 17px;
+  line-height: 1.28;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  text-wrap: balance;
+}
+
 /* When on the cover (no flips yet), the catalog should appear as just the cover ·
    hide the endpaper on the left, hide the spine, and hide the book backing's left half. */
 .catalog.on-cover .endpaper { display: none; }
@@ -2868,7 +2930,7 @@ img.event-mark {
 .zaranna-message {
   position: relative;
   width: 100%;
-  min-height: 178px;
+  min-height: 190px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -2876,11 +2938,11 @@ img.event-mark {
   transform: translateX(22px);
 }
 .zaranna-message-shot {
-  width: min(470%, 760px);
+  width: min(360%, 650px);
   max-width: none !important;
   height: auto !important;
   display: block;
-  transform: translateX(16px);
+  transform: translateX(130px);
   filter: drop-shadow(0 10px 16px oklch(0.22 0.04 70 / 0.18));
 }
 .zaranna-avatar {
@@ -3135,13 +3197,20 @@ img.event-mark {
           YC acceptances are confirmed by founders across Spring &amp; P26 cohorts.
         </div>
       </div></div>
-    <div class="stpf-page" data-density="soft"><div class="page-inner back img-back face">
+    <div class="stpf-page" data-density="soft"><div class="page-inner back img-back face profile-back">
         <div class="polaroid tilt-l">
           <div class="tape"></div>
           <div class="photo photo-real photo-tarun"><img src="assets/upscaled/asset-004.jpg" alt="Tarun, Alex and Rithvik"></div>
           <div class="caption">
             Tarun, Alex & Rithvik
             <span class="role">Zaranna AI · YC</span>
+          </div>
+        </div>
+        <div class="profile-note">
+          <div class="profile-mark">Z</div>
+          <div class="profile-copy">
+            <div class="profile-kicker">AI workflow company</div>
+            <p>Zaranna came to Vesting with a quiet YC story and a product that needed use cases in the wild. The post turned curiosity into 30+ founder and customer conversations.</p>
           </div>
         </div>
       </div></div>
@@ -3183,13 +3252,20 @@ img.event-mark {
           <div class="m"><div class="mv">01</div><div class="ml">Posts shipped</div></div>
         </div>
       </div></div>
-    <div class="stpf-page" data-density="soft"><div class="page-inner back img-back face">
+    <div class="stpf-page" data-density="soft"><div class="page-inner back img-back face profile-back">
         <div class="polaroid tilt-r">
           <div class="tape"></div>
           <div class="photo photo-real photo-rounak"><img src="assets/ChatGPT Image May 15, 2026, 07_57_13 PM (3).png" alt="Rounak Adhikary"></div>
           <div class="caption">
             Rounak Adhikary
             <span class="role">ProjectX · YC</span>
+          </div>
+        </div>
+        <div class="profile-note">
+          <div class="profile-mark">P</div>
+          <div class="profile-copy">
+            <div class="profile-kicker">Viral launch</div>
+            <p>ProjectX needed distribution before the room had consensus. Vesting turned the pitch into social proof, then the market did the rest: servers down, millions reached, YC unlocked.</p>
           </div>
         </div>
       </div></div>
@@ -3232,13 +3308,20 @@ img.event-mark {
           <div class="m"><div class="mv">3y<span class="u">77d</span></div><div class="ml">Watch time</div></div>
         </div>
       </div></div>
-    <div class="stpf-page" data-density="soft"><div class="page-inner back img-back face">
+    <div class="stpf-page" data-density="soft"><div class="page-inner back img-back face profile-back">
         <div class="polaroid tilt-l2">
           <div class="tape"></div>
           <div class="photo photo-real photo-lance"><img src="assets/ChatGPT Image May 15, 2026, 07_57_14 PM (8).png" alt="Lance team"></div>
           <div class="caption">
             Lance team
             <span class="role">Caleb, Gatik & Gavin · YC</span>
+          </div>
+        </div>
+        <div class="profile-note">
+          <div class="profile-mark">L</div>
+          <div class="profile-copy">
+            <div class="profile-kicker">AI for hotel ops</div>
+            <p>Lance builds AI agents for hotel operations, the kind of vertical workflow where a raise can become a channel. Vesting made the funding story feel like market momentum.</p>
           </div>
         </div>
       </div></div>
@@ -3263,13 +3346,20 @@ img.event-mark {
           <div class="m"><div class="mv">9.4<span class="u">K</span></div><div class="ml">Interactions</div></div>
         </div>
       </div></div>
-    <div class="stpf-page" data-density="soft"><div class="page-inner back img-back face">
+    <div class="stpf-page" data-density="soft"><div class="page-inner back img-back face profile-back">
         <div class="polaroid tilt-r2">
           <div class="tape"></div>
           <div class="photo photo-real photo-luci"><img src="assets/ChatGPT Image May 15, 2026, 07_57_13 PM (5).png" alt="Luci Holland"></div>
           <div class="caption">
             Luci Holland
             <span class="role">Veritas · backed by A. Ohanian</span>
+          </div>
+        </div>
+        <div class="profile-note">
+          <div class="profile-mark">V</div>
+          <div class="profile-copy">
+            <div class="profile-kicker">Stealth debut</div>
+            <p>Veritas had a sharp premise: authentication hardware hidden inside luxury goods. Vesting gave the stealth story a visual hook people could repeat in one sentence.</p>
           </div>
         </div>
       </div></div>
@@ -3294,13 +3384,20 @@ img.event-mark {
           <div class="m"><div class="mv">572</div><div class="ml">Saves</div></div>
         </div>
       </div></div>
-    <div class="stpf-page" data-density="soft"><div class="page-inner back img-back face">
+    <div class="stpf-page" data-density="soft"><div class="page-inner back img-back face profile-back">
         <div class="polaroid tilt-l3">
           <div class="tape"></div>
           <div class="photo photo-real photo-zolvo"><img src="assets/ChatGPT Image May 15, 2026, 07_57_13 PM (7).png" alt="Isa and Tony"></div>
           <div class="caption">
             Isa & Tony
             <span class="role">Zolvo · YC P26</span>
+          </div>
+        </div>
+        <div class="profile-note">
+          <div class="profile-mark">Z</div>
+          <div class="profile-copy">
+            <div class="profile-kicker">Live pitch to YC</div>
+            <p>Zolvo was building AI agents for commercial lending and needed the story to move as fast as the founders. The live pitch became a before-and-after YC proof point.</p>
           </div>
         </div>
       </div></div>
@@ -3329,13 +3426,20 @@ img.event-mark {
           <div class="tl-step final"><span class="tl-date">MAR &middot; 12</span><span class="tl-label">YC P26</span></div>
         </div>
       </div></div>
-    <div class="stpf-page" data-density="soft"><div class="page-inner back img-back face">
+    <div class="stpf-page" data-density="soft"><div class="page-inner back img-back face profile-back">
         <div class="polaroid tilt-r2">
           <div class="tape"></div>
           <div class="photo photo-real photo-enjamb"><img src="assets/upscaled/asset-011.jpg" alt="Rayan and Maadhav"></div>
           <div class="caption">
             Rayan & Maadhav
             <span class="role">Enjamb Labs · YC</span>
+          </div>
+        </div>
+        <div class="profile-note">
+          <div class="profile-mark">E</div>
+          <div class="profile-copy">
+            <div class="profile-kicker">Stealth launch</div>
+            <p>Enjamb Labs had the kind of technical story that needed trust before hype. Vesting turned a quiet launch into reach, community signal, and a YC acceptance narrative.</p>
           </div>
         </div>
       </div></div>
@@ -3365,13 +3469,20 @@ img.event-mark {
           <div class="m"><div class="mv">2026</div><div class="ml">Q1</div></div>
         </div>
       </div></div>
-    <div class="stpf-page" data-density="soft"><div class="page-inner back img-back face">
+    <div class="stpf-page" data-density="soft"><div class="page-inner back img-back face profile-back">
         <div class="polaroid tilt-l">
           <div class="tape"></div>
           <div class="photo photo-real"><img src="assets/ChatGPT Image May 15, 2026, 08_13_15 PM (4).png" alt="Corgi Cafe"></div>
           <div class="caption">
             Corgi Cafe
             <span class="role">Venture Vlog &middot; YC S2024</span>
+          </div>
+        </div>
+        <div class="profile-note">
+          <div class="profile-mark">C</div>
+          <div class="profile-copy">
+            <div class="profile-kicker">Venture Vlog</div>
+            <p>Corgi is a full-stack insurance carrier for startups, built to make coverage faster and easier to buy. Vesting used the cafe and HQ walkthrough to make the company feel tangible.</p>
           </div>
         </div>
       </div></div>
@@ -3400,13 +3511,20 @@ img.event-mark {
           <div class="m"><div class="mv">80</div><div class="ml">Bookmarks</div></div>
         </div>
       </div></div>
-    <div class="stpf-page" data-density="soft"><div class="page-inner back img-back face">
+    <div class="stpf-page" data-density="soft"><div class="page-inner back img-back face profile-back">
         <div class="polaroid tilt-r">
           <div class="tape"></div>
           <div class="photo photo-real"><img src="assets/KindDesignsPolaroid.png" alt="Kind Designs"></div>
           <div class="caption">
             Kind Designs
             <span class="role">Living Seawalls &middot; Miami</span>
+          </div>
+        </div>
+        <div class="profile-note">
+          <div class="profile-mark">K</div>
+          <div class="profile-copy">
+            <div class="profile-kicker">Climate tech</div>
+            <p>Kind Designs builds 3D-printed Living Seawalls that protect coastlines while supporting marine life. Vesting made the product, machine, and founder story legible in one field piece.</p>
           </div>
         </div>
       </div></div>
@@ -3445,13 +3563,20 @@ img.event-mark {
           <div class="m"><div class="mv">YES</div><div class="ml">Investor inbound</div></div>
         </div>
       </div></div>
-    <div class="stpf-page" data-density="soft"><div class="page-inner back img-back face">
+    <div class="stpf-page" data-density="soft"><div class="page-inner back img-back face profile-back">
         <div class="polaroid tilt-r3">
           <div class="tape"></div>
           <div class="photo photo-real photo-yc"><img src="assets/ChatGPT Image May 15, 2026, 09_16_59 PM.png" alt="YC Demo Day floor"></div>
           <div class="caption">
             On the floor
             <span class="role">YC Demo Day · 2026</span>
+          </div>
+        </div>
+        <div class="profile-note">
+          <div class="profile-mark">Y</div>
+          <div class="profile-copy">
+            <div class="profile-kicker">Demo Day floor</div>
+            <p>Vesting covered YC Demo Day from inside the room, capturing founder reactions, Garry Tan moments, and clips that do not fit inside the livestream.</p>
           </div>
         </div>
       </div></div>
@@ -3512,13 +3637,20 @@ img.event-mark {
           <div class="m"><div class="mv">2<span class="u">&times;</span></div><div class="ml">Demo Days</div></div>
         </div>
       </div></div>
-    <div class="stpf-page" data-density="soft"><div class="page-inner back img-back face">
+    <div class="stpf-page" data-density="soft"><div class="page-inner back img-back face profile-back">
         <div class="polaroid tilt-l">
           <div class="tape"></div>
           <div class="photo photo-real photo-finc"><img src="assets/ChatGPT Image May 15, 2026, 09_12_55 PM.png" alt="Founders Inc"></div>
           <div class="caption">
             Founders Inc
             <span class="role">SF flagship floor</span>
+          </div>
+        </div>
+        <div class="profile-note">
+          <div class="profile-mark">F</div>
+          <div class="profile-copy">
+            <div class="profile-kicker">Founders Inc</div>
+            <p>Founders Inc became the proving ground for Vesting’s live-event format: pitches, demos, founder conversations, and room energy built for social distribution.</p>
           </div>
         </div>
       </div></div>
@@ -3583,13 +3715,20 @@ img.event-mark {
           <div class="m"><div class="mv">2<span class="u">&times;</span></div><div class="ml">Events</div></div>
         </div>
       </div></div>
-    <div class="stpf-page" data-density="soft"><div class="page-inner back img-back face">
+    <div class="stpf-page" data-density="soft"><div class="page-inner back img-back face profile-back">
         <div class="polaroid tilt-r">
           <div class="tape"></div>
           <div class="photo photo-real photo-resid"><img src="assets/ChatGPT Image May 15, 2026, 08_00_04 PM (1).png" alt="The Residency"></div>
           <div class="caption">
             The Residency
             <span class="role">Emerging cohort · demo day</span>
+          </div>
+        </div>
+        <div class="profile-note">
+          <div class="profile-mark">R</div>
+          <div class="profile-copy">
+            <div class="profile-kicker">The Residency</div>
+            <p>The Residency’s demo day had a smaller room and a sharper founder density. Vesting turned the intimate setting into clips that traveled well beyond the audience in attendance.</p>
           </div>
         </div>
       </div></div>
@@ -3622,13 +3761,20 @@ img.event-mark {
           <div class="m"><div class="mv">1<span class="u">&times;</span></div><div class="ml">Demo Day</div></div>
         </div>
       </div></div>
-    <div class="stpf-page" data-density="soft"><div class="page-inner back img-back face">
+    <div class="stpf-page" data-density="soft"><div class="page-inner back img-back face profile-back">
         <div class="polaroid wide tilt-l2">
           <div class="tape"></div>
           <div class="photo photo-real photo-vestlive"><img src="assets/ChatGPT Image May 15, 2026, 08_00_05 PM (4).png" alt="Vesting Live"></div>
           <div class="caption">
             Vesting Live
             <span class="role">From Miami · with Brycent</span>
+          </div>
+        </div>
+        <div class="profile-note">
+          <div class="profile-mark">L</div>
+          <div class="profile-copy">
+            <div class="profile-kicker">Weekly live show</div>
+            <p>Vesting Live turns founder conversations into a repeatable media surface. The show gives guests a room, a host, and a format that pulls out the story behind the company.</p>
           </div>
         </div>
       </div></div>
@@ -3681,13 +3827,20 @@ img.event-mark {
         </ol>
         <div class="roster-foot"><em>More guests booked for Q2 2026.</em></div>
       </div></div>
-    <div class="stpf-page" data-density="soft"><div class="page-inner back img-back face">
+    <div class="stpf-page" data-density="soft"><div class="page-inner back img-back face profile-back">
         <div class="polaroid tilt-r">
           <div class="tape"></div>
           <div class="photo photo-real photo-brycent"><img src="assets/ChatGPT Image May 15, 2026, 08_00_04 PM (2).png" alt="Brycent"></div>
           <div class="caption">
             Brycent
             <span class="role">Twitch · @brycent</span>
+          </div>
+        </div>
+        <div class="profile-note">
+          <div class="profile-mark">B</div>
+          <div class="profile-copy">
+            <div class="profile-kicker">Host and storyteller</div>
+            <p>Brycent turns startup launches, live rooms, and founder conviction into stories people remember. The job is simple: make the real moment resonate.</p>
           </div>
         </div>
       </div></div>
