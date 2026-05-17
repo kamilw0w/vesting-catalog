@@ -1132,13 +1132,14 @@ body.closing-back-cover .stage::after {
   pointer-events: none;
   transition: opacity 0.14s ease, transform 0.14s ease, visibility 0s linear 0.14s;
 }
-body.has-flipped .chapter-bookmarks {
+body.book-open-flat.has-flipped .chapter-bookmarks {
   opacity: 1;
   visibility: visible;
   transform: translateX(0);
   pointer-events: auto;
   transition: opacity 0.30s ease, transform 0.30s ease, visibility 0s linear 0s;
 }
+body:not(.book-open-flat) .chapter-bookmarks,
 body.on-back-cover .chapter-bookmarks {
   display: none;
   opacity: 0;
@@ -2867,14 +2868,15 @@ img.event-mark {
 .zaranna-message {
   position: relative;
   width: 100%;
-  min-height: 142px;
+  min-height: 156px;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: visible;
+  transform: translateX(12px);
 }
 .zaranna-message-shot {
-  width: min(154%, 500px);
+  width: min(235%, 520px);
   max-width: none !important;
   height: auto !important;
   display: block;
@@ -2882,23 +2884,26 @@ img.event-mark {
 }
 .zaranna-avatar {
   position: absolute;
-  top: 39px;
-  left: 15px;
+  top: 22px;
+  left: -4px;
   width: 63px;
   height: 63px;
   border-radius: 50%;
+  border: 3px solid oklch(0.98 0.012 84);
   background-image: url('assets/tarun.png');
   background-size: 278%;
   background-position: center;
   background-repeat: no-repeat;
   z-index: 3;
-  filter: drop-shadow(0 7px 12px oklch(0.22 0.04 70 / 0.20));
+  box-shadow:
+    0 7px 12px oklch(0.22 0.04 70 / 0.20),
+    0 0 0 1px oklch(0.72 0.025 78 / 0.22);
   pointer-events: none;
 }
 .zaranna-avatar-name {
   position: absolute;
-  top: 70.5px;
-  left: 86px;
+  top: 53.5px;
+  left: 68px;
   transform: translateY(-50%);
   z-index: 3;
   font-family: var(--f-italic);
@@ -2906,7 +2911,8 @@ img.event-mark {
   font-size: 15px;
   line-height: 1;
   color: var(--ink);
-  text-shadow: 0 1px 0 oklch(1 0 0 / 0.45);
+  letter-spacing: 0;
+  white-space: nowrap;
   pointer-events: none;
 }
 
@@ -3955,6 +3961,7 @@ window.addEventListener('load', function() {
   const bookmarkBtns = Array.from(document.querySelectorAll('.bookmark-tab'));
   const clipLinks = Array.from(document.querySelectorAll('.clothesline-wall .clip, .vlog-play'));
   let bookmarkJumpTimer = null;
+  let isBookFlat = true;
   const chapterRanges = {
     cover: { start: 0, end: 2 },
     proof: { start: 3, end: 4 },
@@ -3964,6 +3971,13 @@ window.addEventListener('load', function() {
     live: { start: 28, end: 29 },
     pitch: { start: 29, end: 32 }
   };
+
+  function syncBookmarkVisibility() {
+    const idx = pageFlip.getCurrentPageIndex();
+    const total = pageFlip.getPageCount();
+    const canShowBookmarks = isBookFlat && idx > 0 && idx < total - 1 && !document.body.classList.contains('bookmark-jumping');
+    document.body.classList.toggle('book-open-flat', canShowBookmarks);
+  }
 
   function updateUI() {
     const idx = pageFlip.getCurrentPageIndex();
@@ -3986,15 +4000,18 @@ window.addEventListener('load', function() {
       const range = chapterRanges[btn.dataset.section];
       btn.classList.toggle('active', !!range && idx >= range.start && idx < range.end);
     });
+    syncBookmarkVisibility();
   }
   pageFlip.on('flip', updateUI);
   pageFlip.on('init', updateUI);
 
   function hideBookmarksDuringJump(duration = 450) {
     document.body.classList.add('bookmark-jumping');
+    syncBookmarkVisibility();
     window.clearTimeout(bookmarkJumpTimer);
     bookmarkJumpTimer = window.setTimeout(() => {
       document.body.classList.remove('bookmark-jumping');
+      syncBookmarkVisibility();
     }, duration);
   }
   function hideBookmarksIfClosing() {
@@ -4009,12 +4026,20 @@ window.addEventListener('load', function() {
   function clearClosingBackCover() {
     document.body.classList.remove('closing-back-cover');
     bookEl.classList.remove('closing-back-cover');
+    syncBookmarkVisibility();
   }
   function flipNext() {
+    isBookFlat = false;
+    syncBookmarkVisibility();
     hideBookmarksIfClosing();
     pageFlip.flipNext();
   }
-  if (prevBtn) prevBtn.addEventListener('click', () => { clearClosingBackCover(); pageFlip.flipPrev(); });
+  if (prevBtn) prevBtn.addEventListener('click', () => {
+    isBookFlat = false;
+    syncBookmarkVisibility();
+    clearClosingBackCover();
+    pageFlip.flipPrev();
+  });
   if (nextBtn) nextBtn.addEventListener('click', flipNext);
   ['pointerdown', 'mousedown', 'touchstart'].forEach(type => {
     document.addEventListener(type, (e) => {
@@ -4028,8 +4053,13 @@ window.addEventListener('load', function() {
       e.stopPropagation();
     }, true);
   });
-  bookEl.addEventListener('pointerdown', hideBookmarksIfClosing);
+  bookEl.addEventListener('pointerdown', () => {
+    isBookFlat = false;
+    syncBookmarkVisibility();
+    hideBookmarksIfClosing();
+  });
   function jumpToCatalogSection(btn) {
+    isBookFlat = false;
     hideBookmarksDuringJump(450);
     const page = Number(btn.dataset.page || 0);
     if (typeof pageFlip.turnToPage === 'function') {
@@ -4045,7 +4075,13 @@ window.addEventListener('load', function() {
   });
   document.addEventListener('keydown', (e) => {
     if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); flipNext(); }
-    if (e.key === 'ArrowLeft')  { e.preventDefault(); clearClosingBackCover(); pageFlip.flipPrev(); }
+    if (e.key === 'ArrowLeft')  {
+      e.preventDefault();
+      isBookFlat = false;
+      syncBookmarkVisibility();
+      clearClosingBackCover();
+      pageFlip.flipPrev();
+    }
   });
 
   // -- Custom page-flip sound --
@@ -4080,6 +4116,8 @@ window.addEventListener('load', function() {
   // Play sound on each flip (StPageFlip changeState emits 'flipping')
   let lastState = null;
   pageFlip.on('changeState', (e) => {
+    isBookFlat = e.data === 'read';
+    syncBookmarkVisibility();
     if (e.data === 'flipping' && lastState !== 'flipping') {
       hideBookmarksIfClosing();
       playFlipSound();
