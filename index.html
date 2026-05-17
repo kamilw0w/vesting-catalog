@@ -2817,6 +2817,53 @@ img.event-mark {
 .page-inner:has(.case-post-vchain) .case-post-receipt .case-post-frame img {
   max-height: 110px;
 }
+.zaranna-proof-row {
+  display: grid;
+  grid-template-columns: 1fr 28px 1fr;
+  align-items: center;
+  gap: 12px;
+  margin: auto 0 6px;
+}
+.zaranna-proof-row .case-post,
+.zaranna-proof-row .case-post-receipt {
+  margin: 0 !important;
+  padding: 0;
+}
+.zaranna-proof-row .case-post-frame {
+  width: 100%;
+  height: 180px !important;
+  max-width: none !important;
+  margin: 0 !important;
+  background: transparent;
+}
+.zaranna-proof-row .case-post-frame img {
+  width: 100%;
+  height: 100%;
+  max-height: none !important;
+  object-fit: contain;
+}
+.zaranna-proof-row .case-post-vchain {
+  margin: 0;
+  transform: translateY(-10px);
+}
+.zaranna-proof-row .case-post-receipt .case-post-frame {
+  padding: 0;
+  border: none;
+  box-shadow: none;
+  background: transparent;
+  max-width: none;
+  overflow: visible;
+}
+.zaranna-proof-row .case-post-receipt .case-post-frame::before {
+  display: none;
+}
+.zaranna-proof-row .case-post-receipt .case-post-frame img {
+  max-width: 100%;
+  max-height: 160px !important;
+  width: auto;
+  height: auto;
+  margin: 0 auto;
+}
 
 /* Receipt-style frame for the Tarun text screenshot &middot; washi tape, soft paper card */
 .case-post-receipt .case-post-frame {
@@ -3056,23 +3103,25 @@ img.event-mark {
         </div>
         <h2 class="case-title">One post. <em>Thirty calls.</em> <em>$300K</em> in pipeline.</h2>
         <p class="story">Tarun was building Zaranna AI in stealth-quiet &middot; a YC company with a clear thesis and no megaphone. Vesting ran one post on Instagram. Within days the inbox didn&rsquo;t ease up. <strong>30+ inbound calls</strong> came in, each one expanding a different use case the team hadn&rsquo;t even pitched yet. The pipeline closed at roughly <strong>$300K of ARR working</strong> &middot; <em>from a single post.</em></p>
-        <div class="case-post">
-          <div class="case-post-frame">
-            <img src="assets/asset-022.jpg" alt="Zaranna AI Reel &middot; Vesting Live with Tarun">
+        <div class="zaranna-proof-row">
+          <div class="case-post">
+            <div class="case-post-frame">
+              <img src="assets/asset-022.jpg" alt="Zaranna AI Reel &middot; Vesting Live with Tarun">
+            </div>
+            <div class="case-post-caption">Vesting Live · Reel · 30+ inbound calls</div>
           </div>
-          <div class="case-post-caption">Vesting Live · Reel · 30+ inbound calls</div>
-        </div>
-        <div class="case-post-vchain" aria-hidden="true">
-          <svg viewBox="0 0 24 32" width="22" height="28">
-            <path d="M 12 2 L 12 24" stroke="oklch(0.64 0.135 78)" stroke-width="1.8" stroke-linecap="round" fill="none"/>
-            <path d="M 5 22 L 12 30 L 19 22" stroke="oklch(0.64 0.135 78)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-          </svg>
-        </div>
-        <div class="case-post case-post-text case-post-receipt">
-          <div class="case-post-frame">
-            <img src="assets/ChatGPT Image May 15, 2026, 08_05_53 PM (5).png" alt="Tarun: 30+ inbound calls, $300K ARR pipeline from a single post">
+          <div class="case-post-vchain" aria-hidden="true">
+            <svg viewBox="0 0 32 24" width="28" height="24">
+              <path d="M 2 12 L 24 12" stroke="oklch(0.64 0.135 78)" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+              <path d="M 22 5 L 30 12 L 22 19" stroke="oklch(0.64 0.135 78)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            </svg>
           </div>
-          <div class="case-post-caption">Tarun Vedula &middot; Founder, Zaranna AI &middot; YC</div>
+          <div class="case-post case-post-text case-post-receipt">
+            <div class="case-post-frame">
+              <img src="assets/ChatGPT Image May 15, 2026, 08_05_53 PM (5).png" alt="Tarun: 30+ inbound calls, $300K ARR pipeline from a single post">
+            </div>
+            <div class="case-post-caption">Tarun Vedula &middot; Founder, Zaranna AI &middot; YC</div>
+          </div>
         </div>
         <div class="metrics cols-3">
           <div class="m hero metric-inbound"><div class="mv">30<span class="u">+</span></div><div class="ml">Inbound calls</div></div>
