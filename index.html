@@ -1423,13 +1423,13 @@ body.bookmark-jumping .chapter-bookmarks {
   max-width: 450px;
 }
 .profile-note {
-  width: 88%;
-  max-width: 410px;
+  width: 100%;
+  max-width: none;
   display: grid;
-  grid-template-columns: 56px 1fr;
-  gap: 14px;
+  grid-template-columns: 108px 1fr;
+  gap: 16px;
   align-items: center;
-  padding: 12px 14px;
+  padding: 13px 16px;
   border: 1px solid oklch(0.72 0.030 78 / 0.42);
   border-radius: 3px;
   background: oklch(0.96 0.014 82 / 0.62);
@@ -1438,10 +1438,10 @@ body.bookmark-jumping .chapter-bookmarks {
   z-index: 4;
 }
 .profile-mark {
-  width: 52px;
-  height: 52px;
+  width: 108px;
+  height: 68px;
   border: 1px solid oklch(0.72 0.030 78 / 0.5);
-  border-radius: 50%;
+  border-radius: 6px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1454,11 +1454,16 @@ body.bookmark-jumping .chapter-bookmarks {
   height: 100%;
   display: block;
   object-fit: contain;
-  padding: 7px;
+  padding: 8px 10px;
+}
+.profile-mark.v-mark svg {
+  width: 86px;
+  height: 58px;
+  display: block;
 }
 .profile-copy {
   border-left: 1px solid oklch(0.72 0.030 78 / 0.55);
-  padding-left: 14px;
+  padding-left: 16px;
 }
 .profile-kicker {
   font-family: var(--f-mono);
@@ -2309,6 +2314,37 @@ img.event-mark {
 .vlog-proof .vlog-line {
   font-size: 18px;
   line-height: 1.02;
+}
+.vlog-proof .kd-proof-card {
+  position: relative;
+  display: block;
+  min-height: 142px;
+  padding: 0;
+  overflow: hidden;
+  background: transparent;
+  border: none;
+  box-shadow: 0 9px 18px oklch(0.24 0.04 70 / 0.12);
+}
+.kd-proof-card > img {
+  width: 100%;
+  height: 100%;
+  min-height: 142px;
+  display: block;
+  object-fit: cover;
+}
+.kd-proof-card .vlog-play {
+  position: absolute;
+  left: 14px;
+  bottom: 12px;
+  width: 42px;
+  height: 42px;
+  z-index: 3;
+  opacity: 0.92;
+}
+.kd-proof-card .vlog-play span {
+  border-top-width: 8px;
+  border-bottom-width: 8px;
+  border-left-width: 13px;
 }
 .vlog-arrow {
   display: flex;
@@ -3226,7 +3262,7 @@ img.event-mark {
     <div class="stpf-page" data-density="soft"><div class="page-inner back img-back face profile-back">
         <div class="polaroid tilt-l">
           <div class="tape"></div>
-          <div class="photo photo-real photo-tarun"><img src="assets/upscaled/asset-004.jpg" alt="Tarun, Alex and Rithvik"></div>
+          <div class="photo photo-real photo-tarun"><img src="assets/polaroid zatanna.png" alt="Tarun, Alex and Rithvik"></div>
           <div class="caption">
             Tarun, Alex & Rithvik
             <span class="role">Zaranna AI · YC</span>
@@ -3249,7 +3285,7 @@ img.event-mark {
         <h2 class="case-title">One post. <em>Thirty calls.</em> <em>$300K</em> in pipeline.</h2>
         <p class="story">Tarun was building Zaranna AI in stealth-quiet &middot; a YC company with a clear thesis and no megaphone. Vesting ran one post on Instagram. Within days the inbox didn&rsquo;t ease up. <strong>30+ inbound calls</strong> came in, each one expanding a different use case the team hadn&rsquo;t even pitched yet. The pipeline closed at roughly <strong>$300K of ARR working</strong> &middot; <em>from a single post.</em></p>
         <div class="zaranna-proof-asset">
-          <img src="assets/bottomzatanna.png" alt="Zaranna AI proof: Vesting Live clip leading to Tarun Vedula's 30+ inbound calls and $300K ARR pipeline message">
+          <img src="assets/bottomzatanna-cutout.png" alt="Zaranna AI proof: Vesting Live clip leading to Tarun Vedula's 30+ inbound calls and $300K ARR pipeline message">
         </div>
         <div class="zaranna-proof-row">
           <div class="case-post">
@@ -3458,7 +3494,7 @@ img.event-mark {
     <div class="stpf-page" data-density="soft"><div class="page-inner back img-back face profile-back">
         <div class="polaroid tilt-r2">
           <div class="tape"></div>
-          <div class="photo photo-real photo-enjamb"><img src="assets/upscaled/asset-011.jpg" alt="Rayan and Maadhav"></div>
+          <div class="photo photo-real photo-enjamb"><img src="assets/polaroid enjamb.png" alt="Rayan and Maadhav"></div>
           <div class="caption">
             Rayan & Maadhav
             <span class="role">Enjamb Labs · YC</span>
@@ -3567,15 +3603,9 @@ img.event-mark {
         <p class="story">Kind Designs builds 3D-printed Living Seawalls that protect coastlines while creating marine habitat. Vesting turned the product into a field story: the machine, the seawall, the mission, and the founder behind it. The Venture Vlog reached <strong>75K views</strong>, and the founder said investors started reaching out after the post.</p>
         <div class="vlog-indicators"><span>Product walkthrough</span><span>Founder story</span><span>Investor inbound</span></div>
         <div class="vlog-proof">
-          <div class="vlog-card has-play">
-            <div class="vlog-mark-stack">
-              <div class="vlog-mark"><img src="assets/kinddesigns.jpeg" alt="Kind Designs logo"></div>
-              <a class="vlog-play" href="https://x.com/brycent/status/2054621737707565316/video/1" target="_blank" rel="noopener" aria-label="Watch the Kind Designs Venture Vlog on X"><span aria-hidden="true"></span></a>
-            </div>
-            <div class="vlog-card-copy">
-              <div class="vlog-kicker">Venture Vlog &middot; proof</div>
-              <div class="vlog-line">Product story turned attention into investor demand.</div>
-            </div>
+          <div class="vlog-card has-play kd-proof-card">
+            <img src="assets/KD.png" alt="Kind Designs Venture Vlog still">
+            <a class="vlog-play" href="https://x.com/brycent/status/2054621737707565316/video/1" target="_blank" rel="noopener" aria-label="Watch the Kind Designs Venture Vlog on X"><span aria-hidden="true"></span></a>
           </div>
           <div class="vlog-arrow" aria-hidden="true">&rarr;</div>
           <div class="vlog-message">
@@ -3800,7 +3830,12 @@ img.event-mark {
           </div>
         </div>
         <div class="profile-note">
-          <div class="profile-mark"><img src="assets/waxhq.png" alt="Vesting mark"></div>
+          <div class="profile-mark v-mark" aria-label="Vesting logo">
+            <svg viewBox="380 250 480 380" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path fill="#1a1410" d="M800.762390,369.901947 C755.752258,449.352203 710.827148,528.429993 666.272034,607.715576 C661.932800,615.437134 657.671021,619.232361 648.091370,618.706909 C629.816162,617.704468 611.443787,618.423035 593.112488,618.548218 C590.214050,618.567993 588.135437,618.033508 586.552246,615.264954 C576.631348,597.915771 566.556763,580.654419 556.556519,563.350525 C556.087036,562.538086 555.840820,561.596741 555.325134,560.298950 C578.091492,560.298950 600.377197,560.214417 622.660828,560.387878 C626.101440,560.414612 628.041382,559.454773 629.749146,556.425354 C672.532471,480.531830 715.410034,404.691498 758.265747,328.838837 C759.229492,327.133087 760.134277,325.394073 761.595886,322.692078 C737.406311,322.692078 714.096375,322.692078 689.729858,322.692078 C691.831238,318.669983 693.321228,315.634888 694.971802,312.689758 C703.426819,297.603241 711.868469,282.508301 720.495789,267.520508 C721.296082,266.130310 723.360046,264.614716 724.849548,264.601990 C747.178955,264.410980 769.510620,264.421234 791.840637,264.567017 C793.105347,264.575287 794.851990,265.876495 795.544922,267.061096 C805.710205,284.439728 815.805359,301.860931 825.673401,319.409149 C826.576172,321.014496 826.584961,323.982574 825.698730,325.599976 C817.614929,340.353180 809.240295,354.947021 800.762390,369.901947 z"/>
+              <path fill="#1a1410" d="M495.083954,325.025421 C495.083954,325.025421 494.842285,324.827972 494.780579,324.402344 C494.491241,323.662994 494.263580,323.349274 494.035950,323.035583 C494.035950,323.035583 493.967957,323.024384 493.817719,322.636902 C491.807281,321.832977 489.948853,321.063965 488.086639,321.054779 C469.776245,320.964233 451.465149,321.014709 433.154388,320.977386 C431.297852,320.973602 429.441956,320.656860 427.249939,320.454285 C427.777191,318.934540 427.949127,318.112518 428.326508,317.399231 C436.413940,302.112640 444.696808,286.925720 452.521118,271.506042 C454.754852,267.103882 457.487000,265.837860 462.244110,265.887421 C483.547913,266.109344 504.855927,265.926361 526.360291,265.937897 C526.558167,265.986267 526.961792,266.040771 526.961792,266.040771 C555.249023,315.863129 583.535400,365.685974 611.824341,415.507355 C615.934998,422.746796 620.155701,429.926880 624.086243,437.262634 C624.806213,438.606323 625.042358,440.931641 624.364746,442.193115 C614.592712,460.385986 604.628845,478.475861 594.692810,496.580475 C594.388123,497.135651 593.886780,497.582886 592.924133,498.752167 C560.493835,441.451874 528.292664,384.556305 495.998840,327.038635 C495.632080,325.952789 495.358032,325.489105 495.083954,325.025421 z"/>
+            </svg>
+          </div>
           <div class="profile-copy">
             <div class="profile-kicker">Weekly live show</div>
             <p>Vesting Live is the recurring show format: founders, investors, and operators sit down for direct conversations about company-building. It mixes live audience energy with startup storytelling.</p>
@@ -3866,7 +3901,7 @@ img.event-mark {
           </div>
         </div>
         <div class="profile-note">
-          <div class="profile-mark"><img src="assets/waxhq.png" alt="Vesting mark"></div>
+          <div class="profile-mark"><img src="assets/brycent.png" alt="Brycent"></div>
           <div class="profile-copy">
             <div class="profile-kicker">Host and storyteller</div>
             <p>Brycent is a creator and host known for live storytelling, interviews, and internet-native distribution. In the Vesting format, he anchors founder conversations and turns raw moments into watchable media.</p>
