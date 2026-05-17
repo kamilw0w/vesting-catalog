@@ -6,7 +6,7 @@
 <title>Vesting | Q1 2026</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Italiana&family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..900,0..100,0..1;1,9..144,300..900,0..100,0..1&family=Instrument+Serif:ital@0;1&family=Geist:wght@300;400;500;600;700;800&family=Geist+Mono:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400;1,6..72,500&family=Caveat:wght@400;500;600&family=Inter:wght@600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 :root {
   --paper: oklch(0.93 0.022 80);
@@ -24,11 +24,11 @@
   --accent-tint: oklch(0.64 0.135 78 / 0.10);
   --rule: oklch(0.78 0.025 80);
   --rule-hi: oklch(0.70 0.030 78);
-  --f-brand: 'Italiana', 'PP Editorial New', 'Fraunces', Georgia, serif;
-  --f-display: 'Instrument Serif', 'Newsreader', Georgia, serif;
+  --f-brand: 'Instrument Serif', Georgia, serif;
+  --f-display: 'Instrument Serif', Georgia, serif;
   --f-body: 'Geist', system-ui, sans-serif;
-  --f-mono: 'Geist Mono', ui-monospace, monospace;
-  --f-italic: 'Newsreader', 'Instrument Serif', Georgia, serif;
+  --f-mono: 'Geist', system-ui, sans-serif;
+  --f-italic: 'Instrument Serif', Georgia, serif;
 }
 *,*::before,*::after { margin:0; padding:0; box-sizing:border-box; }
 body {
@@ -216,7 +216,7 @@ body.closing-back-cover .stage::after {
 
 /* Big title &middot; Inter heavy, like the reference */
 .cover-title {
-  font-family: 'Inter', 'Geist', system-ui, sans-serif;
+  font-family: var(--f-display);
   font-weight: 800;
   font-size: 64px;
   line-height: 0.92;
@@ -229,7 +229,7 @@ body.closing-back-cover .stage::after {
 
 /* Handwritten sub-line under title */
 .cover-script {
-  font-family: 'Caveat', cursive;
+  font-family: var(--f-display);
   font-weight: 500;
   font-size: 38px;
   line-height: 1;
@@ -274,7 +274,7 @@ body.closing-back-cover .stage::after {
   text-transform: uppercase;
 }
 .cover-band .place {
-  font-family: 'Caveat', cursive;
+  font-family: var(--f-display);
   font-weight: 600;
   font-size: 22px;
   letter-spacing: 0;
@@ -313,7 +313,7 @@ body.closing-back-cover .stage::after {
   margin-top: 8px; margin-bottom: 14px;
 }
 .menu-headline {
-  font-family: 'Fraunces', var(--f-display);
+  font-family: var(--f-display);
   font-variation-settings: "opsz" 144, "SOFT" 50;
   font-weight: 400; font-size: 40px; line-height: 1.02;
   letter-spacing: -0.03em; color: var(--ink);
@@ -330,7 +330,7 @@ body.closing-back-cover .stage::after {
 .menu-rule { height: 1px; background: var(--rule); margin-bottom: 12px; }
 .menu-list { display: flex; flex-direction: column; }
 .menu-presentation {
-  font-family: 'Fraunces', var(--f-display);
+  font-family: var(--f-display);
   font-variation-settings: "opsz" 144, "SOFT" 50;
   font-weight: 400;
   font-size: 32px;
@@ -410,7 +410,7 @@ body.closing-back-cover .stage::after {
   font-size: 13.5px; color: var(--muted); line-height: 1.4;
 }
 .nm-title {
-  font-family: 'Fraunces', var(--f-display);
+  font-family: var(--f-display);
   font-variation-settings: "opsz" 144, "SOFT" 50;
   font-weight: 400; font-size: 48px; line-height: 0.96;
   color: var(--ink); letter-spacing: -0.03em;
@@ -479,7 +479,7 @@ body.closing-back-cover .stage::after {
 .footnote sup { color: var(--accent); margin-right: 2px; }
 
 .chart-title {
-  font-family: 'Fraunces', var(--f-display);
+  font-family: var(--f-display);
   font-variation-settings: "opsz" 144, "SOFT" 50;
   font-weight: 400; font-size: 36px; line-height: 1.05;
   letter-spacing: -0.025em; color: var(--ink);
@@ -584,7 +584,7 @@ body.closing-back-cover .stage::after {
   position: absolute;
   bottom: 14px; left: 16px; right: 16px;
   text-align: center;
-  font-family: 'Caveat', cursive;
+  font-family: var(--f-display);
   font-weight: 500;
   font-size: 22px;
   line-height: 1.0;
@@ -762,7 +762,7 @@ body.closing-back-cover .stage::after {
 .case-name { font-family: var(--f-display); font-size: 20px; color: var(--ink); letter-spacing: -0.01em; }
 .case-name .role { font-style: italic; color: var(--muted); font-size: 16px; font-weight: 400; }
 .case-title {
-  font-family: 'Fraunces', Georgia, serif;
+  font-family: var(--f-display);
   font-variation-settings: "opsz" 144, "SOFT" 50, "WONK" 0;
   font-weight: 400; font-size: 42px; line-height: 1.02;
   letter-spacing: -0.025em; color: var(--ink);
@@ -828,7 +828,7 @@ body.closing-back-cover .stage::after {
   text-transform: uppercase; margin-top: 8px; margin-bottom: 10px;
 }
 .guest-title {
-  font-family: 'Fraunces', var(--f-display);
+  font-family: var(--f-display);
   font-variation-settings: "opsz" 144, "SOFT" 50;
   font-weight: 400; font-size: 34px; line-height: 1.02;
   letter-spacing: -0.025em; color: var(--ink); margin-bottom: 8px;
@@ -2864,6 +2864,52 @@ img.event-mark {
   height: auto;
   margin: 0 auto;
 }
+.zaranna-message {
+  position: relative;
+  width: 100%;
+  height: 180px;
+  overflow: visible;
+}
+.zaranna-message-shot {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: min(168%, 420px);
+  max-width: none !important;
+  height: auto !important;
+  transform: translate(-45%, -45%);
+  display: block;
+  filter: drop-shadow(0 10px 16px oklch(0.22 0.04 70 / 0.18));
+}
+.zaranna-avatar {
+  position: absolute;
+  top: 31px;
+  left: 4px;
+  width: 63px;
+  height: 63px;
+  border-radius: 50%;
+  background-image: url('assets/tarun.png');
+  background-size: 278%;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 3;
+  filter: drop-shadow(0 7px 12px oklch(0.22 0.04 70 / 0.20));
+  pointer-events: none;
+}
+.zaranna-avatar-name {
+  position: absolute;
+  top: 62px;
+  left: 76px;
+  transform: translateY(-50%);
+  z-index: 3;
+  font-family: var(--f-italic);
+  font-style: italic;
+  font-size: 15px;
+  line-height: 1;
+  color: var(--ink);
+  text-shadow: 0 1px 0 oklch(1 0 0 / 0.45);
+  pointer-events: none;
+}
 
 /* Receipt-style frame for the Tarun text screenshot &middot; washi tape, soft paper card */
 .case-post-receipt .case-post-frame {
@@ -3118,7 +3164,11 @@ img.event-mark {
           </div>
           <div class="case-post case-post-text case-post-receipt">
             <div class="case-post-frame">
-              <img src="assets/ChatGPT Image May 15, 2026, 08_05_53 PM (5).png" alt="Tarun: 30+ inbound calls, $300K ARR pipeline from a single post">
+              <div class="zaranna-message">
+                <span class="zaranna-avatar" aria-hidden="true"></span>
+                <span class="zaranna-avatar-name">Tarun Vedula</span>
+                <img class="zaranna-message-shot" src="assets/tarunmsg.png" alt="Tarun: 30+ inbound calls, $300K ARR pipeline from a single post">
+              </div>
             </div>
             <div class="case-post-caption">Tarun Vedula &middot; Founder, Zaranna AI &middot; YC</div>
           </div>
