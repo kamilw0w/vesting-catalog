@@ -2894,7 +2894,7 @@ img.event-mark {
   max-height: 110px;
 }
 .zaranna-proof-row {
-  display: grid;
+  display: none;
   grid-template-columns: 1.12fr 28px 1.58fr;
   align-items: center;
   gap: 8px;
@@ -2988,6 +2988,19 @@ img.event-mark {
   letter-spacing: 0;
   white-space: nowrap;
   pointer-events: none;
+}
+.zaranna-proof-asset {
+  margin: auto -18px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.zaranna-proof-asset img {
+  width: 112%;
+  max-width: none;
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 12px 20px oklch(0.24 0.04 70 / 0.10));
 }
 
 /* Receipt-style frame for the Tarun text screenshot &middot; washi tape, soft paper card */
@@ -3235,6 +3248,9 @@ img.event-mark {
         </div>
         <h2 class="case-title">One post. <em>Thirty calls.</em> <em>$300K</em> in pipeline.</h2>
         <p class="story">Tarun was building Zaranna AI in stealth-quiet &middot; a YC company with a clear thesis and no megaphone. Vesting ran one post on Instagram. Within days the inbox didn&rsquo;t ease up. <strong>30+ inbound calls</strong> came in, each one expanding a different use case the team hadn&rsquo;t even pitched yet. The pipeline closed at roughly <strong>$300K of ARR working</strong> &middot; <em>from a single post.</em></p>
+        <div class="zaranna-proof-asset">
+          <img src="assets/bottomzatanna.png" alt="Zaranna AI proof: Vesting Live clip leading to Tarun Vedula's 30+ inbound calls and $300K ARR pipeline message">
+        </div>
         <div class="zaranna-proof-row">
           <div class="case-post">
             <div class="case-post-frame">
