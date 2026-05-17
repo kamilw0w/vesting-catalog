@@ -1052,36 +1052,44 @@ body.closing-back-cover .stage::after {
 .bc-grid .lbl { font-family: var(--f-mono); font-size: 8.5px; color: var(--accent); letter-spacing: 0.22em; text-transform: uppercase; }
 .bc-grid .val { font-family: var(--f-display); font-style: italic; font-size: 16px; color: var(--ink); letter-spacing: -0.01em; }
 .controls {
-  margin-top: 12px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 8px 12px;
-  font-family: var(--f-mono);
-  font-size: 11px;
-  color: oklch(0.22 0.045 80);
-  letter-spacing: 0.16em;
-  background:
-    linear-gradient(135deg, oklch(0.98 0.014 82 / 0.88), oklch(0.91 0.018 80 / 0.74));
-  border: 1px solid oklch(0.42 0.045 80 / 0.24);
-  border-radius: 3px;
-  box-shadow:
-    0 13px 24px rgba(22, 16, 8, 0.18),
-    0 2px 5px rgba(22, 16, 8, 0.10),
-    inset 0 1px 0 oklch(1 0 0 / 0.58);
-  backdrop-filter: blur(6px);
+  position: fixed;
+  inset: 0;
+  z-index: 12000;
+  margin: 0;
+  padding: 0;
+  pointer-events: none;
 }
 .ctrl-btn {
-  background: oklch(0.20 0.035 80 / 0.86); border: 1px solid oklch(0.44 0.052 82 / 0.45);
-  color: oklch(0.94 0.035 82); padding: 10px 16px;
-  font-family: var(--f-mono); letter-spacing: 0.16em; font-size: 10.5px;
-  cursor: pointer; transition: all 0.25s; text-transform: uppercase;
-  border-radius: 2px;
-  box-shadow: inset 0 1px 0 oklch(1 0 0 / 0.14), 0 2px 7px rgba(12, 9, 5, 0.15);
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  min-width: 112px;
+  background: oklch(0.20 0.035 80 / 0.92);
+  border: 1px solid oklch(0.74 0.065 82 / 0.46);
+  color: oklch(0.96 0.035 82);
+  padding: 18px 22px;
+  font-family: var(--f-mono);
+  letter-spacing: 0.14em;
+  font-size: 12px;
+  cursor: pointer;
+  transition: transform 0.25s ease, opacity 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
+  text-transform: uppercase;
+  border-radius: 999px;
+  box-shadow:
+    inset 0 1px 0 oklch(1 0 0 / 0.16),
+    0 12px 26px rgba(18, 12, 6, 0.24);
+  pointer-events: auto;
 }
-.ctrl-btn:hover:not(:disabled) { background: oklch(0.28 0.045 80 / 0.9); border-color: var(--accent); color: oklch(0.95 0.055 82); }
+.ctrl-btn:first-child { left: 36px; }
+.ctrl-btn:last-child { right: 36px; }
+.ctrl-btn:hover:not(:disabled) {
+  background: oklch(0.28 0.045 80 / 0.94);
+  border-color: var(--accent);
+  color: oklch(0.98 0.045 82);
+  transform: translateY(-50%) scale(1.04);
+}
 .ctrl-btn:disabled { opacity: 0.42; cursor: not-allowed; }
-.page-indicator { min-width: 150px; text-align: center; color: oklch(0.24 0.045 80); text-shadow: 0 1px 0 oklch(1 0 0 / 0.5); }
+.page-indicator { display: none; min-width: 150px; text-align: center; color: oklch(0.24 0.045 80); text-shadow: 0 1px 0 oklch(1 0 0 / 0.5); }
 .page-indicator .pg { font-family: var(--f-brand); color: var(--accent-deep); font-size: 18px; margin-right: 8px; letter-spacing: -0.01em; }
 .chapter-nav {
   margin-top: 10px;
@@ -1225,7 +1233,7 @@ body.bookmark-jumping .chapter-bookmarks {
     0 0 0 1px rgba(255,255,255,0.20) inset,
     0 0 16px color-mix(in oklab, var(--chapter-color) 28%, transparent);
 }
-.instruction { margin-top: 6px; font-family: var(--f-italic); font-style: italic; color: oklch(0.30 0.04 80); font-size: 12.5px; letter-spacing: 0.04em; min-height: 28px; display: flex; align-items: center; justify-content: center; gap: 8px; text-shadow: 0 1px 0 oklch(1 0 0 / 0.5); }
+.instruction { display: none; margin-top: 6px; font-family: var(--f-italic); font-style: italic; color: oklch(0.30 0.04 80); font-size: 12.5px; letter-spacing: 0.04em; min-height: 28px; align-items: center; justify-content: center; gap: 8px; text-shadow: 0 1px 0 oklch(1 0 0 / 0.5); }
 .instruction-copy { transition: opacity 0.35s ease, transform 0.35s ease; }
 .snd-btn {
   background: oklch(0.98 0.012 82 / 0.44);
