@@ -1801,7 +1801,7 @@ body.bookmark-jumping .chapter-bookmarks {
 .logo-wall {
   width: 100%;
   height: 100%;
-  padding: 30px 32px 28px;
+  padding: 34px 34px 32px;
   display: flex;
   flex-direction: column;
   position: relative;
@@ -1809,8 +1809,8 @@ body.bookmark-jumping .chapter-bookmarks {
 }
 .reach-ledger {
   position: relative;
-  padding: 13px 15px 12px;
-  margin-bottom: 11px;
+  padding: 20px 20px 18px;
+  margin-bottom: 18px;
   background:
     linear-gradient(135deg, oklch(0.985 0.010 84), oklch(0.935 0.020 80)),
     var(--paper-hi);
@@ -1831,7 +1831,7 @@ body.bookmark-jumping .chapter-bookmarks {
 }
 .ledger-kicker {
   font-family: var(--f-mono);
-  font-size: 7.5px;
+  font-size: 8.5px;
   letter-spacing: 0.24em;
   text-transform: uppercase;
   color: var(--accent-deep);
@@ -1846,7 +1846,7 @@ body.bookmark-jumping .chapter-bookmarks {
 .ledger-number {
   font-family: var(--f-display);
   font-style: italic;
-  font-size: 50px;
+  font-size: 76px;
   line-height: 0.86;
   letter-spacing: -0.04em;
   color: var(--ink);
@@ -1857,10 +1857,10 @@ body.bookmark-jumping .chapter-bookmarks {
   letter-spacing: -0.02em;
 }
 .ledger-label {
-  max-width: 130px;
+  max-width: 150px;
   padding-bottom: 3px;
   font-family: var(--f-mono);
-  font-size: 7.5px;
+  font-size: 8.4px;
   line-height: 1.35;
   letter-spacing: 0.16em;
   text-transform: uppercase;
@@ -1871,12 +1871,12 @@ body.bookmark-jumping .chapter-bookmarks {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 0;
-  margin-top: 10px;
-  padding-top: 9px;
+  margin-top: 16px;
+  padding-top: 14px;
   border-top: 1px solid oklch(0.78 0.025 76 / 0.75);
 }
 .ledger-breakdown div {
-  padding: 0 10px;
+  padding: 0 12px;
   border-right: 1px dashed oklch(0.72 0.030 78 / 0.6);
 }
 .ledger-breakdown div:first-child { padding-left: 0; }
@@ -1885,7 +1885,7 @@ body.bookmark-jumping .chapter-bookmarks {
   display: block;
   font-family: var(--f-display);
   font-style: italic;
-  font-size: 20px;
+  font-size: 30px;
   line-height: 1;
   color: var(--accent);
   letter-spacing: -0.025em;
@@ -1895,7 +1895,7 @@ body.bookmark-jumping .chapter-bookmarks {
   display: block;
   font-family: var(--f-mono);
   font-style: normal;
-  font-size: 6.6px;
+  font-size: 7.2px;
   line-height: 1.25;
   letter-spacing: 0.16em;
   text-transform: uppercase;
@@ -1904,16 +1904,16 @@ body.bookmark-jumping .chapter-bookmarks {
 .ledger-strip {
   display: flex;
   flex-wrap: wrap;
-  gap: 5px;
-  margin-top: 9px;
+  gap: 7px;
+  margin-top: 14px;
 }
 .ledger-strip span {
-  padding: 3px 7px;
+  padding: 5px 9px;
   border: 1px solid oklch(0.64 0.135 78 / 0.28);
   background: oklch(0.64 0.135 78 / 0.075);
   border-radius: 100px;
   font-family: var(--f-mono);
-  font-size: 6.8px;
+  font-size: 7.4px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--accent-deep);
@@ -1921,8 +1921,8 @@ body.bookmark-jumping .chapter-bookmarks {
 .logo-wall-startups {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(2, 56px);
-  gap: 7px;
+  grid-template-rows: repeat(2, 82px);
+  gap: 10px;
   flex: 0 0 auto;
   align-items: stretch;
   justify-items: stretch;
@@ -1931,7 +1931,7 @@ body.bookmark-jumping .chapter-bookmarks {
   display: flex;
   align-items: center;
   gap: 12px;
-  margin: 8px 0 8px;
+  margin: 15px 0 12px;
   flex: 0 0 auto;
 }
 .logo-wall-divider::before,
@@ -1951,40 +1951,24 @@ body.bookmark-jumping .chapter-bookmarks {
 .logo-wall-events {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 10px;
+  gap: 12px;
   flex: 0 0 auto;
-}
-.logo-wall-bottom {
-  margin-top: 13px;
-  flex: 1 1 auto;
-  min-height: 112px;
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  overflow: hidden;
-}
-.logo-wall-bottom img {
-  width: 100%;
-  max-height: 100%;
-  display: block;
-  object-fit: contain;
-  filter: drop-shadow(0 10px 18px oklch(0.26 0.04 70 / 0.12));
 }
 .event-card {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 5px;
-  padding: 6px 5px;
+  gap: 8px;
+  padding: 11px 7px;
   background: oklch(0.96 0.012 80);
   border: 1px solid oklch(0.78 0.025 76 / 0.5);
   border-radius: 6px;
   box-shadow: 0 1px 2px oklch(0.30 0.04 70 / 0.06), inset 0 1px 0 oklch(1 0 0 / 0.5);
 }
 .event-mark {
-  width: 30px;
-  height: 30px;
+  width: 46px;
+  height: 46px;
   border-radius: 6px;
   display: flex;
   align-items: center;
@@ -2005,7 +1989,7 @@ img.event-mark {
 .event-mark.residency { background: oklch(0.55 0.15 25); color: white; }
 .event-name {
   font-family: var(--f-display);
-  font-size: 8px;
+  font-size: 10.5px;
   letter-spacing: 0.04em;
   text-align: center;
   color: var(--ink);
@@ -2016,8 +2000,8 @@ img.event-mark {
   flex-direction: row;
   align-items: center;
   justify-content: flex-start;
-  gap: 6px;
-  padding: 7px;
+  gap: 9px;
+  padding: 10px;
   background: oklch(0.96 0.012 80);
   border: 1px solid oklch(0.78 0.025 76 / 0.5);
   border-radius: 6px;
@@ -2029,8 +2013,8 @@ img.event-mark {
   box-shadow: 0 6px 14px oklch(0.30 0.04 70 / 0.1), inset 0 1px 0 oklch(1 0 0 / 0.5);
 }
 .logo-mark {
-  width: 34px; height: 34px;
-  border-radius: 9px;
+  width: 52px; height: 52px;
+  border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 2px 6px oklch(0.30 0.04 70 / 0.15);
   flex: 0 0 auto;
@@ -2049,7 +2033,7 @@ img.event-mark {
 .logo-name {
   font-family: var(--f-display);
   font-style: italic;
-  font-size: 12px;
+  font-size: 16px;
   color: var(--ink);
   line-height: 1;
   letter-spacing: -0.01em;
@@ -2059,7 +2043,7 @@ img.event-mark {
 }
 .logo-stat {
   font-family: var(--f-mono);
-  font-size: 5.8px;
+  font-size: 7px;
   letter-spacing: 0.09em;
   color: var(--accent-deep);
   text-transform: uppercase;
@@ -3007,9 +2991,6 @@ img.event-mark {
               <img class="event-mark foundersinc" src="assets/ChatGPT Image May 15, 2026, 08_05_52 PM (3).png" alt="Founders, Inc. logo">
               <div class="event-name">Founders, Inc.</div>
             </div>
-          </div>
-          <div class="logo-wall-bottom">
-            <img src="assets/assetbottomlogos.png" alt="Vesting partner logo collection">
           </div>
         </div>
       </div></div>
