@@ -2868,42 +2868,41 @@ img.event-mark {
 .zaranna-message {
   position: relative;
   width: 100%;
-  min-height: 156px;
+  min-height: 178px;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: visible;
-  transform: translateX(12px);
+  transform: translateX(22px);
 }
 .zaranna-message-shot {
-  width: min(235%, 520px);
+  width: min(470%, 760px);
   max-width: none !important;
   height: auto !important;
   display: block;
+  transform: translateX(16px);
   filter: drop-shadow(0 10px 16px oklch(0.22 0.04 70 / 0.18));
 }
 .zaranna-avatar {
   position: absolute;
-  top: 22px;
-  left: -4px;
+  top: 14px;
+  left: -18px;
   width: 63px;
   height: 63px;
   border-radius: 50%;
-  border: 3px solid oklch(0.98 0.012 84);
+  border: none;
   background-image: url('assets/tarun.png');
   background-size: 278%;
   background-position: center;
   background-repeat: no-repeat;
   z-index: 3;
-  box-shadow:
-    0 7px 12px oklch(0.22 0.04 70 / 0.20),
-    0 0 0 1px oklch(0.72 0.025 78 / 0.22);
+  box-shadow: none;
   pointer-events: none;
 }
 .zaranna-avatar-name {
   position: absolute;
-  top: 53.5px;
-  left: 68px;
+  top: 20px;
+  left: 52px;
   transform: translateY(-50%);
   z-index: 3;
   font-family: var(--f-italic);
