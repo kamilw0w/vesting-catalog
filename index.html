@@ -758,6 +758,7 @@ body.closing-back-cover .stage::after {
   font-family: var(--f-mono); font-size: 10px; color: var(--accent);
   letter-spacing: 0.22em; text-transform: uppercase;
   font-weight: 500; margin-bottom: 6px;
+  display: none;
 }
 .case-name { font-family: var(--f-display); font-size: 20px; color: var(--ink); letter-spacing: -0.01em; }
 .case-name .role { font-style: italic; color: var(--muted); font-size: 16px; font-weight: 400; }
@@ -1091,12 +1092,12 @@ body.closing-back-cover .stage::after {
   max-width: 760px;
 }
 .chapter-jump[data-section="cover"], .bookmark-tab[data-section="cover"] { --chapter-color: #d8d7ca; --chapter-ink: #26251f; }
-.chapter-jump[data-section="proof"], .bookmark-tab[data-section="proof"] { --chapter-color: #4fa8d8; --chapter-ink: #071521; }
-.chapter-jump[data-section="numbers"], .bookmark-tab[data-section="numbers"] { --chapter-color: #d94d60; --chapter-ink: #23070b; }
-.chapter-jump[data-section="cases"], .bookmark-tab[data-section="cases"] { --chapter-color: #30b979; --chapter-ink: #03170d; }
-.chapter-jump[data-section="events"], .bookmark-tab[data-section="events"] { --chapter-color: #8b64d8; --chapter-ink: #11091f; }
-.chapter-jump[data-section="live"], .bookmark-tab[data-section="live"] { --chapter-color: #d65fa4; --chapter-ink: #200716; }
-.chapter-jump[data-section="pitch"], .bookmark-tab[data-section="pitch"] { --chapter-color: #e6c93f; --chapter-ink: #231d03; }
+.chapter-jump[data-section="proof"], .bookmark-tab[data-section="proof"] { --chapter-color: #8fb8c8; --chapter-ink: #12222a; }
+.chapter-jump[data-section="numbers"], .bookmark-tab[data-section="numbers"] { --chapter-color: #c8a45f; --chapter-ink: #2a210c; }
+.chapter-jump[data-section="cases"], .bookmark-tab[data-section="cases"] { --chapter-color: #7fa283; --chapter-ink: #102014; }
+.chapter-jump[data-section="events"], .bookmark-tab[data-section="events"] { --chapter-color: #9a86b8; --chapter-ink: #1c1428; }
+.chapter-jump[data-section="live"], .bookmark-tab[data-section="live"] { --chapter-color: #b98495; --chapter-ink: #28151b; }
+.chapter-jump[data-section="pitch"], .bookmark-tab[data-section="pitch"] { --chapter-color: #c9b769; --chapter-ink: #28220d; }
 .chapter-btn {
   background: transparent;
   border: 1px solid color-mix(in oklab, var(--chapter-color) 56%, transparent);
@@ -1158,8 +1159,8 @@ body.bookmark-jumping .chapter-bookmarks {
 }
 .bookmark-tab {
   position: relative;
-  width: 29px;
-  min-height: 68px;
+  width: 31px;
+  min-height: 82px;
   border: 0;
   border-radius: 0 5px 5px 0;
   background:
@@ -1169,13 +1170,13 @@ body.bookmark-jumping .chapter-bookmarks {
       var(--chapter-color) 100%);
   color: #11100d;
   font-family: var(--f-mono);
-  font-size: 8px;
+  font-size: 7.5px;
   font-weight: 800;
-  letter-spacing: 0.10em;
-  line-height: 1;
+  letter-spacing: 0.06em;
+  line-height: 1.18;
   text-transform: uppercase;
   writing-mode: vertical-rl;
-  text-orientation: mixed;
+  text-orientation: upright;
   text-shadow: 0 1px 0 rgba(255,255,255,0.28);
   cursor: pointer;
   pointer-events: auto;
@@ -2274,8 +2275,8 @@ img.event-mark {
 .vlog-proof {
   margin: auto 0 12px;
   display: grid;
-  grid-template-columns: 0.82fr 22px 1.48fr;
-  gap: 10px;
+  grid-template-columns: 210px 42px 1fr;
+  gap: 16px;
   align-items: center;
 }
 .vlog-proof .vlog-card {
@@ -2367,7 +2368,7 @@ img.event-mark {
   line-height: 1;
   color: var(--accent);
   align-self: center;
-  transform: translate(30px, -2px);
+  transform: translateY(10px);
 }
 .vlog-message {
   position: relative;
@@ -2378,22 +2379,23 @@ img.event-mark {
   box-shadow: none;
   display: flex;
   align-items: center;
-  justify-content: center;
-  min-height: 142px;
+  justify-content: flex-start;
+  min-height: 172px;
   overflow: visible;
 }
 .vlog-message-shot {
-  width: min(154%, 500px);
+  width: 360px;
   max-width: none;
   height: auto;
   display: block;
   border-radius: 0;
+  transform: translateX(-96px);
   filter: drop-shadow(0 10px 16px oklch(0.22 0.04 70 / 0.20));
 }
 .vlog-avatar {
   position: absolute;
-  top: 39px;
-  left: 15px;
+  top: 26px;
+  left: 4px;
   width: 63px;
   height: 63px;
   border-radius: 50%;
@@ -2404,8 +2406,8 @@ img.event-mark {
 }
 .vlog-avatar-name {
   position: absolute;
-  top: 70.5px;
-  left: 86px;
+  top: 57px;
+  left: 76px;
   transform: translateY(-50%);
   z-index: 3;
   font-family: var(--f-italic);
@@ -2421,7 +2423,7 @@ img.event-mark {
   transform: translateY(-10px);
 }
 .vlog-indicators {
-  display: flex;
+  display: none;
   flex-wrap: wrap;
   gap: 5px;
   margin: -4px 0 12px;
