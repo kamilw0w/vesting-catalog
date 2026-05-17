@@ -427,7 +427,7 @@ body.closing-back-cover .stage::after {
 .nm-grid {
   display: grid; grid-template-columns: 1.6fr 1fr 1fr; gap: 0;
   border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule);
-  padding: 30px 0 28px;
+  padding: 36px 0 34px;
   margin-top: 4px;
 }
 .nm-grid-item { padding: 0 18px; border-right: 1px dashed var(--rule-hi); }
@@ -435,11 +435,11 @@ body.closing-back-cover .stage::after {
 .nm-grid-item:last-child { border-right: none; padding-right: 0; }
 .nm-n {
   font-family: var(--f-display); font-weight: 400;
-  font-size: 64px; line-height: 0.86; color: var(--ink);
+  font-size: 78px; line-height: 0.82; color: var(--ink);
   letter-spacing: -0.03em; display: flex; align-items: baseline; gap: 4px;
   margin-bottom: 12px;
 }
-.nm-grid-item:first-child .nm-n { font-size: 98px; color: var(--accent); font-style: italic; }
+.nm-grid-item:first-child .nm-n { font-size: 118px; color: var(--accent); font-style: italic; }
 .nm-n .unit { font-size: 0.38em; color: var(--muted); font-style: normal; }
 .nm-n sup { font-size: 0.30em; color: var(--accent); font-style: normal; margin-left: 1px; vertical-align: top; }
 .nm-l {
@@ -447,7 +447,7 @@ body.closing-back-cover .stage::after {
   letter-spacing: 0.18em; text-transform: uppercase; line-height: 1.4;
 }
 .nm-meta {
-  margin-top: 8px; display: flex; flex-wrap: wrap; gap: 4px 6px;
+  margin-top: 8px; display: none; flex-wrap: wrap; gap: 4px 6px;
   font-family: var(--f-mono); font-size: 9px; color: var(--dim); letter-spacing: 0.02em;
 }
 .nm-meta .bold { color: var(--ink); font-weight: 500; }
@@ -460,9 +460,9 @@ body.closing-back-cover .stage::after {
   font-size: 8.5px; letter-spacing: 0.04em;
 }
 .nm-meta .dot-sep { width:2px; height:2px; border-radius:50%; background: var(--faint); display:inline-block; align-self: center; }
-.nm-breakdown { margin-top: 26px; display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; }
+.nm-breakdown { margin-top: 34px; display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; }
 .nm-br .v {
-  font-family: var(--f-display); font-size: 32px; font-style: italic;
+  font-family: var(--f-display); font-size: 40px; font-style: italic;
   color: var(--ink); line-height: 1; letter-spacing: -0.02em;
   display: block; margin-bottom: 5px;
 }
@@ -1165,10 +1165,10 @@ body.bookmark-jumping .chapter-bookmarks {
   border-radius: 0 5px 5px 0;
   background:
     linear-gradient(90deg,
-      color-mix(in oklab, var(--chapter-color) 56%, black 44%) 0%,
-      color-mix(in oklab, var(--chapter-color) 88%, white 12%) 42%,
-      var(--chapter-color) 100%);
-  color: #11100d;
+      #261a10 0%,
+      #4b3320 46%,
+      #6a492d 100%);
+  color: #fff7ee;
   font-family: var(--f-mono);
   font-size: 7.5px;
   font-weight: 800;
@@ -1177,7 +1177,7 @@ body.bookmark-jumping .chapter-bookmarks {
   text-transform: uppercase;
   writing-mode: vertical-rl;
   text-orientation: upright;
-  text-shadow: 0 1px 0 rgba(255,255,255,0.28);
+  text-shadow: 0 1px 1px rgba(0,0,0,0.52);
   cursor: pointer;
   pointer-events: auto;
   box-shadow:
@@ -1191,7 +1191,7 @@ body.bookmark-jumping .chapter-bookmarks {
   position: absolute;
   inset: 7px auto 7px 5px;
   width: 1px;
-  background: rgba(255,255,255,0.30);
+  background: rgba(255,247,238,0.24);
   opacity: 0.7;
 }
 .bookmark-tab::after {
@@ -1202,7 +1202,7 @@ body.bookmark-jumping .chapter-bookmarks {
   width: 7px;
   height: 100%;
   border-radius: 0 5px 5px 0;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.18));
+  background: linear-gradient(90deg, transparent, rgba(255,247,238,0.12));
   pointer-events: none;
 }
 .bookmark-tab[data-section="events"],
@@ -2394,8 +2394,8 @@ img.event-mark {
 }
 .vlog-avatar {
   position: absolute;
-  top: 21px;
-  left: -11px;
+  top: 16px;
+  left: -26px;
   width: 63px;
   height: 63px;
   border-radius: 50%;
@@ -2406,8 +2406,8 @@ img.event-mark {
 }
 .vlog-avatar-name {
   position: absolute;
-  top: 52px;
-  left: 61px;
+  top: 47px;
+  left: 46px;
   transform: translateY(-50%);
   z-index: 3;
   font-family: var(--f-italic);
