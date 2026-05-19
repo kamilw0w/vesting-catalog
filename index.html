@@ -2547,172 +2547,45 @@ img.event-mark {
   text-align: center;
 }
 
-/* ============= ZOLVO JOURNEY (3-step chain) ============= */
-.zolvo-journey {
-  display: flex;
-  align-items: flex-start;
-  gap: 0;
-  margin: auto 0;
-  padding: 4px 0;
-  position: relative;
-  z-index: 3;
-}
-.zj-step {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 6px;
-  position: relative;
-}
-.zj-num {
-  font-family: var(--f-mono);
-  font-size: 9px;
-  letter-spacing: 0.18em;
-  color: var(--accent);
-  font-weight: 600;
-}
-.zj-step .case-post-frame {
-  width: 100%;
-  aspect-ratio: 16 / 10;
-  height: auto;
-  max-height: none;
-  overflow: hidden;
-  border-radius: 3px;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--paper-2);
-}
-.zj-step .case-post-frame img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  display: block;
-}
-.zj-step .case-post-tag {
-  font-size: 7px;
-  padding: 2px 5px;
-  bottom: 4px;
-  left: 4px;
-  right: auto;
-  letter-spacing: 0.12em;
-}
-.zj-label {
-  font-family: var(--f-mono);
-  font-size: 7.5px;
-  letter-spacing: 0.14em;
-  color: var(--muted);
-  text-transform: uppercase;
-  text-align: center;
-}
-.zj-chain {
+/* ============= ZOLVO MID (angel check between proof panels) ============= */
+.zolvo-mid {
   flex: 0 0 auto;
   display: flex;
-  align-items: center;
-  padding: 28px 3px 0;
-}
-.zj-card {
-  width: 100%;
-  aspect-ratio: 16 / 10;
-  background: linear-gradient(135deg, oklch(0.64 0.135 78 / 0.08), oklch(0.64 0.135 78 / 0.04));
-  border: 1.5px solid oklch(0.64 0.135 78 / 0.25);
-  border-radius: 4px;
-  display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  gap: 4px;
-  padding: 8px;
+  gap: 3px;
+  padding: 0 2px;
 }
-.zj-card-icon {
-  font-size: 22px;
+.zolvo-mid-check {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: oklch(0.64 0.135 78 / 0.12);
+  border: 1.5px solid oklch(0.64 0.135 78 / 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
   color: var(--accent);
   line-height: 1;
 }
-.zj-card-label {
-  font-family: var(--f-display);
-  font-size: 14px;
-  color: var(--ink);
-  font-weight: 400;
-  letter-spacing: -0.02em;
-}
-.zj-card-sub {
+.zolvo-mid-label {
   font-family: var(--f-mono);
-  font-size: 8px;
-  letter-spacing: 0.12em;
-  color: var(--muted);
+  font-size: 7px;
+  letter-spacing: 0.10em;
+  color: var(--accent-dim);
   text-transform: uppercase;
+  white-space: nowrap;
+}
+.zolvo-mid .case-post-arrow {
+  font-size: 18px;
+  padding: 0;
+  margin-top: 2px;
 }
 
-/* ============= ENJAMB PROOF (2-step chain with labels) ============= */
-.enjamb-proof {
-  display: flex;
-  align-items: flex-start;
-  gap: 0;
-  margin: auto 0;
-  padding: 4px 0;
-  position: relative;
-  z-index: 3;
-}
-.ej-step {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 6px;
-  position: relative;
-}
-.ej-num {
-  font-family: var(--f-mono);
-  font-size: 9px;
-  letter-spacing: 0.18em;
-  color: var(--accent);
-  font-weight: 600;
-}
-.ej-step .case-post-frame {
-  width: 100%;
-  aspect-ratio: 16 / 10;
-  height: auto;
-  max-height: none;
-  overflow: hidden;
-  border-radius: 3px;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--paper-2);
-}
-.ej-step .case-post-frame img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  display: block;
-}
-.ej-step .case-post-tag {
-  font-size: 7px;
-  padding: 2px 5px;
-  bottom: 4px;
-  left: 4px;
-  right: auto;
-  letter-spacing: 0.12em;
-}
-.ej-label {
-  font-family: var(--f-mono);
-  font-size: 7.5px;
-  letter-spacing: 0.14em;
-  color: var(--muted);
-  text-transform: uppercase;
-  text-align: center;
-}
-.ej-chain {
-  flex: 0 0 auto;
-  display: flex;
-  align-items: center;
-  padding: 24px 6px 0;
+/* ============= ENJAMB PROOF V2 ============= */
+.enjamb-proof-v2 {
+  gap: 10px;
 }
 
 .case-post-tag {
@@ -3609,44 +3482,20 @@ img.event-mark {
           <div class="case-name">Zolvo <span class="role">&middot; founders, Isabela Rodriguez &amp; Tony Montes</span></div>
         </div>
         <h2 class="case-title">She pitched live. <em>Three weeks later</em> &middot; YC.</h2>
-        <p class="story">Isa was building AI agents for commercial lenders. She pitched at <strong>Vesting Live, Founders Inc Demo Day.</strong> Moved to SF, <strong>slept on couches</strong>, kept building. Brycent wrote an <strong>angel check on the spot</strong>. The clip pulled <strong>80,000+ views</strong>. Twenty-seven days later, the message: <em>&ldquo;WE GOT ACCEPTED TO YC P26.&rdquo;</em></p>
-        <div class="case-post zolvo-journey">
-          <div class="zj-step">
-            <div class="zj-num">01</div>
-            <div class="case-post-frame">
-              <img src="assets/asset-029.jpg" alt="Zolvo pitching live at Vesting Live">
-              <div class="case-post-tag">Pitched live &middot; Feb 13</div>
-            </div>
-            <div class="zj-label">Distribution unlock</div>
+        <p class="story">Isa was building AI agents for commercial lenders. She pitched at <strong>Vesting Live, Founders Inc Demo Day.</strong> Moved to SF, <strong>slept on couches</strong>, kept building. Brycent wrote an <strong>angel check on the spot</strong>. The clip pulled <strong>80,000+ views</strong>. Twenty-seven days later: <em>&ldquo;WE GOT ACCEPTED TO YC P26.&rdquo;</em></p>
+        <div class="case-post case-post-pair zolvo-proof">
+          <div class="case-post-frame">
+            <img src="assets/asset-029.jpg" alt="Zolvo pitching live">
+            <div class="case-post-tag">Pitched live &middot; Feb 13</div>
           </div>
-          <div class="zj-chain" aria-hidden="true">
-            <svg viewBox="0 0 32 24" width="24" height="20">
-              <path d="M 2 12 L 24 12" stroke="oklch(0.64 0.135 78)" stroke-width="1.8" stroke-linecap="round" fill="none"/>
-              <path d="M 22 5 L 30 12 L 22 19" stroke="oklch(0.64 0.135 78)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-            </svg>
+          <div class="zolvo-mid">
+            <div class="zolvo-mid-check">&check;</div>
+            <div class="zolvo-mid-label">Angel check</div>
+            <div class="case-post-arrow">&rarr;</div>
           </div>
-          <div class="zj-step">
-            <div class="zj-num">02</div>
-            <div class="zj-card">
-              <div class="zj-card-icon">&check;</div>
-              <div class="zj-card-label">Angel check</div>
-              <div class="zj-card-sub">Brycent &middot; on the spot</div>
-            </div>
-            <div class="zj-label">Conviction unlock</div>
-          </div>
-          <div class="zj-chain" aria-hidden="true">
-            <svg viewBox="0 0 32 24" width="24" height="20">
-              <path d="M 2 12 L 24 12" stroke="oklch(0.64 0.135 78)" stroke-width="1.8" stroke-linecap="round" fill="none"/>
-              <path d="M 22 5 L 30 12 L 22 19" stroke="oklch(0.64 0.135 78)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-            </svg>
-          </div>
-          <div class="zj-step">
-            <div class="zj-num">03</div>
-            <div class="case-post-frame">
-              <img src="assets/ChatGPT Image May 15, 2026, 08_08_32 PM (2).png" alt="Zolvo accepted to YC P26">
-              <div class="case-post-tag">YC P26 &middot; Mar 12</div>
-            </div>
-            <div class="zj-label">Credibility unlock</div>
+          <div class="case-post-frame">
+            <img src="assets/ChatGPT Image May 15, 2026, 08_08_32 PM (2).png" alt="Zolvo accepted to YC P26">
+            <div class="case-post-tag">YC P26 &middot; Mar 12</div>
           </div>
         </div>
         <div class="metrics cols-3">
@@ -3673,28 +3522,15 @@ img.event-mark {
         </div>
         <h2 class="case-title">Stealth start to <em>161K views</em> &middot; and into <em>YC.</em></h2>
         <p class="story">Rayan was building Enjamb Labs in stealth &middot; no audience, no launch post, no footprint. Vesting filmed the debut and shipped it. The post compounded: <strong>161,000+ views</strong>, deep engagement from the technical community, and inbound from the exact people Enjamb wanted to reach. Weeks later: <em>accepted into Y Combinator.</em></p>
-        <div class="case-post enjamb-proof">
-          <div class="ej-step">
-            <div class="ej-num">01</div>
-            <div class="case-post-frame">
-              <img src="assets/asset-031.jpg" alt="Enjamb Labs Vesting Live debut clip">
-              <div class="case-post-tag">Stealth debut &middot; 161K</div>
-            </div>
-            <div class="ej-label">Distribution unlock</div>
+        <div class="case-post case-post-pair enjamb-proof-v2">
+          <div class="case-post-frame">
+            <img src="assets/asset-031.jpg" alt="Enjamb Vesting Live clip">
+            <div class="case-post-tag">Stealth debut &middot; 161K</div>
           </div>
-          <div class="ej-chain" aria-hidden="true">
-            <svg viewBox="0 0 32 24" width="28" height="24">
-              <path d="M 2 12 L 24 12" stroke="oklch(0.64 0.135 78)" stroke-width="1.8" stroke-linecap="round" fill="none"/>
-              <path d="M 22 5 L 30 12 L 22 19" stroke="oklch(0.64 0.135 78)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-            </svg>
-          </div>
-          <div class="ej-step">
-            <div class="ej-num">02</div>
-            <div class="case-post-frame">
-              <img src="assets/ChatGPT Image May 15, 2026, 08_08_32 PM (4).png" alt="Rayan: Vesting helped us get into YC">
-              <div class="case-post-tag">YC accept</div>
-            </div>
-            <div class="ej-label">Credibility unlock</div>
+          <div class="case-post-arrow">&rarr;</div>
+          <div class="case-post-frame">
+            <img src="assets/ChatGPT Image May 15, 2026, 08_08_32 PM (4).png" alt="Rayan: Vesting helped us get into YC">
+            <div class="case-post-tag">YC accept</div>
           </div>
         </div>
         <div class="metrics cols-3">
