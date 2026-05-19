@@ -2510,77 +2510,18 @@ img.event-mark {
   padding: 0 2px;
   line-height: 1;
 }
-.zolvo-proof {
-  gap: 7px;
-  align-items: center;
+/* ============= ZOLVO COMPOSITE PROOF (ProjectX-style journey image) ============= */
+.zolvo-composite-proof {
   width: 100%;
+  margin: 6px 0 0;
+  border-radius: 4px;
+  overflow: hidden;
 }
-.zolvo-proof .case-post-frame {
-  flex: 0 0 calc((100% - 36px) / 2);
-  aspect-ratio: 16 / 9;
+.zolvo-composite-proof img {
+  width: 100%;
   height: auto;
-  max-height: none;
-  overflow: visible;
-  justify-content: center;
-}
-.zolvo-proof .case-post-frame img {
-  width: 100%;
-  height: 100%;
-  max-width: none;
-  max-height: none;
-  object-fit: cover;
-  object-position: center;
-}
-.zolvo-proof .case-post-frame:first-child {
-  overflow: visible;
-}
-.zolvo-proof .case-post-frame:first-child img {
-  object-fit: contain;
-}
-.zolvo-proof .case-post-frame:last-child img {
-  object-position: center 48%;
-}
-.zolvo-proof .case-post-arrow {
-  flex: 0 0 22px;
-  font-size: 20px;
-  padding: 0;
-  text-align: center;
-}
-
-/* ============= ZOLVO MID (angel check between proof panels) ============= */
-.zolvo-mid {
-  flex: 0 0 auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 3px;
-  padding: 0 2px;
-}
-.zolvo-mid-check {
-  width: 22px;
-  height: 22px;
-  border-radius: 50%;
-  background: oklch(0.64 0.135 78 / 0.12);
-  border: 1.5px solid oklch(0.64 0.135 78 / 0.35);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 12px;
-  color: var(--accent);
-  line-height: 1;
-}
-.zolvo-mid-label {
-  font-family: var(--f-mono);
-  font-size: 7px;
-  letter-spacing: 0.10em;
-  color: var(--accent-dim);
-  text-transform: uppercase;
-  white-space: nowrap;
-}
-.zolvo-mid .case-post-arrow {
-  font-size: 18px;
-  padding: 0;
-  margin-top: 2px;
+  display: block;
+  border-radius: 4px;
 }
 
 /* ============= ENJAMB PROOF V2 ============= */
@@ -3483,20 +3424,8 @@ img.event-mark {
         </div>
         <h2 class="case-title">She pitched live. <em>Three weeks later</em> &middot; YC.</h2>
         <p class="story">Isa was building AI agents for commercial lenders. She pitched at <strong>Vesting Live, Founders Inc Demo Day.</strong> Moved to SF, <strong>slept on couches</strong>, kept building. Brycent wrote an <strong>angel check on the spot</strong>. The clip pulled <strong>80,000+ views</strong>. Twenty-seven days later: <em>&ldquo;WE GOT ACCEPTED TO YC P26.&rdquo;</em></p>
-        <div class="case-post case-post-pair zolvo-proof">
-          <div class="case-post-frame">
-            <img src="assets/asset-029.jpg" alt="Zolvo pitching live">
-            <div class="case-post-tag">Pitched live &middot; Feb 13</div>
-          </div>
-          <div class="zolvo-mid">
-            <div class="zolvo-mid-check">&check;</div>
-            <div class="zolvo-mid-label">Angel check</div>
-            <div class="case-post-arrow">&rarr;</div>
-          </div>
-          <div class="case-post-frame">
-            <img src="assets/ChatGPT Image May 15, 2026, 08_08_32 PM (2).png" alt="Zolvo accepted to YC P26">
-            <div class="case-post-tag">YC P26 &middot; Mar 12</div>
-          </div>
+        <div class="zolvo-composite-proof">
+          <img src="assets/zolvo-composite.png" alt="Zolvo journey: Pitched live → Angel cheque → YC accept">
         </div>
         <div class="metrics cols-3">
           <div class="m hero"><div class="mv">80<span class="u">K</span></div><div class="ml">Views</div></div>
