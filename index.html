@@ -4173,11 +4173,17 @@ window.addEventListener('load', function() {
   });
   function jumpToCatalogSection(btn) {
     isBookFlat = false;
-    hideBookmarksDuringJump(450);
+    hideBookmarksDuringJump(1200);
     const page = Number(btn.dataset.page || 0);
     if (typeof pageFlip.turnToPage === 'function') {
       pageFlip.turnToPage(page);
     }
+    /* Fallback: force bookmarks back after flip settles */
+    window.setTimeout(() => {
+      isBookFlat = true;
+      document.body.classList.remove('bookmark-jumping');
+      syncBookmarkVisibility();
+    }, 1400);
   }
   [...chapterBtns, ...bookmarkBtns].forEach(btn => {
     btn.addEventListener('click', (e) => {
@@ -4230,6 +4236,10 @@ window.addEventListener('load', function() {
   let lastState = null;
   pageFlip.on('changeState', (e) => {
     isBookFlat = e.data === 'read';
+    if (isBookFlat) {
+      document.body.classList.remove('bookmark-jumping');
+      window.clearTimeout(bookmarkJumpTimer);
+    }
     syncBookmarkVisibility();
     if (e.data === 'flipping' && lastState !== 'flipping') {
       hideBookmarksIfClosing();
