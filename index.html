@@ -1168,15 +1168,14 @@ body.bookmark-jumping .chapter-bookmarks {
 /* Jump bar — section buttons, right side above NEXT */
 .jump-bar {
   position: fixed;
-  right: 28px;
-  top: 36px;
+  right: 36px;
+  bottom: calc(50% + 46px);
   z-index: 12001;
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  gap: 6px;
-  max-width: 220px;
-  justify-content: flex-end;
+  flex-direction: column;
+  gap: 5px;
+  width: 112px;
+  align-items: stretch;
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
@@ -1192,12 +1191,13 @@ body.bookmark-jumping .chapter-bookmarks {
   background: oklch(0.22 0.035 80 / 0.82);
   border: 1px solid oklch(0.74 0.065 82 / 0.32);
   color: oklch(0.86 0.030 82);
-  padding: 7px 13px;
+  padding: 6px 0;
   font-family: var(--f-mono);
   font-size: 9px;
   font-weight: 700;
   letter-spacing: 0.10em;
   text-transform: uppercase;
+  text-align: center;
   cursor: pointer;
   border-radius: 999px;
   transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
