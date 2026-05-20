@@ -1171,14 +1171,13 @@ body.bookmark-jumping .chapter-bookmarks {
   min-height: 84px;
   border: 0;
   border-radius: 0 5px 5px 0;
-  /* Rich leather base with subtle noise texture */
+  /* Chapter color as main background */
   background:
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E"),
-    linear-gradient(90deg,
-      #1e1410 0%,
-      #3d2a1a 40%,
-      #553a24 100%);
-  color: rgba(255,247,238,0.72);
+    linear-gradient(180deg,
+      color-mix(in oklab, var(--chapter-color) 90%, white 10%) 0%,
+      var(--chapter-color) 50%,
+      color-mix(in oklab, var(--chapter-color) 85%, black 15%) 100%);
+  color: var(--chapter-ink);
   font-family: var(--f-mono);
   font-size: 7.5px;
   font-weight: 800;
@@ -1187,34 +1186,32 @@ body.bookmark-jumping .chapter-bookmarks {
   text-transform: uppercase;
   writing-mode: vertical-rl;
   text-orientation: upright;
-  /* Debossed text — stamped into leather */
   text-shadow:
-    0 -1px 0 rgba(0,0,0,0.6),
-    0 1px 0 rgba(255,247,238,0.08);
+    0 1px 0 color-mix(in oklab, var(--chapter-color) 60%, white 40%);
   cursor: pointer;
   pointer-events: auto;
   box-shadow:
-    4px 5px 12px rgba(0,0,0,0.28),
-    inset 1px 0 0 rgba(255,255,255,0.14),
-    inset -1px 0 0 rgba(0,0,0,0.18);
+    4px 5px 12px rgba(0,0,0,0.22),
+    inset 1px 0 0 color-mix(in oklab, var(--chapter-color) 50%, white 50%),
+    inset -1px 0 0 rgba(0,0,0,0.12);
   transition: transform 0.28s cubic-bezier(0.22,1,0.36,1), filter 0.22s ease, box-shadow 0.28s ease;
-  /* Gold foil hairlines top & bottom */
-  border-top: 1px solid rgba(200,170,100,0.35);
-  border-bottom: 1px solid rgba(200,170,100,0.25);
+  border-top: 1px solid color-mix(in oklab, var(--chapter-color) 40%, white 60%);
+  border-bottom: 1px solid color-mix(in oklab, var(--chapter-color) 60%, black 40%);
 }
-/* Spine stitch line */
+/* Subtle inner line */
 .bookmark-tab::before {
   content: '';
   position: absolute;
   inset: 8px auto 8px 5px;
   width: 1px;
   background: linear-gradient(180deg,
-    rgba(200,170,100,0.0) 0%,
-    rgba(200,170,100,0.22) 15%,
-    rgba(200,170,100,0.22) 85%,
-    rgba(200,170,100,0.0) 100%);
+    transparent 0%,
+    color-mix(in oklab, var(--chapter-color) 30%, white 70%) 15%,
+    color-mix(in oklab, var(--chapter-color) 30%, white 70%) 85%,
+    transparent 100%);
+  opacity: 0.5;
 }
-/* Color-coded ribbon edge — right side accent */
+/* Dark accent stripe — right edge */
 .bookmark-tab::after {
   content: '';
   position: absolute;
@@ -1223,39 +1220,31 @@ body.bookmark-jumping .chapter-bookmarks {
   right: 0;
   width: 3px;
   border-radius: 0 3px 3px 0;
-  background: var(--chapter-color);
-  opacity: 0.7;
+  background: color-mix(in oklab, var(--chapter-color) 50%, black 50%);
+  opacity: 0.5;
   transition: opacity 0.22s ease;
-}
-.bookmark-tab[data-section="events"],
-.bookmark-tab[data-section="live"],
-.bookmark-tab[data-section="numbers"] {
-  color: rgba(255,247,238,0.72);
-  text-shadow:
-    0 -1px 0 rgba(0,0,0,0.6),
-    0 1px 0 rgba(255,247,238,0.08);
 }
 .bookmark-tab:hover {
   transform: translateX(10px);
-  filter: brightness(1.08) saturate(1.1);
+  filter: brightness(1.1) saturate(1.15);
   box-shadow:
-    6px 6px 16px rgba(0,0,0,0.32),
-    inset 1px 0 0 rgba(255,255,255,0.18),
-    0 0 14px color-mix(in oklab, var(--chapter-color) 18%, transparent);
+    6px 6px 16px rgba(0,0,0,0.28),
+    inset 1px 0 0 color-mix(in oklab, var(--chapter-color) 30%, white 70%),
+    0 0 16px color-mix(in oklab, var(--chapter-color) 30%, transparent);
 }
 .bookmark-tab:hover::after {
-  opacity: 1;
+  opacity: 0.8;
 }
 @media (max-width: 760px) {
   .chapter-bookmarks { display: none; }
 }
 .bookmark-tab.active {
   transform: translateX(10px);
-  filter: brightness(1.06);
+  filter: brightness(1.08);
   box-shadow:
-    6px 6px 18px rgba(0,0,0,0.34),
-    0 0 0 1px rgba(255,255,255,0.12) inset,
-    0 0 18px color-mix(in oklab, var(--chapter-color) 30%, transparent);
+    6px 6px 18px rgba(0,0,0,0.3),
+    0 0 0 1px color-mix(in oklab, var(--chapter-color) 30%, white 70%) inset,
+    0 0 20px color-mix(in oklab, var(--chapter-color) 35%, transparent);
 }
 .bookmark-tab.active::after {
   opacity: 1;
@@ -3213,10 +3202,10 @@ img.event-mark {
             </div>
           </div>
           <div class="logo-card">
-            <div class="logo-mark"><img src="assets/founders-school-slide1.png" alt="Founders School"></div>
+            <div class="logo-mark"><img src="assets/founders-school-logo.png" alt="Founders School"></div>
             <div class="logo-meta">
               <div class="logo-name">Founders School</div>
-              <div class="logo-stat">~1M views · biggest post</div>
+              <div class="logo-stat">~1M views · single carousel</div>
             </div>
           </div>
           <div class="logo-card">
@@ -3533,7 +3522,7 @@ img.event-mark {
           <div class="case-name">Founders School <span class="role">&middot; Head of Founder Development, Nat Eliason</span></div>
         </div>
         <h2 class="case-title">A <em>$150K high school</em> that refunds tuition &middot; <em>~1M views.</em></h2>
-        <p class="story">Founders School charges <strong>$150,000 a year</strong>. If students don&rsquo;t make $1 million in gross profit by graduation, they get every dollar back. Backed by billionaire <strong>Joe Liemandt</strong>, run by <strong>Nat Eliason</strong>. Vesting turned the concept into a carousel engineered for shock value. The hook landed: <strong>~1M views</strong>, 21K likes, 48K sends. The most viral post in Vesting history &middot; <em>by a wide margin.</em></p>
+        <p class="story">Founders School charges <strong>$150,000 a year</strong>. If students don&rsquo;t make $1 million in gross profit by graduation, they get every dollar back. Backed by billionaire <strong>Joe Liemandt</strong>, run by <strong>Nat Eliason</strong>. Vesting turned the concept into a carousel engineered for shock value. The hook landed: <strong>~1M views</strong>, 21K likes, 48K sends.</p>
         <div class="case-post">
           <div class="case-post-frame">
             <img src="assets/founders-school-slide1.png" alt="Founders School carousel post">
@@ -4043,9 +4032,9 @@ img.event-mark {
     <button class="bookmark-tab" data-section="proof" data-page="3" type="button">Proof</button>
     <button class="bookmark-tab" data-section="numbers" data-page="4" type="button">Numbers</button>
     <button class="bookmark-tab" data-section="cases" data-page="6" type="button">Cases</button>
-    <button class="bookmark-tab" data-section="events" data-page="22" type="button">Events</button>
-    <button class="bookmark-tab" data-section="live" data-page="28" type="button">Live</button>
-    <button class="bookmark-tab" data-section="pitch" data-page="29" type="button">Pitch</button>
+    <button class="bookmark-tab" data-section="events" data-page="24" type="button">Events</button>
+    <button class="bookmark-tab" data-section="live" data-page="30" type="button">Live</button>
+    <button class="bookmark-tab" data-section="pitch" data-page="31" type="button">Pitch</button>
   </div>
 </div>
 <div class="controls">
