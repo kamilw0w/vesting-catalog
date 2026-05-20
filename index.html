@@ -1172,7 +1172,7 @@ body.bookmark-jumping .chapter-bookmarks {
   border: 0;
   border-radius: 0 6px 6px 0;
   background: url('assets/bookmark-tab.png') center / 100% 100% no-repeat;
-  background-color: #9bb8c4;
+  background-color: transparent;
   color: #1e3340;
   font-family: var(--f-mono);
   font-size: 7.5px;
@@ -1185,21 +1185,19 @@ body.bookmark-jumping .chapter-bookmarks {
   text-shadow: 0 1px 0 rgba(255,255,255,0.35);
   cursor: pointer;
   pointer-events: auto;
-  box-shadow: 3px 4px 10px rgba(0,0,0,0.15);
-  transition: filter 0.22s ease, box-shadow 0.22s ease;
+  box-shadow: none;
+  transition: filter 0.22s ease;
 }
 .bookmark-tab::before { display: none; }
 .bookmark-tab::after { display: none; }
 .bookmark-tab:hover {
   filter: brightness(1.06);
-  box-shadow: 3px 4px 14px rgba(0,0,0,0.22);
 }
 @media (max-width: 760px) {
   .chapter-bookmarks { display: none; }
 }
 .bookmark-tab.active {
   filter: brightness(1.04);
-  box-shadow: 3px 4px 14px rgba(0,0,0,0.22);
 }
 .instruction { display: none; margin-top: 6px; font-family: var(--f-italic); font-style: italic; color: oklch(0.30 0.04 80); font-size: 12.5px; letter-spacing: 0.04em; min-height: 28px; align-items: center; justify-content: center; gap: 8px; text-shadow: 0 1px 0 oklch(1 0 0 / 0.5); }
 .instruction-copy { transition: opacity 0.35s ease, transform 0.35s ease; }
