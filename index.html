@@ -1081,7 +1081,7 @@ body.closing-back-cover .stage::after {
   pointer-events: auto;
 }
 .ctrl-btn:first-child { left: 36px; }
-.ctrl-btn:last-child { right: 36px; }
+.ctrl-btn:last-child { right: 16px; }
 .ctrl-btn:hover:not(:disabled) {
   background: oklch(0.28 0.045 80 / 0.94);
   border-color: var(--accent);
@@ -1165,16 +1165,16 @@ body.bookmark-jumping .chapter-bookmarks {
   pointer-events: none;
   transition: none;
 }
-/* Jump bar — section buttons, right side above NEXT */
+/* Jump bar — section buttons, right column same as NEXT */
 .jump-bar {
   position: fixed;
-  right: 36px;
-  bottom: calc(50% + 46px);
+  right: 16px;
+  bottom: calc(50% + 48px);
   z-index: 12001;
   display: flex;
   flex-direction: column;
-  gap: 5px;
-  width: 112px;
+  gap: 4px;
+  width: 96px;
   align-items: stretch;
   opacity: 0;
   visibility: hidden;
