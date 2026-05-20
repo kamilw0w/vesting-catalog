@@ -460,7 +460,7 @@ body.closing-back-cover .stage::after {
   font-size: 8.5px; letter-spacing: 0.04em;
 }
 .nm-meta .dot-sep { width:2px; height:2px; border-radius:50%; background: var(--faint); display:inline-block; align-self: center; }
-.nm-breakdown { margin-top: 34px; display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; }
+.nm-breakdown { margin-top: 34px; display: grid; grid-template-columns: repeat(6, 1fr); gap: 10px; }
 .nm-br .v {
   font-family: var(--f-display); font-size: 40px; font-style: italic;
   color: var(--ink); line-height: 1; letter-spacing: -0.02em;
@@ -795,11 +795,11 @@ body.closing-back-cover .stage::after {
 .m:last-child { border-right: none; padding-right: 0; }
 .mv {
   font-family: var(--f-display); font-weight: 400;
-  font-size: 40px; line-height: 1; letter-spacing: -0.025em;
+  font-size: 58px; line-height: 1; letter-spacing: -0.025em;
   color: var(--ink); display: flex; align-items: baseline; gap: 2px;
   margin-bottom: 8px;
 }
-.m.hero .mv { color: var(--accent); font-style: italic; font-size: 50px; }
+.m.hero .mv { color: var(--accent); font-style: italic; font-size: 72px; }
 .mv .u { font-size: 0.4em; color: var(--muted); font-style: normal; letter-spacing: 0; }
 .ml { font-family: var(--f-mono); font-size: 9px; color: var(--muted); letter-spacing: 0.16em; text-transform: uppercase; line-height: 1.15; min-height: 20px; display: flex; align-items: flex-start; }
 .timeline {
@@ -1004,11 +1004,11 @@ body.closing-back-cover .stage::after {
   display: block;
   font-family: var(--f-display);
   font-style: italic;
-  font-size: 21px;
+  font-size: 42px;
   line-height: 1;
   color: var(--accent);
   letter-spacing: -0.02em;
-  margin-bottom: 4px;
+  margin-bottom: 6px;
 }
 .bc-proofline span {
   display: block;
@@ -1165,73 +1165,59 @@ body.bookmark-jumping .chapter-bookmarks {
   pointer-events: none;
   transition: none;
 }
-.bookmark-tab {
-  position: relative;
-  width: 31px;
-  min-height: 82px;
-  border: 0;
-  border-radius: 0 5px 5px 0;
-  background:
-    linear-gradient(90deg,
-      #261a10 0%,
-      #4b3320 46%,
-      #6a492d 100%);
-  color: #fff7ee;
-  font-family: var(--f-mono);
-  font-size: 7.5px;
-  font-weight: 800;
-  letter-spacing: 0.06em;
-  line-height: 1.18;
-  text-transform: uppercase;
-  writing-mode: vertical-rl;
-  text-orientation: upright;
-  text-shadow: 0 1px 1px rgba(0,0,0,0.52);
-  cursor: pointer;
-  pointer-events: auto;
-  box-shadow:
-    4px 5px 11px rgba(0,0,0,0.22),
-    inset 1px 0 0 rgba(255,255,255,0.26),
-    inset -1px 0 0 rgba(0,0,0,0.10);
-  transition: transform 0.22s ease, filter 0.22s ease, box-shadow 0.22s ease;
-}
-.bookmark-tab::before {
-  content: '';
-  position: absolute;
-  inset: 7px auto 7px 5px;
-  width: 1px;
-  background: rgba(255,247,238,0.24);
-  opacity: 0.7;
-}
-.bookmark-tab::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 7px;
-  height: 100%;
-  border-radius: 0 5px 5px 0;
-  background: linear-gradient(90deg, transparent, rgba(255,247,238,0.12));
+/* Jump bar — section buttons, right column same as NEXT */
+.jump-bar {
+  position: fixed;
+  right: 44px;
+  bottom: calc(50% + 48px);
+  z-index: 12001;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 96px;
+  align-items: stretch;
+  opacity: 0;
+  visibility: hidden;
   pointer-events: none;
+  transition: opacity 0.3s ease, visibility 0s linear 0.3s;
 }
-.bookmark-tab[data-section="events"],
-.bookmark-tab[data-section="live"],
-.bookmark-tab[data-section="numbers"] {
-  color: #fff7ee;
-  text-shadow: 0 1px 1px rgba(0,0,0,0.48);
+.jump-bar.visible {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transition: opacity 0.3s ease, visibility 0s linear 0s;
 }
-.bookmark-tab:hover,
-.bookmark-tab.active {
-  transform: translateX(4px);
-  filter: brightness(1.04) saturate(1.05);
+.jump-btn {
+  background: oklch(0.22 0.035 80 / 0.82);
+  border: 1px solid oklch(0.74 0.065 82 / 0.32);
+  color: oklch(0.86 0.030 82);
+  padding: 6px 0;
+  font-family: var(--f-mono);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 999px;
+  transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  white-space: nowrap;
+  box-shadow: 0 2px 8px rgba(18,12,6,0.15);
+}
+.jump-btn:hover {
+  background: oklch(0.30 0.050 80 / 0.92);
+  color: oklch(0.98 0.045 82);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(18,12,6,0.25);
+}
+.jump-btn.active {
+  background: oklch(0.26 0.06 75 / 0.88);
+  color: var(--accent);
+  border-color: oklch(0.74 0.10 75 / 0.5);
+  box-shadow: 0 0 10px oklch(0.60 0.10 75 / 0.25);
 }
 @media (max-width: 760px) {
-  .chapter-bookmarks { display: none; }
-}
-.bookmark-tab.active {
-  box-shadow:
-    6px 6px 15px rgba(0,0,0,0.30),
-    0 0 0 1px rgba(255,255,255,0.20) inset,
-    0 0 16px color-mix(in oklab, var(--chapter-color) 28%, transparent);
+  .jump-bar { display: none; }
 }
 .instruction { display: none; margin-top: 6px; font-family: var(--f-italic); font-style: italic; color: oklch(0.30 0.04 80); font-size: 12.5px; letter-spacing: 0.04em; min-height: 28px; align-items: center; justify-content: center; gap: 8px; text-shadow: 0 1px 0 oklch(1 0 0 / 0.5); }
 .instruction-copy { transition: opacity 0.35s ease, transform 0.35s ease; }
@@ -1336,6 +1322,16 @@ body.bookmark-jumping .chapter-bookmarks {
 .photo-lance::before,
 .photo-lance::after { display: none !important; }
 .photo-lance img { object-position: center 38%; }
+
+.photo-founders-school {
+  background-image: url('assets/founders-school-founder.png') !important;
+  background-size: cover !important;
+  background-position: center 30% !important;
+  background-repeat: no-repeat !important;
+}
+.photo-founders-school::before,
+.photo-founders-school::after { display: none !important; }
+.photo-founders-school img { object-position: center 30%; }
 
 .photo-yc {
   background-image: url('assets/ChatGPT Image May 15, 2026, 09_16_59 PM.png') !important;
@@ -1479,8 +1475,8 @@ body.bookmark-jumping .chapter-bookmarks {
   .nm-grid-item:first-child .nm-n { font-size: 44px; }
   .nm-breakdown { grid-template-columns: repeat(3, 1fr); }
   .case-title { font-size: 26px; }
-  .mv { font-size: 28px; }
-  .m.hero .mv { font-size: 34px; }
+  .mv { font-size: 40px; }
+  .m.hero .mv { font-size: 50px; }
   .bc-headline { font-size: 42px; }
   .guest-title { font-size: 24px; }
   .roster { grid-template-columns: 1fr; }
@@ -2510,42 +2506,34 @@ img.event-mark {
   padding: 0 2px;
   line-height: 1;
 }
-.zolvo-proof {
-  gap: 7px;
-  align-items: center;
+/* ============= ZOLVO COMPOSITE PROOF (ProjectX-style journey image) ============= */
+.zolvo-composite-proof {
   width: 100%;
+  margin: 6px 0 0;
+  border-radius: 4px;
+  overflow: hidden;
 }
-.zolvo-proof .case-post-frame {
-  flex: 0 0 calc((100% - 36px) / 2);
-  aspect-ratio: 16 / 9;
+.zolvo-composite-proof img {
+  width: 100%;
   height: auto;
-  max-height: none;
-  overflow: visible;
-  justify-content: center;
+  display: block;
+  border-radius: 4px;
 }
-.zolvo-proof .case-post-frame img {
+
+/* ============= ENJAMB COMPOSITE ============= */
+.enjamb-composite-proof {
   width: 100%;
-  height: 100%;
-  max-width: none;
-  max-height: none;
-  object-fit: cover;
-  object-position: center;
+  margin: 6px 0 0;
+  border-radius: 4px;
+  overflow: hidden;
 }
-.zolvo-proof .case-post-frame:first-child {
-  overflow: visible;
+.enjamb-composite-proof img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 4px;
 }
-.zolvo-proof .case-post-frame:first-child img {
-  object-fit: contain;
-}
-.zolvo-proof .case-post-frame:last-child img {
-  object-position: center 48%;
-}
-.zolvo-proof .case-post-arrow {
-  flex: 0 0 22px;
-  font-size: 20px;
-  padding: 0;
-  text-align: center;
-}
+
 .case-post-tag {
   position: absolute;
   bottom: 7px; left: 8px;
@@ -3106,7 +3094,7 @@ img.event-mark {
         <p class="menu-intro" style="display:none">A working list of the formats we ship from. Pick one, pick three, or hand us the brief and we'll pick the right cut.</p>
         <div class="menu-rule"></div>
         <div class="menu-list">
-          <p class="menu-presentation">Vesting is startup media for founders worth watching. We speak with the operators building the <span class="hot">next important company</span>, then pick the stories with enough force to move a market. The output is whatever moves the room: <span class="hot">rounds closed</span>, pipelines filled, inbound that makes hiring easy, and the kind of <span class="hot">social proof</span> money can't buy.</p>
+          <p class="menu-presentation">Every founder has a story. Most tell it wrong. Vesting finds the <span class="hot">single narrative thread</span> that makes a room lean in, then engineers content around it until the story is everywhere it needs to be. We've turned pitch clips into <span class="hot">YC acceptances</span>, carousel hooks into million-view moments, and raw founder energy into the kind of <span class="hot">storytelling</span> that moves cap tables.</p>
           <div class="menu-pillars" aria-label="Vesting services">
             <div class="menu-pillar"><span class="k">Launches</span><span class="v">Founder stories built to travel.</span></div>
             <div class="menu-pillar"><span class="k">Investor heat</span><span class="v">Proof that opens rooms.</span></div>
@@ -3122,18 +3110,18 @@ img.event-mark {
           <div class="reach-ledger" aria-label="Q1 reach ledger">
             <div class="ledger-kicker">Q1 Reach Ledger</div>
             <div class="ledger-top">
-              <div class="ledger-number">13.58<span class="unit">M+</span></div>
+              <div class="ledger-number">14.58<span class="unit">M+</span></div>
               <div class="ledger-label">total organic views across startups and events</div>
             </div>
             <div class="ledger-breakdown">
-              <div><span>4.27M+</span><em>Startup launch views</em></div>
+              <div><span>5.27M+</span><em>Startup launch views</em></div>
               <div><span>175K</span><em>Venture vlog views</em></div>
               <div><span>9.13M</span><em>Event reach</em></div>
             </div>
             <div class="ledger-strip">
               <span>3x YC</span>
               <span>$300K ARR</span>
-              <span>8 company stories</span>
+              <span>9 company stories</span>
               <span>58 event clips</span>
               <span>4 event partners</span>
               <span>36 on-air guests</span>
@@ -3183,6 +3171,13 @@ img.event-mark {
             </div>
           </div>
           <div class="logo-card">
+            <div class="logo-mark"><img src="assets/founders-school-logo.png" alt="Founders School"></div>
+            <div class="logo-meta">
+              <div class="logo-name">Founders School</div>
+              <div class="logo-stat">~1M views · single carousel</div>
+            </div>
+          </div>
+          <div class="logo-card">
             <div class="logo-mark"><img src="assets/ChatGPT Image May 15, 2026, 08_13_15 PM (3).png" alt="Corgi logo"></div>
             <div class="logo-meta">
               <div class="logo-name">Corgi</div>
@@ -3220,17 +3215,18 @@ img.event-mark {
       </div></div>
     <div class="stpf-page" data-density="soft"><div class="page-inner face">
         <div class="marker"><span class="sec">Numbers</span>03</div>
-        <h2 class="nm-title">Five launch stories. One pipeline unlock. <em>4.27M+ views.</em></h2>
-        <p class="nm-intro">Twelve founders across six teams came to Vesting before the headline. The launch stories drove viral reach; the pipeline story turned one post into real ARR conversation. Same job throughout: traction that changes a trajectory.</p>
+        <h2 class="nm-title">Seven launch stories. One pipeline unlock. <em>5.27M+ views.</em></h2>
+        <p class="nm-intro">Thirteen founders across seven teams came to Vesting before the headline. The launch stories drove viral reach; the pipeline story turned one post into real ARR conversation. Same job throughout: traction that changes a trajectory.</p>
         <div class="nm-grid">
           <div class="nm-grid-item">
-            <div class="nm-n">4.27<span class="unit">M+</span></div>
+            <div class="nm-n">5.27<span class="unit">M+</span></div>
             <div class="nm-l">Cumulative startup views</div>
             <div class="nm-meta">
               <span>Zolvo&nbsp;80K</span><span class="plus">+</span>
               <span>Enjamb&nbsp;161K</span><span class="plus">+</span>
               <span>Veritas&nbsp;234K</span><span class="plus">+</span>
               <span>Lance&nbsp;186K</span><span class="plus">+</span>
+              <span>Founders&nbsp;~1M</span><span class="plus">+</span>
               <span class="bold">ProjectX&nbsp;3.6M</span>
             </div>
           </div>
@@ -3251,6 +3247,7 @@ img.event-mark {
         </div>
         <div class="nm-breakdown">
           <div class="nm-br"><span class="v">3.6<em>M</em></span><span class="l">ProjectX</span></div>
+          <div class="nm-br"><span class="v">~1<em>M</em></span><span class="l">Founders School</span></div>
           <div class="nm-br"><span class="v">234K</span><span class="l">Veritas</span></div>
           <div class="nm-br"><span class="v">186K</span><span class="l">Lance · $3.7M raise</span></div>
           <div class="nm-br"><span class="v">161K</span><span class="l">Enjamb</span></div>
@@ -3272,7 +3269,7 @@ img.event-mark {
         </div>
       </div></div>
     <div class="stpf-page" data-density="soft"><div class="page-inner face">
-        <div class="marker"><span class="sec">Case 01 / 06</span>04</div>
+        <div class="marker"><span class="sec">Case 01 / 07</span>04</div>
         <div class="case-top">
           <div class="case-type">AI · Single-Post Inbound · YC</div>
           <div class="case-name">Zaranna AI <span class="role">· founder, Tarun Vedula</span></div>
@@ -3323,7 +3320,7 @@ img.event-mark {
         </div>
       </div></div>
     <div class="stpf-page" data-density="soft"><div class="page-inner face">
-        <div class="marker"><span class="sec">Case 02 / 06</span>05</div>
+        <div class="marker"><span class="sec">Case 02 / 07</span>05</div>
         <div class="case-top">
           <div class="case-type">Viral Launch &middot; YC Accept</div>
           <div class="case-name">ProjectX <span class="role">&middot; founder, Rounak Adhikary</span></div>
@@ -3372,7 +3369,7 @@ img.event-mark {
         </div>
       </div></div>
     <div class="stpf-page" data-density="soft"><div class="page-inner face">
-        <div class="marker"><span class="sec">Case 03 / 06</span>06</div>
+        <div class="marker"><span class="sec">Case 03 / 07</span>06</div>
         <div class="case-top">
           <div class="case-type">Funding &middot; AI for hotel ops</div>
           <div class="case-name">Lance <span class="role">&middot; founders, Caleb Chan, Gatik Trivedi &amp; Gavin Brennen</span></div>
@@ -3403,7 +3400,7 @@ img.event-mark {
         </div>
       </div></div>
     <div class="stpf-page" data-density="soft"><div class="page-inner face">
-        <div class="marker"><span class="sec">Case 04 / 06</span>07</div>
+        <div class="marker"><span class="sec">Case 04 / 07</span>07</div>
         <div class="case-top">
           <div class="case-type">Stealth &middot; backed by Alexis Ohanian</div>
           <div class="case-name">Veritas <span class="role">&middot; founder, Luci Holland</span></div>
@@ -3434,28 +3431,20 @@ img.event-mark {
         </div>
       </div></div>
     <div class="stpf-page" data-density="soft"><div class="page-inner face">
-        <div class="marker"><span class="sec">Case 05 / 06</span>08</div>
+        <div class="marker"><span class="sec">Case 05 / 07</span>08</div>
         <div class="case-top">
           <div class="case-type">Live Pitch &middot; YC P26</div>
           <div class="case-name">Zolvo <span class="role">&middot; founders, Isabela Rodriguez &amp; Tony Montes</span></div>
         </div>
         <h2 class="case-title">She pitched live. <em>Three weeks later</em> &middot; YC.</h2>
-        <p class="story">Isa was building AI agents for commercial lenders. She pitched at <strong>Vesting Live, Founders Inc Demo Day.</strong> Moved to SF, <strong>slept on couches</strong>, kept building. Brycent wrote an <strong>angel check on the spot</strong>. Twenty-seven days later, the message: <em>&ldquo;WE GOT ACCEPTED TO YC P26.&rdquo;</em></p>
-        <div class="case-post case-post-pair zolvo-proof">
-          <div class="case-post-frame">
-            <img src="assets/asset-029.jpg" alt="Zolvo pitching live">
-            <div class="case-post-tag">Pitched live</div>
-          </div>
-          <div class="case-post-arrow">&rarr;</div>
-          <div class="case-post-frame">
-            <img src="assets/ChatGPT Image May 15, 2026, 08_08_32 PM (2).png" alt="Zolvo getting into YC">
-            <div class="case-post-tag">YC P26</div>
-          </div>
+        <p class="story">Isa was building AI agents for commercial lenders. She pitched at <strong>Vesting Live, Founders Inc Demo Day.</strong> Moved to SF, <strong>slept on couches</strong>, kept building. Brycent wrote an <strong>angel check on the spot</strong>. The clip pulled <strong>80,000+ views</strong>. Twenty-seven days later: <em>&ldquo;WE GOT ACCEPTED TO YC P26.&rdquo;</em></p>
+        <div class="zolvo-composite-proof">
+          <img src="assets/zolvo-composite.png" alt="Zolvo journey: Pitched live → Angel cheque → YC accept">
         </div>
-        <div class="timeline">
-          <div class="tl-step"><span class="tl-date">FEB &middot; 13</span><span class="tl-label">Pitched live</span></div>
-          <div class="tl-step"><span class="tl-date">FEB &middot; 13</span><span class="tl-label">Angel check</span></div>
-          <div class="tl-step final"><span class="tl-date">MAR &middot; 12</span><span class="tl-label">YC P26</span></div>
+        <div class="metrics cols-3">
+          <div class="m hero"><div class="mv">80<span class="u">K</span></div><div class="ml">Views</div></div>
+          <div class="m"><div class="mv">27<span class="u">d</span></div><div class="ml">Pitch &rarr; YC</div></div>
+          <div class="m"><div class="mv">P26</div><div class="ml">Y Combinator</div></div>
         </div>
       </div></div>
     <div class="stpf-page" data-density="soft"><div class="page-inner back img-back face profile-back">
@@ -3469,29 +3458,51 @@ img.event-mark {
         </div>
       </div></div>
     <div class="stpf-page" data-density="soft"><div class="page-inner face">
-        <div class="marker"><span class="sec">Case 06 / 06</span>09</div>
+        <div class="marker"><span class="sec">Case 06 / 07</span>09</div>
         <div class="case-top">
           <div class="case-type">Stealth debut &middot; YC accept</div>
           <div class="case-name">Enjamb Labs <span class="role">&middot; founders, Rayan Mubarak &amp; Maadhav Deekshitha</span></div>
         </div>
         <h2 class="case-title">Stealth start to <em>161K views</em> &middot; and into <em>YC.</em></h2>
-        <p class="story">Rayan was building Enjamb Labs in stealth before Vesting filmed the launch. Vesting shipped the post and the story compounded: <strong>161,000+ views</strong>, deep engagement from the technical community, and inbound from the kind of people Enjamb actually wanted to talk to. Weeks later: <em>accepted into Y Combinator.</em></p>
-        <div class="case-post case-post-pair">
-          <div class="case-post-frame">
-            <img src="assets/asset-031.jpg" alt="Enjamb Vesting Live clip">
-            <div class="case-post-tag">Clip · 161K</div>
-          </div>
-          <div class="case-post-arrow">&rarr;</div>
-          <div class="case-post-frame">
-            <img src="assets/ChatGPT Image May 15, 2026, 08_08_32 PM (4).png" alt="Rayan: helped us get into YC">
-            <div class="case-post-tag">YC accept</div>
-          </div>
+        <p class="story">Rayan was building Enjamb Labs in stealth &middot; no audience, no launch post, no footprint. Vesting filmed the debut and shipped it. The post compounded: <strong>161,000+ views</strong>, deep engagement from the technical community, and inbound from the exact people Enjamb wanted to reach. Weeks later: <em>accepted into Y Combinator.</em></p>
+        <div class="enjamb-composite-proof">
+          <img src="assets/enjamb-composite.png" alt="Enjamb journey: Stealth debut → Applied to YC → Accepted">
         </div>
-        <div class="metrics">
+        <div class="metrics cols-3">
           <div class="m hero"><div class="mv">161<span class="u">K</span></div><div class="ml">Views</div></div>
           <div class="m"><div class="mv">YC</div><div class="ml">Accepted</div></div>
-          <div class="m"><div class="mv">01</div><div class="ml">Launch post</div></div>
-          <div class="m"><div class="mv">2026</div><div class="ml">Q1</div></div>
+          <div class="m"><div class="mv">0&rarr;161K</div><div class="ml">Stealth to signal</div></div>
+        </div>
+      </div></div>
+    <div class="stpf-page" data-density="soft"><div class="page-inner back img-back face profile-back">
+        <div class="polaroid tilt-r3">
+          <div class="tape"></div>
+          <div class="photo photo-real photo-founders-school"><img src="assets/founders-school-founder.png" alt="Nat Eliason"></div>
+          <div class="caption">
+            Nat Eliason
+            <span class="role">Founders School &middot; Alpha School</span>
+          </div>
+        </div>
+      </div></div>
+    <div class="stpf-page" data-density="soft"><div class="page-inner face">
+        <div class="marker"><span class="sec">Case 07 / 07</span>10</div>
+        <div class="case-top">
+          <div class="case-type">Education &middot; $150K/yr high school</div>
+          <div class="case-name">Founders School <span class="role">&middot; Head of Founder Development, Nat Eliason</span></div>
+        </div>
+        <h2 class="case-title">A <em>$150K high school</em> that refunds tuition &middot; <em>~1M views.</em></h2>
+        <p class="story">Founders School charges <strong>$150,000 a year</strong>. If students don&rsquo;t make $1 million in gross profit by graduation, they get every dollar back. Backed by billionaire <strong>Joe Liemandt</strong>, run by <strong>Nat Eliason</strong>. Vesting turned the concept into a carousel engineered for shock value. The hook landed: <strong>~1M views</strong>, 21K likes, 48K sends.</p>
+        <div class="case-post">
+          <div class="case-post-frame">
+            <img src="assets/founders-school-slide1.png" alt="Founders School carousel post">
+          </div>
+          <div class="case-post-caption">Vesting carousel &middot; Instagram &amp; X &middot; ~1M views</div>
+        </div>
+        <div class="metrics">
+          <div class="m hero"><div class="mv">~1<span class="u">M</span></div><div class="ml">Views</div></div>
+          <div class="m"><div class="mv">21<span class="u">K</span></div><div class="ml">Likes</div></div>
+          <div class="m"><div class="mv">48<span class="u">K</span></div><div class="ml">Sends</div></div>
+          <div class="m"><div class="mv">7.4<span class="u">K</span></div><div class="ml">Saves</div></div>
         </div>
       </div></div>
     <div class="stpf-page" data-density="soft"><div class="page-inner back img-back face profile-back">
@@ -3505,7 +3516,7 @@ img.event-mark {
         </div>
       </div></div>
     <div class="stpf-page" data-density="soft"><div class="page-inner face vlog-case">
-        <div class="marker"><span class="sec">Venture Vlog 01 / 02</span>10</div>
+        <div class="marker"><span class="sec">Venture Vlog 01 / 02</span>11</div>
         <div class="case-top">
           <div class="case-type">Long-form HQ walkthrough &middot; YC &middot; AI insurance</div>
           <div class="case-name">Corgi <span class="role">&middot; full-stack insurance carrier for startups</span></div>
@@ -3539,7 +3550,7 @@ img.event-mark {
         </div>
       </div></div>
     <div class="stpf-page" data-density="soft"><div class="page-inner face vlog-case">
-        <div class="marker"><span class="sec">Venture Vlog 02 / 02</span>11</div>
+        <div class="marker"><span class="sec">Venture Vlog 02 / 02</span>12</div>
         <div class="case-top">
           <div class="case-type">Climate tech &middot; founder story &middot; investor inbound</div>
           <div class="case-name">Kind Designs <span class="role">&middot; founder, Anya Freeman</span></div>
@@ -3822,13 +3833,8 @@ img.event-mark {
         <div class="bc-mid">
           <h2 class="bc-headline">ready to be<br><span class="accent">unavoidable?</span></h2>
           <p class="bc-sub">If your company has a story worth making unavoidable, send the raw material: the company, the traction, the founder story, and the quarter-defining outcome. We take a handful of clients per quarter. <em>Pitch us.</em></p>
-          <div class="bc-playbook">
-            <div class="bc-playbook-card"><span class="k">Send</span><span class="v">Company, traction, founder story, and the goal for the quarter.</span></div>
-            <div class="bc-playbook-card"><span class="k">We shape</span><span class="v">The hook, format, proof stack, and the room it needs to reach.</span></div>
-            <div class="bc-playbook-card"><span class="k">Output</span><span class="v">A launch, vlog, live segment, or event story built to move outcomes.</span></div>
-          </div>
           <div class="bc-proofline">
-            <div><strong>4.27M+</strong><span>Startup case-study views</span></div>
+            <div><strong>5.27M+</strong><span>Startup case-study views</span></div>
             <div><strong>9.13M</strong><span>Event coverage views</span></div>
             <div><strong>36</strong><span>Guests on-air</span></div>
             <div><strong>4</strong><span>Event partners</span></div>
@@ -3991,14 +3997,15 @@ img.event-mark {
         </div>
     </div></div>
   </div>
-  <div class="chapter-bookmarks" aria-label="Catalog sections">
-    <button class="bookmark-tab" data-section="proof" data-page="3" type="button">Proof</button>
-    <button class="bookmark-tab" data-section="numbers" data-page="4" type="button">Numbers</button>
-    <button class="bookmark-tab" data-section="cases" data-page="6" type="button">Cases</button>
-    <button class="bookmark-tab" data-section="events" data-page="22" type="button">Events</button>
-    <button class="bookmark-tab" data-section="live" data-page="28" type="button">Live</button>
-    <button class="bookmark-tab" data-section="pitch" data-page="29" type="button">Pitch</button>
-  </div>
+  <div class="chapter-bookmarks" aria-label="Catalog sections" style="display:none"></div>
+</div>
+<div class="jump-bar" id="jumpBar" aria-label="Jump to section">
+  <button class="jump-btn" data-section="proof" data-page="3" type="button">Proof</button>
+  <button class="jump-btn" data-section="numbers" data-page="4" type="button">Numbers</button>
+  <button class="jump-btn" data-section="cases" data-page="6" type="button">Cases</button>
+  <button class="jump-btn" data-section="events" data-page="24" type="button">Events</button>
+  <button class="jump-btn" data-section="live" data-page="30" type="button">Live</button>
+  <button class="jump-btn" data-section="pitch" data-page="31" type="button">Pitch</button>
 </div>
 <div class="controls">
   <button class="ctrl-btn" id="prevBtn" disabled>&larr; Prev</button>
@@ -4068,7 +4075,8 @@ window.addEventListener('load', function() {
     'Lance', 'Luci',
     'Veritas', 'Isa & Tony',
     'Zolvo', 'Rayan & Maadhav',
-    'Enjamb Labs', 'Corgi Cafe',
+    'Enjamb Labs', 'Nat Eliason',
+    'Founders School', 'Corgi Cafe',
     'Corgi', 'Kind Designs',
     'Kind Designs', 'YC floor',
     'YC Demo Day', 'Founders Inc',
@@ -4082,7 +4090,8 @@ window.addEventListener('load', function() {
   const prevBtn = document.getElementById('prevBtn');
   const nextBtn = document.getElementById('nextBtn');
   const chapterBtns = Array.from(document.querySelectorAll('.chapter-jump'));
-  const bookmarkBtns = Array.from(document.querySelectorAll('.bookmark-tab'));
+  const bookmarkBtns = Array.from(document.querySelectorAll('.jump-btn'));
+  const jumpBar = document.getElementById('jumpBar');
   const clipLinks = Array.from(document.querySelectorAll('.clothesline-wall .clip, .vlog-play'));
   let bookmarkJumpTimer = null;
   let isBookFlat = true;
@@ -4090,17 +4099,18 @@ window.addEventListener('load', function() {
     cover: { start: 0, end: 2 },
     proof: { start: 3, end: 4 },
     numbers: { start: 4, end: 6 },
-    cases: { start: 6, end: 22 },
-    events: { start: 22, end: 28 },
-    live: { start: 28, end: 29 },
-    pitch: { start: 29, end: 32 }
+    cases: { start: 6, end: 24 },
+    events: { start: 24, end: 30 },
+    live: { start: 30, end: 31 },
+    pitch: { start: 31, end: 34 }
   };
 
   function syncBookmarkVisibility() {
     const idx = pageFlip.getCurrentPageIndex();
     const total = pageFlip.getPageCount();
-    const canShowBookmarks = isBookFlat && idx > 0 && idx < total - 1 && !document.body.classList.contains('bookmark-jumping');
-    document.body.classList.toggle('book-open-flat', canShowBookmarks);
+    const canShow = isBookFlat && idx > 0 && idx < total - 1 && !document.body.classList.contains('bookmark-jumping');
+    document.body.classList.toggle('book-open-flat', canShow);
+    if (jumpBar) jumpBar.classList.toggle('visible', canShow);
   }
 
   function updateUI() {
@@ -4184,11 +4194,17 @@ window.addEventListener('load', function() {
   });
   function jumpToCatalogSection(btn) {
     isBookFlat = false;
-    hideBookmarksDuringJump(450);
+    hideBookmarksDuringJump(1200);
     const page = Number(btn.dataset.page || 0);
     if (typeof pageFlip.turnToPage === 'function') {
       pageFlip.turnToPage(page);
     }
+    /* Fallback: force bookmarks back after flip settles */
+    window.setTimeout(() => {
+      isBookFlat = true;
+      document.body.classList.remove('bookmark-jumping');
+      syncBookmarkVisibility();
+    }, 1400);
   }
   [...chapterBtns, ...bookmarkBtns].forEach(btn => {
     btn.addEventListener('click', (e) => {
@@ -4241,6 +4257,10 @@ window.addEventListener('load', function() {
   let lastState = null;
   pageFlip.on('changeState', (e) => {
     isBookFlat = e.data === 'read';
+    if (isBookFlat) {
+      document.body.classList.remove('bookmark-jumping');
+      window.clearTimeout(bookmarkJumpTimer);
+    }
     syncBookmarkVisibility();
     if (e.data === 'flipping' && lastState !== 'flipping') {
       hideBookmarksIfClosing();
