@@ -1165,55 +1165,56 @@ body.bookmark-jumping .chapter-bookmarks {
   pointer-events: none;
   transition: none;
 }
-/* Jump bar — clean section buttons above NEXT */
+/* Jump bar — section buttons, right side above NEXT */
 .jump-bar {
   position: fixed;
-  right: 22px;
-  top: 50%;
-  transform: translateY(calc(-50% - 52px));
+  right: 28px;
+  top: 36px;
   z-index: 12001;
   display: flex;
-  flex-direction: column;
-  gap: 0;
-  background: oklch(0.20 0.035 80 / 0.88);
-  border: 1px solid oklch(0.74 0.065 82 / 0.36);
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 8px 20px rgba(18,12,6,0.22);
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 6px;
+  max-width: 220px;
+  justify-content: flex-end;
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
-  transition: opacity 0.25s ease, visibility 0s linear 0.25s;
+  transition: opacity 0.3s ease, visibility 0s linear 0.3s;
 }
 .jump-bar.visible {
   opacity: 1;
   visibility: visible;
   pointer-events: auto;
-  transition: opacity 0.25s ease, visibility 0s linear 0s;
+  transition: opacity 0.3s ease, visibility 0s linear 0s;
 }
 .jump-btn {
-  background: transparent;
-  border: none;
-  border-bottom: 1px solid oklch(0.74 0.065 82 / 0.18);
-  color: oklch(0.88 0.035 82);
-  padding: 10px 18px;
+  background: oklch(0.22 0.035 80 / 0.82);
+  border: 1px solid oklch(0.74 0.065 82 / 0.32);
+  color: oklch(0.86 0.030 82);
+  padding: 7px 13px;
   font-family: var(--f-mono);
-  font-size: 10px;
+  font-size: 9px;
   font-weight: 700;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.10em;
   text-transform: uppercase;
   cursor: pointer;
-  transition: background 0.18s ease, color 0.18s ease;
+  border-radius: 999px;
+  transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
   white-space: nowrap;
+  box-shadow: 0 2px 8px rgba(18,12,6,0.15);
 }
-.jump-btn:last-child { border-bottom: none; }
 .jump-btn:hover {
-  background: oklch(0.30 0.045 80 / 0.7);
+  background: oklch(0.30 0.050 80 / 0.92);
   color: oklch(0.98 0.045 82);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(18,12,6,0.25);
 }
 .jump-btn.active {
-  background: oklch(0.28 0.06 75 / 0.5);
+  background: oklch(0.26 0.06 75 / 0.88);
   color: var(--accent);
+  border-color: oklch(0.74 0.10 75 / 0.5);
+  box-shadow: 0 0 10px oklch(0.60 0.10 75 / 0.25);
 }
 @media (max-width: 760px) {
   .jump-bar { display: none; }
