@@ -1165,39 +1165,58 @@ body.bookmark-jumping .chapter-bookmarks {
   pointer-events: none;
   transition: none;
 }
-.bookmark-tab {
-  position: relative;
-  width: 34px;
-  min-height: 90px;
-  border: 0;
-  border-radius: 0 6px 6px 0;
-  background: url('assets/bookmark-tab.png') center / 100% 100% no-repeat;
-  background-color: transparent;
-  color: #1e3340;
-  font-family: var(--f-mono);
-  font-size: 7.5px;
-  font-weight: 800;
-  letter-spacing: 0.06em;
-  line-height: 1.18;
-  text-transform: uppercase;
-  writing-mode: vertical-rl;
-  text-orientation: upright;
-  text-shadow: 0 1px 0 rgba(255,255,255,0.35);
-  cursor: pointer;
-  pointer-events: auto;
-  box-shadow: none;
-  transition: filter 0.22s ease;
+/* Jump bar — clean section buttons above NEXT */
+.jump-bar {
+  position: fixed;
+  right: 22px;
+  top: 50%;
+  transform: translateY(calc(-50% - 52px));
+  z-index: 12001;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  background: oklch(0.20 0.035 80 / 0.88);
+  border: 1px solid oklch(0.74 0.065 82 / 0.36);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(18,12,6,0.22);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.25s ease, visibility 0s linear 0.25s;
 }
-.bookmark-tab::before { display: none; }
-.bookmark-tab::after { display: none; }
-.bookmark-tab:hover {
-  filter: brightness(1.06);
+.jump-bar.visible {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transition: opacity 0.25s ease, visibility 0s linear 0s;
+}
+.jump-btn {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid oklch(0.74 0.065 82 / 0.18);
+  color: oklch(0.88 0.035 82);
+  padding: 10px 18px;
+  font-family: var(--f-mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.18s ease, color 0.18s ease;
+  white-space: nowrap;
+}
+.jump-btn:last-child { border-bottom: none; }
+.jump-btn:hover {
+  background: oklch(0.30 0.045 80 / 0.7);
+  color: oklch(0.98 0.045 82);
+}
+.jump-btn.active {
+  background: oklch(0.28 0.06 75 / 0.5);
+  color: var(--accent);
 }
 @media (max-width: 760px) {
-  .chapter-bookmarks { display: none; }
-}
-.bookmark-tab.active {
-  filter: brightness(1.04);
+  .jump-bar { display: none; }
 }
 .instruction { display: none; margin-top: 6px; font-family: var(--f-italic); font-style: italic; color: oklch(0.30 0.04 80); font-size: 12.5px; letter-spacing: 0.04em; min-height: 28px; align-items: center; justify-content: center; gap: 8px; text-shadow: 0 1px 0 oklch(1 0 0 / 0.5); }
 .instruction-copy { transition: opacity 0.35s ease, transform 0.35s ease; }
@@ -3977,13 +3996,14 @@ img.event-mark {
         </div>
     </div></div>
   </div>
-  <div class="chapter-bookmarks" aria-label="Catalog sections">
-    <button class="bookmark-tab" data-section="proof" data-page="3" type="button">Proof</button>
-    <button class="bookmark-tab" data-section="numbers" data-page="4" type="button">Numbers</button>
-    <button class="bookmark-tab" data-section="cases" data-page="6" type="button">Cases</button>
-    <button class="bookmark-tab" data-section="events" data-page="24" type="button">Events</button>
-    <button class="bookmark-tab" data-section="live" data-page="30" type="button">Live</button>
-    <button class="bookmark-tab" data-section="pitch" data-page="31" type="button">Pitch</button>
+  <div class="chapter-bookmarks" aria-label="Catalog sections" style="display:none"></div>
+  <div class="jump-bar" id="jumpBar" aria-label="Jump to section">
+    <button class="jump-btn" data-section="proof" data-page="3" type="button">Proof</button>
+    <button class="jump-btn" data-section="numbers" data-page="4" type="button">Numbers</button>
+    <button class="jump-btn" data-section="cases" data-page="6" type="button">Cases</button>
+    <button class="jump-btn" data-section="events" data-page="24" type="button">Events</button>
+    <button class="jump-btn" data-section="live" data-page="30" type="button">Live</button>
+    <button class="jump-btn" data-section="pitch" data-page="31" type="button">Pitch</button>
   </div>
 </div>
 <div class="controls">
@@ -4069,7 +4089,8 @@ window.addEventListener('load', function() {
   const prevBtn = document.getElementById('prevBtn');
   const nextBtn = document.getElementById('nextBtn');
   const chapterBtns = Array.from(document.querySelectorAll('.chapter-jump'));
-  const bookmarkBtns = Array.from(document.querySelectorAll('.bookmark-tab'));
+  const bookmarkBtns = Array.from(document.querySelectorAll('.jump-btn'));
+  const jumpBar = document.getElementById('jumpBar');
   const clipLinks = Array.from(document.querySelectorAll('.clothesline-wall .clip, .vlog-play'));
   let bookmarkJumpTimer = null;
   let isBookFlat = true;
@@ -4086,8 +4107,9 @@ window.addEventListener('load', function() {
   function syncBookmarkVisibility() {
     const idx = pageFlip.getCurrentPageIndex();
     const total = pageFlip.getPageCount();
-    const canShowBookmarks = isBookFlat && idx > 0 && idx < total - 1 && !document.body.classList.contains('bookmark-jumping');
-    document.body.classList.toggle('book-open-flat', canShowBookmarks);
+    const canShow = isBookFlat && idx > 0 && idx < total - 1 && !document.body.classList.contains('bookmark-jumping');
+    document.body.classList.toggle('book-open-flat', canShow);
+    if (jumpBar) jumpBar.classList.toggle('visible', canShow);
   }
 
   function updateUI() {
