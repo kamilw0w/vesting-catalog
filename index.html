@@ -1081,7 +1081,7 @@ body.closing-back-cover .stage::after {
   pointer-events: auto;
 }
 .ctrl-btn:first-child { left: 36px; }
-.ctrl-btn:last-child { right: 16px; }
+.ctrl-btn:last-child { right: 36px; }
 .ctrl-btn:hover:not(:disabled) {
   background: oklch(0.28 0.045 80 / 0.94);
   border-color: var(--accent);
@@ -1168,7 +1168,7 @@ body.bookmark-jumping .chapter-bookmarks {
 /* Jump bar — section buttons, right column same as NEXT */
 .jump-bar {
   position: fixed;
-  right: 16px;
+  right: 36px;
   bottom: calc(50% + 48px);
   z-index: 12001;
   display: flex;
@@ -3998,14 +3998,14 @@ img.event-mark {
     </div></div>
   </div>
   <div class="chapter-bookmarks" aria-label="Catalog sections" style="display:none"></div>
-  <div class="jump-bar" id="jumpBar" aria-label="Jump to section">
-    <button class="jump-btn" data-section="proof" data-page="3" type="button">Proof</button>
-    <button class="jump-btn" data-section="numbers" data-page="4" type="button">Numbers</button>
-    <button class="jump-btn" data-section="cases" data-page="6" type="button">Cases</button>
-    <button class="jump-btn" data-section="events" data-page="24" type="button">Events</button>
-    <button class="jump-btn" data-section="live" data-page="30" type="button">Live</button>
-    <button class="jump-btn" data-section="pitch" data-page="31" type="button">Pitch</button>
-  </div>
+</div>
+<div class="jump-bar" id="jumpBar" aria-label="Jump to section">
+  <button class="jump-btn" data-section="proof" data-page="3" type="button">Proof</button>
+  <button class="jump-btn" data-section="numbers" data-page="4" type="button">Numbers</button>
+  <button class="jump-btn" data-section="cases" data-page="6" type="button">Cases</button>
+  <button class="jump-btn" data-section="events" data-page="24" type="button">Events</button>
+  <button class="jump-btn" data-section="live" data-page="30" type="button">Live</button>
+  <button class="jump-btn" data-section="pitch" data-page="31" type="button">Pitch</button>
 </div>
 <div class="controls">
   <button class="ctrl-btn" id="prevBtn" disabled>&larr; Prev</button>
