@@ -2540,11 +2540,10 @@ img.event-mark {
 }
 /* ============= ZOLVO COMPOSITE PROOF (ProjectX-style journey image) ============= */
 .zolvo-composite-proof {
-  position: relative;
   width: 100%;
   margin: 6px 0 0;
   border-radius: 4px;
-  overflow: visible;
+  overflow: hidden;
 }
 .zolvo-composite-proof img {
   width: 100%;
@@ -2552,42 +2551,19 @@ img.event-mark {
   display: block;
   border-radius: 4px;
 }
-/* Extend chain line up through page padding to top edge */
-.zolvo-composite-proof::before {
-  content: '';
-  position: absolute;
-  left: 47%;
-  bottom: 100%;
-  width: 2px;
-  height: 999px;
-  background: #af8c44;
-  pointer-events: none;
-}
 
 /* ============= ENJAMB COMPOSITE ============= */
 .enjamb-composite-proof {
-  position: relative;
   width: 100%;
   margin: 6px 0 0;
   border-radius: 4px;
-  overflow: visible;
+  overflow: hidden;
 }
 .enjamb-composite-proof img {
   width: 100%;
   height: auto;
   display: block;
   border-radius: 4px;
-}
-/* Extend chain line up through page padding to top edge */
-.enjamb-composite-proof::before {
-  content: '';
-  position: absolute;
-  left: 47%;
-  bottom: 100%;
-  width: 2px;
-  height: 999px;
-  background: #af8c44;
-  pointer-events: none;
 }
 
 .case-post-tag {
